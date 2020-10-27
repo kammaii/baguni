@@ -294,7 +294,6 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
             case R.id.btnStart :
                 setLayout(View.GONE, View.GONE, View.GONE);
                 replaceFragment(LessonReviewWord.newInstance());
-                adsManager.loadNativeAds(getApplicationContext());
                 break;
 
 

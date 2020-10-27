@@ -150,7 +150,7 @@ public class AdsManager {
         }
     }
 
-
+/*
     // 네이티브 광고 로드하기
     public void loadNativeAds(Context context) {
         AdLoader adLoader = new AdLoader.Builder(context, BuildConfig.ADMOB_NATIVE_ID)
@@ -177,4 +177,6 @@ public class AdsManager {
 
         adLoader.loadAd(new AdRequest.Builder().build());
     }
+
+ */
 }

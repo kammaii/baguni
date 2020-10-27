@@ -22,31 +22,18 @@ public class OutlineTextView extends AppCompatTextView {
     public OutlineTextView(Context context) {
 
         super(context);
-
     }
-
 
 
     public OutlineTextView(Context context, AttributeSet attrs) {
-
         super(context, attrs);
-
-
-
         initView(context, attrs);
-
     }
 
 
-
     public OutlineTextView(Context context, AttributeSet attrs, int defStyleAttr) {
-
         super(context, attrs, defStyleAttr);
-
-
-
         initView(context, attrs);
-
     }
 
 
@@ -55,6 +42,7 @@ public class OutlineTextView extends AppCompatTextView {
 
         TypedArray type = context.obtainStyledAttributes(attrs, R.styleable.OutlineTextView);
 
+        System.out.println("아웃라인텍스트뷰");
 
 
         stroke = type.getBoolean(R.styleable.OutlineTextView_textStroke, false); // 외곽선 유무

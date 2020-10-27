@@ -73,7 +73,6 @@ public class Logo extends AppCompatActivity {
                 adsManager = AdsManager.getInstance();
                 adsManager.loadFullAds(getApplicationContext());
                 adsManager.loadRewardAds(getApplicationContext());
-                adsManager.loadNativeAds(getApplicationContext());
             }
         });
 
