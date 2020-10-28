@@ -19,8 +19,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-//import com.google.android.ads.nativetemplates.TemplateView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.storage.FirebaseStorage;
@@ -76,7 +74,6 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
 
     ConstraintLayout layoutLoading;
     ProgressBar loading;
-//    TemplateView templateView;
     Button btnStart;
     TextView loadingText;
     int downloadProgress;
@@ -106,7 +103,6 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
         tvProgress = findViewById(R.id.tvProgress);
         layoutLoading = findViewById(R.id.layoutLoading);
         loading = findViewById(R.id.loading);
-//        templateView = findViewById(R.id.templateView);
         btnStart = findViewById(R.id.btnStart);
         loadingText = findViewById(R.id.loadingText);
         layoutPassed = findViewById(R.id.layoutPassed);
@@ -129,11 +125,6 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
         loadingText.setVisibility(View.VISIBLE);
         btnStart.setVisibility(View.GONE);
         setLayout(View.VISIBLE, View.GONE, View.GONE);
-
-//        // 네이티브 광고 출력
-//        if(adsManager.unifiedNativeAd != null) {
-//            templateView.setNativeAd(adsManager.unifiedNativeAd);
-//        }
 
         // 전면광고 로드 체크
         if(adsManager.interstitialAd == null || !adsManager.interstitialAd.isLoaded()) {
@@ -302,7 +293,6 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
             case R.id.btnStart :
                 setLayout(View.GONE, View.GONE, View.GONE);
                 replaceFragment(LessonReviewWord.newInstance());
-                adsManager.loadNativeAds(getApplicationContext());
                 break;
 
 

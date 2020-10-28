@@ -43,19 +43,6 @@ public class WritingRepository {
         }.execute();
     }
 
-    public void updateStudentFeedbackByGuid(final String guid, final String feedback) {
-
-        new AsyncTask<Void, Void, WritingEntity>() {
-            @Override
-            protected WritingEntity doInBackground(Void... voids) {
-                WritingEntity entity = db.writingDao().getByGuid(guid);
-                entity.setStudentFeedback(feedback);
-                db.writingDao().update(entity);
-                return null;
-            }
-        }.execute();
-    }
-
     public void editByGuid(final String guid, final String article, final int letters) {
 
         new AsyncTask<Void, Void, WritingEntity>() {
@@ -63,20 +50,6 @@ public class WritingRepository {
             protected WritingEntity doInBackground(Void... voids) {
                 WritingEntity entity = db.writingDao().getByGuid(guid);
                 entity.setContents(article);
-                entity.setLetters(letters);
-                db.writingDao().update(entity);
-                return null;
-            }
-        }.execute();
-    }
-
-    public void editReturnedWriting(final String guid, final String article, final int letters) {
-
-        new AsyncTask<Void, Void, WritingEntity>() {
-            @Override
-            protected WritingEntity doInBackground(Void... voids) {
-                WritingEntity entity = db.writingDao().getByGuid(guid);
-                entity.setCorrection(article);
                 entity.setLetters(letters);
                 db.writingDao().update(entity);
                 return null;

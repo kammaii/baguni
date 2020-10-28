@@ -102,7 +102,6 @@ public class MainWriting extends Fragment implements View.OnClickListener {
                     items.setTeacherName(entity.getTeacherName());
                     items.setCorrection(entity.getCorrection());
                     items.setTeacherFeedback(entity.getTeacherFeedback());
-                    items.setStudentFeedback(entity.getStudentFeedback());
                     listAllData.add(items);
 
                     // 교정 중인 writing 이 있으면, DB 접속
@@ -114,18 +113,6 @@ public class MainWriting extends Fragment implements View.OnClickListener {
                                 WritingEntity download = documentSnapshot.toObject(WritingEntity.class);
 
                                 if (download != null && download.getStatus() > 1) {
-
-                                    // 재작성 요청 시 포인트 반환
-                                    if(download.getStatus() == 99) {
-                                        System.out.println("컨텐츠 : " + download.getContents());
-                                        int returnPoint = download.getLetters();
-                                        UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getContext());
-                                        System.out.println("기존포인트 : " + userInformation.getPoints());
-
-                                        userInformation.addRewardPoints(getContext(), returnPoint);
-                                        System.out.println("포인트를 반환했습니다 : " + returnPoint);
-                                    }
-
                                     System.out.println("글쓰기 교정이 완료되었습니다");
                                     WritingRepository repository = new WritingRepository(getContext());
                                     repository.update(download);
@@ -158,18 +145,13 @@ public class MainWriting extends Fragment implements View.OnClickListener {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 WritingEntity item = (WritingEntity) adapterView.getItemAtPosition(i);
 
-                // 교정완료 된 아이템
+                // 교정요청 안 한 아이템
                 if(item.getStatus() == 0) {
                     Intent intent = new Intent(getContext(), WritingFrame.class);
                     intent.putExtra(getString(R.string.EXTRA_ENTITY), item);
                     intent.putExtra(getString(R.string.REQUEST), getString(R.string.REQUEST_EDIT));
                     intent.putExtra(getString(R.string.STATUS), item.getStatus());
                     startActivityForResult(intent, getResources().getInteger(R.integer.REQUEST_CODE_EDIT));
-
-                } else if (item.getStatus() == 99) {
-                    Intent intent = new Intent(getContext(), WritingReturned.class);
-                    intent.putExtra(getString(R.string.EXTRA_ENTITY), item);
-                    startActivityForResult(intent, 300);
 
                 } else {
                     Intent intent = new Intent(getContext(), WritingCorrected.class);

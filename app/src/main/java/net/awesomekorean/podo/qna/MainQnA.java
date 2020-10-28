@@ -23,14 +23,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import net.awesomekorean.podo.R;
-import net.awesomekorean.podo.SharedPreferencesInfo;
-import net.awesomekorean.podo.UserInformation;
-import net.awesomekorean.podo.writing.WritingAdapter;
-import net.awesomekorean.podo.writing.WritingCorrected;
-import net.awesomekorean.podo.writing.WritingEntity;
-import net.awesomekorean.podo.writing.WritingFrame;
-import net.awesomekorean.podo.writing.WritingRepository;
-import net.awesomekorean.podo.writing.WritingReturned;
 
 import java.util.ArrayList;
 import java.util.List;
