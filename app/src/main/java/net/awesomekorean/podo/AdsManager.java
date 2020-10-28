@@ -113,7 +113,7 @@ public class AdsManager {
 
     // 리워드 광고 재생
     public void playRewardAds(final Activity activity) {
-        if(rewardedAd.isLoaded()) {
+        if(rewardedAd != null && rewardedAd.isLoaded()) {
             RewardedAdCallback adCallback = new RewardedAdCallback() {
 
                 @Override

@@ -398,7 +398,7 @@ public class MainCollection extends Fragment implements Button.OnClickListener {
                 break;
 
             case R.id.btnStudy:
-                if(!listAllData.isEmpty()) {
+                if(listAllData != null && !listAllData.isEmpty()) {
                     intent = new Intent(getContext(), CollectionStudy.class);
                     startActivity(intent);
                 }

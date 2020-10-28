@@ -34,7 +34,6 @@
             android:name=".lesson.IntermediateFrame"
             android:screenOrientation="portrait" />
         <activity android:name=".lesson.LessonReviewFrame" />
-        <activity android:name=".writing.WritingReturned" />
 
         <service
             android:name=".FirebaseCloudMessage"

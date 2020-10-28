@@ -130,7 +130,8 @@ public class Teachers extends AppCompatActivity implements View.OnClickListener 
                 adapter.setOnItemClickListener(new TeachersAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View v, int pos) {
-                        if(list.get(pos).getStatus() == 1 && pointsHave >= pointsNeed) {
+//                        if(list.get(pos).getStatus() == 1 && pointsHave >= pointsNeed) { //todo: 선생님 2인 이상 되면 활성화 할 것
+                        if(pointsHave >= pointsNeed) {
                             btnSubmit.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_purple_30));
                             btnSubmit.setEnabled(true);
                         }
@@ -186,13 +187,6 @@ public class Teachers extends AppCompatActivity implements View.OnClickListener 
                 final WritingEntity requestWriting = (WritingEntity) intent.getSerializableExtra(getString(R.string.EXTRA_ENTITY));
 
                 String token = SharedPreferencesInfo.getUserToken(getApplicationContext());
-
-                // 재요청 일 때
-                if(requestWriting.getStatus() == 99) {
-                    requestWriting.setContents(requestWriting.getCorrection());
-                    requestWriting.setCorrection("");
-                    requestWriting.setTeacherFeedback("");
-                }
 
                 requestWriting.setUserEmail(userEmail);
                 requestWriting.setUserName(userName);
