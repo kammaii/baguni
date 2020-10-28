@@ -102,7 +102,6 @@ public class MainWriting extends Fragment implements View.OnClickListener {
                     items.setTeacherName(entity.getTeacherName());
                     items.setCorrection(entity.getCorrection());
                     items.setTeacherFeedback(entity.getTeacherFeedback());
-                    items.setStudentFeedback(entity.getStudentFeedback());
                     listAllData.add(items);
 
                     // 교정 중인 writing 이 있으면, DB 접속

@@ -30,7 +30,7 @@ public class WritingEntity implements Serializable {
     private String contents;
     private int letters;
     private Long writingDate;
-    private int status = 0; // 0:교정요청없음, 1:검토중, 2:교정됨, 3:학생피드백보냄, 99:거부됨
+    private int status = 0; // 0:교정요청없음, 1:검토중, 2:교정됨, 99:거부됨
     private String userToken;
 
     private String teacherName;
