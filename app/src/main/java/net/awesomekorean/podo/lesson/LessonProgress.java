@@ -110,18 +110,20 @@ public class LessonProgress {
 
     private void setMyWordsSentences() {
         for(String lesson : lessonComplete) {
-            String[] lessonSplit = lesson.split("_");
+            if(lesson != null) {
+                String[] lessonSplit = lesson.split("_");
 
-            if(lessonSplit[0].equals("L")) {
-                int lessonNo = Integer.parseInt(lessonSplit[1]);
+                if (lessonSplit[0].equals("L")) {
+                    int lessonNo = Integer.parseInt(lessonSplit[1]);
 
-                for(int i=0; i<lessons[lessonNo].getWordFront().length; i++) {
-                    myWords.put(lessons[lessonNo].getWordFront()[i], lessons[lessonNo].getWordBack()[i]);
-                }
+                    for (int i = 0; i < lessons[lessonNo].getWordFront().length; i++) {
+                        myWords.put(lessons[lessonNo].getWordFront()[i], lessons[lessonNo].getWordBack()[i]);
+                    }
 
-                for(int i=0; i<lessons[lessonNo].getReviewId().length; i++) {
-                    int reviewNo = lessons[lessonNo].getReviewId()[i];
-                    mySentences.put(lessons[lessonNo].getSentenceFront()[reviewNo], lessons[lessonNo].getSentenceBack()[reviewNo]);
+                    for (int i = 0; i < lessons[lessonNo].getReviewId().length; i++) {
+                        int reviewNo = lessons[lessonNo].getReviewId()[i];
+                        mySentences.put(lessons[lessonNo].getSentenceFront()[reviewNo], lessons[lessonNo].getSentenceBack()[reviewNo]);
+                    }
                 }
             }
         }

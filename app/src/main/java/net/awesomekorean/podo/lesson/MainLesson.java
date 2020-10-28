@@ -2,7 +2,6 @@ package net.awesomekorean.podo.lesson;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,9 +37,9 @@ import net.awesomekorean.podo.lesson.lessonReviewRewards.Rewards01;
 import net.awesomekorean.podo.lesson.lessonReviewRewards.Rewards02;
 import net.awesomekorean.podo.lesson.lessonReviewRewards.Rewards03;
 import net.awesomekorean.podo.lesson.lessonReviewRewards.Rewards04;
+import net.awesomekorean.podo.lesson.lessons.Lesson00;
 import net.awesomekorean.podo.lesson.lessons.Lesson01;
 import net.awesomekorean.podo.lesson.lessons.Lesson02;
-import net.awesomekorean.podo.lesson.lessons.Lesson00;
 import net.awesomekorean.podo.lesson.lessons.Lesson03;
 import net.awesomekorean.podo.lesson.lessons.Lesson04;
 import net.awesomekorean.podo.lesson.lessons.Lesson05;
@@ -78,11 +77,9 @@ import net.awesomekorean.podo.lesson.lessons.Lesson36;
 import net.awesomekorean.podo.lesson.lessons.Lesson37;
 import net.awesomekorean.podo.lesson.lessons.Lesson38;
 import net.awesomekorean.podo.lesson.lessons.Lesson39;
-import net.awesomekorean.podo.lesson.lessons.Lesson40;
 import net.awesomekorean.podo.lesson.lessons.LessonItem;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static android.view.View.GONE;
@@ -147,7 +144,8 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
         context = getContext();
         userInformation = SharedPreferencesInfo.getUserInfo(context);
-        setLessonItem(lastClickLevel);
+        //setLessonItem(lastClickLevel); //todo: 중급레슨 오픈하면 활성화 할 것
+        setLessonItem(0);
         adapter = new LessonAdapter(context, list);
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -265,8 +263,11 @@ public class MainLesson extends Fragment implements View.OnClickListener {
                 tvLevel.setText(getResources().getString(R.string.BEGINNER_LEVEL));
                 tvLevel.setTextColor(ContextCompat.getColor(context, R.color.PURPLE));
                 ivBackGround.setImageResource(R.drawable.bg_light_blue);
-                btnPreLevel.setVisibility(View.INVISIBLE);
-                btnNextLevel.setVisibility(VISIBLE);
+//                btnPreLevel.setVisibility(View.INVISIBLE);
+//                btnNextLevel.setVisibility(VISIBLE);
+                //todo: 중급레슨 오픈하면 활성화 할 것
+                btnPreLevel.setVisibility(GONE);
+                btnNextLevel.setVisibility(GONE);
                 break;
 
             case 1 :    // 중급레슨
