@@ -1,12 +1,5 @@
 package net.awesomekorean.podo.lesson;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.media.AudioManager;
@@ -19,6 +12,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.storage.FirebaseStorage;
@@ -324,8 +325,6 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == RESULT_OK) {
-            MediaPlayerManager mediaPlayerManager = MediaPlayerManager.getInstance();
-            mediaPlayerManager.stopMediaPlayer();
             finish();
         }
     }
@@ -335,7 +334,7 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
         MediaPlayerManager mediaPlayerManager = MediaPlayerManager.getInstance();
         mediaPlayerManager.stopMediaPlayer();
         Intent intent = new Intent(getApplicationContext(), ConfirmQuit.class);
-        intent.putExtra(getResources().getString(R.string.LESSON_ID), lessonReview.getLessonId());
+        intent.putExtra(getResources().getString(R.string.FINISH), false);
         startActivityForResult(intent, 200);
     }
 

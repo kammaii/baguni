@@ -71,6 +71,8 @@ public class Teachers extends AppCompatActivity implements View.OnClickListener 
     LinearLayout progressBarLayout;
     ProgressBar progressBar;
 
+    WritingEntity requestWriting;
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +96,8 @@ public class Teachers extends AppCompatActivity implements View.OnClickListener 
         progressBar.getIndeterminateDrawable().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
 
         intent = getIntent();
-        WritingEntity entity = (WritingEntity) intent.getSerializableExtra(getString(R.string.EXTRA_ENTITY));
-        pointsNeed = entity.getLetters();
+        requestWriting = (WritingEntity) intent.getSerializableExtra(getString(R.string.EXTRA_ENTITY));
+        pointsNeed = requestWriting.getLetters();
         pointsHave = SharedPreferencesInfo.getUserInfo(getApplicationContext()).getPoints();
         requiredPoints.setText(Integer.toString(pointsNeed));
         holdingPoints.setText(String.valueOf(pointsHave));
@@ -183,8 +185,6 @@ public class Teachers extends AppCompatActivity implements View.OnClickListener 
                         System.out.println("포인트를 업데이트 했습니다. : " + newPoints);
                     }
                 });
-
-                final WritingEntity requestWriting = (WritingEntity) intent.getSerializableExtra(getString(R.string.EXTRA_ENTITY));
 
                 String token = SharedPreferencesInfo.getUserToken(getApplicationContext());
 

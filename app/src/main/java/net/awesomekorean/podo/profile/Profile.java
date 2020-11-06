@@ -176,36 +176,46 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         // 유저프로필사진 가져오기
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        final Uri profileImage = user.getPhotoUrl();
+        if(user != null) {
+            final Uri profileImage = user.getPhotoUrl();
 
-        if(profileImage != null) {
-            // 프로필이미지 불러오기
-            Thread mThread = new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        URL url = new URL(profileImage.toString());
-                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                        conn.setDoInput(true);
-                        conn.connect();
+            if (profileImage != null) {
+                // 프로필이미지 불러오기
+                Thread mThread = new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            URL url = new URL(profileImage.toString());
+                            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                            conn.setDoInput(true);
+                            conn.connect();
 
-                        InputStream is = conn.getInputStream();
-                        bitmap = BitmapFactory.decodeStream(is);
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                            InputStream is = conn.getInputStream();
+                            bitmap = BitmapFactory.decodeStream(is);
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
-                }
-            };
-            mThread.start();
+                };
+                mThread.start();
 
-            try {
-                mThread.join(3000);
-                userImage.setImageBitmap(bitmap);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                try {
+                    mThread.join(3000);
+                    userImage.setImageBitmap(bitmap);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
+        } else {
+            SharedPreferencesInfo.setSignIn(context, false);
+            intent = new Intent(context, SignIn.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            FirebaseAuth.getInstance().signOut();
+            finish();
         }
 
         setAttendance(userInformation.getAttendance());
