@@ -6,13 +6,9 @@ import net.awesomekorean.podo.lesson.lessons.S_LessonInit_Unlock;
 
 import java.io.Serializable;
 
-public class LessonHangulConsonant extends S_LessonInit_Unlock implements Hangul, LessonItem, Serializable {
+public class LessonHangulConsonant implements Hangul, Serializable {
 
     private String lessonId = "H_consonant";
-
-    private String lessonTitle = "consonant";
-
-    private String lessonSubTitle = "ㄱ, ㄴ, ㄷ...";
 
     private String[] hangul = {"ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ", "ㄲ", "ㄸ", "ㅃ", "ㅆ", "ㅉ"};
 
@@ -31,18 +27,8 @@ public class LessonHangulConsonant extends S_LessonInit_Unlock implements Hangul
             "Fortunately, we can train our muscles with practice.\nLet's warm up your mouth before we start.";
 
     @Override
-    public String getLessonSubTitle() {
-        return lessonSubTitle;
-    }
-
-    @Override
     public String getLessonId() {
         return lessonId;
-    }
-
-    @Override
-    public String getLessonTitle() {
-        return lessonTitle;
     }
 
     @Override

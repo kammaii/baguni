@@ -33,17 +33,12 @@ import net.awesomekorean.podo.lesson.lessons.LessonItem;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-public class LessonHangulAssembly extends AppCompatActivity implements View.OnClickListener, LessonItem {
+public class LessonHangulAssembly extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseStorage storage = FirebaseStorage.getInstance();
-    private String lessonId = "H_assembly";
-    private String lessonTitle = "assembly";
-    private String lessonSubTitle = "Let's assemble!";
-    private boolean isLocked = true;
     private MediaPlayerManager mediaPlayerManager;
     private String url;
     private ProgressBar loading;
-    private boolean isCompleted;
 
     TextView textViewIntro;
     TextView assemblyTextView;
@@ -105,10 +100,6 @@ public class LessonHangulAssembly extends AppCompatActivity implements View.OnCl
     Context context;
 
     String audioFile;
-
-    private boolean isActive;
-    private LessonItem specialLesson;
-    private boolean isCurrent = false;
 
     AdsManager adsManager;
 
@@ -486,66 +477,6 @@ public class LessonHangulAssembly extends AppCompatActivity implements View.OnCl
     @Override
     public void onBackPressed() {
         setLessonComplete();
-    }
-
-
-    @Override
-    public String getLessonId() {
-        return lessonId;
-    }
-
-    @Override
-    public String getLessonTitle() {
-        return lessonTitle;
-    }
-
-    @Override
-    public boolean getIsLocked() {
-        return isLocked;
-    }
-
-    @Override
-    public void setIsLocked(boolean isLock) {
-        this.isLocked = isLock;
-    }
-
-    @Override
-    public String getLessonSubTitle() {
-        return lessonSubTitle;
-    }
-
-    @Override
-    public boolean getIsCompleted() {
-        return isCompleted;
-    }
-
-    @Override
-    public void setIsCompleted(boolean b) {
-        isCompleted = b;
-    }
-    @Override
-    public boolean getIsActive() {
-        return isActive;
-    }
-
-    @Override
-    public boolean setIsActive(boolean isActive) {
-        return this.isActive = isActive;
-    }
-
-    @Override
-    public LessonItem getSLesson() {
-        return null;
-    }
-
-    @Override
-    public boolean getIsCurrent() {
-        return isCurrent;
-    }
-
-    @Override
-    public void setIsCurrent(boolean b) {
-        this.isCurrent = b;
     }
 }
 

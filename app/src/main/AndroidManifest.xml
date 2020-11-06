@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".qna.QnAReplied"></activity>
+        <activity android:name=".lesson.lessonHangul.LessonHangulMenu"></activity>
+        <activity android:name=".qna.QnAReplied" />
         <activity android:name=".qna.QnAFrame" />
         <activity android:name=".GetRandomPoint" />
         <activity
@@ -146,12 +147,11 @@
         <activity
             android:name=".lesson.lessonHangul.LessonHangulAssembly"
             android:screenOrientation="portrait" />
-        <activity android:name=".lesson.lessonHangul.LessonHangul" />
+        <activity android:name=".lesson.lessonHangul.LessonHangulFrame" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustNothing" >
-        </activity>
+            android:windowSoftInputMode="adjustNothing"></activity>
     </application>
 
 </manifest>

@@ -7,15 +7,9 @@ import net.awesomekorean.podo.lesson.lessons.S_LessonInit_Unlock;
 
 import java.io.Serializable;
 
-public class LessonHangulBatchim extends S_LessonInit_Unlock implements Hangul, LessonItem, Serializable {
+public class LessonHangulBatchim implements Hangul, Serializable {
 
     private String lessonId = "H_batchim";
-
-    private String lessonTitle = "batchim";
-
-    private String lessonSubTitle = "ㄱ, ㄴ, ㄷ...";
-
-    private LessonItem specialLesson = new LessonHangulAssembly();
 
     private String[] hangul = { "ㄱ", "역", "한국", "한국", "ㄲ", "ㅋ", "박, 밖, 밬", "ㄴ", "은", "ㄷ", "귿", "ㅌ", "ㅅ", "ㅆ", "ㅈ", "ㅊ", "ㅎ", "낟, 낱, 낫, 났, 낮, 낯, 낳", "ㄹ", "을", "ㅁ", "음", "ㅂ", "읍", "ㅍ", "압, 앞", "ㅇ", "응"};
 
@@ -63,18 +57,8 @@ public class LessonHangulBatchim extends S_LessonInit_Unlock implements Hangul, 
 
 
     @Override
-    public String getLessonSubTitle() {
-        return lessonSubTitle;
-    }
-
-    @Override
     public String getLessonId() {
         return lessonId;
-    }
-
-    @Override
-    public String getLessonTitle() {
-        return lessonTitle;
     }
 
     @Override
@@ -96,10 +80,5 @@ public class LessonHangulBatchim extends S_LessonInit_Unlock implements Hangul, 
     public String getHangulAudio(int index) {
         String batchim = "batchim_" + index;
         return batchim;
-    }
-
-    @Override
-    public LessonItem getSLesson() {
-        return specialLesson;
     }
 }

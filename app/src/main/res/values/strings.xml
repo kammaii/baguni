@@ -179,7 +179,6 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
         "It's time to upgrade your expressiveness by learning new(more advanced) words and expressions."</string>
 
 
-
     <!--    읽기-->
     <string name="GET_MORE_READING">Get more readings</string>
     <string name="GO_BACK_MY_READING">Go back to my readings</string>
@@ -244,8 +243,6 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="QNA_DELETE">Are you sure want to delete this question?</string>
     <string name="REPLIED">Replied</string>
     <string name="QNA_HINT">Ask your question here</string>
-
-
 
 
     <!--    프로필/옵션-->

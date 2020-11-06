@@ -16,12 +16,12 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.awesomekorean.podo.GetRandomPoint;
-import net.awesomekorean.podo.OutlineTextView;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.UnlockActivity;
-import net.awesomekorean.podo.lesson.lessonHangul.LessonHangul;
+import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulFrame;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulAssembly;
+import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulMenu;
 import net.awesomekorean.podo.lesson.lessonNumber.LessonNumber;
 import net.awesomekorean.podo.lesson.lessonNumber.LessonNumberMenu;
 import net.awesomekorean.podo.lesson.lessons.LessonItem;
@@ -95,16 +95,9 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                             String lessonId = item.getLessonId();
                             switch (lessonId) {
 
-                                case "H_consonant":
-                                    startLearningHangul(context.getString(R.string.CONSONANT));
-                                    break;
-
-                                case "H_vowel":
-                                    startLearningHangul(context.getString(R.string.VOWEL));
-                                    break;
-
-                                case "H_batchim":
-                                    startLearningHangul(context.getString(R.string.BATCHIM));
+                                case "H_hangul":
+                                    intent = new Intent(context, LessonHangulMenu.class);
+                                    context.startActivity(intent);
                                     break;
 
                                 case "N_sino":
@@ -161,10 +154,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                     if(item.getSLesson().getIsActive()) {
                         if (!item.getSLesson().getIsLocked()) {
 
-                            if(item.getSLesson().getLessonId() == "H_assembly") {
-                                startLearningHangul(context.getString(R.string.ASSEMBLY));
-
-                            }else if(item.getSLesson().getLessonId() == "N_practice") {
+                            if(item.getSLesson().getLessonId() == "N_practice") {
                                 startLearningNumber(context.getString(R.string.PRACTICE));
 
                             } else {
@@ -178,7 +168,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                             intent = new Intent(context, UnlockActivity.class);
                             intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), context.getResources().getString(R.string.SPECIAL_LESSON));
                             intent.putExtra(context.getResources().getString(R.string.LESSON_ID), item.getSLesson().getLessonId());
-                            if(!item.getSLesson().getLessonId().equals("H_assembly") && !item.getSLesson().getLessonId().equals("N_practice")) {
+                            if(!item.getSLesson().getLessonId().equals("N_practice")) {
                                 intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item.getSLesson());
                             }
                             context.startActivity(intent);
@@ -204,19 +194,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         }
 
         intent.putExtra(context.getString(R.string.EXTRA_ID), number);
-        context.startActivity(intent);
-    }
-
-
-    // 한글 레슨 시작하기
-    private void startLearningHangul(String hangul) {
-        if(hangul.equals(context.getString(R.string.ASSEMBLY))) {
-            intent = new Intent(context, LessonHangulAssembly.class);
-
-        } else {
-            intent = new Intent(context, LessonHangul.class);
-            intent.putExtra(context.getResources().getString(R.string.CONVOWBAT), hangul);
-        }
         context.startActivity(intent);
     }
 

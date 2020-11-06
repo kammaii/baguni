@@ -31,12 +31,6 @@ import static android.view.View.VISIBLE;
 
 public class LessonNumberMenu extends AppCompatActivity implements View.OnClickListener {
 
-    public static LessonItem numberPractice;
-
-    LessonItem[] numberPractices = {
-            new NumberDate(), new NumberAge(), new NumberMoney(), new NumberTime()
-    };
-
     ImageView btnBack;
 
     Context context;

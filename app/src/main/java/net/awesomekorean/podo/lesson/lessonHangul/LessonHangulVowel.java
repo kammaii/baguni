@@ -6,13 +6,9 @@ import net.awesomekorean.podo.lesson.lessons.S_LessonInit_Unlock;
 
 import java.io.Serializable;
 
-public class LessonHangulVowel extends S_LessonInit_Unlock implements Hangul, LessonItem, Serializable {
+public class LessonHangulVowel implements Hangul, Serializable {
 
     private String lessonId = "H_vowel";
-
-    private String lessonTitle = "vowel";
-
-    private String lessonSubTitle = "ㅏ, ㅑ, ㅓ...";
 
     private String[] hangul = {"ㅏ", "ㅑ", "ㅓ", "ㅕ", "ㅗ", "ㅛ", "ㅜ", "ㅠ", "ㅡ", "ㅣ", "ㅐ", "ㅒ", "ㅔ", "ㅖ", "ㅘ", "ㅝ", "ㅙ", "ㅞ", "ㅚ", "ㅟ", "ㅢ"};
 
@@ -25,18 +21,8 @@ public class LessonHangulVowel extends S_LessonInit_Unlock implements Hangul, Le
             "I'll give you a tip. While you practice reading vowels, it would be helpful to think about the mouth shape and size.";
 
     @Override
-    public String getLessonSubTitle() {
-        return lessonSubTitle;
-    }
-
-    @Override
     public String getLessonId() {
         return lessonId;
-    }
-
-    @Override
-    public String getLessonTitle() {
-        return lessonTitle;
     }
 
     @Override
@@ -59,6 +45,4 @@ public class LessonHangulVowel extends S_LessonInit_Unlock implements Hangul, Le
         String vowel = "vowel_" + index;
         return vowel;
     }
-
-
 }
