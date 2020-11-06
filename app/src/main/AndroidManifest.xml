@@ -60,7 +60,7 @@
             android:name=".lesson.lessonNumber.LessonNumberMenu"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".lesson.lessonNumber.LessonNumber"
+            android:name=".lesson.lessonNumber.LessonNumberFrame"
             android:screenOrientation="portrait" />
         <activity
             android:name=".lesson.LessonSpecialFrame"

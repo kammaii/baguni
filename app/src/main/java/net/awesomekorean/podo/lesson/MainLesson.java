@@ -26,6 +26,7 @@ import net.awesomekorean.podo.lesson.lessonHangul.LessonHangul;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulBatchim;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulConsonant;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulVowel;
+import net.awesomekorean.podo.lesson.lessonNumber.LessonNumber;
 import net.awesomekorean.podo.lesson.lessonNumber.numbers.NumberNative;
 import net.awesomekorean.podo.lesson.lessonNumber.numbers.NumberSino;
 import net.awesomekorean.podo.lesson.lessonReviewRewards.LessonReview00;
@@ -103,7 +104,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     LessonItem[] beginner = {
             new LessonHangul(), new Lesson00(),
             new Lesson19(), new Lesson01(), new Lesson02(), new Lesson03(), new LessonReview00(), new Rewards00(),
-            new NumberSino(), new NumberNative(), new Lesson04(), new Lesson05(), new Lesson06(), new Lesson07(),
+            new LessonNumber(), new Lesson04(), new Lesson05(), new Lesson06(), new Lesson07(),
             new Lesson08(), new Lesson27(), new LessonReview01(), new Rewards01(), new Lesson09(), new Lesson10(),
             new Lesson11(), new Lesson12(), new Lesson13(), new Lesson14(), new Lesson15(), new Lesson16(),
             new LessonReview02(), new Rewards02(), new Lesson22(), new Lesson28(), new Lesson29(), new Lesson17(),

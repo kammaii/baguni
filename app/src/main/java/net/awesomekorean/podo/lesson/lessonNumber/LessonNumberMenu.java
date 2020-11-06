@@ -1,33 +1,17 @@
 package net.awesomekorean.podo.lesson.lessonNumber;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.UserInformation;
-import net.awesomekorean.podo.UnitProgressInfo;
-import net.awesomekorean.podo.lesson.lessonNumber.numbers.NumberAge;
-import net.awesomekorean.podo.lesson.lessonNumber.numbers.NumberDate;
-import net.awesomekorean.podo.lesson.lessonNumber.numbers.NumberMoney;
-import net.awesomekorean.podo.lesson.lessonNumber.numbers.NumberPractice;
-import net.awesomekorean.podo.lesson.lessonNumber.numbers.NumberTime;
-import net.awesomekorean.podo.lesson.lessons.LessonItem;
-
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
 
 public class LessonNumberMenu extends AppCompatActivity implements View.OnClickListener {
 
@@ -37,6 +21,8 @@ public class LessonNumberMenu extends AppCompatActivity implements View.OnClickL
 
     UserInformation userInformation;
 
+    LinearLayout layoutSino;
+    LinearLayout layoutNative;
     LinearLayout layoutDate;
     LinearLayout layoutAge;
     LinearLayout layoutMoney;
@@ -49,15 +35,18 @@ public class LessonNumberMenu extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_lesson_number_menu);
 
         context = getApplicationContext();
-
         userInformation = SharedPreferencesInfo.getUserInfo(context);
 
         btnBack = findViewById(R.id.btnBack);
+        layoutSino = findViewById(R.id.layoutSino);
+        layoutNative = findViewById(R.id.layoutNative);
         layoutDate = findViewById(R.id.layoutDate);
         layoutAge = findViewById(R.id.layoutAge);
         layoutMoney = findViewById(R.id.layoutMoney);
         layoutTime = findViewById(R.id.layoutTime);
         btnBack.setOnClickListener(this);
+        layoutSino.setOnClickListener(this);
+        layoutNative.setOnClickListener(this);
         layoutDate.setOnClickListener(this);
         layoutAge.setOnClickListener(this);
         layoutMoney.setOnClickListener(this);
@@ -66,7 +55,7 @@ public class LessonNumberMenu extends AppCompatActivity implements View.OnClickL
 
 
     private void openLessonNumber(String value) {
-        Intent intent = new Intent(context, LessonNumber.class);
+        Intent intent = new Intent(context, LessonNumberFrame.class);
         intent.putExtra(getString(R.string.EXTRA_ID), value);
         intent.putExtra("isNumberPractice", true);
         startActivity(intent);
@@ -80,6 +69,14 @@ public class LessonNumberMenu extends AppCompatActivity implements View.OnClickL
 
             case R.id.btnBack :
                 finish();
+                break;
+
+            case R.id.layoutSino :
+                openLessonNumber(getString(R.string.SINO));
+                break;
+
+            case R.id.layoutNative :
+                openLessonNumber(getString(R.string.NATIVE));
                 break;
 
             case R.id.layoutDate :

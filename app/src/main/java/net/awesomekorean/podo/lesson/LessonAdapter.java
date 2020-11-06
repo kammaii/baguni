@@ -19,10 +19,8 @@ import net.awesomekorean.podo.GetRandomPoint;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.UnlockActivity;
-import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulFrame;
-import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulAssembly;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulMenu;
-import net.awesomekorean.podo.lesson.lessonNumber.LessonNumber;
+import net.awesomekorean.podo.lesson.lessonNumber.LessonNumberFrame;
 import net.awesomekorean.podo.lesson.lessonNumber.LessonNumberMenu;
 import net.awesomekorean.podo.lesson.lessons.LessonItem;
 
@@ -100,12 +98,9 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                                     context.startActivity(intent);
                                     break;
 
-                                case "N_sino":
-                                    startLearningNumber(context.getString(R.string.SINO));
-                                    break;
-
-                                case "N_native":
-                                    startLearningNumber(context.getString(R.string.NATIVE));
+                                case "N_number":
+                                    intent = new Intent(context, LessonNumberMenu.class);
+                                    context.startActivity(intent);
                                     break;
 
                                 default:
@@ -153,24 +148,15 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 default:
                     if(item.getSLesson().getIsActive()) {
                         if (!item.getSLesson().getIsLocked()) {
-
-                            if(item.getSLesson().getLessonId() == "N_practice") {
-                                startLearningNumber(context.getString(R.string.PRACTICE));
-
-                            } else {
-                                intent = new Intent(context, LessonSpecialFrame.class);
-                                intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item.getSLesson());
-                                context.startActivity(intent);
-                            }
+                            intent = new Intent(context, LessonSpecialFrame.class);
+                            intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item.getSLesson());
+                            context.startActivity(intent);
 
                         // 포인트 사용 확인창 띄우기
                         } else {
                             intent = new Intent(context, UnlockActivity.class);
                             intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), context.getResources().getString(R.string.SPECIAL_LESSON));
                             intent.putExtra(context.getResources().getString(R.string.LESSON_ID), item.getSLesson().getLessonId());
-                            if(!item.getSLesson().getLessonId().equals("N_practice")) {
-                                intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item.getSLesson());
-                            }
                             context.startActivity(intent);
                         }
 
@@ -181,20 +167,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                     break;
             }
         }
-    }
-
-
-    // 숫자 레슨 시작하기
-    private void startLearningNumber(String number) {
-        if(number.equals(context.getString(R.string.PRACTICE))) {
-            intent = new Intent(context, LessonNumberMenu.class);
-
-        } else {
-            intent = new Intent(context, LessonNumber.class);
-        }
-
-        intent.putExtra(context.getString(R.string.EXTRA_ID), number);
-        context.startActivity(intent);
     }
 
 
@@ -317,7 +289,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         }
 
 
-        if(type.equals("SL") || item.getLessonId().equals("H_assembly") || item.getLessonId().equals("N_practice")) {
+        if(type.equals("SL")) {
             TextView title;
             TextView subTitle;
 

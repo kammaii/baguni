@@ -38,7 +38,7 @@ import java.util.Random;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-public class LessonNumber extends AppCompatActivity implements View.OnClickListener {
+public class LessonNumberFrame extends AppCompatActivity implements View.OnClickListener {
 
     FirebaseStorage storage = FirebaseStorage.getInstance();
 

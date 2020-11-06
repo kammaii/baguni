@@ -1,13 +1,13 @@
-package net.awesomekorean.podo.lesson.lessonHangul;
+package net.awesomekorean.podo.lesson.lessonNumber;
 
 import net.awesomekorean.podo.lesson.lessons.LessonInit;
 import net.awesomekorean.podo.lesson.lessons.LessonItem;
 
-public class LessonHangul extends LessonInit implements LessonItem {
+public class LessonNumber extends LessonInit implements LessonItem {
 
-    private String lessonId = "H_hangul";
-    private String lessonTitle = "hangul";
-    private String lessonSubTitle = "한글";
+    private String lessonId = "N_number";
+    private String lessonTitle = "numbers";
+    private String lessonSubTitle = "숫자";
 
     @Override
     public String getLessonId() {
