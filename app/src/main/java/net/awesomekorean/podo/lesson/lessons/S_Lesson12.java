@@ -4,7 +4,7 @@ import net.awesomekorean.podo.R;
 
 import java.io.Serializable;
 
-public class S_Lesson12 extends S_LessonInit implements LessonItem, LessonSpecial, Serializable {
+public class S_Lesson12 extends LessonInit_Lock implements LessonItem, LessonSpecial, Serializable {
 
     private String lessonId = "SL_12";
     private String lessonTitle = "confusing expression";

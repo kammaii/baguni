@@ -205,6 +205,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
             for (int i = 0; i < list.size(); i++) {
                 if (lessonComplete.contains(list.get(i).getLessonId())) {
                     list.get(i).setIsCompleted(true);
+                    list.get(i).setIsLocked(false);
                     list.get(i).setIsActive(true);
                     list.get(i).setIsCurrent(false);
                     if(i < list.size() - 1) {

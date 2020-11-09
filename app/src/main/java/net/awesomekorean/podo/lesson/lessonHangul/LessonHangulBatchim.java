@@ -1,10 +1,5 @@
 package net.awesomekorean.podo.lesson.lessonHangul;
 
-import net.awesomekorean.podo.R;
-import net.awesomekorean.podo.lesson.lessons.LessonItem;
-import net.awesomekorean.podo.lesson.lessons.S_Lesson01;
-import net.awesomekorean.podo.lesson.lessons.S_LessonInit_Unlock;
-
 import java.io.Serializable;
 
 public class LessonHangulBatchim implements Hangul, Serializable {

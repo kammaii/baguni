@@ -4,7 +4,7 @@ import net.awesomekorean.podo.R;
 
 import java.io.Serializable;
 
-public class Lesson34 extends LessonInit implements Lesson, LessonItem, Serializable {
+public class Lesson34 extends LessonInit_Lock implements Lesson, LessonItem, Serializable {
 
     private String lessonId = "L_34";
     private String lessonTitle = "allow";

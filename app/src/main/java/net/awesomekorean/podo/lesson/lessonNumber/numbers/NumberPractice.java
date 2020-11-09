@@ -1,12 +1,11 @@
 package net.awesomekorean.podo.lesson.lessonNumber.numbers;
 
-import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.lesson.lessons.LessonItem;
-import net.awesomekorean.podo.lesson.lessons.S_LessonInit;
+import net.awesomekorean.podo.lesson.lessons.LessonInit_Lock;
 
 import java.io.Serializable;
 
-public class NumberPractice extends S_LessonInit implements LessonItem, Serializable {
+public class NumberPractice extends LessonInit_Lock implements LessonItem, Serializable {
 
     private String lessonId = "N_practice";
 

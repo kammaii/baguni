@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 import javax.annotation.meta.When;
 
-public class Lesson16 extends LessonInit implements Lesson, LessonItem, Serializable {
+public class Lesson16 extends LessonInit_Lock implements Lesson, LessonItem, Serializable {
 
     private String lessonId = "L_16";
     private String lessonTitle = "possibility";

@@ -1,11 +1,8 @@
 package net.awesomekorean.podo.lesson.lessonNumber.numbers;
 
-import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.lesson.lessons.LessonItem;
-import net.awesomekorean.podo.lesson.lessons.S_Lesson01;
-import net.awesomekorean.podo.lesson.lessons.S_LessonInit_Unlock;
 
-public class NumberNative extends S_LessonInit_Unlock implements Number, LessonItem {
+public class NumberNative implements Number {
 
     private String lessonId = "N_native";
 
@@ -27,18 +24,8 @@ public class NumberNative extends S_LessonInit_Unlock implements Number, LessonI
     };
 
     @Override
-    public String getLessonSubTitle() {
-        return lessonSubTitle;
-    }
-
-    @Override
     public String getLessonId() {
         return lessonId;
-    }
-
-    @Override
-    public String getLessonTitle() {
-        return lessonTitle;
     }
 
     @Override
@@ -49,10 +36,5 @@ public class NumberNative extends S_LessonInit_Unlock implements Number, LessonI
     @Override
     public String[] getBack() {
         return back;
-    }
-
-    @Override
-    public LessonItem getSLesson() {
-        return specialLesson;
     }
 }

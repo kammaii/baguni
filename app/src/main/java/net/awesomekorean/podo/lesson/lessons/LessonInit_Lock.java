@@ -1,6 +1,6 @@
 package net.awesomekorean.podo.lesson.lessons;
 
-public class S_LessonInit {
+public class LessonInit_Lock {
     private boolean isActive = false;
     private boolean isCurrent = false;
     private LessonItem specialLesson = null;

@@ -2,11 +2,11 @@ package net.awesomekorean.podo.lesson.intermediateLessons;
 
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.lesson.lessons.LessonItem;
-import net.awesomekorean.podo.lesson.lessons.S_LessonInit;
+import net.awesomekorean.podo.lesson.lessons.LessonInit_Lock;
 
 import java.io.Serializable;
 
-public class I_Lesson00 extends S_LessonInit implements I_Lesson, LessonItem, Serializable {
+public class I_Lesson00 extends LessonInit_Lock implements I_Lesson, LessonItem, Serializable {
 
     private String lessonId = "IL_00";
     private String lessonTitle = "order";

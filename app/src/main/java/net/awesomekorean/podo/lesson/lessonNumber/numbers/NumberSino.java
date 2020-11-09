@@ -1,10 +1,6 @@
 package net.awesomekorean.podo.lesson.lessonNumber.numbers;
 
-import net.awesomekorean.podo.R;
-import net.awesomekorean.podo.lesson.lessons.LessonItem;
-import net.awesomekorean.podo.lesson.lessons.S_LessonInit_Unlock;
-
-public class NumberSino extends S_LessonInit_Unlock implements Number, LessonItem {
+public class NumberSino implements Number {
 
     private String lessonId = "N_sino";
 
@@ -24,18 +20,8 @@ public class NumberSino extends S_LessonInit_Unlock implements Number, LessonIte
     };
 
     @Override
-    public String getLessonSubTitle() {
-        return lessonSubTitle;
-    }
-
-    @Override
     public String getLessonId() {
         return lessonId;
-    }
-
-    @Override
-    public String getLessonTitle() {
-        return lessonTitle;
     }
 
     @Override

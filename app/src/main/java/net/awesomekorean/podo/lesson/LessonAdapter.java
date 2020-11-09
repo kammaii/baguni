@@ -19,6 +19,7 @@ import net.awesomekorean.podo.GetRandomPoint;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.UnlockActivity;
+import net.awesomekorean.podo.UserInformation;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulMenu;
 import net.awesomekorean.podo.lesson.lessonNumber.LessonNumberFrame;
 import net.awesomekorean.podo.lesson.lessonNumber.LessonNumberMenu;
@@ -26,6 +27,7 @@ import net.awesomekorean.podo.lesson.lessons.LessonItem;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder> {
 
@@ -89,56 +91,66 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
                     if(item.getIsActive()) {
                         SharedPreferencesInfo.setLastClickLevel(context, 0);
-                        if (!item.getIsLocked()) {
-                            String lessonId = item.getLessonId();
-                            switch (lessonId) {
+                        String lessonId = item.getLessonId();
+                        String type = item.getLessonId().split("_")[0];
 
+                        if (!item.getIsLocked()) {
+
+                            switch (lessonId) {
                                 case "H_hangul":
+                                    setCompleteForHangulNumber(lessonId);
                                     intent = new Intent(context, LessonHangulMenu.class);
                                     context.startActivity(intent);
                                     break;
 
                                 case "N_number":
+                                    setCompleteForHangulNumber(lessonId);
                                     intent = new Intent(context, LessonNumberMenu.class);
                                     context.startActivity(intent);
                                     break;
 
                                 default:
-                                    String type = item.getLessonId().split("_")[0];
                                     if (type.equals("LR")) {
                                         intent = new Intent(context, LessonReviewFrame.class);
+
                                     } else if (type.equals("RW")) {
                                         if(item.getIsCompleted()) {
                                             Toast.makeText(context, context.getString(R.string.ALREADY_REWARDED), Toast.LENGTH_LONG).show();
                                             break;
+
                                         } else {
                                             intent = new Intent(context, GetRandomPoint.class);
                                         }
+
+                                    } else if (type.equals("L")){
+                                        intent = new Intent(context, LessonFrame.class);
+
                                     } else if (type.equals("IL")) {
                                         //todo: 중급레슨 프레임
                                         SharedPreferencesInfo.setLastClickLevel(context, 1);
                                         intent = new Intent(context, IntermediateFrame.class);
+
                                     } else if (type.equals("AL")) {
                                         //todo: 고급레슨 프레임
-                                    } else {
-                                        intent = new Intent(context, LessonFrame.class);
                                     }
+
                                     intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item);
                                     context.startActivity(intent);
                                     break;
+
                             }
 
-                            // 포인트 사용 확인창 띄우기
+                        // 포인트 사용 확인창 띄우기
                         } else {
                             intent = new Intent(context, UnlockActivity.class);
-                            intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), context.getResources().getString(R.string.LESSON));
+                            intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), type);
                             intent.putExtra(context.getResources().getString(R.string.LESSON_ID), item.getLessonId());
                             intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item);
                             context.startActivity(intent);
                         }
                         SharedPreferencesInfo.setLastClickItem(context, true, position);
 
-                        // 활성화되지 않은 레슨을 클릭했을 때
+                    // 활성화되지 않은 레슨을 클릭했을 때
                     } else {
                         Toast.makeText(context, context.getString(R.string.PLEASE_COMPLETE_PREVIOUS_LESSON), Toast.LENGTH_LONG).show();
                     }
@@ -166,6 +178,16 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                     }
                     break;
             }
+        }
+    }
+
+
+    private void setCompleteForHangulNumber(String lessonId) {
+        UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
+        List<String> lessonComplete = userInformation.getLessonComplete();
+
+        if (!lessonComplete.contains(lessonId)) {
+            userInformation.updateCompleteList(context, lessonId, false);
         }
     }
 

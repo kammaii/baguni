@@ -23,10 +23,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 import net.awesomekorean.podo.lesson.IntermediateFrame;
+import net.awesomekorean.podo.lesson.LessonFrame;
 import net.awesomekorean.podo.lesson.LessonSpecialFrame;
 import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulAssembly;
 import net.awesomekorean.podo.lesson.lessonNumber.LessonNumberMenu;
+import net.awesomekorean.podo.lesson.lessons.Lesson;
 import net.awesomekorean.podo.lesson.lessons.LessonSpecial;
 import net.awesomekorean.podo.purchase.TopUp;
 import net.awesomekorean.podo.reading.Reading;
@@ -51,9 +53,8 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
     UserInformation userInformation;
     int userPoint; // 유저 포인트
 
-    int specialLessonPrice = 15;
-    int lessonPrice = 20;
-    int readingPrice = 15;
+    int price15 = 15;
+    int price20 = 20;
     int unlockPrice;
 
     String extra;
@@ -95,11 +96,15 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
         extra = getIntent().getStringExtra(getResources().getString(R.string.EXTRA_ID));
 
         if(extra.equals(getResources().getString(R.string.SPECIAL_LESSON))) {
-            unlockPrice = specialLessonPrice;
-        } else if(extra.equals(getResources().getString(R.string.LESSON))) {
-            unlockPrice = lessonPrice;
-        } else {
-            unlockPrice = readingPrice;
+            unlockPrice = price15;
+        } else if(extra.equals("L")) {
+            unlockPrice = price15;
+        } else if(extra.equals("IL")) {
+            unlockPrice = price15;
+        } else if(extra.equals("AL")) {
+            unlockPrice = price20;
+        } else { // 읽기
+            unlockPrice = price20;
         }
 
         pointNeed.setText(String.valueOf(unlockPrice));
@@ -138,38 +143,29 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
                 if(userPoint >= unlockPrice) {
                     unlockFirst.setVisibility(View.GONE);
 
-                    // 포인트 차감하고 specialLessonUnlock 에 레슨아이디 추가, 해당 레슨에 unlock = true 세팅
+                    // 포인트 차감하고 DB에 레슨아이디 추가, 해당 레슨에 unlock = true 세팅
                     int newPoint = userPoint - unlockPrice;
                     userInformation.setPoints(newPoint);
 
                     // 스페셜레슨 구매
                     if(extra.equals(getResources().getString(R.string.SPECIAL_LESSON))) {
-
                         String lessonId = getIntent().getStringExtra(getResources().getString(R.string.LESSON_ID));
-
-                        switch (lessonId) {
-
-                            case "H_assembly":
-                                intent = new Intent(context, LessonHangulAssembly.class);
-                                break;
-
-                            case "N_practice":
-                                intent = new Intent(context, LessonNumberMenu.class);
-                                break;
-
-                            default:
-                                LessonSpecial lesson = (LessonSpecial) getIntent().getSerializableExtra(getResources().getString(R.string.LESSON));
-                                intent = new Intent(context, LessonSpecialFrame.class);
-                                intent.putExtra(getResources().getString(R.string.LESSON), (Serializable) lesson);
-                                break;
-                        }
-
+                        LessonSpecial lesson = (LessonSpecial) getIntent().getSerializableExtra(getResources().getString(R.string.LESSON));
+                        intent = new Intent(context, LessonSpecialFrame.class);
+                        intent.putExtra(getResources().getString(R.string.LESSON), (Serializable) lesson);
                         userInformation.addSpecialLessonUnlock(lessonId);
                         startActivity(intent);
 
 
-                    // 중급레슨 구매
-                    } else if(extra.equals(getResources().getString(R.string.LESSON))) {
+                    // 레슨 구매
+                    } else if(extra.equals("L")) {
+                        Lesson lesson = (Lesson) getIntent().getSerializableExtra(getResources().getString(R.string.LESSON));
+                        userInformation.addLessonUnlock(lesson.getLessonId());
+                        intent = new Intent(context, LessonFrame.class);
+                        intent.putExtra(getResources().getString(R.string.LESSON), (Serializable) lesson);
+                        startActivity(intent);
+
+                    } else if(extra.equals("IL")) {
                         I_Lesson lesson = (I_Lesson) getIntent().getSerializableExtra(getResources().getString(R.string.LESSON));
                         userInformation.addLessonUnlock(lesson.getLessonId());
                         intent = new Intent(context, IntermediateFrame.class);
@@ -199,7 +195,7 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
                             FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
                             Bundle bundle = new Bundle();
                             bundle.putString("type", extra);
-                            bundle.putInt("points", specialLessonPrice);
+                            bundle.putInt("points", unlockPrice);
                             firebaseAnalytics.logEvent("point_use", bundle);
                             finish();
 
