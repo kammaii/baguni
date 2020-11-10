@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".challenge.Challenge">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="#EBEBFF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/bg_podo"
+                android:src="@drawable/bg_podo"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/bg_issue"
+                android:src="@drawable/bg_issue"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toBottomOf="@id/bg_podo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/title_issue"
+                android:text="@string/PODO_LESSON_GOAL_ADVANCED_1"
+                android:textSize="15dp"
+                android:textColor="@color/PURPLE"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="@id/bg_issue"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:src="@drawable/line_purple"
+                app:layout_constraintTop_toBottomOf="@id/title_issue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:src="@drawable/questionmark_purple"
+                app:layout_constraintStart_toStartOf="@id/bg_issue"
+                app:layout_constraintTop_toBottomOf="@id/title_issue"
+                android:layout_margin="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <ImageView
+                android:id="@+id/bg_interview"
+                android:src="@drawable/bg_interview"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toBottomOf="@id/bg_issue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@drawable/bg_white_32_top"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/bg_podo">-->
+
+<!--        <TextView-->
+<!--            android:text="Learner's Issue"-->
+<!--            android:textSize="15dp"-->
+<!--            android:textColor="@color/PURPLE"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--    </LinearLayout>-->
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

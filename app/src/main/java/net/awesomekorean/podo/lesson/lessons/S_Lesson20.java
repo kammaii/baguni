@@ -4,13 +4,13 @@ import net.awesomekorean.podo.R;
 
 import java.io.Serializable;
 
-public class S_Lesson17 extends LessonInit_Lock implements LessonItem, LessonSpecial, Serializable {
+public class S_Lesson20 extends LessonInit_Lock implements LessonItem, LessonSpecial, Serializable {
 
-    private String lessonId = "SL_17";
-    private String lessonTitle = "confusing expression";
-    private String lessonSubTitle = "~(으)ㄹ게요 vs.\n~(으)ㄹ 거예요";
+    private String lessonId = "SL_20";
+    private String lessonTitle = "more expression";
+    private String lessonSubTitle = "honorific";
 
-    private int contents = R.string.SL_17_CONTENTS;
+    private int contents = R.string.SL_20_CONTENTS;
 
     @Override
     public String getLessonSubTitle() {

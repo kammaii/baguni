@@ -9,12 +9,12 @@ import java.io.Serializable;
 public class I_Lesson00 extends LessonInit_Lock implements I_Lesson, LessonItem, Serializable {
 
     private String lessonId = "IL_00";
-    private String lessonTitle = "order";
+    private String lessonTitle = "reservation";
     private String lessonSubTitle = "식당 예약";
 
     private String[] dialog = {
             "안녕하세요?\n포도 식당입니다.",
-            "안녕하세요?\n오늘 저녁에 예약할 수 있어요?",
+            "안녕하세요?\n오늘 저녁 예약할 수 있어요?",
             "네, 몇 시에요?",
             "저녁 6시요.",
             "몇 분이에요?",
@@ -22,12 +22,18 @@ public class I_Lesson00 extends LessonInit_Lock implements I_Lesson, LessonItem,
             "네, 이름이 뭐예요?",
             "데니예요.",
             "예약했습니다.",
-            "고맙습니다."
+            "고맙습니다.",
+            "(몇 시간 후)",
+            "안녕하세요?\n오늘 예약 시간을 바꾸고 싶어요.",
+            "네, 몇 시로 바꿀까요?",
+            "저녁 7시요.",
+            "네, 바꿨습니다.",
+            "감사합니다."
     };
 
     private String[] dialogEng = {
-            "Hello?\nThis is ‘podo’ restaurant.",
-            "Hello?\nCan I make a reservation\nfor this evening?",
+            "Hello?\nThis is a ‘podo’ restaurant.",
+            "Hello?\nCan I make a reservation tonight?.",
             "Yes, what time?",
             "6 o'clock in the evening.",
             "How many people?",
@@ -35,10 +41,16 @@ public class I_Lesson00 extends LessonInit_Lock implements I_Lesson, LessonItem,
             "ok, what's your name?",
             "I’m Danny.",
             "I made a reservation.",
+            "Thank you.",
+            "(After a few hours)",
+            "Hello?\nI want to change the reservation time today.",
+            "ok, what time should I change it?",
+            "7 o'clock in the evening.",
+            "ok, I changed it.",
             "Thank you."
     };
 
-    private int[] peopleImage = {R.drawable.people1, R.drawable.people2};
+    private int[] peopleImage = {R.drawable.people2, R.drawable.people1};
 
     @Override
     public String getLessonSubTitle() {
