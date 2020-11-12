@@ -168,7 +168,7 @@ public class TeachersAdapter extends RecyclerView.Adapter<TeachersAdapter.ViewHo
         holder.teacherTag.setText(item.getTag());
         holder.pathAudio = item.getAudio();
 
-        Picasso.with(context).load(R.drawable.image_danny).into(holder.teacherImage);
+        Picasso.get().load(R.drawable.image_danny).into(holder.teacherImage);
 
 /*
         // 선생님 이미지 가져오기
