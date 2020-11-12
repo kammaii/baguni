@@ -17,81 +17,1119 @@
             <ImageView
                 android:id="@+id/bg_podo"
                 android:src="@drawable/bg_podo"
-                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideLine5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.05"/>
+
+
+<!--            Learner's issue-->
+
+            <View
+                android:background="@color/WHITE"
+                app:layout_constraintTop_toBottomOf="@id/issue_title"
+                app:layout_constraintBottom_toBottomOf="@id/interview_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
             <ImageView
-                android:id="@+id/bg_issue"
+                android:id="@+id/issue_bg"
                 android:src="@drawable/bg_issue"
                 android:adjustViewBounds="true"
-                app:layout_constraintTop_toBottomOf="@id/bg_podo"
+                app:layout_constraintTop_toBottomOf="@id/guideLine5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/title_issue"
-                android:text="@string/PODO_LESSON_GOAL_ADVANCED_1"
-                android:textSize="15dp"
+                android:id="@+id/issue_title"
+                android:text="@string/ISSUE_TITLE"
+                android:textSize="17dp"
                 android:textColor="@color/PURPLE"
-                android:gravity="center"
-                app:layout_constraintTop_toTopOf="@id/bg_issue"
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/issue_bg"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="3dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <ImageView
-                android:src="@drawable/line_purple"
-                app:layout_constraintTop_toBottomOf="@id/title_issue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <View
+                android:background="@color/PURPLE"
+                app:layout_constraintStart_toStartOf="@id/issue_title"
+                app:layout_constraintEnd_toEndOf="@id/issue_title"
+                app:layout_constraintTop_toBottomOf="@id/issue_title"
+                android:layout_width="0dp"
+                android:layout_height="2dp"/>
 
             <ImageView
+                android:id="@+id/issue_questionmark"
                 android:src="@drawable/questionmark_purple"
-                app:layout_constraintStart_toStartOf="@id/bg_issue"
-                app:layout_constraintTop_toBottomOf="@id/title_issue"
-                android:layout_margin="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/issue_title"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/issue_question"
+                android:text="@string/ISSUE_QUESTION"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/issue_questionmark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/issue_questionmark"
+                app:layout_constraintBottom_toBottomOf="@id/issue_questionmark"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/issue_quote_start"
+                android:src="@drawable/quote_start_purple"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/issue_answer"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/issue_quote_end"
+                android:src="@drawable/quote_end_purple"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/issue_answer"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/issue_answer"
+                android:text="@string/ISSUE_ANSWER"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toEndOf="@id/issue_quote_start"
+                app:layout_constraintEnd_toStartOf="@id/issue_quote_end"
+                app:layout_constraintTop_toBottomOf="@id/issue_question"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+
+<!--            Interview-->
+
+            <View
+                android:background="@color/PINK3"
+                app:layout_constraintTop_toBottomOf="@id/interview_title"
+                app:layout_constraintBottom_toBottomOf="@id/commonality_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:id="@+id/interview_bg"
+                android:src="@drawable/bg_interview"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="25dp"
+                app:layout_constraintTop_toBottomOf="@id/issue_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/interview_title"
+                android:text="@string/INTERVIEW_TITLE"
+                android:textSize="17dp"
+                android:textColor="@color/PINK2"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/interview_bg"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:background="@color/PINK2"
+                app:layout_constraintStart_toStartOf="@id/interview_title"
+                app:layout_constraintEnd_toEndOf="@id/interview_title"
+                app:layout_constraintTop_toBottomOf="@id/interview_title"
+                android:layout_width="0dp"
+                android:layout_height="2dp"/>
+
+            <ImageView
+                android:id="@+id/interview_quote_start_1"
+                android:src="@drawable/quote_start_pink"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/interview_1"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/interview_quote_end_1"
+                android:src="@drawable/quote_end_pink"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/interview_1"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/interview_1"
+                android:text="@string/INTERVIEW_1_SUMMARY"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toEndOf="@id/interview_quote_start_1"
+                app:layout_constraintEnd_toStartOf="@id/interview_quote_end_1"
+                app:layout_constraintTop_toBottomOf="@id/interview_title"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/interview_fold_1"
+                android:src="@drawable/fold_down_red"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/interview_1"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/interview_picture_1"
+                android:src="@drawable/people2"
+                app:layout_constraintTop_toBottomOf="@id/interview_fold_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/interview_name_1"
+                android:text="@string/INTERVIEW_1_NAME"
+                android:textColor="@color/PINK2"
+                android:gravity="right"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toStartOf="@id/interview_picture_1"
+                app:layout_constraintBottom_toBottomOf="@id/interview_picture_1"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:id="@+id/interview_2_bg"
+                android:background="@drawable/bg_interview_transparent"
+                app:layout_constraintTop_toBottomOf="@id/interview_picture_1"
+                app:layout_constraintBottom_toTopOf="@id/interview_3"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:id="@+id/interview_quote_start_2"
+                android:src="@drawable/quote_start_pink"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/interview_2"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/interview_quote_end_2"
+                android:src="@drawable/quote_end_pink"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/interview_2"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/interview_2"
+                android:text="@string/INTERVIEW_2_SUMMARY"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toEndOf="@id/interview_quote_start_2"
+                app:layout_constraintEnd_toStartOf="@id/interview_quote_end_2"
+                app:layout_constraintTop_toTopOf="@id/interview_2_bg"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/interview_fold_2"
+                android:src="@drawable/fold_down_red"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/interview_2"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/interview_picture_2"
+                android:src="@drawable/people2"
+                app:layout_constraintTop_toBottomOf="@id/interview_fold_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/interview_name_2"
+                android:text="@string/INTERVIEW_2_NAME"
+                android:textColor="@color/PINK2"
+                android:gravity="right"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toStartOf="@id/interview_picture_2"
+                app:layout_constraintBottom_toBottomOf="@id/interview_picture_2"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/interview_quote_start_3"
+                android:src="@drawable/quote_start_pink"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/interview_3"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/interview_quote_end_3"
+                android:src="@drawable/quote_end_pink"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/interview_3"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/interview_3"
+                android:text="@string/INTERVIEW_2_SUMMARY"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toEndOf="@id/interview_quote_start_3"
+                app:layout_constraintEnd_toStartOf="@id/interview_quote_end_3"
+                app:layout_constraintTop_toBottomOf="@id/interview_picture_2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/interview_fold_3"
+                android:src="@drawable/fold_down_red"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/interview_3"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/interview_picture_3"
+                android:src="@drawable/people2"
+                app:layout_constraintTop_toBottomOf="@id/interview_fold_3"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/interview_name_3"
+                android:text="@string/INTERVIEW_3_NAME"
+                android:textColor="@color/PINK2"
+                android:gravity="right"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toStartOf="@id/interview_picture_3"
+                app:layout_constraintBottom_toBottomOf="@id/interview_picture_3"
+                android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
 
+<!--            Commonality-->
+
+            <View
+                android:background="@color/PURPLE3"
+                app:layout_constraintTop_toBottomOf="@id/commonality_title"
+                app:layout_constraintBottom_toBottomOf="@id/solution_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
             <ImageView
-                android:id="@+id/bg_interview"
-                android:src="@drawable/bg_interview"
+                android:id="@+id/commonality_bg"
+                android:src="@drawable/bg_commonality"
                 android:adjustViewBounds="true"
-                app:layout_constraintTop_toBottomOf="@id/bg_issue"
+                app:layout_constraintTop_toBottomOf="@id/interview_picture_3"
+                android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <TextView
+                android:id="@+id/commonality_title"
+                android:text="@string/COMMONALITY_TITLE"
+                android:textSize="17dp"
+                android:textColor="@color/PURPLE2"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/commonality_bg"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:background="@color/PURPLE2"
+                app:layout_constraintStart_toStartOf="@id/commonality_title"
+                app:layout_constraintEnd_toEndOf="@id/commonality_title"
+                app:layout_constraintTop_toBottomOf="@id/commonality_title"
+                android:layout_width="0dp"
+                android:layout_height="2dp"/>
+
+            <ImageView
+                android:id="@+id/commonality_quote_start_1"
+                android:src="@drawable/quote_start_light_purple"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/commonality_contents"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/commonality_quote_end_1"
+                android:src="@drawable/quote_end_light_purple"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/commonality_contents"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/commonality_contents"
+                android:text="@string/COMMONALITY_CONTENTS"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toEndOf="@id/commonality_quote_start_1"
+                app:layout_constraintEnd_toStartOf="@id/commonality_quote_end_1"
+                app:layout_constraintTop_toBottomOf="@id/commonality_title"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:id="@+id/commonality_line_dot"
+                android:background="@drawable/line_dot_light_purple_horizontal"
+                app:layout_constraintTop_toBottomOf="@id/commonality_contents"
+                app:layout_constraintStart_toStartOf="@id/commonality_title"
+                app:layout_constraintEnd_toEndOf="@id/commonality_title"
+                android:layerType="software"
+                android:layout_marginTop="20dp"
+                android:layout_width="0dp"
+                android:layout_height="3dp"/>
+
+            <ImageView
+                android:id="@+id/commonality_quote_start_2"
+                android:src="@drawable/quote_start_light_purple"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/commonality_teacher_comments"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/commonality_quote_end_2"
+                android:src="@drawable/quote_end_light_purple"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/commonality_teacher_comments"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/commonality_teacher_comments"
+                android:text="@string/COMMONALITY_TEACHER_COMMENTS"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toEndOf="@id/commonality_quote_start_2"
+                app:layout_constraintEnd_toStartOf="@id/commonality_quote_end_2"
+                app:layout_constraintTop_toBottomOf="@id/commonality_line_dot"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/commonality_picture"
+                android:src="@drawable/people1"
+                app:layout_constraintTop_toBottomOf="@id/commonality_teacher_comments"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/commonality_teacher_name"
+                android:text="@string/TEACHER_NAME"
+                android:textColor="@color/PURPLE2"
+                android:gravity="right"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toStartOf="@id/commonality_picture"
+                app:layout_constraintBottom_toBottomOf="@id/commonality_picture"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+<!--            Solution-->
+
+            <View
+                android:background="@color/WHITE"
+                app:layout_constraintTop_toBottomOf="@id/solution_title"
+                app:layout_constraintBottom_toBottomOf="@id/goal_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:id="@+id/solution_bg"
+                android:src="@drawable/bg_solution"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toBottomOf="@id/commonality_picture"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/solution_title"
+                android:text="@string/SOLUTION_TITLE"
+                android:textSize="17dp"
+                android:textColor="@color/PURPLE"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/solution_bg"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:background="@color/PURPLE"
+                app:layout_constraintStart_toStartOf="@id/solution_title"
+                app:layout_constraintEnd_toEndOf="@id/solution_title"
+                app:layout_constraintTop_toBottomOf="@id/solution_title"
+                android:layout_width="0dp"
+                android:layout_height="2dp"/>
+
+            <ImageView
+                android:id="@+id/solution_icon"
+                android:src="@drawable/btn_challenge"
+                app:layout_constraintTop_toTopOf="@id/solution_bg"
+                app:layout_constraintBottom_toBottomOf="@id/solution_bg"
+                app:layout_constraintStart_toStartOf="@id/solution_bg"
+                app:layout_constraintEnd_toEndOf="@id/solution_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/solution_contents_1"
+                android:text="@string/SOLUTION_CONTENTS_1"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/solution_icon"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/solution_contents_2"
+                android:text="@string/SOLUTION_CONTENTS_2"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/solution_icon"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+<!--            Goal and Concept-->
+
+            <View
+                android:background="@color/BLUE_LIGHT"
+                app:layout_constraintTop_toBottomOf="@id/goal_title"
+                app:layout_constraintBottom_toBottomOf="@id/benefits_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:id="@+id/goal_bg"
+                android:src="@drawable/bg_goal"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="25dp"
+                app:layout_constraintTop_toBottomOf="@id/solution_contents_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/goal_title"
+                android:text="@string/GOAL_AND_CONCEPT_TITLE"
+                android:textSize="17dp"
+                android:textColor="@color/NAVY2"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/goal_bg"
+                android:layout_marginTop="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:background="@color/NAVY2"
+                app:layout_constraintStart_toStartOf="@id/goal_title"
+                app:layout_constraintEnd_toEndOf="@id/goal_title"
+                app:layout_constraintTop_toBottomOf="@id/goal_title"
+                android:layout_width="0dp"
+                android:layout_height="2dp"/>
+
+            <ImageView
+                android:id="@+id/goal_star"
+                android:src="@drawable/star_navy_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/goal_title"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/goal_title_1"
+                android:text="@string/GOAL_TITLE_1"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toEndOf="@id/goal_star"
+                app:layout_constraintTop_toTopOf="@id/goal_star"
+                app:layout_constraintBottom_toBottomOf="@id/goal_star"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/goal_title_2"
+                android:text="@string/GOAL_TITLE_2"
+                android:textColor="@color/NAVY2"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/goal_title_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/goal_star"
+                app:layout_constraintBottom_toBottomOf="@id/goal_star"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/goal_contents"
+                android:text="@string/GOAL_CONTENTS"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="@id/goal_title_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/goal_title_1"
+                android:layout_marginTop="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:id="@+id/goal_line_dot"
+                android:background="@drawable/line_dot_navy_horizontal"
+                app:layout_constraintTop_toBottomOf="@id/goal_contents"
+                app:layout_constraintStart_toStartOf="@id/goal_title"
+                app:layout_constraintEnd_toEndOf="@id/goal_title"
+                android:layerType="software"
+                android:layout_marginTop="20dp"
+                android:layout_width="0dp"
+                android:layout_height="3dp"/>
+
+            <View
+                android:id="@+id/goal_bg_2"
+                android:background="@drawable/bg_goal_transparent"
+                app:layout_constraintTop_toBottomOf="@id/goal_line_dot"
+                app:layout_constraintBottom_toTopOf="@id/concept_line_dot"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:id="@+id/concept_star"
+                android:src="@drawable/star_navy_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/goal_line_dot"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/concept_title_1"
+                android:text="@string/CONCEPT_TITLE_1"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toEndOf="@id/concept_star"
+                app:layout_constraintTop_toTopOf="@id/concept_star"
+                app:layout_constraintBottom_toBottomOf="@id/concept_star"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/concept_title_2"
+                android:text="@string/CONCEPT_TITLE_2"
+                android:textColor="@color/NAVY2"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/concept_title_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/concept_star"
+                app:layout_constraintBottom_toBottomOf="@id/concept_star"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/b_icon"
+                android:src="@drawable/b_blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/concept_star"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/concept_beginner"
+                android:text="@string/CONCEPT_BEGINNER"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/b_icon"
+                app:layout_constraintTop_toTopOf="@id/b_icon"
+                app:layout_constraintBottom_toBottomOf="@id/b_icon"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/concept_beginner_contents"
+                android:text="@string/CONCEPT_BEGINNER_CONTENTS"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="@id/concept_beginner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/concept_beginner"
+                android:layout_marginRight="20dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/i_icon"
+                android:src="@drawable/i_blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/concept_beginner_contents"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/concept_intermediate"
+                android:text="@string/CONCEPT_INTERMEDIATE"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/i_icon"
+                app:layout_constraintTop_toTopOf="@id/i_icon"
+                app:layout_constraintBottom_toBottomOf="@id/i_icon"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/concept_intermediate_contents"
+                android:text="@string/CONCEPT_INTERMEDIATE_CONTENTS"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="@id/concept_intermediate"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/concept_intermediate"
+                android:layout_marginRight="20dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:id="@+id/concept_line_dot"
+                android:background="@drawable/line_dot_navy_horizontal"
+                app:layout_constraintTop_toBottomOf="@id/concept_intermediate_contents"
+                app:layout_constraintStart_toStartOf="@id/goal_title"
+                app:layout_constraintEnd_toEndOf="@id/goal_title"
+                android:layerType="software"
+                android:layout_marginTop="20dp"
+                android:layout_width="0dp"
+                android:layout_height="3dp"/>
+
+            <ImageView
+                android:id="@+id/concept_quote_start"
+                android:src="@drawable/quote_start_blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/concept_line_dot"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/concept_quote_end"
+                android:src="@drawable/quote_end_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/concept_teacher_comments"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/concept_teacher_comments"
+                android:text="@string/CONCEPT_TEACHER_COMMENTS"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toEndOf="@id/concept_quote_start"
+                app:layout_constraintEnd_toStartOf="@id/concept_quote_end"
+                app:layout_constraintTop_toBottomOf="@id/concept_line_dot"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/concept_picture"
+                android:src="@drawable/people1"
+                app:layout_constraintTop_toBottomOf="@id/concept_teacher_comments"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/concept_teacher_name"
+                android:text="@string/TEACHER_NAME"
+                android:textColor="@color/NAVY2"
+                android:gravity="right"
+                android:textSize="15dp"
+                app:layout_constraintEnd_toStartOf="@id/concept_picture"
+                app:layout_constraintBottom_toBottomOf="@id/concept_picture"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+<!--            Benefits-->
+
+            <View
+                android:background="@color/WHITE"
+                app:layout_constraintTop_toBottomOf="@id/benefits_title"
+                app:layout_constraintBottom_toBottomOf="@id/points_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:id="@+id/benefits_bg"
+                android:src="@drawable/bg_issue"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toBottomOf="@id/concept_teacher_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/benefits_title"
+                android:text="@string/BENEFITS_TITLE"
+                android:textSize="17dp"
+                android:textColor="@color/PURPLE"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/benefits_bg"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:background="@color/PURPLE"
+                app:layout_constraintStart_toStartOf="@id/benefits_title"
+                app:layout_constraintEnd_toEndOf="@id/benefits_title"
+                app:layout_constraintTop_toBottomOf="@id/benefits_title"
+                android:layout_width="0dp"
+                android:layout_height="2dp"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                app:layout_constraintTop_toBottomOf="@id/benefits_title"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"/>
+
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/indicator"
+                app:ci_drawable="@drawable/bg_circle_purple"
+                app:ci_height="7dp"
+                app:ci_width="7dp"
+                app:ci_margin="4dp"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                app:layout_constraintTop_toBottomOf="@id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+<!--            Points-->
+
+            <View
+                android:background="@color/ORANGE_LIGHT"
+                app:layout_constraintTop_toBottomOf="@id/points_title"
+                app:layout_constraintBottom_toTopOf="@id/btnLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+
+            <ImageView
+                android:id="@+id/points_bg"
+                android:src="@drawable/bg_points"
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toBottomOf="@id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/points_title"
+                android:text="@string/POINTS_TITLE"
+                android:textSize="17dp"
+                android:textColor="@color/ORANGE"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/points_bg"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:background="@color/ORANGE"
+                app:layout_constraintStart_toStartOf="@id/points_title"
+                app:layout_constraintEnd_toEndOf="@id/points_title"
+                app:layout_constraintTop_toBottomOf="@id/points_title"
+                android:layout_width="0dp"
+                android:layout_height="2dp"/>
+
+            <ImageView
+                android:id="@+id/points_quote_start"
+                android:src="@drawable/quote_start_purple"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/points_answer"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/points_quote_end"
+                android:src="@drawable/quote_end_purple"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/points_answer"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/points_answer"
+                android:text="@string/POINTS_ANSWER"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toEndOf="@id/points_quote_start"
+                app:layout_constraintEnd_toStartOf="@id/points_quote_end"
+                app:layout_constraintTop_toBottomOf="@id/points_title"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/reading_icon"
+                android:src="@drawable/reading_orange"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/points_answer"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/points_reading"
+                android:text="@string/POINTS_READING_TITLE"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/reading_icon"
+                app:layout_constraintTop_toTopOf="@id/reading_icon"
+                app:layout_constraintBottom_toBottomOf="@id/reading_icon"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/points_reading_contents"
+                android:text="@string/POINTS_READING_CONTENTS"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="@id/points_reading"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/points_reading"
+                android:layout_marginRight="20dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/writing_icon"
+                android:src="@drawable/writing_orange"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/points_reading_contents"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/points_writing"
+                android:text="@string/POINTS_WRITING_TITLE"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/writing_icon"
+                app:layout_constraintTop_toTopOf="@id/writing_icon"
+                app:layout_constraintBottom_toBottomOf="@id/writing_icon"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/points_writing_contents"
+                android:text="@string/POINTS_WRITING_CONTENTS"
+                android:textColor="@color/NAVY"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="@id/points_writing"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/points_writing"
+                android:layout_marginRight="20dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+
+<!--            Button-->
+
+            <LinearLayout
+                android:id="@+id/btnLayout"
+                android:gravity="center"
+                android:background="@color/WHITE"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/points_writing_contents"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:id="@+id/btnChallenge"
+                    android:text="@string/CHALLENGER_BUTTON"
+                    android:textAllCaps="false"
+                    android:textColor="@color/WHITE"
+                    android:background="@drawable/bg_purple_30"
+                    android:layout_margin="15dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+<!--            Policy-->
+
+            <TextView
+                android:id="@+id/policy"
+                android:gravity="center"
+                android:paddingBottom="15dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@string/POINT_POLICY"
+                android:textColor="@color/GREY_TEXT"
+                android:textSize="12dp"
+                android:background="@color/WHITE"
+                app:layout_constraintTop_toBottomOf="@id/btnLayout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-
-
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/layout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/bg_white_32_top"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/bg_podo">-->
-
-<!--        <TextView-->
-<!--            android:text="Learner's Issue"-->
-<!--            android:textSize="15dp"-->
-<!--            android:textColor="@color/PURPLE"-->
-<!--            android:gravity="center"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"/>-->
-<!--    </LinearLayout>-->
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

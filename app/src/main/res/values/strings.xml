@@ -228,66 +228,65 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
         Try to challenge yourself and start speaking with native Korean speakers right away. Yes, it’s awkward and very difficult but I try to remember that the other person is not judging me and they appreciate the effort I am making.
         If you can, try to get in touch with someone else who shares your interest in learning Korean. I mostly study alone, but once a week I meet other students who are learning Korean where I live. In that way, I think that I can increase my motivation to study and make it more fun.
     </string>
-    <string name="INTERVIEW_1_NAME">Chiara Sartini</string>
-    <string name="INTERVIEW_1_COUNTRY">Italy</string>
+    <string name="INTERVIEW_1_NAME">
+        Chiara Sartini\nItaly</string>
     <string name="INTERVIEW_2_SUMMARY">
         Korean is a beautiful language but definitely not the easiest.
         That is why I try to surround myself with it as mush as possible
     </string>
     <string name="INTERVIEW_2_DETAIL">
-        When it comes to learning a new language, the most important thing is to find something of genuine interest for me.
+        "When it comes to learning a new language, the most important thing is to find something of genuine interest for me.
         Korean is a beautiful language but definitely not the easiest.
         That is why I try to surround myself with it as mush as possible, by listening to music and podcasts, watching YouTube videos on various topics, with and without subtitles.
-        Naver's daily Korean conversation is also a good way to improve your listening skills and vocabulary with casual useful conversations.
+        Naver's daily Korean conversation is also a good way to improve your listening skills and vocabulary with casual useful conversations."
     </string>
-    <string name="INTERVIEW_2_NAME">Elen Isakidu</string>
-    <string name="INTERVIEW_2_COUNTRY">Georgia</string>
-    <string name="INTERVIEW_3_SUMMARY"></string>
-    <string name="INTERVIEW_3_DETAIL"></string>
-    <string name="INTERVIEW_3_NAME"></string>
-    <string name="INTERVIEW_3_COUNTRY"></string>
+    <string name="INTERVIEW_2_NAME">Elen Isakidu\nGeorgia</string>
+    <string name="INTERVIEW_3_SUMMARY">
+        Korean is a beautiful language but definitely not the easiest.
+        That is why I try to surround myself with it as mush as possible
+    </string>
+    <string name="INTERVIEW_3_DETAIL">
+        "When it comes to learning a new language, the most important thing is to find something of genuine interest for me.
+        Korean is a beautiful language but definitely not the easiest.
+        That is why I try to surround myself with it as mush as possible, by listening to music and podcasts, watching YouTube videos on various topics, with and without subtitles.
+        Naver's daily Korean conversation is also a good way to improve your listening skills and vocabulary with casual useful conversations."
+    </string>
+    <string name="INTERVIEW_3_NAME">Elen Isakidu\nGeorgia</string>
     <string name="COMMONALITY_TITLE">Commonality</string>
     <string name="COMMONALITY_CONTENTS">Be exposed to Korean as much as possible every day.</string>
     <string name="COMMONALITY_TEACHER_COMMENTS">
-        As a Korean teacher, I totally agree.
-
-        The Korean language you are learning,
-        is not a field of study.
-        It’s everyday life
-
-        Consistently learning in everyday life
-        is the fastest and most powerful way to speak Korean.
+        "As a Korean teacher, I totally agree.\nThe Korean language you are learning is not a field of study.\nIt’s everyday life.\n\nConsistently learning in everyday life is the fastest and most powerful way to speak Korean."
     </string>
-    <string name="TEACHER_NAME">Danny Park</string>
-    <string name="TEACHER_COUNTRY">South Korea</string>
+    <string name="TEACHER_NAME">Danny Park\nSouth Korea</string>
     <string name="SOLUTION_TITLE">Solution</string>
     <string name="SOLUTION_CONTENTS_1">NOW, WE PROPOSE A</string>
     <string name="SOLUTION_CONTENTS_2">TO YOU WHO WANT TO LEARN KOREAN QUICKLY</string>
     <string name="GOAL_AND_CONCEPT_TITLE">Goal And Concept</string>
     <string name="GOAL_TITLE_1">podo challenger\'s</string>
     <string name="GOAL_TITLE_2">GOAL</string>
-    <string name="GOAL_CONTENTS"></string>
+    <string name="GOAL_CONTENTS">Complete all beginner/intermediate lessons of podo in 30 days!</string>
     <string name="CONCEPT_TITLE_1">podo\'s lesson</string>
     <string name="CONCEPT_TITLE_2">CONCEPT</string>
     <string name="CONCEPT_BEGINNER">Beginner Lesson:</string>
-    <string name="CONCEPT_BEGINNER_CONTENTS">Complete all beginner/intermediate lessons of podo in 30 days!</string>
+    <string name="CONCEPT_BEGINNER_CONTENTS">Learning the minimum words and expressions used most in everyday life, 200 words, 50 expressions (1st~3rd weeks)</string>
     <string name="CONCEPT_INTERMEDIATE">Intermediate Lesson:</string>
-    <string name="CONCEPT_INTERMEDIATE_CONTENTS"></string>
-    <string name="GOAL_AND_CONCEPT_TEACHER_COMMENTS"></string>
+    <string name="CONCEPT_INTERMEDIATE_CONTENTS">Practice everyday conversation using only words and expressions learned in the beginner lesson (4th weeks)</string>
+    <string name="CONCEPT_TEACHER_COMMENTS">All lessons were made and recorded by myself, a Korean teacher.</string>
     <string name="BENEFITS_TITLE">Benefits</string>
-    <string name="BENEFITS_ADS"></string>
-    <string name="BENEFITS_LESSONS"></string>
-    <string name="BENEFITS_PROGRESS"></string>
-    <string name="BENEFITS_POINTS"></string>
-    <string name="POINT_TITLE">What can you do with the points?</string>
-    <string name="POINT_ANSWER_1"></string>
-    <string name="POINT_ANSWER_2"></string>
-    <string name="POINT_1_TITLE">Advanced Lesson:</string>
-    <string name="POINT_1_CONTENTS">(To be updated)</string>
-    <string name="POINT_2_TITLE">Reading:</string>
-    <string name="POINT_2_CONTENTS"></string>
-    <string name="POINT_3_TITLE">Writing:</string>
-    <string name="POINT_3_CONTENTS"></string>
+    <string name="BENEFITS_ADS">Ads removal\n(lifetime)</string>
+    <string name="BENEFITS_LESSONS">All beginner/intermediate\nand special lessons open\n(lifetime)</string>
+    <string name="BENEFITS_PROGRESS">Daily goal progress indicator\n(Try achieving your goal\nevery day for 30 days.)</string>
+    <string name="BENEFITS_POINTS">1,000 points will be provided\nupon reaching the final goal\nwithin the challenge period\n($20 value)</string>
+    <string name="POINTS_TITLE">What can you do with the points?</string>
+    <string name="POINTS_ANSWER">
+        After completing all the beginner and intermediate lessons, it\'s time to learn new vocabulary and expressions.\n\nYou can use your points to continue your desired learning among the various methods below.
+    </string>
+    <string name="POINTS_ADVANCED_TITLE">Advanced Lesson:</string>
+    <string name="POINTS_ADVANCED_CONTENTS">(To be updated)</string>
+    <string name="POINTS_READING_TITLE">Reading:</string>
+    <string name="POINTS_READING_CONTENTS">This is an easy-to-read article written by a Korean teacher using only the easiest words and expressions as possible. You can also practice correct pronunciation through audio recorded by the teacher.</string>
+    <string name="POINTS_WRITING_TITLE">Writing:</string>
+    <string name="POINTS_WRITING_CONTENTS">Write what you want to say in Korean. The Korean teacher directly provides correction and supplementary explanations.</string>
     <string name="CHALLENGER_BUTTON">Become A podo Challenger $20</string>
 
 
