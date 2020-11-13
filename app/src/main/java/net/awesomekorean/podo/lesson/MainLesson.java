@@ -1,10 +1,16 @@
 package net.awesomekorean.podo.lesson;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -21,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.UserInformation;
+import net.awesomekorean.podo.challenge.Challenge;
 import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson00;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangul;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulBatchim;
@@ -126,6 +133,10 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
     int lastClickLevel;
 
+    ImageView btnChallenge;
+    TextView textChallenge;
+    ImageView iconFinger;
+
 
     @Nullable
     @Override
@@ -139,19 +150,30 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         layoutInfo = view.findViewById(R.id.layoutInfo);
         btnCloseInfo = view.findViewById(R.id.btnCloseInfo);
         seekBar = view.findViewById(R.id.seekBar);
+        btnChallenge = view.findViewById(R.id.btnChallenge);
+        textChallenge = view.findViewById(R.id.textChallenge);
+        iconFinger = view.findViewById(R.id.iconFinger);
         btnPreLevel.setOnClickListener(this);
         btnNextLevel.setOnClickListener(this);
         btnInfo.setOnClickListener(this);
         btnCloseInfo.setOnClickListener(this);
+        btnChallenge.setOnClickListener(this);
 
         context = getContext();
         userInformation = SharedPreferencesInfo.getUserInfo(context);
-        //setLessonItem(lastClickLevel); //todo: 중급레슨 오픈하면 활성화 할 것
+        setLessonItem(lastClickLevel);
         setLessonItem(0);
         adapter = new LessonAdapter(context, list);
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+
+        Shader shader = new LinearGradient(0,0,100,0, new int[]{ContextCompat.getColor(context, R.color.PINK2), ContextCompat.getColor(context, R.color.PURPLE)}, new float[]{0, 1}, Shader.TileMode.CLAMP);
+        textChallenge.getPaint().setShader(shader);
+
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.move_up_infinite);
+        iconFinger.startAnimation(animation);
+
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -266,11 +288,8 @@ public class MainLesson extends Fragment implements View.OnClickListener {
                 tvLevel.setText(getResources().getString(R.string.BEGINNER_LEVEL));
                 tvLevel.setTextColor(ContextCompat.getColor(context, R.color.PURPLE));
                 ivBackGround.setImageResource(R.drawable.bg_light_blue);
-//                btnPreLevel.setVisibility(View.INVISIBLE);
-//                btnNextLevel.setVisibility(VISIBLE);
-                //todo: 중급레슨 오픈하면 활성화 할 것
-                btnPreLevel.setVisibility(GONE);
-                btnNextLevel.setVisibility(GONE);
+                btnPreLevel.setVisibility(View.INVISIBLE);
+                btnNextLevel.setVisibility(VISIBLE);
                 break;
 
             case 1 :    // 중급레슨
@@ -303,6 +322,11 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
             case R.id.btnCloseInfo :
                 layoutInfo.setVisibility(GONE);
+                break;
+
+            case R.id.btnChallenge :
+                Intent intent = new Intent(context, Challenge.class);
+                startActivity(intent);
                 break;
         }
     }

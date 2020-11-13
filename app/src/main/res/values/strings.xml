@@ -235,10 +235,10 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
         That is why I try to surround myself with it as mush as possible
     </string>
     <string name="INTERVIEW_2_DETAIL">
-        "When it comes to learning a new language, the most important thing is to find something of genuine interest for me.
+        When it comes to learning a new language, the most important thing is to find something of genuine interest for me.
         Korean is a beautiful language but definitely not the easiest.
         That is why I try to surround myself with it as mush as possible, by listening to music and podcasts, watching YouTube videos on various topics, with and without subtitles.
-        Naver's daily Korean conversation is also a good way to improve your listening skills and vocabulary with casual useful conversations."
+        Naver\'s daily Korean conversation is also a good way to improve your listening skills and vocabulary with casual useful conversations.
     </string>
     <string name="INTERVIEW_2_NAME">Elen Isakidu\nGeorgia</string>
     <string name="INTERVIEW_3_SUMMARY">
@@ -246,13 +246,13 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
         That is why I try to surround myself with it as mush as possible
     </string>
     <string name="INTERVIEW_3_DETAIL">
-        "When it comes to learning a new language, the most important thing is to find something of genuine interest for me.
+        When it comes to learning a new language, the most important thing is to find something of genuine interest for me.
         Korean is a beautiful language but definitely not the easiest.
         That is why I try to surround myself with it as mush as possible, by listening to music and podcasts, watching YouTube videos on various topics, with and without subtitles.
-        Naver's daily Korean conversation is also a good way to improve your listening skills and vocabulary with casual useful conversations."
+        Naver\'s daily Korean conversation is also a good way to improve your listening skills and vocabulary with casual useful conversations.
     </string>
     <string name="INTERVIEW_3_NAME">Elen Isakidu\nGeorgia</string>
-    <string name="COMMONALITY_TITLE">Commonality</string>
+    <string name="COMMONALITY_TITLE">Their commonality</string>
     <string name="COMMONALITY_CONTENTS">Be exposed to Korean as much as possible every day.</string>
     <string name="COMMONALITY_TEACHER_COMMENTS">
         "As a Korean teacher, I totally agree.\nThe Korean language you are learning is not a field of study.\nIt’s everyday life.\n\nConsistently learning in everyday life is the fastest and most powerful way to speak Korean."
@@ -278,16 +278,18 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="BENEFITS_PROGRESS">Daily goal progress indicator\n(Try achieving your goal\nevery day for 30 days.)</string>
     <string name="BENEFITS_POINTS">1,000 points will be provided\nupon reaching the final goal\nwithin the challenge period\n($20 value)</string>
     <string name="POINTS_TITLE">What can you do with the points?</string>
-    <string name="POINTS_ANSWER">
+    <string name="POINTS_ANSWER_1">
         After completing all the beginner and intermediate lessons, it\'s time to learn new vocabulary and expressions.\n\nYou can use your points to continue your desired learning among the various methods below.
     </string>
+    <string name="POINTS_ANSWER_2">After 30 days you can speak Korean.</string>
     <string name="POINTS_ADVANCED_TITLE">Advanced Lesson:</string>
     <string name="POINTS_ADVANCED_CONTENTS">(To be updated)</string>
     <string name="POINTS_READING_TITLE">Reading:</string>
     <string name="POINTS_READING_CONTENTS">This is an easy-to-read article written by a Korean teacher using only the easiest words and expressions as possible. You can also practice correct pronunciation through audio recorded by the teacher.</string>
     <string name="POINTS_WRITING_TITLE">Writing:</string>
     <string name="POINTS_WRITING_CONTENTS">Write what you want to say in Korean. The Korean teacher directly provides correction and supplementary explanations.</string>
-    <string name="CHALLENGER_BUTTON">Become A podo Challenger $20</string>
+    <string name="CHALLENGE_BUTTON">Become A podo Challenger $20</string>
+    <string name="CHALLENGE_ICON">podo\nChallenge</string>
 
 
 

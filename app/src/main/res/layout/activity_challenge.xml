@@ -22,13 +22,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <ImageView
+                android:id="@+id/btnBack"
+                android:src="@drawable/back_purple"
+                android:layout_margin="15dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideLine5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.05"/>
-
 
 <!--            Learner's issue-->
 
@@ -140,12 +148,13 @@
 
             <ImageView
                 android:id="@+id/interview_bg"
-                android:src="@drawable/bg_interview"
-                android:adjustViewBounds="true"
-                android:layout_marginTop="25dp"
-                app:layout_constraintTop_toBottomOf="@id/issue_answer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/bg_interview"
+                app:layout_constraintTop_toBottomOf="@id/issue_answer"
+                tools:layout_editor_absoluteX="-48dp" />
 
             <TextView
                 android:id="@+id/interview_title"
@@ -558,11 +567,26 @@
 
             <ImageView
                 android:id="@+id/solution_icon"
-                android:src="@drawable/btn_challenge"
+                android:src="@drawable/btn_challenge_outline"
                 app:layout_constraintTop_toTopOf="@id/solution_bg"
                 app:layout_constraintBottom_toBottomOf="@id/solution_bg"
                 app:layout_constraintStart_toStartOf="@id/solution_bg"
                 app:layout_constraintEnd_toEndOf="@id/solution_bg"
+                android:layout_width="70dp"
+                android:layout_height="70dp"/>
+
+            <TextView
+                android:id="@+id/textChallenge"
+                android:text="@string/CHALLENGE_ICON"
+                android:textSize="12dp"
+                android:textStyle="bold"
+                android:textColor="@color/PINK2"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toTopOf="@id/solution_icon"
+                app:layout_constraintBottom_toBottomOf="@id/solution_icon"
+                app:layout_constraintStart_toStartOf="@id/solution_icon"
+                app:layout_constraintEnd_toEndOf="@id/solution_icon"
+                android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -575,8 +599,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/solution_icon"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -589,9 +611,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/solution_icon"
-                android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="0dp"/>
 
 
 <!--            Goal and Concept-->
@@ -682,6 +703,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/goal_title_1"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
 
@@ -982,30 +1004,30 @@
                 android:layout_height="2dp"/>
 
             <ImageView
-                android:id="@+id/points_quote_start"
-                android:src="@drawable/quote_start_purple"
+                android:id="@+id/points_quote_start_1"
+                android:src="@drawable/quote_start_orange"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/points_answer"
+                app:layout_constraintTop_toTopOf="@id/points_answer_1"
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <ImageView
-                android:id="@+id/points_quote_end"
-                android:src="@drawable/quote_end_purple"
+                android:id="@+id/points_quote_end_1"
+                android:src="@drawable/quote_end_orange"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/points_answer"
+                app:layout_constraintBottom_toBottomOf="@id/points_answer_1"
                 android:layout_marginRight="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/points_answer"
-                android:text="@string/POINTS_ANSWER"
+                android:id="@+id/points_answer_1"
+                android:text="@string/POINTS_ANSWER_1"
                 android:textColor="@color/NAVY"
                 android:textSize="15dp"
-                app:layout_constraintStart_toEndOf="@id/points_quote_start"
-                app:layout_constraintEnd_toStartOf="@id/points_quote_end"
+                app:layout_constraintStart_toEndOf="@id/points_quote_start_1"
+                app:layout_constraintEnd_toStartOf="@id/points_quote_end_1"
                 app:layout_constraintTop_toBottomOf="@id/points_title"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -1017,7 +1039,7 @@
                 android:id="@+id/reading_icon"
                 android:src="@drawable/reading_orange"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/points_answer"
+                app:layout_constraintTop_toBottomOf="@id/points_answer_1"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="25dp"
                 android:layout_marginLeft="20dp"
@@ -1083,6 +1105,40 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
 
+            <ImageView
+                android:id="@+id/points_quote_start_2"
+                android:src="@drawable/quote_start_orange"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/points_answer_2"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/points_quote_end_2"
+                android:src="@drawable/quote_end_orange"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/points_answer_2"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/points_answer_2"
+                android:text="@string/POINTS_ANSWER_2"
+                android:textColor="@color/NAVY"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@id/points_quote_start_2"
+                app:layout_constraintEnd_toStartOf="@id/points_quote_end_2"
+                app:layout_constraintTop_toBottomOf="@id/points_writing_contents"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
 
 <!--            Button-->
 
@@ -1092,13 +1148,13 @@
                 android:background="@color/WHITE"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/points_writing_contents"
+                app:layout_constraintTop_toBottomOf="@id/points_answer_2"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <Button
                     android:id="@+id/btnChallenge"
-                    android:text="@string/CHALLENGER_BUTTON"
+                    android:text="@string/CHALLENGE_BUTTON"
                     android:textAllCaps="false"
                     android:textColor="@color/WHITE"
                     android:background="@drawable/bg_purple_30"
