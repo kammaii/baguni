@@ -10,11 +10,11 @@ public class Lesson35 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonTitle = "if want to";
     private String lessonSubTitle = "~(으)려면";
 
-    private String[] wordFront = {"타다", "선물", "화장품", "생일"};
+    private String[] wordFront = {"타다", "선물", "화장품", "생일", "자동차/차"};
 
-    private String[] wordBack = {"ride", "gift", "cosmetics", "birthday"};
+    private String[] wordBack = {"ride", "gift", "cosmetics", "birthday", "car"};
 
-    private String[] wordPronunciation = {"-", "-", "-", "-"};
+    private String[] wordPronunciation = {"-", "-", "-", "-", "-"};
 
     private String[] sentenceFront = {
             "명동에 가다.",
@@ -25,7 +25,9 @@ public class Lesson35 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "지하철 타고 갈 수 있어요.",
             "명동에 왜 가요?",
             "내일 친구 생일이에요.",
-            "화장품 선물 사고 싶어요."
+            "화장품 선물 사고 싶어요.",
+            "같이 가요.",
+            "제 차 타고 같이 가요."
     };
 
     private String[] sentenceBack = {
@@ -37,7 +39,9 @@ public class Lesson35 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "You can take the subway.",
             "Why are you going to Myeong-dong?",
             "It's my friend's birthday tomorrow.",
-            "I want to buy a cosmetic for a gift."
+            "I want to buy a cosmetic for a gift.",
+            "Let's go together.",
+            "Let's go together taking my car."
     };
 
     private String[] sentenceExplain = {
@@ -49,13 +53,16 @@ public class Lesson35 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "'가다' -> '가' + 'ㄹ 수 있다' = '갈 수 있다'",
             "-",
             "-",
+            "-",
+            "-",
             "-"
     };
 
     private String[] dialog = {
             "명동에 가려면 어떻게 해요?",
             "지하철 타고 갈 수 있어요.\n명동에 왜 가요?",
-            "내일 친구 생일이에요.\n화장품 선물 사고 싶어요."
+            "내일 친구 생일이에요.\n화장품 선물 사고 싶어요.",
+            "그래요? 제 차 타고 같이 가요."
     };
 
     private int[] peopleImage = {5,6};

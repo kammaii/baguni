@@ -64,7 +64,7 @@ public class Lesson33 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "'들어 보다' -> '들어 보' + 'ㄹ게요' = '들어 볼게요'",
-            "-",
+            "Use the '~(으)ㄹ게요' form when you want to talk about your will as promised.",
             "-"
     };
 

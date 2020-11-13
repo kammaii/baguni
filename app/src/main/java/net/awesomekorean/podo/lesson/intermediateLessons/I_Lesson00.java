@@ -20,7 +20,7 @@ public class I_Lesson00 extends LessonInit_Lock implements I_Lesson, LessonItem,
             "몇 분이에요?",
             "4명이요.",
             "네, 이름이 뭐예요?",
-            "데니예요.",
+            "라일라예요.",
             "예약했습니다.",
             "고맙습니다.",
             "(몇 시간 후)",
@@ -39,7 +39,7 @@ public class I_Lesson00 extends LessonInit_Lock implements I_Lesson, LessonItem,
             "How many people?",
             "4 people.",
             "ok, what's your name?",
-            "I’m Danny.",
+            "I’m Lyla.",
             "I made a reservation.",
             "Thank you.",
             "(After a few hours)",
@@ -50,7 +50,7 @@ public class I_Lesson00 extends LessonInit_Lock implements I_Lesson, LessonItem,
             "Thank you."
     };
 
-    private int[] peopleImage = {R.drawable.people2, R.drawable.people1};
+    private int[] peopleImage = {R.drawable.waiter_b, R.drawable.female_p};
 
     @Override
     public String getLessonSubTitle() {

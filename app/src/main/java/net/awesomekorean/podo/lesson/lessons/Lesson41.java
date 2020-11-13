@@ -17,8 +17,8 @@ public class Lesson41 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] sentenceFront = {
             "저 한국에 돌아가요.",
             "저 다음 주에 한국에 돌아가요.",
-            "빠른 것 같아요.",
-            "시간이 정말 빠른 것 같아요.",
+            "빠르게 가는 것 같아요.",
+            "시간이 정말 빠르게 가는 것 같아요.",
             "뭐 할 거예요?",
             "한국에 돌아가면 뭐 할 거예요?",
             "도와주기로 했어요.",
@@ -28,8 +28,8 @@ public class Lesson41 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] sentenceBack = {
             "I'll go back to Korea.",
             "I'll go back to Korea next week.",
-            "I think it's fast.",
-            "I think the time is really fast.",
+            "It seems to go fast.",
+            "I think time is going really fast.",
             "What are you going to do?",
             "What are you going to do when you go back to Korea?",
             "I'll help.",
@@ -39,7 +39,7 @@ public class Lesson41 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] sentenceExplain = {
             "The honorific of '나' is '저'.\n\n돌다 : turn\n가다 : go\n돌아가다 : turn and go = go back",
             "-",
-            "빠르다' -> '빠르' + 'ㄴ 것 같다' = '빠른 것 같다'",
+            "When you want to make an adjective to an adverb, you can use the  '-게' form.\n'빠르다' -> '빠르' + '게' = '빠르게'",
             "-",
             "-",
             "-",
@@ -49,7 +49,7 @@ public class Lesson41 extends LessonInit_Lock implements Lesson, LessonItem, Ser
 
     private String[] dialog = {
             "저 다음 주에 한국에 돌아가요.",
-            "벌써요? 시간이 정말 빠른 것 같아요. 한국에 돌아가면 뭐 할 거예요?",
+            "벌써요? 시간이 정말 빠르게 가는 것 같아요. 한국에 돌아가면 뭐 할 거예요?",
             "부모님 일을 도와주기로 했어요."
     };
 

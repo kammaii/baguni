@@ -8,11 +8,11 @@ public class Lesson38 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonTitle = "don't have to";
     private String lessonSubTitle = "~지 않아도 돼요";
 
-    private String[] wordFront = {"축하하다", "우리", "맛있다", "필요하다"};
+    private String[] wordFront = {"축하하다", "우리", "맛있다", "필요하다", "더"};
 
-    private String[] wordBack = {"celebrate", "we", "delicious", "need"};
+    private String[] wordBack = {"celebrate", "we", "delicious", "need", "more"};
 
-    private String[] wordPronunciation = {"[추카하다]", "-", "[마싣따]", "[피료하다]"};
+    private String[] wordPronunciation = {"[추카하다]", "-", "[마싣따]", "[피료하다]", "-"};
 
     private String[] sentenceFront = {
             "어제 이사했어요.",
@@ -22,7 +22,7 @@ public class Lesson38 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "오늘 우리 집에서 맛있는 거 먹어요.",
             "와인 필요해요?",
             "집에 있어요.",
-            "사오지 않아도 돼요."
+            "더 사오지 않아도 돼요."
     };
 
     private String[] sentenceBack = {
@@ -33,7 +33,7 @@ public class Lesson38 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "Today, let's have something delicious at my home.",
             "Do you need a wine?",
             "I have it at home.",
-            "You don't have to buy it."
+            "You don't have to buy it more."
     };
 
     private String[] sentenceExplain = {
@@ -52,7 +52,7 @@ public class Lesson38 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "아! 정말요? 축하해요.",
             "오늘 우리 집에서 맛있는 거 먹어요.",
             "좋아요! 와인 필요해요?",
-            "아니요, 집에 있어요.\n사오지 않아도 돼요."
+            "아니요, 집에 있어요.\n더 사오지 않아도 돼요."
     };
 
     private int[] peopleImage = {11,12};

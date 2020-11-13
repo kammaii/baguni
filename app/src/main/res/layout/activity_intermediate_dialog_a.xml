@@ -11,13 +11,13 @@
 
     <ImageView
         android:id="@+id/peopleImage"
-        android:src="@drawable/people8"
+        android:src="@drawable/waiter_b"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
 
     <LinearLayout
         android:background="@drawable/bg_purple_10_transparent"

@@ -11,11 +11,11 @@ public class Lesson32 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonSubTitle = "~(으)세요";
     private LessonItem specialLesson = new S_Lesson16();
 
-    private String[] wordFront = {"화장실", "가게", "안", "밖", "왼쪽", "오른쪽"};
+    private String[] wordFront = {"화장실", "가게", "안", "밖", "왼쪽", "오른쪽", "나가다"};
 
-    private String[] wordBack = {"restroom", "shop", "inside", "outside", "left side", "right side"};
+    private String[] wordBack = {"restroom", "shop", "inside", "outside", "left side", "right side", "go out"};
 
-    private String[] wordPronunciation = {"-", "-", "-", "[박]", "-", "-"};
+    private String[] wordPronunciation = {"-", "-", "-", "[박]", "-", "-", "-"};
 
     private String[] sentenceFront = {
             "어디예요?",
@@ -45,10 +45,10 @@ public class Lesson32 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "It is a necessary sentence when you go on a trip to other country. Should remember.",
             "When you say to the direction of movement, use '(으)로' form.\n\n(Refer to Lesson 16 - more expression : '~(으)로')",
-            "-",
+            "'나가다' = '나' + '가다' : go out\n'나오다' = '나' + '오다' :  come out",
             "(Refer to Lesson 6 - reason : '아/어서')",
             "It's an expression you can use when you politely tell someone to do something.\n\n'가다' -> '가' + '세요' = '가세요'",
-            "'오른쪽' + '으로'",
+            "오른쪽' + '으로'\n'쪽' means the direction and can also be used with '이/그/저' like below.\n'이쪽' : this way\n'저쪽' : that way \n'그쪽' : that way",
             "-",
             "-"
     };

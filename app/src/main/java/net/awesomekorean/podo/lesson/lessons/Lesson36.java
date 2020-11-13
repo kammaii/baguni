@@ -8,15 +8,15 @@ public class Lesson36 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonTitle = "don't";
     private String lessonSubTitle = "~지 마세요";
 
-    private String[] wordFront = {"커피", "졸리다", "새벽", "중독"};
+    private String[] wordFront = {"커피", "졸리다", "새벽", "중독", "주문하다"};
 
-    private String[] wordBack = {"coffee", "sleepy", "dawn", "addicted"};
+    private String[] wordBack = {"coffee", "sleepy", "dawn", "addicted", "order"};
 
-    private String[] wordPronunciation = {"-", "-", "-", "-"};
+    private String[] wordPronunciation = {"-", "-", "-", "-", "-"};
 
     private String[] sentenceFront = {
-            "커피 마셔요?",
-            "또 커피 마셔요?",
+            "커피 주문했어요?",
+            "또 커피 주문했어요?",
             "잘 잤어요?",
             "잘 못 잤어요?",
             "어제 잘 못 잤어요?",
@@ -28,8 +28,8 @@ public class Lesson36 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceBack = {
-            "Do you drink coffee?",
-            "Do you drink coffee again?",
+            "Did you order coffee?",
+            "Did you order coffee again?",
             "Did you sleep well?",
             "Did you not sleep well?",
             "Did you not sleep well yesterday?",
@@ -54,7 +54,7 @@ public class Lesson36 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] dialog = {
-            "또 커피 마셔요?",
+            "또 커피 주문했어요?",
             "네, 너무 졸려요.",
             "어제 잘 못 잤어요?",
             "네, 새벽까지 SNS 했어요.",

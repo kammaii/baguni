@@ -49,9 +49,9 @@ public class Lesson02 extends LessonInit implements Lesson, LessonItem, Serializ
     private String[] sentenceExplain = {
             "-",
             "-",
-            "‘이거’ is used a lot in the conversational language.\nAnd you should say ‘이것‘ in the formal situation.",
+            "'거' means 'thing', and is often used in spoken language. When you need to be formal, ‘것’ is better.\n'이거' = '이것'",
             "-",
-            "‘저거’ is used a lot in the conversational language.\nAnd you should say ‘저것‘ in the formal situation.",
+            "'저거' = '저것'",
             "You can say like this for short of '저거는 얼마예요?'",
             "It means selling something in English.\nHowever, it is often used as a 'discount' in Korean.",
             "-",

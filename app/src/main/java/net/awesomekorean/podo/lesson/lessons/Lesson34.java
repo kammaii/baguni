@@ -10,16 +10,16 @@ public class Lesson34 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonTitle = "allow";
     private String lessonSubTitle = "~아/어도 돼요";
 
-    private String[] wordFront = {"지갑", "놓다", "잠시", "괜찮다", "천천히"};
+    private String[] wordFront = {"지갑", "놓다", "잠시", "괜찮다", "천천히", "여권"};
 
-    private String[] wordBack = {"wallet", "put", "for a while", "Okay", "slowly"};
+    private String[] wordBack = {"wallet", "put", "for a while", "Okay", "slowly", "passport"};
 
-    private String[] wordPronunciation = {"-", "[노타]", "-", "[괜찬타]", "-"};
+    private String[] wordPronunciation = {"-", "[노타]", "-", "[괜찬타]", "-", "[여꿘]"};
 
     private String[] sentenceFront = {
             "놓고 왔어요.",
             "지갑을 놓고 왔어요.",
-            "집에 지갑을 놓고 왔어요.",
+            "집에 여권이랑 지갑을 놓고 왔어요.",
             "기다려 주세요.",
             "잠시만 기다려 주세요.",
             "네, 괜찮아요.",
@@ -31,7 +31,7 @@ public class Lesson34 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] sentenceBack = {
             "I left it.",
             "I left my wallet.",
-            "I left my wallet at home.",
+            "I left my wallet and passport at home.",
             "Please wait.",
             "Please wait a moment.",
             "yes I'm okay.",
@@ -53,7 +53,7 @@ public class Lesson34 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] dialog = {
-            "아! 집에 지갑을 놓고 왔어요.\n잠시만 기다려 주세요.",
+            "아! 집에 여권이랑 지갑을 놓고 왔어요.\n잠시만 기다려 주세요.",
             "네, 괜찮아요.\n천천히 갔다 와도 돼요."
     };
 

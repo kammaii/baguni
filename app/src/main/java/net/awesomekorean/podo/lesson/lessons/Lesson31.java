@@ -11,11 +11,11 @@ public class Lesson31 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonSubTitle = "~(으)ㄹ 것 같다";
     private LessonItem specialLesson = new S_Lesson14();
 
-    private String[] wordFront = {"역", "방금", "기차", "내리다", "도착하다", "늦다"};
+    private String[] wordFront = {"역", "방금", "기차", "내리다", "도착하다", "늦다", "출발하다"};
 
-    private String[] wordBack = {"station", "a minute ago", "train", "get off", "arrive", "late"};
+    private String[] wordBack = {"station", "a minute ago", "train", "get off", "arrive", "late", "depart"};
 
-    private String[] wordPronunciation = {"-", "-", "-", "-", "[도차카다]", "[늗따]"};
+    private String[] wordPronunciation = {"-", "-", "-", "-", "[도차카다]", "[늗따]", "-"};
 
     private String[] sentenceFront = {
             "지금 어디예요?",
