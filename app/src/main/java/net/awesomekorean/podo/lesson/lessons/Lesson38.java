@@ -7,6 +7,7 @@ public class Lesson38 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonId = "L_38";
     private String lessonTitle = "don't have to";
     private String lessonSubTitle = "~지 않아도 돼요";
+    private Integer dayCount = 22;
 
     private String[] wordFront = {"축하하다", "우리", "맛있다", "필요하다", "더"};
 
@@ -121,5 +122,10 @@ public class Lesson38 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     @Override
     public String getLessonTitle() {
         return lessonTitle;
+    }
+
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
     }
 }

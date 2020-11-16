@@ -8,6 +8,7 @@ public class LessonNumber extends LessonInit implements LessonItem {
     private String lessonId = "N_number";
     private String lessonTitle = "numbers";
     private String lessonSubTitle = "숫자";
+    private Integer dayCount = 5;
 
     @Override
     public String getLessonId() {
@@ -22,6 +23,11 @@ public class LessonNumber extends LessonInit implements LessonItem {
     @Override
     public String getLessonSubTitle() {
         return lessonSubTitle;
+    }
+
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
     }
 }
 

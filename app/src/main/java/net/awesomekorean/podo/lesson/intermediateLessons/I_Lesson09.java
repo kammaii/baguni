@@ -11,6 +11,7 @@ public class I_Lesson09 extends LessonInit_Lock implements I_Lesson, LessonItem,
     private String lessonId = "IL_09";
     private String lessonTitle = "Korea Travel Story";
     private String lessonSubTitle = "한국여행 이야기";
+    private Integer dayCount = 30;
 
     private String[] dialog = {
             "한국에 가 본 적 있어요?",
@@ -86,4 +87,8 @@ public class I_Lesson09 extends LessonInit_Lock implements I_Lesson, LessonItem,
         return lessonTitle;
     }
 
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
+    }
 }

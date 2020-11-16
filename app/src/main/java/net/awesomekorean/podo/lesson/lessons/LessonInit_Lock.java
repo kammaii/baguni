@@ -6,6 +6,8 @@ public class LessonInit_Lock {
     private LessonItem specialLesson = null;
     private boolean isCompleted = false;
     private Boolean isLocked = true;
+    private Integer dayCount = null;
+
 
     public boolean getIsCompleted() {
         return isCompleted;
@@ -38,5 +40,9 @@ public class LessonInit_Lock {
 
     public LessonItem getSLesson() {
         return specialLesson;
+    }
+
+    public Integer getDayCount() {
+        return dayCount;
     }
 }

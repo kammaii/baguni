@@ -10,6 +10,7 @@ public class Lesson31 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonTitle = "guess (future)";
     private String lessonSubTitle = "~(으)ㄹ 것 같다";
     private LessonItem specialLesson = new S_Lesson14();
+    private Integer dayCount = 19;
 
     private String[] wordFront = {"역", "방금", "기차", "내리다", "도착하다", "늦다", "출발하다"};
 
@@ -150,5 +151,10 @@ public class Lesson31 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     @Override
     public LessonItem getSLesson() {
         return specialLesson;
+    }
+
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
     }
 }

@@ -21,4 +21,6 @@ public interface LessonItem {
 
     boolean getIsCompleted();
     void setIsCompleted(boolean b);
+
+    Integer getDayCount();
 }

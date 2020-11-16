@@ -9,6 +9,8 @@ public class LessonInit {
     private Boolean isLocked = false;
     private boolean isCompleted = false;
 
+    private Integer dayCount = null;
+
     public boolean getIsLocked() {
         return isLocked;
     }
@@ -39,5 +41,9 @@ public class LessonInit {
     }
     public void setIsCurrent(boolean current) {
         isCurrent = current;
+    }
+
+    public Integer getDayCount() {
+        return dayCount;
     }
 }

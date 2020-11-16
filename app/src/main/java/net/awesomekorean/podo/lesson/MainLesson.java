@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -29,6 +30,15 @@ import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.UserInformation;
 import net.awesomekorean.podo.challenge.Challenge;
 import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson00;
+import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson01;
+import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson02;
+import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson03;
+import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson04;
+import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson05;
+import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson06;
+import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson07;
+import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson08;
+import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson09;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangul;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulBatchim;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulConsonant;
@@ -86,6 +96,12 @@ import net.awesomekorean.podo.lesson.lessons.Lesson36;
 import net.awesomekorean.podo.lesson.lessons.Lesson37;
 import net.awesomekorean.podo.lesson.lessons.Lesson38;
 import net.awesomekorean.podo.lesson.lessons.Lesson39;
+import net.awesomekorean.podo.lesson.lessons.Lesson40;
+import net.awesomekorean.podo.lesson.lessons.Lesson41;
+import net.awesomekorean.podo.lesson.lessons.Lesson42;
+import net.awesomekorean.podo.lesson.lessons.Lesson43;
+import net.awesomekorean.podo.lesson.lessons.Lesson44;
+import net.awesomekorean.podo.lesson.lessons.Lesson45;
 import net.awesomekorean.podo.lesson.lessons.LessonItem;
 
 import java.util.ArrayList;
@@ -118,11 +134,13 @@ public class MainLesson extends Fragment implements View.OnClickListener {
             new Lesson20(), new Lesson18(), new Lesson21(), new Lesson23(), new Lesson35(), new LessonReview03(),
             new Rewards03(), new Lesson24(), new Lesson25(), new Lesson26(), new Lesson30(), new Lesson31(),
             new Lesson32(), new Lesson33(), new Lesson34(), new LessonReview04(), new Rewards04(),
-            new Lesson36(), new Lesson37(), new Lesson38(), new Lesson39()
+            new Lesson36(), new Lesson37(), new Lesson38(), new Lesson39(), new Lesson40(), new Lesson41(),
+            new Lesson42(), new Lesson43(), new Lesson44(), new Lesson45()
     };
 
     LessonItem[] intermediate = {
-            new I_Lesson00()
+            new I_Lesson00(), new I_Lesson01(), new I_Lesson02(), new I_Lesson03(), new I_Lesson04(),
+            new I_Lesson05(), new I_Lesson06(), new I_Lesson07(), new I_Lesson08(), new I_Lesson09()
     };
 
     ArrayList<LessonItem> list = new ArrayList<>();
@@ -221,16 +239,50 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     private void setCompletedLessons() {
         List<String> lessonComplete = userInformation.getLessonComplete();
         System.out.println("LESSON_COMPLETE:" + lessonComplete);
+        boolean isChallenger = userInformation.getIsChallenger();
 
-        if(lessonComplete.size() > 0) {
+        // 챌린저 아닐 때
+        if(!isChallenger) {
+            if (lessonComplete.size() > 0) {
+                for (int i = 0; i < list.size(); i++) {
+                    if (lessonComplete.contains(list.get(i).getLessonId())) {
+                        list.get(i).setIsCompleted(true);
+                        list.get(i).setIsLocked(false);
+                        list.get(i).setIsActive(true);
+                        list.get(i).setIsCurrent(false);
+                        if (i < list.size() - 1) {
+                            list.get(i + 1).setIsActive(true);
+                            list.get(i + 1).setIsCurrent(true);
+                        }
 
+                        // 스페셜레슨 세팅
+                        if (list.get(i).getSLesson() != null) {
+                            list.get(i).getSLesson().setIsActive(true);
+
+                            if (lessonComplete.contains(list.get(i).getSLesson().getLessonId())) {
+                                list.get(i).getSLesson().setIsCompleted(true);
+                            }
+                        }
+                    }
+                }
+
+            } else {
+                list.get(0).setIsCurrent(true);
+            }
+
+        // 챌린저일 때
+        } else {
             for (int i = 0; i < list.size(); i++) {
+                list.get(i).setIsLocked(false);
+                if (list.get(i).getSLesson() != null) {
+                    list.get(i).getSLesson().setIsLocked(false);
+                }
+
                 if (lessonComplete.contains(list.get(i).getLessonId())) {
                     list.get(i).setIsCompleted(true);
-                    list.get(i).setIsLocked(false);
                     list.get(i).setIsActive(true);
                     list.get(i).setIsCurrent(false);
-                    if(i < list.size() - 1) {
+                    if (i < list.size() - 1) {
                         list.get(i + 1).setIsActive(true);
                         list.get(i + 1).setIsCurrent(true);
                     }
@@ -245,9 +297,6 @@ public class MainLesson extends Fragment implements View.OnClickListener {
                     }
                 }
             }
-
-        } else {
-            list.get(0).setIsCurrent(true);
         }
         list.get(0).setIsActive(true);
     }

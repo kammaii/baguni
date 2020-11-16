@@ -34,10 +34,12 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     private Context context;
     private ArrayList<LessonItem> list;
     private Intent intent;
+    boolean isChallenger;
 
     public LessonAdapter(Context context, ArrayList<LessonItem> list) {
         this.context = context;
         this.list = list;
+        isChallenger = SharedPreferencesInfo.getUserInfo(context).getIsChallenger();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -46,15 +48,16 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         ConstraintLayout layoutItemLeft;
         ConstraintLayout layoutItemRight;
         ImageView currentItem;
-        LinearLayout layoutGoal;
         TextView tvItemNo;
         TextView tvItemTitle;
         TextView tvItemSubTitle;
-        TextView tvWeekCount;
         ImageView lineLeftTop;
         ImageView lineLeftBottom;
         ImageView lineRightTop;
         ImageView lineRightBottom;
+        LinearLayout layoutDayCount;
+        TextView tvDayCount;
+
 
         ViewHolder(final View itemView) {
             super(itemView);
@@ -64,15 +67,15 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             layoutItemLeft = itemView.findViewById(R.id.layoutItemLeft);
             layoutItemRight = itemView.findViewById(R.id.layoutItemRight);
             currentItem = itemView.findViewById(R.id.currentItem);
-            layoutGoal = itemView.findViewById(R.id.layoutGoal);
             tvItemNo = itemView.findViewById(R.id.tvItemNo);
             tvItemTitle = itemView.findViewById(R.id.tvItemTitle);
             tvItemSubTitle = itemView.findViewById(R.id.tvItemSubTitle);
-            tvWeekCount = itemView.findViewById(R.id.tvWeekCount);
             lineLeftTop = itemView.findViewById(R.id.lineLeftTop);
             lineLeftBottom = itemView.findViewById(R.id.lineLeftBottom);
             lineRightTop = itemView.findViewById(R.id.lineRightTop);
             lineRightBottom = itemView.findViewById(R.id.lineRightBottom);
+            layoutDayCount = itemView.findViewById(R.id.layoutDayCount);
+            tvDayCount = itemView.findViewById(R.id.tvDayCount);
 
             layoutItem.setOnClickListener(this);
             layoutItemLeft.setOnClickListener(this);
@@ -217,6 +220,15 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         holder.tvItemTitle.setText(item.getLessonTitle());
         } else {
             holder.tvItemTitle.setText("");
+        }
+
+        if(isChallenger) {
+            if (item.getDayCount() != null) {
+                holder.layoutDayCount.setVisibility(View.VISIBLE);
+                holder.tvDayCount.setText(String.valueOf(item.getDayCount()));
+            } else {
+                holder.layoutDayCount.setVisibility(View.GONE);
+            }
         }
 
         holder.tvItemSubTitle.setText(item.getLessonSubTitle());

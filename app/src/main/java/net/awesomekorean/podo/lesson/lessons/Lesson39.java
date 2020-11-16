@@ -7,6 +7,7 @@ public class Lesson39 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonId = "L_39";
     private String lessonTitle = "go to";
     private String lessonSubTitle = "~(으)러 가다";
+    private LessonItem specialLesson = new S_Lesson18();
 
     private String[] wordFront = {"책", "서점", "학생", "만나다", "근처"};
 
@@ -113,5 +114,10 @@ public class Lesson39 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     @Override
     public String getLessonTitle() {
         return lessonTitle;
+    }
+
+    @Override
+    public LessonItem getSLesson() {
+        return specialLesson;
     }
 }

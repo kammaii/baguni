@@ -11,6 +11,7 @@ public class I_Lesson05 extends LessonInit_Lock implements I_Lesson, LessonItem,
     private String lessonId = "IL_05";
     private String lessonTitle = "immigration";
     private String lessonSubTitle = "입국 심사";
+    private Integer dayCount = 28;
 
     private String[] dialog = {
             "여권 주세요.",
@@ -82,4 +83,8 @@ public class I_Lesson05 extends LessonInit_Lock implements I_Lesson, LessonItem,
         return lessonTitle;
     }
 
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
+    }
 }

@@ -7,6 +7,7 @@ public class Lesson44 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonId = "L_44";
     private String lessonTitle = "honorific";
     private String lessonSubTitle = "~(으)시";
+    private LessonItem specialLesson = new S_Lesson20();
 
     private String[] wordFront = {"옷", "입다", "벗다", "바꾸다"};
 
@@ -121,5 +122,10 @@ public class Lesson44 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     @Override
     public String getLessonTitle() {
         return lessonTitle;
+    }
+
+    @Override
+    public LessonItem getSLesson() {
+        return specialLesson;
     }
 }

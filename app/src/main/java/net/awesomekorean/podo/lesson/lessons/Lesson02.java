@@ -9,6 +9,7 @@ public class Lesson02 extends LessonInit implements Lesson, LessonItem, Serializ
     private String lessonId = "L_02";
     private String lessonTitle = "how much";
     private String lessonSubTitle = "얼마예요?";
+    private Integer dayCount = 3;
 
     private String[] wordFront = {"이거", "저거", "얼마", "세일", "그래서"};
 
@@ -134,5 +135,10 @@ public class Lesson02 extends LessonInit implements Lesson, LessonItem, Serializ
     @Override
     public String getLessonTitle() {
         return lessonTitle;
+    }
+
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
     }
 }

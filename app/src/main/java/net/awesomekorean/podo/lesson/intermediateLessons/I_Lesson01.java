@@ -11,6 +11,7 @@ public class I_Lesson01 extends LessonInit_Lock implements I_Lesson, LessonItem,
     private String lessonId = "IL_01";
     private String lessonTitle = "order";
     private String lessonSubTitle = "음식 주문";
+    private Integer dayCount = 26;
 
     private String[] dialog = {
             "어서 오세요.\n몇 분이에요?",
@@ -118,4 +119,8 @@ public class I_Lesson01 extends LessonInit_Lock implements I_Lesson, LessonItem,
         return lessonTitle;
     }
 
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
+    }
 }

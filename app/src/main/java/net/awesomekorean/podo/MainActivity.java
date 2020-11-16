@@ -222,6 +222,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                 userInformation.setDay(today);
             }
 
+            userInformation.setLastVisit();
+
             SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
             System.out.println("앱에 출석부를 업데이트 했습니다");
 

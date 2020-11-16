@@ -197,7 +197,7 @@
 
     <LinearLayout
         android:visibility="gone"
-        android:id="@+id/layoutGoal"
+        android:id="@+id/layoutDayCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/circle_pink_stroke_white"
@@ -214,13 +214,13 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:includeFontPadding="false"
-            android:text="Week"
+            android:text="Day"
             android:textColor="@color/WHITE"
-            android:textSize="9dp"
+            android:textSize="10dp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvWeekCount"
+            android:id="@+id/tvDayCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

@@ -9,6 +9,7 @@ public class Lesson23 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonId = "L_23";
     private String lessonTitle = "if, when";
     private String lessonSubTitle = "~(으)면";
+    private Integer dayCount = 16;
 
     private String[] wordFront = {"나중에", "돈을 벌다", "외국", "모든", "문화"};
 
@@ -124,5 +125,10 @@ public class Lesson23 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     @Override
     public String getLessonTitle() {
         return lessonTitle;
+    }
+
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
     }
 }

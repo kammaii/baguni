@@ -7,6 +7,8 @@ public class Lesson43 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonId = "L_43";
     private String lessonTitle = "asking2";
     private String lessonSubTitle = "~(으)ㄹ까요?";
+    private Integer dayCount = 24;
+    private LessonItem specialLesson = new S_Lesson19();
 
     private String[] wordFront = {"이제", "배부르다", "인기가 많다", "가격", "앉다"};
 
@@ -121,5 +123,15 @@ public class Lesson43 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     @Override
     public String getLessonTitle() {
         return lessonTitle;
+    }
+
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
+    }
+
+    @Override
+    public LessonItem getSLesson() {
+        return specialLesson;
     }
 }

@@ -21,10 +21,10 @@ public class UserInformation {
     private List<String> specialLessonUnlock = new ArrayList<>();
     private List<String> readingUnlock = new ArrayList<>();
     private List<String> lessonUnlock = new ArrayList<>();
-    private Boolean isPremium;
     private Long lastVisit;
-    private Long datePurchase;
-    private Long dateExpire;
+    private Boolean isChallenger;
+    private Long dateChallenge;
+    private Long dateChallengeExpire;
 
     public UserInformation() {
         for(int i=0; i<7; i++) {
@@ -32,8 +32,7 @@ public class UserInformation {
         }
         this.points = 20;
         this.pointsPurchased = 0;
-        this.isPremium = false;
-        this.lastVisit = UnixTimeStamp.getTimeNow();
+        this.isChallenger = false;
     }
 
     public List<Boolean> getAttendance() {
@@ -130,26 +129,26 @@ public class UserInformation {
         this.readingComplete.add(readingId);
     }
 
-    public Boolean getIsPremium() {return isPremium;}
+    public Boolean getIsChallenger() {return isChallenger;}
 
-    public void setIsPremium(Boolean b) {
-        this.isPremium = b;
+    public void setIsChallenger(Boolean b) {
+        this.isChallenger = b;
     }
 
-    public Long getDatePurchase() {
-        return datePurchase;
+    public Long getDateChallenge() {
+        return dateChallenge;
     }
 
-    public void setDatePurchase(Long datePurchase) {
-        this.datePurchase = datePurchase;
+    public void setDateChallenge(Long dateChallenge) {
+        this.dateChallenge = dateChallenge;
     }
 
-    public Long getDateExpire() {
-        return dateExpire;
+    public Long getDateChallengeExpire() {
+        return dateChallengeExpire;
     }
 
-    public void setDateExpire(Long dateExpire) {
-        this.dateExpire = dateExpire;
+    public void setDateChallengeExpire(Long dateChallengeExpire) {
+        this.dateChallengeExpire = dateChallengeExpire;
     }
 
     public List<String> getSpecialLessonUnlock() {
@@ -187,7 +186,11 @@ public class UserInformation {
         this.attendance.set(today, true);
     }
 
-    public void setLastVisit(Long lastVisit) { this.lastVisit = lastVisit;}
+    public void setLastVisit() { this.lastVisit = UnixTimeStamp.getTimeNow();}
+
+    public Long getLastVisit() {
+        return lastVisit;
+    }
 
     public int getPointsPurchased() {
         return this.pointsPurchased;

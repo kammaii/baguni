@@ -10,6 +10,7 @@ public class Lesson14 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonTitle = "after";
     private String lessonSubTitle = "~후에";
     private LessonItem specialLesson = new S_Lesson11();
+    private Integer dayCount = 11;
 
     private String[] wordFront = {"오늘", "저녁", "끝나다", "후", "가족", "드라마", "추천하다"};
 
@@ -166,5 +167,10 @@ public class Lesson14 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     @Override
     public LessonItem getSLesson() {
         return specialLesson;
+    }
+
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
     }
 }

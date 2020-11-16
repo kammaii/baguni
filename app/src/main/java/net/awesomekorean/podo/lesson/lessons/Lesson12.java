@@ -11,6 +11,7 @@ public class Lesson12 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonTitle = "but";
     private String lessonSubTitle = "~지만";
     private LessonItem specialLesson = new S_Lesson05();
+    private Integer dayCount = 10;
 
     private String[] wordFront = {"어렵다", "말하다", "쓰다", "읽다", "쉽다"};
 
@@ -162,5 +163,10 @@ public class Lesson12 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     @Override
     public LessonItem getSLesson() {
         return specialLesson;
+    }
+
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
     }
 }
