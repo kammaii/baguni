@@ -74,18 +74,25 @@ public class AdsManager {
 
     // 전면광고 재생
     public void playFullAds(Context context) {
+        UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
+        boolean isChallenger = userInformation.getIsChallenger();
 
-        if(interstitialAd != null && interstitialAd.isLoaded()) {
-            interstitialAd.show();
-            System.out.println("전면 광고를 재생합니다.");
+        if(!isChallenger) {
+            if (interstitialAd != null && interstitialAd.isLoaded()) {
+                interstitialAd.show();
+                System.out.println("전면 광고를 재생합니다.");
 
-            // analytics 로그 이벤트 얻기
-            FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context.getApplicationContext());
-            Bundle bundle = new Bundle();
-            firebaseAnalytics.logEvent("full_watch", bundle);
+                // analytics 로그 이벤트 얻기
+                FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context.getApplicationContext());
+                Bundle bundle = new Bundle();
+                firebaseAnalytics.logEvent("full_watch", bundle);
+
+            } else {
+                System.out.println("The interstitial ads wasn't loaded yet.");
+            }
 
         } else {
-            System.out.println("The interstitial ads wasn't loaded yet.");
+            System.out.println("포도챌린저입니다. 광고를 재생하지 않습니다.");
         }
     }
 

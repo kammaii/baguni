@@ -143,7 +143,7 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="GET_POINT">Get the points</string>
     <string name="GO_TO_MAIN">Go to main</string>
     <string name="UNLOCK">Do you want to unlock this by using points?</string>
-    <string name="UNLOCK_INACTIVE">You haven\'t completed the previous lesson yet. Do you want to use double points to force unlock?</string>
+    <string name="UNLOCK_INACTIVE">You haven\'t completed the previous lesson yet. Do you want to use double points to unlock this lesson?</string>
     <string name="UNLOCK_FAILED">You don\'t have points enough.</string>
     <string name="UNLOCK_SUCCEEDED">Unlock succeeded</string>
     <string name="AUDIO_LOADING">Audio is loading now. Please try again.</string>

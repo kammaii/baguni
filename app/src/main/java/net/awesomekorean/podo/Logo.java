@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.installations.FirebaseInstallations;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import net.awesomekorean.podo.login.SignIn;
@@ -81,16 +83,18 @@ public class Logo extends AppCompatActivity {
         // 기기 토큰 얻기
         String token = SharedPreferencesInfo.getUserToken(getApplicationContext());
         if(token == null) {
-            FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                @Override
-                public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                    if (task.isSuccessful()) {
-                        String token = task.getResult().getToken();
-                        SharedPreferencesInfo.setUserToken(getApplicationContext(), token);
-                        System.out.println("토큰을 저장했습니다 : " + token);
-                    }
-                }
-            });
+            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+                        @Override
+                        public void onComplete(@NonNull Task<String> task) {
+                            if (task.isSuccessful()) {
+                                String token = task.getResult();
+                                SharedPreferencesInfo.setUserToken(getApplicationContext(), token);
+                                System.out.println("토큰을 저장했습니다 : " + token);
+                                return;
+                            }
+                        }
+                    });
+
         } else {
             System.out.println("토큰 : " + token);
         }
