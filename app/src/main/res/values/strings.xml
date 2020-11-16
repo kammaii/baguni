@@ -143,6 +143,7 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="GET_POINT">Get the points</string>
     <string name="GO_TO_MAIN">Go to main</string>
     <string name="UNLOCK">Do you want to unlock this by using points?</string>
+    <string name="UNLOCK_INACTIVE">You haven\'t completed the previous lesson yet. Do you want to use double points to force unlock?</string>
     <string name="UNLOCK_FAILED">You don\'t have points enough.</string>
     <string name="UNLOCK_SUCCEEDED">Unlock succeeded</string>
     <string name="AUDIO_LOADING">Audio is loading now. Please try again.</string>
@@ -290,6 +291,10 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="POINTS_WRITING_CONTENTS">Write what you want to say in Korean. The Korean teacher directly provides correction and supplementary explanations.</string>
     <string name="CHALLENGE_BUTTON">Become A podo Challenger $20</string>
     <string name="CHALLENGE_ICON">podo\nChallenge</string>
+    <string name="CHALLENGE_POLICY">Your Google account will be charged at confirmation of purchase.
+        This purchase is one-time purchase. Refunds are only possible within 24 hours of purchase.
+    </string>
+
 
 
 
@@ -1149,6 +1154,7 @@ Let's take a look at some of the most used words in everyday life.
     <string name="EXTRA_FRONT">front</string>
     <string name="EXTRA_BACk">back</string>
     <string name="EXTRA_ENTITY">entity</string>
+    <string name="EXTRA_ISACTIVE">isActive</string>
     <string name="LONGCLICK_ON">on</string>
     <string name="LONGCLICK_OFF">off</string>
     <string name="LESSONWORD">lessonWord</string>

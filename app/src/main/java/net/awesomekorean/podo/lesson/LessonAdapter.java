@@ -92,10 +92,11 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 // 레슨/리뷰/리워드 클릭 이벤트
                 case R.id.layoutItem :
 
+                    SharedPreferencesInfo.setLastClickLevel(context, 0);
+                    String lessonId = item.getLessonId();
+                    String type = item.getLessonId().split("_")[0];
+
                     if(item.getIsActive()) {
-                        SharedPreferencesInfo.setLastClickLevel(context, 0);
-                        String lessonId = item.getLessonId();
-                        String type = item.getLessonId().split("_")[0];
 
                         if (!item.getIsLocked()) {
 
@@ -149,13 +150,24 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                             intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), type);
                             intent.putExtra(context.getResources().getString(R.string.LESSON_ID), item.getLessonId());
                             intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item);
+                            intent.putExtra(context.getResources().getString(R.string.EXTRA_ISACTIVE), true);
                             context.startActivity(intent);
                         }
                         SharedPreferencesInfo.setLastClickItem(context, true, position);
 
                     // 활성화되지 않은 레슨을 클릭했을 때
                     } else {
-                        Toast.makeText(context, context.getString(R.string.PLEASE_COMPLETE_PREVIOUS_LESSON), Toast.LENGTH_LONG).show();
+                        if (!type.equals("RW") && !type.equals("LR")) {
+                            intent = new Intent(context, UnlockActivity.class);
+                            intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), type);
+                            intent.putExtra(context.getResources().getString(R.string.LESSON_ID), item.getLessonId());
+                            intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item);
+                            intent.putExtra(context.getResources().getString(R.string.EXTRA_ISACTIVE), false);
+                            context.startActivity(intent);
+
+                        } else {
+                            Toast.makeText(context, context.getString(R.string.PLEASE_COMPLETE_PREVIOUS_LESSON), Toast.LENGTH_LONG).show();
+                        }
                     }
                     break;
 

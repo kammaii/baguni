@@ -1174,7 +1174,7 @@
                 android:paddingBottom="15dp"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:text="@string/POINT_POLICY"
+                android:text="@string/CHALLENGE_POLICY"
                 android:textColor="@color/GREY_TEXT"
                 android:textSize="12dp"
                 android:background="@color/WHITE"

@@ -53,6 +53,8 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
     UserInformation userInformation;
     int userPoint; // 유저 포인트
 
+    int price5 = 5;
+    int price10 = 10;
     int price15 = 15;
     int price20 = 20;
     int unlockPrice;
@@ -61,6 +63,8 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
     Intent intent;
     Context context;
     AdsManager adsManager;
+    boolean isActive;
+    TextView unlockMessage;
 
 
     @Override
@@ -84,6 +88,7 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
         btnPurchasePoints = findViewById(R.id.btnPurchasePoints);
         btnWatchAds = findViewById(R.id.btnWatchAds);
         btnClose = findViewById(R.id.btnClose);
+        unlockMessage = findViewById(R.id.unlockMessage);
         btnYes.setOnClickListener(this);
         btnNo.setOnClickListener(this);
         btnPurchasePoints.setOnClickListener(this);
@@ -96,15 +101,24 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
         extra = getIntent().getStringExtra(getResources().getString(R.string.EXTRA_ID));
 
         if(extra.equals(getResources().getString(R.string.SPECIAL_LESSON))) {
-            unlockPrice = price15;
+            unlockPrice = price10;
         } else if(extra.equals("L")) {
-            unlockPrice = price15;
+            unlockPrice = price5;
         } else if(extra.equals("IL")) {
             unlockPrice = price15;
         } else if(extra.equals("AL")) {
             unlockPrice = price20;
         } else { // 읽기
             unlockPrice = price20;
+        }
+
+        isActive = getIntent().getBooleanExtra(getResources().getString(R.string.EXTRA_ISACTIVE), true);
+
+        if(isActive) {
+            unlockMessage.setText(getResources().getText(R.string.UNLOCK));
+        } else {
+            unlockMessage.setText(getResources().getText(R.string.UNLOCK_INACTIVE));
+            unlockPrice += unlockPrice;
         }
 
         pointNeed.setText(String.valueOf(unlockPrice));
