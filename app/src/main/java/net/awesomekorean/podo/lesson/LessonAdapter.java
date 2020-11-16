@@ -96,7 +96,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                     String lessonId = item.getLessonId();
                     String type = item.getLessonId().split("_")[0];
 
-                    if(item.getIsActive()) {
+                    if(item.getIsActive() || isChallenger) {
 
                         if (!item.getIsLocked()) {
 
@@ -292,7 +292,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         if(type.equals("RW")) {     // 리워드
             holder.tvItemTitle.setText(R.string.REWARDS);
             holder.tvItemTitle.setMaxLines(1);
-            if(item.getIsActive()) {
+            if(item.getIsCompleted()) {
                 drawable = ContextCompat.getDrawable(context, R.drawable.reward_active_purple);
 
             } else {
@@ -310,7 +310,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 if (item.getIsLocked()) {
                     drawable = ContextCompat.getDrawable(context, R.drawable.locked_blue);
 
-                } else if (item.getIsActive()) {
+                } else if (item.getIsCompleted()) {
                     drawable = ContextCompat.getDrawable(context, R.drawable.lesson_active_blue);
 
                 } else {
@@ -323,7 +323,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 if (item.getIsLocked()) {
                     drawable = ContextCompat.getDrawable(context, R.drawable.locked_purple);
 
-                } else if (item.getIsActive()) {
+                } else if (item.getIsCompleted()) {
                     drawable = ContextCompat.getDrawable(context, R.drawable.lesson_active_purple);
 
                 } else {
