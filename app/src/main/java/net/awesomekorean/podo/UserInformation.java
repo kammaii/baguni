@@ -22,8 +22,9 @@ public class UserInformation {
     private List<String> readingUnlock = new ArrayList<>();
     private List<String> lessonUnlock = new ArrayList<>();
     private Long lastVisit;
-    private Boolean isChallenger;
-    private Long dateChallenge;
+    private int isChallenger;   // 0:챌린저아님, 1:챌린지중, 2:챌린지만료
+    private int isChallengeRewarded;    //0:아직, 1:성공, 2:실패
+    private Long dateChallengeStart;
     private Long dateChallengeExpire;
 
     public UserInformation() {
@@ -32,7 +33,8 @@ public class UserInformation {
         }
         this.points = 20;
         this.pointsPurchased = 0;
-        this.isChallenger = false;
+        this.isChallenger = 0;
+        this.isChallengeRewarded = 0;
     }
 
     public List<Boolean> getAttendance() {
@@ -129,18 +131,26 @@ public class UserInformation {
         this.readingComplete.add(readingId);
     }
 
-    public Boolean getIsChallenger() {return isChallenger;}
+    public int getIsChallenger() {return isChallenger;}
 
-    public void setIsChallenger(Boolean b) {
+    public void setIsChallenger(int b) {
         this.isChallenger = b;
     }
 
-    public Long getDateChallenge() {
-        return dateChallenge;
+    public int getIsChallengeRewarded() {
+        return isChallengeRewarded;
     }
 
-    public void setDateChallenge(Long dateChallenge) {
-        this.dateChallenge = dateChallenge;
+    public void setIsChallengeRewarded(int isChallengeRewarded) {
+        this.isChallengeRewarded = isChallengeRewarded;
+    }
+
+    public Long getDateChallengeStart() {
+        return dateChallengeStart;
+    }
+
+    public void setDateChallengeStart(Long dateChallengeStart) {
+        this.dateChallengeStart = dateChallengeStart;
     }
 
     public Long getDateChallengeExpire() {

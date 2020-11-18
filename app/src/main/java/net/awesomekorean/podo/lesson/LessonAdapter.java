@@ -34,7 +34,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     private Context context;
     private ArrayList<LessonItem> list;
     private Intent intent;
-    boolean isChallenger;
+    int isChallenger;
 
     public LessonAdapter(Context context, ArrayList<LessonItem> list) {
         this.context = context;
@@ -55,8 +55,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         ImageView lineLeftBottom;
         ImageView lineRightTop;
         ImageView lineRightBottom;
-        LinearLayout layoutDayCount;
-        TextView tvDayCount;
+        LinearLayout layoutProgress;
+        TextView tvProgress;
 
 
         ViewHolder(final View itemView) {
@@ -74,8 +74,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             lineLeftBottom = itemView.findViewById(R.id.lineLeftBottom);
             lineRightTop = itemView.findViewById(R.id.lineRightTop);
             lineRightBottom = itemView.findViewById(R.id.lineRightBottom);
-            layoutDayCount = itemView.findViewById(R.id.layoutDayCount);
-            tvDayCount = itemView.findViewById(R.id.tvDayCount);
+            layoutProgress = itemView.findViewById(R.id.layoutProgress);
+            tvProgress = itemView.findViewById(R.id.tvProgress);
 
             layoutItem.setOnClickListener(this);
             layoutItemLeft.setOnClickListener(this);
@@ -96,7 +96,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                     String lessonId = item.getLessonId();
                     String type = item.getLessonId().split("_")[0];
 
-                    if(item.getIsActive() || isChallenger) {
+                    if(item.getIsActive() || isChallenger > 0) {
 
                         if (!item.getIsLocked()) {
 
@@ -234,12 +234,12 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             holder.tvItemTitle.setText("");
         }
 
-        if(isChallenger) {
+        if(isChallenger == 1) {
             if (item.getDayCount() != null) {
-                holder.layoutDayCount.setVisibility(View.VISIBLE);
-                holder.tvDayCount.setText(String.valueOf(item.getDayCount()));
+                holder.layoutProgress.setVisibility(View.VISIBLE);
+                holder.tvProgress.setText(String.valueOf(item.getDayCount()));
             } else {
-                holder.layoutDayCount.setVisibility(View.GONE);
+                holder.layoutProgress.setVisibility(View.GONE);
             }
         }
 

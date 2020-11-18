@@ -293,7 +293,13 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="CHALLENGE_ICON">podo\nChallenge</string>
     <string name="CHALLENGE_POLICY">Your Google account will be charged at confirmation of purchase.
         This purchase is one-time purchase. Refunds are only possible within 24 hours of purchase.
+        Reward points are awarded on the 31st day if all lessons are completed within 30 days of payment time.
     </string>
+    <string name="CHALLENGE_SUCCEED_MESSAGE">You have succeeded in the challenge!\nLet\'s keep going!</string>
+    <string name="CHALLENGE_FAILED">Failed in the challenge</string>
+    <string name="CHALLENGE_FAILED_MESSAGE">
+        But \'podo\' will give you 100 points. Don\'t stop challenging your Korean learning.
+        (If you have any problems achieving the challenge, please contact us by email.)</string>
 
 
 
@@ -358,7 +364,7 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="GO_PREMIUM">Go Premium</string>
     <string name="ALREADY_SUBSCRIBE">You are already subscribed.</string>
     <string name="THANKS_PURCHASING">Thank you for your purchasing.</string>
-    <string name="ERROR_SAVE_POINT_DB">Failed to save new points on database</string>
+    <string name="ERROR_PURCHASING">There\'s an error. Please contact us by email. </string>
     <string name="PREMIUM_POLICY">Your Google account will be charged at confirmation of purchase.
         Subscription will be automatically renewed as soon as your subscription expires.
         If you don\'t want to renew your subscription, you can manage it from Google account settings.
@@ -403,25 +409,12 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="SUBMITE">Submit</string>
     <string name="TEACHERS">Teachers</string>
 
+<!-- #####  여기까지만 교정하면 됨  ##### -->
 
-    <!--    레슨내용현지화-->
-    <string name="MAIN_00_TITLE">Hangul</string>
-    <string name="MAIN_01_TITLE">Greetings</string>
-    <string name="MAIN_02_TITLE">Conjugation</string>
-    <string name="MAIN_03_TITLE">Numbers</string>
-    <string name="MAIN_04_TITLE">Tenses</string>
-    <string name="MAIN_05_TITLE">TEST</string>
-    <string name="MAIN_06_TITLE">Negative</string>
-    <string name="MAIN_07_TITLE">Range</string>
-    <string name="MAIN_08_TITLE">Listing/Contrast</string>
-    <string name="MAIN_09_TITLE">Ability</string>
-    <string name="MAIN_10_TITLE">Hope</string>
-    <string name="MAIN_11_TITLE">TEST</string>
-    <string name="MAIN_12_TITLE">Request</string>
 
-    <string name="SL_00_TITLE">Start of learning Korean</string>
 
-    <string name="SL_01_TITLE">Conjugation</string>
+
+    <!--    스페셜레슨-->
     <string name="SL_01_CONTENTS">"All Korean verbs and adjectives have a base form.
 It means things that end with '~다', such as '먹다 (to eat)', '가다 (to go)' and '사다 (to buy)'.
 
@@ -449,9 +442,7 @@ Because most of irregular forms are for easier pronunciation.
 In the example above, you can pronounce easier by changing irregularly to '들어요[드러요]' instead of '듣어요[드더요]'.
 Therefore, if you use it several times through speaking practice, you will naturally be able to remember irregular words."</string>
 
-    <string name="SL_02_TITLE">Numbers</string>
 
-    <string name="SL_03_TITLE">Conjugation</string>
     <string name="SL_03_CONTENTS">"The first conjugation you learn is the '아요/어요' form.
 Let's call it '아/어요' for short.
 '아/어요' is not too formal and can be polite enough.
@@ -514,7 +505,6 @@ b. '먹어요?' (Do you eat?)
 c. '먹어요!!' (You must to eat!)
 There are many other meanings, but let's just remember two things of 'a' and 'b'."</string>
 
-    <string name="SL_04_TITLE">Particles</string>
     <string name="SL_04_CONTENTS">"Students who use a language without particles have a lot of difficulty with particles in Korean.
 The most difficult are '은/는', '이/가' and '을/를'.
 We'll learn each particle later and I'm going to explain why we use the particles in this lesson.
@@ -544,7 +534,7 @@ But it's not a good idea to change the position of words all the time.
 Korean language generally uses the order of 'subject-object-predicate',
 so it would be better to follow this order."</string>
 
-    <string name="SL_05_TITLE">Speaking Naturally</string>
+
     <string name="SL_05_CONTENTS">"There are 2 basic tips to make your pronunciation better.
 
 1.
@@ -565,7 +555,7 @@ ex)
 - '많지' -> [만치]
 "</string>
 
-    <string name="SL_06_TITLE">Confusing expression</string>
+
     <string name="SL_06_CONTENTS">"1. 5시에 운동을 해요.
 2. 5시에서 운동을 해요.
 
@@ -609,7 +599,7 @@ and we basically use ""에서"" after the noun that indicates the place.
 but sometimes use '에' after the noun that indicating the place according to verb of its sentence.
 "</string>
 
-    <string name="SL_07_TITLE">Speaking Naturally</string>
+
     <string name="SL_07_CONTENTS">"How do you say the words below in Korean?
 
 - Bibimbap restaurant
@@ -635,7 +625,7 @@ Well, how can we say Korean restaurant?
 Korean food is called '한국 음식' and is called '한식' shortly.
 Therefore, you can say '한식집' or '한식당'. "</string>
 
-    <string name="SL_08_TITLE">Conjugation</string>
+
     <string name="SL_08_CONTENTS">"1.
 
 As we learned in previous lesson, '아서/어서' is used as a reason or cause.
@@ -662,7 +652,7 @@ ex)
 - 식당에 가서 밥을 먹어요.
 "</string>
 
-    <string name="SL_09_TITLE">Newly-coined word</string>
+
     <string name="SL_09_CONTENTS">"'Newly-coined word' is a new word made popular by young people.
 Some people say it's better not to use it because it's not a standard language.
 But I think it is helpful to foreigners to make learning korean more fun.
@@ -696,7 +686,7 @@ It means that you put on makeup naturally, as if you did not do makeup."
     </string>
 
 
-    <string name="SL_10_TITLE">Simple Chinese Character1</string>
+
     <string name="SL_10_CONTENTS">
 "You might wonder why there are Chinese character lesson.
 Since Korea used Chinese characters in the past, there are lots of words made from Chinese characters.
@@ -721,7 +711,7 @@ ex)
 "
     </string>
 
-    <string name="SL_11_TITLE">Confusing expression2</string>
+
     <string name="SL_11_CONTENTS">
         "1. 저는 스키를 좋아요.
 2. 저는 스키를 좋아해요.
@@ -752,7 +742,7 @@ Sometimes we omit '은/는' and '이/가' in real conversation.
 In this case, never be confused, you just remember it means 'good' or 'like'."
     </string>
 
-    <string name="SL_12_TITLE">Confusing expression3</string>
+
     <string name="SL_12_CONTENTS">
         "
 1.
@@ -800,7 +790,7 @@ Usually, you can use '아/어서' and use '으니까' only when expressing 'orde
     </string>
 
 
-    <string name="SL_13_TITLE">Confusing expression4</string>
+
     <string name="SL_13_CONTENTS">
         "여기 : here
 저기 : there
@@ -1175,6 +1165,7 @@ Let's take a look at some of the most used words in everyday life.
     <string name="SKU_100">podo_point_100</string>
     <string name="SKU_500">podo_point_500</string>
     <string name="SKU_1000">podo_point_1000</string>
+    <string name="SKU_CHALLENGE">podo_challenge</string>
 
     <string name="LESSON_ID">lessonId</string>
     <string name="READING_ID">readingId</string>

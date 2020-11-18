@@ -53,7 +53,7 @@ public class I_Lesson03 extends LessonInit_Lock implements I_Lesson, LessonItem,
             "Ok. Thank you.\nCome again next time."
     };
 
-    private int[] peopleImage = {R.drawable.people3, R.drawable.male_p};
+    private int[] peopleImage = {R.drawable.cosmetic_shop_b, R.drawable.male_p};
 
     @Override
     public String getLessonSubTitle() {

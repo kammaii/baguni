@@ -201,7 +201,10 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         // 오늘 출석체크 안했으면 출석부 업데이트 (버그: 요일이 같으면 일주일만에 접속해도 초기화 안됨)
         if (userInformation != null && !userInformation.getAttendance().get(today)) {
 
-            //initDailyMission();
+            // 챌린저 날짜 체크
+            if(userInformation.getIsChallenger() == 1) {
+                checkChallenge();
+            }
 
             System.out.println("출석체크를 시작합니다.");
             int yesterday;
@@ -251,6 +254,22 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
         } else {
             System.out.println("오늘의 출석체크가 이미 끝났습니다.");
+        }
+    }
+
+
+    // 챌린지 완료여부 체크
+    private void checkChallenge() {
+        //보상 받았는지 확인
+        if(userInformation.getIsChallengeRewarded() == 0) {
+            Long timeNow = UnixTimeStamp.getTimeNow();
+            Long timeExpire = userInformation.getDateChallengeExpire();
+
+            // 챌린지시간 끝났는지 확인
+            if(timeNow >= timeExpire) {
+                userInformation.setIsChallenger(2);
+                System.out.println("챌린지 종료!");
+            }
         }
     }
 

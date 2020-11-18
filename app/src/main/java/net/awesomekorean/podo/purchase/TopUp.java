@@ -112,8 +112,6 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Bi
 
         SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
 
-        crashlytics.log("포인트 구매 성공!");
-
         db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail)
                 .update(
                         "points", userInformation.getPoints(),
@@ -123,7 +121,7 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Bi
                     @Override
                     public void onSuccess(Void aVoid) {
                         System.out.println("DB에 구매한 포인트 저장을 성공했습니다.");
-
+                        Toast.makeText(getApplicationContext(), getString(R.string.THANKS_PURCHASING), Toast.LENGTH_LONG).show();
                         FirebaseMessaging.getInstance().subscribeToTopic("purchase_point");
 
                     }
@@ -131,16 +129,9 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Bi
             @Override
             public void onFailure(@NonNull Exception e) {
                 System.out.println("DB에 구매한 포인트 저장을 실패했습니다.: " +  e);
-                Toast.makeText(getApplicationContext(), getString(R.string.ERROR_SAVE_POINT_DB) + e, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING) + e, Toast.LENGTH_LONG).show();
             }
         });
-
-        Toast.makeText(getApplicationContext(), getString(R.string.THANKS_PURCHASING), Toast.LENGTH_LONG).show();
-
-        // analytics 로그 이벤트 얻기
-        Bundle bundle = new Bundle();
-        bundle.putString("productId", productId);
-        firebaseAnalytics.logEvent("purchase", bundle);
 
         bp.consumePurchase(productId);
 

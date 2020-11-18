@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +26,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import net.awesomekorean.podo.PlaySoundPool;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
+import net.awesomekorean.podo.UnixTimeStamp;
 import net.awesomekorean.podo.UserInformation;
 import net.awesomekorean.podo.challenge.Challenge;
 import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson00;
@@ -151,9 +154,17 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
     int lastClickLevel;
 
-    ImageView btnChallenge;
+    ConstraintLayout layoutChallenge;
     TextView textChallenge;
     ImageView iconFinger;
+
+    ConstraintLayout challengeResult;
+    TextView titleChallengeResult;
+    TextView challengeRewardPoints;
+    TextView challengeResultMessage;
+    Button btnCloseChallengeResult;
+
+    int specialLessonCount;
 
 
     @Nullable
@@ -168,29 +179,87 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         layoutInfo = view.findViewById(R.id.layoutInfo);
         btnCloseInfo = view.findViewById(R.id.btnCloseInfo);
         seekBar = view.findViewById(R.id.seekBar);
-        btnChallenge = view.findViewById(R.id.btnChallenge);
+        layoutChallenge = view.findViewById(R.id.layoutChallenge);
         textChallenge = view.findViewById(R.id.textChallenge);
         iconFinger = view.findViewById(R.id.iconFinger);
+        challengeResult = view.findViewById(R.id.challengeResult);
+        titleChallengeResult = view.findViewById(R.id.titleChallengeResult);
+        challengeRewardPoints = view.findViewById(R.id.challengeRewardPoints);
+        challengeResultMessage = view.findViewById(R.id.challengeResultMessage);
+        btnCloseChallengeResult = view.findViewById(R.id.btnCloseChallengeResult);
         btnPreLevel.setOnClickListener(this);
         btnNextLevel.setOnClickListener(this);
         btnInfo.setOnClickListener(this);
         btnCloseInfo.setOnClickListener(this);
-        btnChallenge.setOnClickListener(this);
+        layoutChallenge.setOnClickListener(this);
+        btnCloseChallengeResult.setOnClickListener(this);
+
 
         context = getContext();
         userInformation = SharedPreferencesInfo.getUserInfo(context);
         setLessonItem(lastClickLevel);
-        setLessonItem(0);
         adapter = new LessonAdapter(context, list);
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
         Shader shader = new LinearGradient(0,0,100,0, new int[]{ContextCompat.getColor(context, R.color.PINK2), ContextCompat.getColor(context, R.color.PURPLE)}, new float[]{0, 1}, Shader.TileMode.CLAMP);
-        textChallenge.getPaint().setShader(shader);
 
-        Animation animation = AnimationUtils.loadAnimation(context, R.anim.move_up_infinite);
-        iconFinger.startAnimation(animation);
+        int isChallenger = userInformation.getIsChallenger();
+
+        // 챌린저 진행중
+        if(isChallenger == 1) {
+            textChallenge.getPaint().setShader(shader);
+            Long timeStart = userInformation.getDateChallengeStart();
+            Long timeNow = UnixTimeStamp.getTimeNow();
+            int dayCount = (int) Math.floor((timeNow-timeStart)/86400 + 1);
+            textChallenge.setText("Day "+dayCount);
+            textChallenge.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+            layoutChallenge.setEnabled(false);
+            iconFinger.setVisibility(GONE);
+
+
+        // 챌린지 종료
+        } else if(isChallenger == 2) {
+            layoutChallenge.setVisibility(GONE);
+
+            // 챌린지 보상여부 체크
+            if(userInformation.getIsChallengeRewarded() == 0) {
+                int completeLessonSize = userInformation.getLessonComplete().size();
+                int totalLessonSize = beginner.length + intermediate.length + specialLessonCount;
+                int rewardPoint;
+                System.out.println("완료레슨 : " + completeLessonSize);
+                System.out.println("토탈레슨 : " + totalLessonSize);
+                if(completeLessonSize >= totalLessonSize ) {
+                    System.out.println("챌린지 성공!");
+                    PlaySoundPool playSoundPool = new PlaySoundPool(context);
+                    playSoundPool.playSoundYay();
+                    userInformation.setIsChallengeRewarded(1);
+                    titleChallengeResult.setText(getString(R.string.CONGRATULATION));
+                    rewardPoint = 1000;
+                    challengeRewardPoints.setText(String.valueOf(rewardPoint));
+                    challengeResultMessage.setText(getString(R.string.CHALLENGE_SUCCEED_MESSAGE));
+
+                } else {
+                    System.out.println("챌린지 실패!");
+                    userInformation.setIsChallengeRewarded(2);
+                    titleChallengeResult.setText(getString(R.string.CHALLENGE_FAILED));
+                    rewardPoint = 100;
+                    challengeRewardPoints.setText(String.valueOf(rewardPoint));
+                    challengeResultMessage.setText(getString(R.string.CHALLENGE_FAILED_MESSAGE));
+                }
+                challengeResult.setVisibility(VISIBLE);
+                userInformation.addRewardPoints(context, rewardPoint);
+            }
+
+        // 챌린저 아님
+        } else {
+            textChallenge.getPaint().setShader(shader);
+            Animation animation = AnimationUtils.loadAnimation(context, R.anim.move_up_infinite);
+            iconFinger.startAnimation(animation);
+        }
+
+
 
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -239,10 +308,10 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     private void setCompletedLessons() {
         List<String> lessonComplete = userInformation.getLessonComplete();
         System.out.println("LESSON_COMPLETE:" + lessonComplete);
-        boolean isChallenger = userInformation.getIsChallenger();
+        int isChallenger = userInformation.getIsChallenger();
 
         // 챌린저 아닐 때
-        if(!isChallenger) {
+        if(isChallenger == 0) {
             if (lessonComplete.size() > 0) {
                 for (int i = 0; i < list.size(); i++) {
                     if (lessonComplete.contains(list.get(i).getLessonId())) {
@@ -272,10 +341,12 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
         // 챌린저일 때
         } else {
+            specialLessonCount = 0;
             for (int i = 0; i < list.size(); i++) {
                 list.get(i).setIsLocked(false);
                 if (list.get(i).getSLesson() != null) {
                     list.get(i).getSLesson().setIsLocked(false);
+                    specialLessonCount ++;
                 }
 
                 if (lessonComplete.contains(list.get(i).getLessonId())) {
@@ -373,9 +444,13 @@ public class MainLesson extends Fragment implements View.OnClickListener {
                 layoutInfo.setVisibility(GONE);
                 break;
 
-            case R.id.btnChallenge :
+            case R.id.layoutChallenge :
                 Intent intent = new Intent(context, Challenge.class);
                 startActivity(intent);
+                break;
+
+            case R.id.btnCloseChallengeResult :
+                challengeResult.setVisibility(GONE);
                 break;
         }
     }
