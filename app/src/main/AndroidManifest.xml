@@ -20,7 +20,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".challenge.Challenge">
-
         </activity>
         <activity android:name=".lesson.lessonHangul.LessonHangulMenu" />
         <activity android:name=".qna.QnAReplied" />
@@ -121,7 +120,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".login.SignUp"

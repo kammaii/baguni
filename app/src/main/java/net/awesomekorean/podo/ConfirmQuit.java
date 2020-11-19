@@ -92,12 +92,11 @@ public class ConfirmQuit extends AppCompatActivity implements View.OnClickListen
                         // 완료리스트에 업데이트
                         UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
                         userInformation.updateCompleteList(context, unitId, isReading);
-                        sendResultOk();
 
                     } else {
                         System.out.println("레슨/읽기를 완료하지 않고 메인으로 나갑니다.");
-                        sendResultOk();
                     }
+                    sendResultOk();
                 }
                 break;
 

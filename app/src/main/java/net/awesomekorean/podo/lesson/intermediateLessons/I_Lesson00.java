@@ -1,12 +1,13 @@
 package net.awesomekorean.podo.lesson.intermediateLessons;
 
 import net.awesomekorean.podo.R;
+import net.awesomekorean.podo.lesson.lessons.LessonInit;
 import net.awesomekorean.podo.lesson.lessons.LessonItem;
 import net.awesomekorean.podo.lesson.lessons.LessonInit_Lock;
 
 import java.io.Serializable;
 
-public class I_Lesson00 extends LessonInit_Lock implements I_Lesson, LessonItem, Serializable {
+public class I_Lesson00 extends LessonInit implements I_Lesson, LessonItem, Serializable {
 
     private String lessonId = "IL_00";
     private String lessonTitle = "reservation";
@@ -33,7 +34,7 @@ public class I_Lesson00 extends LessonInit_Lock implements I_Lesson, LessonItem,
 
     private String[] dialogEng = {
             "Hello?\nThis is a ‘podo’ restaurant.",
-            "Hello?\nCan I make a reservation tonight?.",
+            "Hello?\nCan I make a reservation\ntonight?.",
             "Yes, what time?",
             "6 o'clock in the evening.",
             "How many people?",
@@ -43,7 +44,7 @@ public class I_Lesson00 extends LessonInit_Lock implements I_Lesson, LessonItem,
             "I made a reservation.",
             "Thank you.",
             "(After a few hours)",
-            "Hello?\nI want to change the reservation time today.",
+            "Hello?\nI want to change\nthe reservation time today.",
             "ok, what time should I change it?",
             "7 o'clock in the evening.",
             "ok, I changed it.",

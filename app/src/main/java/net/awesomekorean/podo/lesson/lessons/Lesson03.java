@@ -55,7 +55,7 @@ public class Lesson03 extends LessonInit implements Lesson, LessonItem, Serializ
             "-",
             "-",
             "yes : '네' / no : '아니요'",
-            "There are lots of unit nouns in Korean.\nDon't try to learn all at once.\nJust remember to use '명' for people and '개' for things.",
+            "There are lots of unit nouns in Korean.\nDon't try to learn all at once.\nJust remember to use '명' or '분'(honorific) for people and '개' for things.",
             "-",
             "-",
             "The words that describe the place should be followed by the place particle '에서'.",

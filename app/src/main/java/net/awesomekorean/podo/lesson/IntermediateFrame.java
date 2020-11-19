@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import net.awesomekorean.podo.AdsManager;
 import net.awesomekorean.podo.ConfirmQuit;
 import net.awesomekorean.podo.LoadingPage;
 import net.awesomekorean.podo.MediaPlayerManager;
@@ -83,7 +84,7 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
     Button btnFinish;
 
     public LinearLayout collectResult;
-
+    AdsManager adsManager;
 
 
     @Override
@@ -92,6 +93,12 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_intermediate_frame);
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
+        adsManager = AdsManager.getInstance();
+
+        if(adsManager.interstitialAd == null || !adsManager.interstitialAd.isLoaded()) {
+            adsManager.loadFullAds(getApplicationContext());
+        }
 
         btnClose = findViewById(R.id.btnClose);
         title = findViewById(R.id.title);
@@ -304,16 +311,33 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
     }
 
 
+    // 애드몹 광고 보여주고 종료
+    private void playAds() {
+        if(adsManager.interstitialAd.isLoaded()) {
+            adsManager.playFullAds(this);
+        }
+        finish();
+    }
+
+
+    public void openConfirmQuit() {
+        MediaPlayerManager mediaPlayerManager = MediaPlayerManager.getInstance();
+        mediaPlayerManager.stopMediaPlayer();
+        Intent intent = new Intent(getApplicationContext(), ConfirmQuit.class);
+        intent.putExtra(getResources().getString(R.string.FINISH), false);
+        startActivityForResult(intent, 200);
+    }
+
+
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
 
             case R.id.btnClose :
-                Intent intent = new Intent(this, ConfirmQuit.class);
-                intent.putExtra(getResources().getString(R.string.FINISH), false);
-                intent.putExtra(getResources().getString(R.string.LESSON_ID), lesson.getLessonId());
-                startActivityForResult(intent, 200);
-                break;
+                openConfirmQuit();
+            break;
 
             case R.id.btnCancel :
                 for(int i=0; i<clickedBtns.size(); i++) {
@@ -359,8 +383,8 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
             case R.id.btnFinish :
                 UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
                 userInformation.updateCompleteList(getApplicationContext(), lesson.getLessonId(), false);
-                finish();
-                break;
+                playAds();
+            break;
 
             case R.id.btnPlayAgain :
                 list.clear();
@@ -419,14 +443,20 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
         }
     }
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(resultCode == RESULT_OK) {
-            MediaPlayerManager mediaPlayerManager = MediaPlayerManager.getInstance();
-            mediaPlayerManager.stopMediaPlayer();
             finish();
         }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        openConfirmQuit();
     }
 }

@@ -141,7 +141,7 @@ public class IntermediateAdapter extends RecyclerView.Adapter<IntermediateAdapte
             items.setIsExpanded(false);
 
             if(list.size()%2 == 0) {
-                holder.tvDialog.setText("...");
+                holder.tvDialog.setText(items.getDialogEng());
             } else {
                 holder.tvDialog.setText(items.getDialog());
             }

@@ -13,7 +13,7 @@ public class Lesson45 extends LessonInit_Lock implements Lesson, LessonItem, Ser
 
     private String[] wordBack = {"problem", "again", "confirm", "make a phone call"};
 
-    private String[] wordPronunciation = {"-", "-", "[화긴]", "-"};
+    private String[] wordPronunciation = {"-", "-", "[화긴하다]", "-"};
 
     private String[] sentenceFront = {
             "여보세요?",
