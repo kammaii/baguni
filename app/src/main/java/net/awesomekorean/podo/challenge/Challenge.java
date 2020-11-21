@@ -170,7 +170,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
     public void onPurchasesUpdated(BillingResult billingResult, @Nullable List<Purchase> list) {
 
         // 결제 성공
-        if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+        if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
             System.out.println("결제를 성공했습니다.");
             UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
             Long timeStart = UnixTimeStamp.getTimeNow();

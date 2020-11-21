@@ -11,15 +11,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.anjlab.android.iab.v3.BillingProcessor;
-import com.anjlab.android.iab.v3.Constants;
-import com.anjlab.android.iab.v3.TransactionDetails;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.android.billingclient.api.BillingClient;
+import com.android.billingclient.api.BillingClientStateListener;
+import com.android.billingclient.api.BillingFlowParams;
+import com.android.billingclient.api.BillingResult;
+import com.android.billingclient.api.ConsumeParams;
+import com.android.billingclient.api.ConsumeResponseListener;
+import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.PurchasesUpdatedListener;
+import com.android.billingclient.api.SkuDetails;
+import com.android.billingclient.api.SkuDetailsParams;
+import com.android.billingclient.api.SkuDetailsResponseListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,14 +36,15 @@ import net.awesomekorean.podo.MainActivity;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SettingStatusBar;
 import net.awesomekorean.podo.SharedPreferencesInfo;
+import net.awesomekorean.podo.UnixTimeStamp;
 import net.awesomekorean.podo.UserInformation;
 
-public class TopUp extends AppCompatActivity implements View.OnClickListener, BillingProcessor.IBillingHandler {
+import java.util.ArrayList;
+import java.util.List;
+
+public class TopUp extends AppCompatActivity implements View.OnClickListener, PurchasesUpdatedListener {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-    BillingProcessor bp;
-    private String KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjttlMN7KIO22BMxNl1H2oN6FjRAUqQPvrlOKKybEwj0f2mXNreqpt5n/6/SV4+TAnADJSJO1j9MoN1fvVkYtr0zJtEe62hBcBouyqRKt/uWGhcy6ToMUlNjl9Wxf9UaSrJ3c0IePZvRtlGhd9y2OpK99uMfLjfqxY7+UIjnqBIO8qXSiy+E1jUrlR6AhZoBrwSfVSVPjOXya5K2uEngttMWaYwrnVhmBeEmjdIAjt0021plp4t7bYP5zSvwQp3dbomgnwE33njXWhn3ohla8m6wxZUPpZzvtCWKRo+SegyXx+wX2OVKcIkK27IrK9NEmrJzzamL2DLj/QhXKnk6aAQIDAQAB";
 
     ImageView btnClose;
 
@@ -50,11 +58,18 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Bi
 
     Button btnGetPoint;
 
-    String skuId;
-
     FirebaseAnalytics firebaseAnalytics;
 
-    FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+    BillingClient billingClient;
+    SkuDetails skuDetails;
+    SkuDetails skuDetails100;
+    SkuDetails skuDetails500;
+    SkuDetails skuDetails1000;
+
+    TextView price100;
+    TextView price500;
+    TextView price1000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +86,9 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Bi
         checkPointB = findViewById(R.id.checkPointB);
         checkPointC = findViewById(R.id.checkPointC);
         btnGetPoint = findViewById(R.id.btnGetPoint);
+        price100 = findViewById(R.id.price100);
+        price500 = findViewById(R.id.price500);
+        price1000 = findViewById(R.id.price1000);
         btnClose.setOnClickListener(this);
         pointA.setOnClickListener(this);
         pointB.setOnClickListener(this);
@@ -83,105 +101,154 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Bi
         firebaseAnalytics.logEvent("purchase_page_open", params);
         FirebaseMessaging.getInstance().subscribeToTopic("purchase_open");
 
-        bp = new BillingProcessor(this, KEY, this);
-        bp.initialize();
         setPurchase(pointB, checkPointB, getString(R.string.SKU_1000));
-    }
 
 
-    @Override
-    public void onProductPurchased(String productId, TransactionDetails details) {
-        // * 구매 완료시 호출
-        // productId: 구매한 sku (ex) no_ads)
-        // details: 결제 관련 정보
+        billingClient = BillingClient.newBuilder(getApplicationContext())
+                .enablePendingPurchases()
+                .setListener(this).build();
 
-        final UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
-        int havePoint = userInformation.getPoints();
-        int newPoint = 0;
 
-        if(productId.equals(getString(R.string.SKU_100))) {
-            newPoint = havePoint + 100;
-        } else if(productId.equals(getString(R.string.SKU_500))) {
-            newPoint = havePoint + 500;
-        } else if(productId.equals(getString(R.string.SKU_1000))) {
-            newPoint = havePoint + 1000;
-        }
-
-        userInformation.setPoints(newPoint);
-        userInformation.setPointsPurchased(newPoint);
-
-        SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
-
-        db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail)
-                .update(
-                        "points", userInformation.getPoints(),
-                        "pointsPurchased", userInformation.getPointsPurchased()
-                )
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        System.out.println("DB에 구매한 포인트 저장을 성공했습니다.");
-                        Toast.makeText(getApplicationContext(), getString(R.string.THANKS_PURCHASING), Toast.LENGTH_LONG).show();
-                        FirebaseMessaging.getInstance().subscribeToTopic("purchase_point");
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
+        // 구글플레이에 연결하기
+        billingClient.startConnection(new BillingClientStateListener() {
             @Override
-            public void onFailure(@NonNull Exception e) {
-                System.out.println("DB에 구매한 포인트 저장을 실패했습니다.: " +  e);
-                Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING) + e, Toast.LENGTH_LONG).show();
+            public void onBillingSetupFinished(BillingResult billingResult) {
+
+                // 구글플레이와 연결 성공
+                if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    System.out.println("구글플레이와 연결을 성공했습니다.");
+                    getSkuDetail();
+
+                } else {
+                    System.out.println("구글플레이와 연결을 실패했습니다. : " + billingResult.getDebugMessage());
+                }
+            }
+
+            @Override
+            public void onBillingServiceDisconnected() {
+                System.out.println("구글플레이와 연결이 끊어졌습니다.");
             }
         });
-
-        bp.consumePurchase(productId);
-
-        finish();
     }
 
-    @Override
-    public void onPurchaseHistoryRestored() {
-        // * 구매 정보가 복원되었을때 호출
-        // bp.loadOwnedPurchasesFromGoogle() 하면 호출 가능
-        crashlytics.log("포인트 구매 복원!");
-        System.out.println("포인트 구매 복원!");
+
+    // 상품 정보 받아오기
+    public void getSkuDetail() {
+        List<String> skuList = new ArrayList<>();
+        skuList.add(getString(R.string.SKU_100));
+        skuList.add(getString(R.string.SKU_500));
+        skuList.add(getString(R.string.SKU_1000));
+
+        SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
+        params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
+        billingClient.querySkuDetailsAsync(params.build(), new SkuDetailsResponseListener() {
+            @Override
+            public void onSkuDetailsResponse(BillingResult billingResult, List<SkuDetails> list) {
+
+                if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    System.out.println("챌린지 상품 정보를 받았습니다.");
+                    for(SkuDetails sku : list) {
+                        if(sku.getSku().equals(getString(R.string.SKU_100))) {
+                            price100.setText(sku.getPrice());
+                            skuDetails100 = sku;
+                        } else if(sku.getSku().equals(getString(R.string.SKU_500))) {
+                            price500.setText(sku.getPrice());
+                            skuDetails500 = sku;
+                        } else {
+                            price1000.setText(sku.getPrice());
+                            skuDetails1000 = sku;
+                            skuDetails = sku;
+                        }
+                    }
+
+                } else {
+                    System.out.println("챌린지 상품 정보 받아오기를 실패했습니다. : " + billingResult.getDebugMessage());
+                }
+            }
+        });
     }
 
+
+    // 결제 처리
     @Override
-    public void onBillingError(int errorCode, Throwable error) {
-        // * 구매 오류시 호출
-        // errorCode == Constants.BILLING_RESPONSE_RESULT_USER_CANCELED 일때는
-        // 사용자가 단순히 구매 창을 닫은것이으로 이것 제외하고 핸들링하기.
-        if(errorCode != Constants.BILLING_RESPONSE_RESULT_USER_CANCELED) {
-            crashlytics.log("포인트 구매 오류 발생! : " + errorCode);
-            System.out.println("구매 오류가 발생했습니다." +  errorCode);
-            Toast.makeText(getApplicationContext(), "FAILED Purchasing: "+errorCode, Toast.LENGTH_LONG).show();
+    public void onPurchasesUpdated(BillingResult billingResult, @Nullable List<Purchase> list) {
+
+        // 결제 성공
+        if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
+            System.out.println("결제를 성공했습니다.");
+            final UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
+            int havePoint = userInformation.getPoints();
+            int newPoint = 0;
+
+            for (Purchase purchase : list) {
+                if(purchase.getSku().equals(getString(R.string.SKU_100))) {
+                    newPoint = havePoint + 100;
+                } else if(purchase.getSku().equals(getString(R.string.SKU_500))) {
+                    newPoint = havePoint + 500;
+                } else {
+                    newPoint = havePoint + 1000;
+                }
+            }
+
+            userInformation.setPoints(newPoint);
+            userInformation.setPointsPurchased(newPoint);
+
+            SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
+
+            db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail)
+                    .update(
+                            "points", userInformation.getPoints(),
+                            "pointsPurchased", userInformation.getPointsPurchased()
+                    )
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            System.out.println("DB에 구매한 포인트 저장을 성공했습니다.");
+                            Toast.makeText(getApplicationContext(), getString(R.string.THANKS_PURCHASING), Toast.LENGTH_LONG).show();
+                            FirebaseMessaging.getInstance().subscribeToTopic("purchase_point");
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    System.out.println("DB에 구매한 포인트 저장을 실패했습니다.: " +  e);
+                    Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING) + e, Toast.LENGTH_LONG).show();
+                }
+            });
+
+
+            // 상품 소모하기
+            ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
+                @Override
+                public void onConsumeResponse(BillingResult billingResult, String s) {
+
+                    if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                        System.out.println("상품을 성공적으로 소모하였습니다.");
+                    } else {
+                        System.out.println("상품 소모를 실패했습니다. : " + billingResult.getResponseCode());
+                    }
+                }
+            };
+
+            ConsumeParams consumeParams = ConsumeParams.newBuilder()
+                    .setPurchaseToken(list.get(0).getPurchaseToken()).build();
+
+            billingClient.consumeAsync(consumeParams, consumeListener);
+
+            finish();
+
+
+            // 결제 취소
+        } else if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
+            System.out.println("결제를 취소했습니다.");
+
+
+            //결제 실패
+        } else {
+            System.out.println("결제를 실패했습니다. : " + billingResult.getResponseCode());
         }
     }
 
-    @Override
-    public void onBillingInitialized() {
-        // * 처음에 초기화됬을때.
-        crashlytics.log("포인트 구매 초기화!");
-        System.out.println("포인트 구매 초기화!");
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(!bp.handleActivityResult(requestCode, resultCode, data)) {
-            super.onActivityResult(requestCode, resultCode, data);
-            crashlytics.log("포인트 구매 요청코드 : " + requestCode);
-            crashlytics.log("포인트 구매 결과코드 : " + resultCode);
-            crashlytics.log("포인트 구매 데이터 : " + data);
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        if(bp != null) {
-            bp.release();
-        }
-        super.onDestroy();
-    }
 
     @Override
     public void onClick(View v) {
@@ -205,15 +272,23 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Bi
                 break;
 
             case R.id.btnGetPoint :
-                bp.purchase(this, skuId);
-                crashlytics.log("포인트 구매 버튼 클릭! skyId : " + skuId);
+                BillingFlowParams flowParams = BillingFlowParams.newBuilder().setSkuDetails(skuDetails).build();
+                billingClient.launchBillingFlow(this, flowParams);
                 break;
         }
     }
 
+
     private void setPurchase(LinearLayout purchase, ImageView check, String id) {
 
-        skuId = id;
+        if(id.equals(getString(R.string.SKU_100))) {
+            skuDetails = skuDetails100;
+        } else if (id.equals(getString(R.string.SKU_500))) {
+            skuDetails = skuDetails500;
+        } else {
+            skuDetails = skuDetails1000;
+        }
+
         pointA.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_grey_10));
         pointB.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_grey_10));
         pointC.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_grey_10));
