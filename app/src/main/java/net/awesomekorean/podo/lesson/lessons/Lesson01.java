@@ -38,7 +38,7 @@ public class Lesson01 extends LessonInit implements Lesson, LessonItem, Serializ
             "I'm Danny / I'm Megan",
             "country",
             "which country",
-            "Where are you from?",
+            "What/which country are you from?\n(*Frequently say 'Where are you from?')",
             "person / people",
             "It’s a person.",
             "I’m Korean."
@@ -46,15 +46,15 @@ public class Lesson01 extends LessonInit implements Lesson, LessonItem, Serializ
 
     private String[] sentenceExplain = {
             "-",
-            "This expression is very useful when you have questions.\nYou can point your finger at something you don't know and say ‘이거 뭐예요?’ (what's this?)\nWhen you point something out a little farther away, you can say '저거 뭐예요?' (what's that?)",
-            "You may be wondering what '이' is after '이름'.\nThis is the main challenge for Korean language learners, called 'subject particle' but don't struggle to know it now.\nJust remember that you can also say '이름 뭐예요?' but '이름이 뭐예요?' is a better expression.\nIt is important to get used to it in this level.\n(See the special lesson ‘particles : Why we use particles?)",
-            "If there isn't a batchim (last consonant) in the previous letter, we use ‘예요’.\n\nIf there is a batchim in the previous letter, we use ‘이에요’.",
+            "Since you've just started learning Korean, you may have a lot of questions.\nThis expression is very useful when you have questions.\nYou can point something and say ‘이거 뭐예요?’ (what's this?)\nWhen you point something farther, you can say '저거 뭐예요?' (what's that?)",
+            "You may wonder what '이' following after '이름(name)'.\nThis is the main challenge for Korean language learners, called 'subject particle'\nbut don't struggle to know it now.\nJust remember that you can also say '이름 뭐예요?' but '이름이 뭐예요?' sounds more natural.\nIt is important to get used to it in this level.",
+            "<How to use '예요 / 이에요'>\nIf there isn't a Batchim(last consonant) in the previous letter, we use ‘예요’.\nIf there is a Batchim in the previous letter, we use ‘이에요’.",
             "-",
             "-",
-            "사람이에요 [사라미에요]\n(See Lesson 7 - 'Speaking Naturally : basic rules')",
+            "'사람이에요' [사라미에요]",
             "-",
             "-",
-            "Find out what your country is in Korean and make it into a sentence."
+            "Make a sentence using your country name in Korean."
     };
 
     private String[] dialog = {

@@ -48,15 +48,15 @@ public class Lesson21 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceExplain = {
-            "쓰다' -> '썼어요' (past tense)",
+            "'쓰다' -> '썼어요' (past tense)",
             "-",
-            "N(으)로' is used when expressing means of transport, tools, and materials used to make something.",
+            "'N(으)로' is used as a meaning of 'by/through/in' something (transportation, tools, and materials).",
             "-",
-            "보다' -> '봐 주세요' (request)",
+            "'보다' -> '봐 주세요' (request)",
             "-",
             "-",
             "When you are trying to do something for somebody, use the 'V-아/어 줄게요' form.\n\nconjugate 'V-아/어 줄게요'\n'보다' -> '봐요'\n'봐요' -> '봐' + '줄게요' = '봐 줄게요'",
-            "틀리다' -> '틀렸어요' (past tense)",
+            "'틀리다' -> '틀렸어요' (past tense)",
             "-",
             "-",
             "-"

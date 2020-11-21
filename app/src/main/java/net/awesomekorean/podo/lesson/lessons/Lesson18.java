@@ -52,9 +52,9 @@ public class Lesson18 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceExplain = {
-            "Use '저' instead of '나' when you speak honorific.",
-            "이번 주 : this week\n저번 주: last week\n다음 주: next week",
-            "Use the 'V-아/어 주세요' form to ask something.\n\nconjugate 'V-아/어 주세요'\n'돕다' -> '돕아요' -> '도와요' (irregular)\n'도와요' -> '도와' + '주세요' = '도와주세요'",
+            "Use '저' instead of '나' to speak in honorific form.",
+            "'이번 주' : this week\n'저번 주': last week\n'다음 주': next week",
+            "Use the 'V-아/어 주세요' form to ask for a favor.\n\nconjugate 'V-아/어 주세요'\n'돕다' -> '돕아요' -> '도와요' (irregular)\n'도와요' -> '도와' + '주세요' = '도와주세요'",
             "Using '좀' means 'a little' when asking for help in more polite expressions.",
             "-",
             "-",

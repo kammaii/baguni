@@ -47,15 +47,15 @@ public class Lesson24 extends LessonInit_Lock implements Lesson, LessonItem, Ser
 
     private String[] sentenceExplain = {
             "-",
-            "When somebody seems to be sick somewhere or seems to happen something bad, you can say this.",
+            "When someone looks sick or seems to have a difficult time you can say this.",
             "-",
             "'자요' -> '자도'\n\nex)\n'바빠요' -> '바빠도'\n'많아요' -> '많아도'\n'봐요' -> '봐도'",
             "-",
-            "In English, we say 'to see a doctor', but in Korean, 'to go to hospital' is more natural.",
-            "When you want to say 'visit' somewhere, use this expression.\n\n'갔다' + '왔다' = '갔다 왔다'\n\nConversely, when someone visits my place and goes, it is said to '왔다 갔다'.\n\nex)\n우리 집에 누가 왔다 갔어요?",
+            "In English, you say 'go and see the doctor' but in Korean, you better say 'go to the hospital' and this way sounds more natural.",
+            "When you want to say 'have visited' somewhere, use this expression.\n\n'갔다' + '왔다' = '갔다 왔다'\n\nConversely, when someone visited your place and left, you can say '왔다 갔다'.\n\nex)\n우리 집에 누가 왔다 갔어요?",
             "-",
             "'많다' -> '많' + '아서' = '많아서'",
-            "When you want to give the meaning of 'limited', you can use '은 / 는'.",
+            "When you want to express the meaning of 'limited', you can use '은 / 는'.",
             "'가다' -> '가' + 'ㄹ 거예요' = '갈 거예요'"
     };
 

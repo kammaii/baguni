@@ -57,11 +57,11 @@ public class Lesson15 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "-",
-            "Use it when you have the ability to do something.\nOn the contrary, when you don't have an ability to do something, you can say 'V-(으)ㄹ 수 없다'.\nYou can also use '못' learned from Lesson 5 'Negative'.\n\nconjugate 'V-(으)ㄹ 수 있다/없다'\n: '이해하다' -> '이해하' + 'ㄹ 수 있다' = '이해할 수 있다'\n: '이해하다' ->' 이해하' + 'ㄹ 수 없다' = '이해할 수 없다'\n\nnegative '못'\n: '이해하다' -> '이해 못 하다'",
-            "It can be used when it's not very good but not that bad.",
+            "You can use it to describe what you can do.\nBut if you want to describe what you cannot do, you can say 'V-(으)ㄹ 수 없다'\nYou can also use '못'.\n\nconjugate 'V-(으)ㄹ 수 있다/없다'\n: '이해하다' -> '이해하' + 'ㄹ 수 있다' = '이해할 수 있다'\n: '이해하다' ->' 이해하' + 'ㄹ 수 없다' = '이해할 수 없다'\n\nnegative '못'\n: '이해하다' -> '이해 못 하다'",
             "-",
-            "Used for future tense.",
-            "The unit noun representing the number of times is '번'."
+            "-",
+            "Future tense used in this sentence.",
+            "'번' is the unit noun for the number of times."
     };
 
     private String[] dialog = {

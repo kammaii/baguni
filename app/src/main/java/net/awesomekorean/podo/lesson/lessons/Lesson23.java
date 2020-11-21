@@ -48,7 +48,7 @@ public class Lesson23 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "'배우다' -> '배우' + '고 싶다' = '배우고 싶다'",
-            "Many students are confused '모든' and '다' but it is not difficult.\n\n'모든' + noun\n'다' + adjective / verb",
+            "Many students are confused '모든' and '다' but it is not difficult.\n\n'모든' + N\n'다' + A/V",
             "-"
     };
 

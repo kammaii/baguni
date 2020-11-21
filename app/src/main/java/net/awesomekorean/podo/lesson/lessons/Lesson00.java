@@ -22,24 +22,25 @@ public class Lesson00 extends LessonInit implements Lesson, LessonItem, Serializ
             "오랜만이에요",
             "잘 지냈어요?",
             "다음에 또 봐요.",
-            "안녕히 가세요/안녕히 계세요"};
+            "안녕히 가세요\n/ 안녕히 계세요"
+    };
 
     private String[] sentenceBack = {
-            "Hello",
+            "Hello / Hi",
             "Nice to meet you",
             "Long time no see",
-            "How have you been?",
+            "Have you been doing well?\nHow have you been doing?",
             "See you again",
-            "Good bye"
+            "Good bye / Bye"
     };
 
     private String[] sentenceExplain = {
-            "No matter in the morning, afternoon, evening, we say hello like this.\nYou can just say '안녕' to your close friend (friend means same age) or a close sister/brother (It means a close friend that is younger than you)",
-            "We say this to someone who met for the first time or after a long time.",
+            "No matter if it's morning, afternoon or evening, we say hello.\nYou can just say '안녕' to your close friends.(only if he/she is same age as you or younger than you)",
+            "Korean use this word to someone  who I just meet for the first time or who that I haven't seen a while.",
             "-",
-            "Conventionally asking if nothing has happened so far.",
+            "A Usual greeting to check if someone has been doing well.",
             "-",
-            "가세요' is from 'to go' and '계세요' is from 'to stay'.\nTherefore, if the other person will 'go' from here after saying goodbye, we say '안녕히 가세요' and if the other person will 'stay' here after saying goodbye, we say '안녕히 계세요'.\nIf they are close friends or younger friends, you can just say goodbye like this '안녕'."
+            "'가세요' is derived from 'to go' and '계세요' is derived from 'to stay'.\nWhen you say goodbye to someone, if he/she's the one who leave(go), you say '안녕히 가세요' but if he/she's the one who stay in the same place while you are leaving, you say '안녕히 계세요'.\nIf they are close friends or younger than you, you can simply say '안녕'."
     };
 
     private String[] dialog = {

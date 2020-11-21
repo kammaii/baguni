@@ -52,19 +52,19 @@ public class Lesson33 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceExplain = {
-            "When you expressing an attempt, you can use '아/어 보다' form.\n\n'듣다' -> '들어요' \n'들어' + '보다' -> '들어 보다'",
-            "<Review Lesson 14>\nIf you use the '아/어 보다' as a past tense, it means 'experience'.\nTherefore, you can use the same meaning of '아/어 봤다' and '아/어 본 적 있다.'\n\n'들어 봤어요?' = '들어 본 적 있어요?'",
+            "When you describe a try, you can use '아/어 보다' form.\n\n'듣다' -> '들어요' \n'들어' + '보다' -> '들어 보다'",
+            "If you use the '아/어 보다' as a past tense, it means 'experience'.\nTherefore, you can also use '아/어 본 적 있다' as a same meaning of '아/어 봤다'.\n\n'들어 봤어요?' = '들어 본 적 있어요?'",
             "-",
             "-",
             "-",
             "-",
             "-",
             "'들어 보다' -> '들어 봐요'\n'들어 봐' + '야 돼요' = '들어 봐야 돼요'\n\nWhen you say 'have to do something', use '~아/어야 돼요/해요' form.\n'들어 봐야 돼요' = '들어 봐야 해요'",
-            "(Refer to Lesson 16 - confusing expression : '~(으)ㄹ게요' vs. '~(으)ㄹ 거예요')",
+            "-",
             "-",
             "-",
             "'들어 보다' -> '들어 보' + 'ㄹ게요' = '들어 볼게요'",
-            "Use the '~(으)ㄹ게요' form when you want to talk about your will as promised.",
+            "Use the '~(으)ㄹ게요' form when you promise(or will try) something.",
             "-"
     };
 

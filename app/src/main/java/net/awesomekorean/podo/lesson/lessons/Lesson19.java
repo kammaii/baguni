@@ -38,11 +38,11 @@ public class Lesson19 extends LessonInit implements Lesson, LessonItem, Serializ
 
     private String[] sentenceExplain = {
             "To close friends : '잘 자~'",
-            "You can use whatever you want. It is 100% the same. (Refer to '고맙습니다 vs. 감사합니다' in the Reading)\nTo close friends : '고마워~'",
-            "It's good to use '죄송합니다' for someone older than me or with a higher social status.\nTo close friends : '미안~'",
-            "It's not in English. It's a greeting to the person who provided the meal for me.\nTo close friends : '잘 먹을게~'",
+            "You can use whichever you want. It is 100% the same.\nTo close friends : '고마워~'",
+            "You should say '죄송합니다' to someone older than you or with a higher position than you.\nTo close friends : '미안~'",
+            "It cannot be translated directly into English. In a literal translation, it means 'I will eat well' but It's actually a greeting for the person who provided/prepared the meal for you.\nTo close friends : '잘 먹을게~'",
             "To close friends : '잘 먹었어~'",
-            "This is usually the first greeting you hear when you go to a restaurant or store."
+            "Usually, this is the first greeting you will hear when you enter a restaurant or a store."
     };
 
 

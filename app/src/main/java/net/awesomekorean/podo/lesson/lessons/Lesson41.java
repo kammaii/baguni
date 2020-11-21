@@ -26,25 +26,25 @@ public class Lesson41 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceBack = {
-            "I'll go back to Korea.",
-            "I'll go back to Korea next week.",
-            "It seems to go fast.",
+            "I'm going back to Korea.",
+            "I'm going back to Korea next week.",
+            "It seems like time goes fast.",
             "I think time is going really fast.",
             "What are you going to do?",
             "What are you going to do when you go back to Korea?",
             "I'll help.",
-            "I'll help my parents work."
+            "I'll help my parents business."
     };
 
     private String[] sentenceExplain = {
-            "The honorific of '나' is '저'.\n\n돌다 : turn\n가다 : go\n돌아가다 : turn and go = go back",
+            "The honorific of '나' is '저'.\n\n'돌다' : turn\n'가다' : go\n'돌아가다' : turn and go = go back",
             "-",
-            "When you want to make an adjective to an adverb, you can use the  '-게' form.\n'빠르다' -> '빠르' + '게' = '빠르게'",
-            "-",
-            "-",
+            "When you want to transform an adjective into an adverb, you can use the '-게' form.\n'빠르다' -> '빠르' + '게' = '빠르게'",
             "-",
             "-",
-            "When talking about an appointment with another person or with me, we can use '~기로 했어요'.\nUsually we use it a lot when talking about a schedule or plan."
+            "-",
+            "-",
+            "When talking about an appointment with another person or resolution for yourself, you can use '~기로 했어요'.\nUsually Korean use it a lot when talking about a schedule or plan."
     };
 
     private String[] dialog = {

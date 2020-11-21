@@ -45,7 +45,7 @@ public class Lesson06 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "I go to the gym.",
             "Let's go to the gym together.",
             "Let's go the gym together later.",
-            "Great."
+            "Great / Yes"
     };
 
     private String[] sentenceExplain = {
@@ -54,12 +54,12 @@ public class Lesson06 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "conjugate '고 있다'\n: '가다' -> '가' + '고 있다' = '가고 있다'\nconjugate '아요/어요'\n: '가고 있다' -> '가고 있' + '어요' = '가고 있어요'",
-            "If you use verbs related to movement ('가다', '오다', '들어가다' etc ...)\nwe add '에' after the noun that is the destination.\nWe can also omit \"\"에\"\" when speaking\n(See the Lesson 4 - 'confusing expression : '에 vs. 에서')",
+            "-",
             "-",
             "conjugate '아요/어요'\n: '가다' -> '가' + '아요' = '가아요' -> '가요'",
             "-",
-            "You can also use '랑/이랑' that we learned in the previous lesson.\n'저' (a polite expression of 'me') + '랑' = '저랑 헬스장에 가요'\nOr you can also use '랑/이랑' with '같이' means together.\n'저랑 같이 헬스장에 가요'",
-            "When you want to express a short time within a few hours, use '이따' or '이따가'.\nIt's for conversational speaking.",
+            "You can use '랑/이랑' as we learned from the previous lesson.\n'저' + '랑' = '저랑 헬스장에 가요'\n* 저(me): A polite expression to refer to yourself. You can call yourself as '저' when you are talking someone except close friends and those who are younger than you.\nOr you can also use '랑/이랑' with '같이'(together). '저랑 같이 헬스장에 가요'",
+            "When you want to mention a moment within a few hours, you can use '이따' or '이따가'.\nIt's for conversational language.",
             "-"
     };
 

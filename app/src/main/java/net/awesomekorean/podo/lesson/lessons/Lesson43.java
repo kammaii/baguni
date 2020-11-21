@@ -34,19 +34,19 @@ public class Lesson43 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "Let's come again next time.",
             "Shall we go out now?",
             "I want to sit down.",
-            "I want to sit a little more.",
-            "I am so full that I want to sit a little more."
+            "I want to sit a little longer.",
+            "I'm so full so I want to sit a little longer."
     };
 
     private String[] sentenceExplain = {
             "Both '지금' and '이제' have the same meaning of 'now'.\nBut unlike '지금', which simply expresses time,\n'이제' gives the feeling of a change of atmosphere.",
-            "인기가 많다' -> '인기가 많' + '은 것 같다' = '인기가 많은 것 같다'",
+            "'인기가 많다' -> '인기가 많' + '은 것 같다' = '인기가 많은 것 같다'",
             "-",
             "-",
-            "(으)ㄹ까요?' and '(으)ㄹ래요?' is very similar.\nTherefore, this sentence can be changed to '이제 나갈래요?'",
-            "아/어 있다' form indicates that the condition persists after an action has ended.\n'앉다' -> '앉' + '아 있다' = '앉아 있다'\n'앉아 있다' -> '앉아 있' + '고 싶다' = '앉아있고 싶다'",
+            "'(으)ㄹ까요?' and '(으)ㄹ래요?' is very similar.\nTherefore, this sentence can be changed into '이제 나갈래요?'",
+            "'아/어 있다' form indicates that the status persists after an action has ended.\n'앉다' -> '앉' + '아 있다' = '앉아 있다'\n'앉아 있다' -> '앉아 있' + '고 싶다' = '앉아있고 싶다'",
             "-",
-            "배부르다' -> '배불러요' (irregular)"
+            "'배부르다' -> '배불러요' (irregular)"
     };
 
     private String[] dialog = {

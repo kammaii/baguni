@@ -11,7 +11,7 @@ public class Lesson38 extends LessonInit_Lock implements Lesson, LessonItem, Ser
 
     private String[] wordFront = {"축하하다", "우리", "맛있다", "필요하다", "더"};
 
-    private String[] wordBack = {"celebrate", "we", "delicious", "need", "more"};
+    private String[] wordBack = {"congratulates/celebrate", "we", "delicious", "need", "more"};
 
     private String[] wordPronunciation = {"[추카하다]", "-", "[마싣따]", "[피료하다]", "-"};
 
@@ -27,25 +27,25 @@ public class Lesson38 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceBack = {
-            "I moved yesterday.",
-            "I moved to a new house yesterday.",
+            "I moved in yesterday.",
+            "I moved into a new house yesterday.",
             "Congratulations.",
-            "Let's have something delicious.",
-            "Today, let's have something delicious at my home.",
-            "Do you need a wine?",
+            "Let's eat something delicious.",
+            "Let's eat something delicious at my home today.",
+            "Do you need wine?",
             "I have it at home.",
-            "You don't have to buy it more."
+            "You don't need to by more."
     };
 
     private String[] sentenceExplain = {
             "-",
             "-",
             "-",
-            "맛있는 것' = '맛있는 거' (casual form)",
+            "'맛있는 것' = '맛있는 거' (casual form)",
             "In fact '우리' means 'we', but Korean people use '우리' in front of the more attached words such as 'home', 'mom', 'dad', 'school', 'company', 'country', etc. and it means 'my~'.\n\nex)\n'우리 집', '우리 엄마', '우리 아빠', '우리 학교', '우리 회사', '우리 나라'",
             "-",
             "-",
-            "When you don't really need to do something, use the '~지 않아도 돼요' form."
+            "When you don't need to do something, use the '~지 않아도 돼요' form."
     };
 
     private String[] dialog = {

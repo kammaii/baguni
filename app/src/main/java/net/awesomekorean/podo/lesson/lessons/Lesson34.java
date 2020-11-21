@@ -42,12 +42,12 @@ public class Lesson34 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceExplain = {
-            "It is used often when you forgot to bring something.\n\n'놓다 ' + '그리고' + '오다' = '놓고 오다'\n\nㅎ + ㄱ = [ㅋ] \n놓고 [노코]",
+            "It is often used when you forget to bring something.\n\n'놓다 ' + '그리고' + '오다' = '놓고 오다'\n\nㅎ + ㄱ = [ㅋ] \n놓고 [노코]",
             "-",
             "-",
             "'기다려요' -> '기다려' + '주세요' = '기다려 주세요'",
-            "'잠시' (short time) + '만' (only) = '잠시만'\n\nWhen you call someone in a hurry, you can say '잠시만요!'.",
-            "When someone tries to give you something or helps, it can also mean 'no thank you'.",
+            "'잠시' (a moment) + '만' (only) = '잠시만'\n\nWhen you call someone in a hurry, you can say '잠시만요!'.",
+            "If you say '괜찮아요' to someone who's trying to offer you something or help you, it means 'No,  thank you'.",
             "'오다' -> '와요' -> '와' + '도 돼요' = '와도 돼요'\n\nWhen expressing permission, use the '아/어도 돼요' form.",
             "If you go somewhere and will come back, you can say '갔다 오다'.\n\n'갔다 오다' -> '갔다 와요' -> '갔다 와' + '도 돼요' = '갔다 와도 돼요'",
             "-"

@@ -36,8 +36,8 @@ public class Lesson09 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "go",
             "go?",
             "How do you go?",
-            "How do you go to work.",
-            "How do you go to work from home.",
+            "How do you go to work(get to your company)?",
+            "How do you go to work from home?",
             "take / ride",
             "take. / ride.",
             "I take a subway.",
@@ -52,13 +52,13 @@ public class Lesson09 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "-",
-            "When referring to a range of places, use '~에서 ~까지'.",
+            "When referring to scope of place, use '~에서 ~까지'.",
             "-",
             "-",
             "-",
             "-",
             "-",
-            "When asking about the amount of something, use '얼마나'.",
+            "When asking about the amount, use '얼마나'.",
             "-"
     };
 

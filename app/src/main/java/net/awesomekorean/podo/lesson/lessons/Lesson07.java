@@ -55,13 +55,13 @@ public class Lesson07 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "-",
-            "conjugate '아요/어요'\n: '춥다' -> '춥' + '어요' = '춥어요' -> '추워요' (exception)\n\nMost exceptions are for ease of pronunciation.\n'추워요' is more comfortable and natural to pronounce than '춥어요'.",
+            "conjugate '아요/어요'\n: '춥다' -> '춥' + '어요' = '춥어요' -> '추워요' (exception)\nMost of the exceptions are for easier pronunciation.\n'추워요' is more comfortable and natural to pronounce than '춥어요'.",
             "-",
             "-",
             "conjugate '아요/어요'\n: '오다' -> '오' + '아요' = '오아요' -> '와요'",
             "-",
             "-",
-            "You can make negative forms by using '안' before a verb or adjective or '~지 않다' form.\n'안' + '오다' = '안 와요'\n'오다' -> '오' + '지 않다' = '오지 않다'\n\nWhen a verb composed of 'noun + 하다' is made into a negative sentence, it should be written as 'noun + 안 + 하다'.\n\nex)\n'얘기하다' -> '얘기 안 하다'\n'얘기하다' -> '얘기하지 않다'",
+            "You can make negative forms by using '안' before a verb or adjective or '~지 않다' form.\n'안' + '오다' = '안 와요'\n'오다' -> '오' + '지 않다' = '오지 않다'\n\nWhen you form a verb composed of 'N + 하다' into a negative sentence,\nyou can use a 'N + 안 + 하다' form.\n\nex)\n'얘기하다' -> '얘기 안 하다'\n'얘기하다' -> '얘기하지 않다'",
             "-",
             "-"
     };

@@ -51,25 +51,25 @@ public class Lesson17 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "You can do it well.",
             "You will be able to do it well.",
             "You will be able to do it well because you studied Korean very hard.",
-            "Cool! You will be able to do it well because you learned Korean very well."
+            "Great! You will be able to do it well because you've studied Korean very hard so far."
     };
 
     private String[] sentenceExplain = {
             "Use the 'V-고 싶다' form to tell the wishes or hopes of the speaker.\n\nconjugate 'V-고 싶다'\n'가다' -> '가' + '고 싶다' = '가고 싶다'",
             "-",
-            "이번 : this time\n저번 : last time\n다음 : next time",
+            "'이번' : this time\n'저번' : last time\n'다음' : next time",
             "conjugate 'V-고 싶다'\n'하다' -> '하' + '고 싶다' = '하고 싶다'",
             "-",
             "-",
             "conjugate 'V-고 싶다'\n'먹다' -> '먹' + '고 싶다' = '먹고 싶다'",
-            "한국 음식' can be shortened to '한식'.",
+            "'한국 음식' can be shortened to '한식'.",
             "-",
             "-",
             "-",
             "-",
-            "A 'V-(으)ㄹ 수 있다' form was used to represent the 'ability' that we learned in the previous lesson.",
+            "As we learned from the previous lesson, '-(으)ㄹ 수 있다' means ability.",
             "Used future tense to express the speaker's expectations.",
-            "Use the 'A/V-(으)니까' form to tell the 'reason'.\nYou can also use the 'A/V-아/어서' form that you learned in the 'negative' lesson.\n\n'공부 열심히 했으니까' = '공부 열심히 해서'\n(See the Lesson 6 'Confusing expression - ~아/어서 vs. ~으니까')",
+            "Use the 'A/V-(으)니까' form to talk about the 'reason'.\nYou can also use the 'A/V-아/어서' form that you've learned in the 'negative' lesson.\n\n'공부 열심히 했으니까' = '공부 열심히 해서'",
             "-"
     };
 

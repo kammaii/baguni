@@ -35,13 +35,13 @@ public class Lesson42 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceExplain = {
-            "You can ask your close friend for the opinions or intentions with '(으)ㄹ래요?' form.\n'먹다' -> '먹' + '을래요'\nThe answer is the same.\n\nex)\n'먹을래요?'\n'네, 먹을래요.'",
+            "You can ask your close friend a opinion of your suggestion by using '(으)ㄹ래요?' form.\n'먹다' -> '먹' + '을래요'\nThe answer is the same.\n\nex)\n'먹을래요?'\n'네, 먹을래요.'",
             "-",
-            "맵다' -> '매워요' -> '매운'",
+            "'맵다' -> '매워요' -> '매운'",
             "-",
-            "가다' -> '가' + 'ㄹ래요?' = '갈래요?'",
+            "'가다' -> '가' + 'ㄹ래요?' = '갈래요?'",
             "-",
-            "다르다' means 'different' but \n'다른' can also be used not only 'different' but also 'other'.\n\n'아/어요' form is '달라요' (irregular)"
+            "'다르다' means 'different' but \n'다른' can also be used not only 'different' but also 'other'.\n\n'아/어요' form is '달라요' (irregular)"
     };
 
     private String[] dialog = {

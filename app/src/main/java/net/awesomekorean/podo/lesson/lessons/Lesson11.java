@@ -68,15 +68,15 @@ public class Lesson11 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "-",
-            "부르다' -> '부르' + '어요' = '부르어요' -> '불러요' (exception)",
+            "'부르다' -> '부르' + '어요' = '부르어요' -> '불러요' (exception)",
             "-",
             "-",
             "-",
             "-",
             "-",
-            "We can use '도' to mean 'also'.",
+            "Use '도'  to say 'also'.",
             "Use '그리고' to list sentences.",
-            "Use '~고' to combine two sentences together using '그리고'.\n\nex) '부르다' -> '부르' + '고' = '부르고'"
+            "Use '~고' to combine the '그리고 sentence' with the other sentence.\n\nex) '부르다' -> '부르' + '고' = '부르고'"
     };
 
     private String[] dialog = {

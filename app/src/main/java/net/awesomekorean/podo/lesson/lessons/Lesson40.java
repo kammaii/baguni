@@ -30,14 +30,14 @@ public class Lesson40 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceBack = {
-            "From when did you learn?",
-            "From when did you learn Korean?",
-            "I learned for 3 months.",
-            "I learned about 3 months.",
-            "Have you only learned 3 months?",
-            "But how do you so well like this?",
+            "Since when did you learn",
+            "Since when did you learn Korean?",
+            "I've learned it for 3 months.",
+            "I've learned it for about 3 months.",
+            "You've learned it for only 3 months?",
+            "But how come you do it so well like that?",
             "I think you are smart.",
-            "I think you are really smart.",
+            "I think you are so smart.",
             "What I've learned in the lesson",
             "To remember what I've learned in the lesson",
             "I study every day to remember what I've learned in the lesson."
@@ -46,14 +46,14 @@ public class Lesson40 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] sentenceExplain = {
             "-",
             "-",
-            "월 : comes from Chinese character\n달 : native Korean\n\nThere are 2 ways counting months.\n3개월 [삼개월]\n3달 [세달]\n\nDon't be confused that 3월[삼월] is a March.",
-            "If you write '정도' after the word indicating quantity, it means 'approximately'.",
-            "When you want to say very small or little, you can use '~밖에', and there is always a negative form after that.\n\nex)\n'~밖에 안~'\n'~밖에 못~'\n'~밖에 없다'",
+            "월 : comes from Chinese character\n달 : native Korean\n\nThere are 2 ways to count months.\n3개월 [삼개월]\n3달 [세달]\n\nDon't be confused that 3월[삼월] means March.",
+            "If you use '정도' or '쯤' following after the word indicating quantity, it means 'about(approximately)'.",
+            "When you want to say 'few', 'little', you can use '~밖에' and have to put negative form after.\n\nex)\n'~밖에 안~'\n'~밖에 못~'\n'~밖에 없다'",
             "You can use '이렇게' to express a big surprise.",
             "-",
             "-",
-            "배우다' -> '배우' + 'ㄴ 것' = '배운 것'",
-            "When expressing the intention or plan of the person speaking, we use '~(으)려고'.\n\n'기억하다' -> '기억하' + '려고' = '기억하려고'",
+            "'배우다' -> '배우' + 'ㄴ 것' = '배운 것'",
+            "When describing the intention or purpose, you can use '~(으)려고'.\n\n'기억하다' -> '기억하' + '려고' = '기억하려고'",
             "-"
     };
 

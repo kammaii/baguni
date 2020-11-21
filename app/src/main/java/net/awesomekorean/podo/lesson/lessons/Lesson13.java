@@ -43,7 +43,7 @@ public class Lesson13 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceExplain = {
-            "감기' and '걸리다' is a commonly used word, so it is good to memorize it together.",
+            "'감기' and '걸리다' is commonly used, so better memorize it together.",
             "-",
             "-",
             "-",
@@ -51,7 +51,7 @@ public class Lesson13 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "-",
-            "You can also use 'N + 전에' instead of 'V + 기 전에'\nHowever, only nouns that can be used as 'N + 하다'\n(nouns that represent actions) are possible.\n\nex)\n'식사' + '하다' = '식사하다' (o)\n식사 하기 전에~\n식사 전에~\n'쇼핑' + '하다' = '쇼핑하다' (o)\n쇼핑 하기 전에~\n쇼핑 전에 ~",
+            "You can also use 'N + 전에' instead of saying 'V + 기 전에'\nHowever, only specific nouns which can be used in 'N + 하다' form(related to the action) can be used as 'N + 전에' form. \n\nex)\n'식사' + '하다' = '식사하다' (o)\n식사 하기 전에~\n식사 전에~\n'쇼핑' + '하다' = '쇼핑하다' (o)\n쇼핑 하기 전에~\n쇼핑 전에 ~",
             "-"
     };
 

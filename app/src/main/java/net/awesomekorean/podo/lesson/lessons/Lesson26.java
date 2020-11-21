@@ -37,7 +37,7 @@ public class Lesson26 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "I've been there last spring.",
             "Have you been there?",
             "Where have you been?",
-            "Where have you been to Korea?",
+            "Which part of Korea have you been?",
             "I've been there.",
             "I've been to Jeju Island.",
             "I've been to Seoul and Jeju Island."
@@ -48,12 +48,12 @@ public class Lesson26 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "'작년 봄'(time) + '에'",
-            "If you use the '아/어 보다' learned in the last lesson as a past tense, it means 'experience'.\nTherefore, you can use the same meaning of '아/어 봤다' and '아/어 본 적 있다.'\n\nThey are both used many times in real life, so it's good to learn them all.",
+            "If you use the '아/어 보다' that we learned from the last lesson as a past tense, it means 'experience'.\nTherefore, you can use the same meaning of '아/어 봤다' and '아/어 본 적 있다.'\n\nBoth are often used in the actual conversation, so it's good to learn them all.",
             "-",
             "Be careful not to write '한국에 어디에'.\n'에' only needs to be written once at the end.",
             "-",
             "-",
-            "'울' in '서울' has a batchim, so '이랑' is added."
+            "'울' in '서울' has a Batchim, so '이랑' is added.\nIf the noun doesn't end with a Batchim, you can us '랑'\nex) 경주랑 제주도에 가봤어요."
     };
 
     private String[] dialog = {

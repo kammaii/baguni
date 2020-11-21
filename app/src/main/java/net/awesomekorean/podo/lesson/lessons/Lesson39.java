@@ -29,17 +29,17 @@ public class Lesson39 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "I'm going to the bookstore.",
             "I'm going to the bookstore to buy Korean books.",
             "Let's go together.",
-            "I'm going near the bookstore.",
-            "I am going near the bookstore to meet my student."
+            "I'm going to somewhere near the bookstore.",
+            "I'm going to somewhere near the bookstore to meet my student."
     };
 
     private String[] sentenceExplain = {
             "-",
             "-",
-            "In a situation where you are moving to some place to do something, use the '~(으)러 가다/오다' form.\n'사다' -> '사' + '러 가다' = '사러 가다'",
-            "We can use '도' to mean 'also'.",
+            "When you are going to somewhere to do something, use the '~(으)러 가다/오다' form.\n'사다' -> '사' + '러 가다' = '사러 가다'",
+            "Use '도'  to say 'also'.",
             "-",
-            "만나다' -> '만나' + '러 가다' = '만나러 가다'\n'만나러 가다' -> '만나러 가' + '고 있다' = '만나러 가고 있다'"
+            "'만나다' -> '만나' + '러 가다' = '만나러 가다'\n'만나러 가다' -> '만나러 가' + '고 있다' = '만나러 가고 있다'"
     };
 
     private String[] dialog = {

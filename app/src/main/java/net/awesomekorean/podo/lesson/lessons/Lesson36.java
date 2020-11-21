@@ -31,13 +31,13 @@ public class Lesson36 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "Did you order coffee?",
             "Did you order coffee again?",
             "Did you sleep well?",
-            "Did you not sleep well?",
-            "Did you not sleep well yesterday?",
-            "I did SNS.",
-            "I did SNS until dawn.",
-            "It's SNS addiction.",
-            "Don't do SNS.",
-            "Don't do SNS before going to bed."
+            "Didn't you sleep well?",
+            "Didn't you sleep well yesterday?",
+            "I was on Instagram.",
+            "I was on Instagram until dawn.",
+            "It's social network addiction.",
+            "You should stop being on Instagram.",
+            "You should stop being on Instagram before going to bed."
     };
 
     private String[] sentenceExplain = {
@@ -48,8 +48,8 @@ public class Lesson36 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "Caution!\n잘못하다 : do wrong\n잘 못 하다 : do not well\n\nex)\n- 죄송해요. 제가 잘못했어요.\n- 저는 컴퓨터를 잘 못 해요.",
             "-",
             "-",
-            "You can use '중독' not only for negative meaning, but also for saying 'like something very much'.\n- 게임 중독\n- 알코올 중독\n- 여행 중독\n- 매운 음식 중독",
-            "When you are strongly demanding not to do something, use the '~지 마세요' form.",
+            "-",
+            "When you want to strongly ban something, use the '~지 마세요' form.",
             "-",
     };
 

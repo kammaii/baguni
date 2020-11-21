@@ -54,18 +54,18 @@ public class Lesson20 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceExplain = {
-            "덥다' -> '덥어요' -> '더워요' (irregular)",
+            "'덥다' -> '덥어요' -> '더워요' (irregular)",
             "-",
             "conjugate 'V-았/었으면 좋겠어요'\n'들어가다' -> '들어갔다'\n'들어갔다' -> '들어갔' + '으면 좋겠어요' = '들어갔으면 좋겠어요'",
             "We can use 'A-(으)ㄴ' form when the adjective modifies a noun.\n'시원하다' -> '시원하' + 'ㄴ' = '시원한'",
             "-",
             "-",
             "-",
-            "유명하다' -> '유명하' + 'ㄴ' = '유명한'",
+            "'유명하다' -> '유명하' + 'ㄴ' = '유명한'",
             "~고' form is used.",
             "-",
-            "여기 : here\n저기 : there\n거기 : there\n(See the Lesson 11 -  'confusing expression : here and there')",
-            "시원하다' -> '시원하' + 'ㄴ' = '시원한'",
+            "'여기' : here\n'저기' : there\n'거기' : there",
+            "'시원하다' -> '시원하' + 'ㄴ' = '시원한'",
             "-",
             "-",
             "-"

@@ -10,7 +10,7 @@ public class Lesson37 extends LessonInit_Lock implements Lesson, LessonItem, Ser
 
     private String[] wordFront = {"이사하다", "찾다", "작다", "학교", "멀다"};
 
-    private String[] wordBack = {"move(house)", "find", "small", "school", "far"};
+    private String[] wordBack = {"move out", "find", "small", "school", "far"};
 
     private String[] wordPronunciation = {"-", "[찯따]", "[작따]", "-", "-"};
 
@@ -25,21 +25,21 @@ public class Lesson37 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceBack = {
-            "A house to move",
-            "I'm looking for a house to move.",
-            "Which house",
-            "Which house do you like?",
+            "A house to move in",
+            "I am looking for a new house(a house to move in)",
+            "What kind of house",
+            "What kind of house do you like?",
             "I hope it isn't too small.",
             "School is far.",
             "The school shouldn't be far."
     };
 
     private String[] sentenceExplain = {
-            "Use '(으)ㄹ' of future tense.\n'이사하다' -> '이사하' +'ㄹ' = '이사할' ",
-            "찾다' -> '찾' + '고 있어요' = '찾고 있어요' (progressive)",
+            "Use '(으)ㄹ' as the future tense.\n'이사하다' -> '이사하' +'ㄹ' = '이사할' ",
+            "'찾다' -> '찾' + '고 있어요' = '찾고 있어요' (progressive)",
             "-",
             "-",
-            "작지 않다' -> '작지 않' + '았으면 좋겠어요' = '작지 않았으면 좋겠어요'",
+            "'작지 않다' -> '작지 않' + '았으면 좋겠어요' = '작지 않았으면 좋겠어요'",
             "-",
             "When talking about the meaning of 'prohibited' or 'restricted', use the'~(으)면 안 돼요' form."
     };

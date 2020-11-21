@@ -35,7 +35,7 @@ public class Lesson28 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "I just started a diet.",
             "I work out.",
             "I work out at home.",
-            "I work out at home every day.",
+            "I work out at home everyday.",
             "Do you work out alone?",
             "It's not fun, isn't it?",
             "Watch TV.",
@@ -43,16 +43,16 @@ public class Lesson28 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceExplain = {
-            "시작해요' -> '시작했어요' (past tense)",
+            "'시작해요' -> '시작했어요' (past tense)",
             "You can say '다이어트' for losing weight.",
             "-",
             "-",
             "-",
-            "If you still don't know the difference between '에' and '에서', \nsee the Lesson 4 - confusing expression : '에' vs '에서'.",
             "-",
-            "You may be confused because there are 2 negatives.\nWhen you want to check if the other person's thoughts are the same as me, you can ask '~지 않아요?'.\n'재미없다' -> '재미없' + '지 않아요?' = '재미없지 않아요?'\n\nWhen it is not asking a question,'~지 않아요' is just a negative.\n(Refer to the Lesson 5 - Negative)",
             "-",
-            "When doing any two actions, use the '~(으)면서' form.\n\n'TV를 보다' + '운동하다' -> 'TV를 보면서 운동하다'\n'밥을 먹다' + 'TV를 보다' -> 밥을 먹으면서 TV를 보다'"
+            "You may got confused because this sentence used negative expression twice.\nWhen you want to ask if the other person has the same feelings/thoughts with you, you can ask '~지 않아요?'.\n'재미없다' -> '재미없' + '지 않아요?' = '재미없지 않아요?'\n\nIf there's no question mark like '~지 않아요.' it is just a negative sentence.",
+            "-",
+            "When you are doing two activities at the same time, use the '~(으)면서' form.\n\n'TV를 보다' + '운동하다' -> 'TV를 보면서 운동하다'\n'밥을 먹다' + 'TV를 보다' -> 밥을 먹으면서 TV를 보다'"
     };
 
     private String[] dialog = {

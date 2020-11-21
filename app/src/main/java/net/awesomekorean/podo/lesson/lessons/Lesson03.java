@@ -50,8 +50,8 @@ public class Lesson03 extends LessonInit implements Lesson, LessonItem, Serializ
             "We talk on Kakaotalk."
     };
     private String[] sentenceExplain = {
-            "You can say this when you 'have' something or someone 'exists'.\nIn Korean, we don't consider singular and plural that much\nand the meaning of 'There isn't' is '없다'.",
-            "When you conjugate verbs or adjectives to the form of '아요/어요', if you say it with a lower intonation, it's a statement.\nBut if you raise the intonation at the end, it becomes a question.\n\nex)\n'있어요?' : is there?\n'있어요.' : there is.",
+            "You can say this word when you 'have' something or someone 'exists'.\nIn Korean, singular and plural are not important considered and 'There isn't/aren't' means '없다'.",
+            "When you conjugate verbs or adjectives into the form of '아요/어요', if you say it without a tone, it's a statement.\nBut if you say it with a high tone, it becomes a question.\nex) '있어요?'(tone up on '요') : Is there? / '있어요'(no tone) : There is",
             "-",
             "-",
             "yes : '네' / no : '아니요'",
@@ -59,8 +59,8 @@ public class Lesson03 extends LessonInit implements Lesson, LessonItem, Serializ
             "-",
             "-",
             "The words that describe the place should be followed by the place particle '에서'.",
-            "kakao talk: Messenger name used by most Koreans.",
-            "Because KakaoTalk is used as a place, '에서' is added.",
+            "Kakaotalk: Most popular Messenger App in Korea.",
+            "Since KakaoTalk is used as a meaning of conversation channel(place/where), you have to put '에서'.",
             "-"
     };
 

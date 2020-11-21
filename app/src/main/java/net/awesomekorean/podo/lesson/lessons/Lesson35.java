@@ -43,12 +43,12 @@ public class Lesson35 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "It's my friend's birthday tomorrow.",
             "I want to buy a cosmetic for a gift.",
             "Let's go together.",
-            "Let's go together taking my car."
+            "Let's go together by my car."
     };
 
     private String[] sentenceExplain = {
             "'명동' is a famous place for shopping in Seoul. In particular, there are many cosmetic shops.",
-            "When you say the conditions for doing something you can use '(으)려면'.\n\n'가다' -> '가' + '려면' = '가려면'",
+            "When you explain/ask a way(method), you can use '(으)려면'.\n\n'가다' -> '가' + '려면' = '가려면'",
             "-",
             "-",
             "'타다' 그리고 '가다' = '타고 가다'",

@@ -57,7 +57,7 @@ public class Lesson08 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "eat.",
             "I can't eat.",
             "So I can't have breakfast as well.",
-            "I can't have breakfast as well because I can't wake up early in the morning."
+            "I can't wake up early in the morning so I can't have breakfast as well."
     };
 
     private String[] sentenceExplain = {
@@ -69,16 +69,16 @@ public class Lesson08 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "-",
-            "Use '아서/어서' to combine two sentences together using '그래서'.\nconjugate '아요/어요'\n: '바쁘다' -> '바쁘' + '아요' = '바쁘아요' -> '바빠요'\nconjugate '아서/어서'\n: '바빠요' -> '바빠' + '아서' = '바빠아서' -> '바빠서'",
+            "Use '아서/어서' to combine the '그래서' sentence with the former sentence.\nconjugate '아요/어요'\n: '바쁘다' -> '바쁘' + '아요' = '바쁘아요' -> '바빠요'\nconjugate '아서/어서'\n: '바빠요' -> '바빠' + '아서' = '바빠아서' -> '바빠서'",
             "-",
             "conjugate '아요/어요'\n: '일어나다' -> '일어나' + '아요' = '일어나아요' -> '일어나요'",
-            "안'(= ~지 않아요) : do not\n'못' (= ~지 못해요) : can not\n\n'못 일어나요' -> [몬 이러나요]\n\n'일어나다' -> '일어나' + '지 못해요' = '일어나지 못해요'",
+            "'안'(= ~지 않아요) : do not\n'못' (= ~지 못해요) : can not\n\n'못 일어나요' -> [몬 이러나요]\n\n'일어나다' -> '일어나' + '지 못해요' = '일어나지 못해요'",
             "-",
-            "시간 + '에'\n(See the Lesson 4 - 'confusing expression : '에 vs. 에서')",
+            "시간 + '에'",
             "-",
             "conjugate '아요/어요'\n: '먹다' -> '먹' + '어요' = '먹어요'",
             "-",
-            "We can use '도' to mean 'also'.\n'아침/점심/저녁' means 'morning / noon / night' respectively.\nAlso, they have the meaning of 'breakfast / lunch / dinner.'",
+            "Use '도' to say 'also'.\n'아침/점심/저녁' means 'morning / noon / evening' respectively.\nEach word also can be used as 'breakfast / lunch / dinner.'",
             "conjugate '아서/어서'\n: '일어나요' -> '일어나' + '아서' = '일어나서'"
     };
 

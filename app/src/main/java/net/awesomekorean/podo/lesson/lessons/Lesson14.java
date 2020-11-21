@@ -68,16 +68,14 @@ public class Lesson14 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] sentenceExplain = {
             "-",
             "-",
-            "You can also say '뭐 할거예요?' using future tense.\nBut in situations where the content of the future is clear, such as 'tonight',\nyou can use the present tense.",
+            "You can also say '뭐 할거예요?' using the future tense.\nBut when you are talking about a certain moment of the future such as 'tonight', 'tomorrow', 'next week', 'next month' or 'next year', you can use the present tense.",
             "-",
-            "If the verb doesn't have a batchim, use 'V-ㄴ 후에' and use 'V-은 후에' when it has a batchim.\n'끝나다' -> '끝나' + 'ㄴ 후에' = '끝난 후에'\nYou can also use 'N + 후에' instead.\nOf course, nouns that can only be uses as 'N + 하다'\n(nouns that represent actions) are possible like 'N + 전에'.\n\nex) '운동' + '하다' = '운동하다' (o)\n운동 한 후에~\n운동 후에~",
-            "-",
-            "-",
+            "If the verb doesn't have a Batchim, use 'V-ㄴ 후에' and if it has a Batchim, use 'V-은 후에'.\n'끝나다' -> '끝나' + 'ㄴ 후에' = '끝난 후에'\nYou can also use 'N + 후에' instead.\nSame as 'N + 전에' form, only specific nouns which can be used in 'N + 하다' form(related to the action) can be used as 'N + 후에' form. \n\nex) '운동' + '하다' = '운동하다' (o)\n운동 한 후에~\n운동 후에~",
             "-",
             "-",
-            "먹다' -> '먹' + '은 후에' = '먹은 후에'",
             "-",
             "-",
+            "'먹다' -> '먹' + '은 후에' = '먹은 후에'",
             "-",
             "-",
             "-",
@@ -85,7 +83,9 @@ public class Lesson14 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "-",
-            "When you ask something, you can use '~아/어 주세요'.\n'추천하다' -> 추천해요' -> '추천해' + '주세요' = '추천해 주세요'",
+            "-",
+            "-",
+            "When you ask something, you can use '~아/어 주세요'.\n'추천하다' -> '추천해요' -> '추천해' + '주세요' = '추천해 주세요'",
             "-"
     };
 

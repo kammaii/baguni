@@ -47,14 +47,14 @@ public class Lesson10 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] sentenceExplain = {
             "-",
             "-",
-            "Use '몇' when asking questions about numbers.",
+            "When asking about the countable number, use '몇'",
             "-",
             "-",
-            "When referring to a range of time, use '~부터 ~까지'.\nIt's also okay to use '~에서 ~ 까지' like a range of places",
+            "When referring to a range of time, use '~부터 ~까지'.\nYou can also use '~에서 ~ 까지'\n* '~에서~까지' can describe both the scope of the place and range of time.",
             "-",
             "-",
             "-",
-            "30 minutes can also be called '반'."
+            "'반' is a 'synonym of 30 minutes and often used in the spoken language."
     };
 
     private String[] dialog = {

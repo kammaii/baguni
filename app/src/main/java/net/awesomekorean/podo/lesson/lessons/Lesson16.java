@@ -45,8 +45,8 @@ public class Lesson16 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] sentenceBack = {
             "Can you do it?",
             "Can you speak Korean?",
-            "Yes, I am Korean.",
-            "I am Japanese.",
+            "Yes, I'm Korean.",
+            "I'm Japanese.",
             "I'm learning.",
             "I'm learning Korean.",
             "I'm learning Korean recently.",
@@ -65,16 +65,16 @@ public class Lesson16 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceExplain = {
-            "We've learned in the last lesson that this means 'ability'.",
+            "As we learned from the previous lesson, '-(으)ㄹ 수 있다' means ability.",
             "-",
             "-",
-            "(See the Lesson 8 - 'Simple Chinese character - 人')",
+            "-",
             "progressive form\n: '배우다' -> '배우' + '고 있다' = '배우고 있다'",
             "-",
             "-",
             "-",
-            "언어 : language\n교환 : exchange",
-            "(See the Lesson 9 - 'Confusing expression - 좋아요 vs. 좋아해요')",
+            "'언어' : language\n'교환' : exchange",
+            "-",
             "-",
             "-",
             "-",
@@ -82,7 +82,7 @@ public class Lesson16 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "We can use 'A-(으)ㄴ' form when the adjective modifies a noun.\n'비슷하다' -> '비슷하' + 'ㄴ' = '비슷한'",
             "-",
             "-",
-            "We've learned that we can use 'V-(으)ㄹ 수 있다' form when it means an ability to do something in the previous lesson.\nBut one more meaning can be used, which is the 'possibility'.\nWhen it means possibility, you can use adjectives as well as verbs.\n\nconjugate 'A/V-(으)ㄹ 수 있다'\n'쉽다' -> '쉽' + '을 수 있다' = '쉽을 수 있다' -> '쉬울 수 있다' (irregular)",
+            "From the previous lesson, we've learned that we can use 'verb-(으)ㄹ 수 있다' form to talk about the capability.\nBut this form can be used for another meaning 'possibility'.\nWhen you use this form as a 'possibility meaning', you can use adjectives as well as verbs.\n\nconjugate 'adjective/verb-(으)ㄹ 수 있다'\n'쉽다' -> '쉽' + '을 수 있다' = '쉽을 수 있다' -> '쉬울 수 있다' (irregular)",
             "When comparing, use '~보다'."
     };
 

@@ -38,7 +38,7 @@ public class Lesson29 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] sentenceBack = {
             "I started.",
             "I started a language exchange.",
-            "I started a language exchange with a Korean friend.",
+            "I started a language exchange with my Korean friend.",
             "how many hours",
             "how many hours",
             "How many hours do you do it?",
@@ -53,20 +53,20 @@ public class Lesson29 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceExplain = {
-            "시작해요' -> '시작했어요' (past tense)",
+            "'시작해요' -> '시작했어요' (past tense)",
             "-",
             "-",
-            "Use '몇' when asking questions about numbers",
-            "You can say '동안' to express the length of time for an action.\nNoun + '동안'",
+            "When asking about the countable number, use '몇'",
+            "You can say '동안' to express the length of time for an action.\nN + '동안'",
             "-",
-            "얘기하다' = '이야기하다'",
+            "'얘기하다' = '이야기하다'",
             "-",
-            "1시간 + '동안'",
-            "Verb + '는 동안'\n'언어교환 하다' -> '언어교환 하' + '는 동안' = '언어교환 하는 동안'",
-            "You can use '어떤' instead of '무슨'.\n\n(Refer to the Lesson 10 - confusing expression : '어떤' vs '무슨')",
+            "'1시간' + '동안'",
+            "V + '는 동안'\n'언어교환 하다' -> '언어교환 하' + '는 동안' = '언어교환 하는 동안'",
+            "You can use '어떤' instead of '무슨'.",
             "-",
             "-",
-            "주로' : mostly, mainly\n'보통' : normally, usually\n\nRemember this because it's a common word in conversation."
+            "'주로' : mostly, mainly\n'보통' : normally, usually\n\nRemember it since it's used often in a conversation."
     };
 
     private String[] dialog = {

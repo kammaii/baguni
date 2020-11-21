@@ -38,7 +38,7 @@ public class Lesson05 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "Will you do?",
             "What will you do?",
             "What will you do tomorrow.",
-            "go",
+            "Go",
             "I will go.",
             "I will go to a restaurant.",
             "I will go to a Korean restaurant.",
@@ -46,24 +46,24 @@ public class Lesson05 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "What about on the weekend?",
             "see / watch / look",
             "I will watch.",
-            "I will watch a fun movie.",
-            "I will watch an interesting movie."
+            "I will watch a movie.",
+            "I will watch a fun movie."
     };
 
     private String[] sentenceExplain = {
             "-",
-            "When we say future tense, we conjugate 'ㄹ 거예요/을 거예요' form.\nIf there is no batchim, add 'ㄹ 거예요'.\nIf there is a batchim, add '을 거예요'.\n\nconjugate 'ㄹ 거예요/을 거예요'\n: '하다' -> '하' + 'ㄹ 거예요' = '할 거예요'",
+            "When you say future tense, you can conjugate 'ㄹ 거예요/을 거예요' form.\nIf there is no Batchim, add 'ㄹ 거예요', if there is a Batchim, add '을 거예요'.\n'하다' -> '하' + 'ㄹ 거예요' = '할 거예요'",
             "-",
             "-",
             "-",
             "conjugate 'ㄹ 거예요/을 거예요'\n: '가다' -> '가' + 'ㄹ 거예요' = '갈 거예요'",
-            "If you use verbs related to movement ('가다', '오다', '들어가다' etc ...) we add '에' after the noun that is the destination.\nWe can also omit '에' in the conversation.\n(See the Lesson 4 - 'confusing expression1 : '에 vs. 에서')",
+            "If you use verbs related to movement ('가다', '오다', '들어가다' etc ...), you have to add '에' following after the destination(noun).\nBut you can omit '에' in the spoken language.",
             "-",
             "We can say ‘랑/이랑’ for the conversational language.",
             "-",
             "-",
             "conjugate 'ㄹ 거예요/을 거예요'\n: '보다' -> '보' + 'ㄹ 거예요' = '볼 거예요'",
-            "Object particle is used.\nHowever, we can omit object particles when speaking.\n'영화를 볼 거예요' -> '영화 볼 거예요'",
+            "Object particle is used in this phrase.\nHowever, you can omit object particles in a conversational style.\n'영화를 볼 거예요' -> '영화 볼 거예요'",
             "-"
     };
 
