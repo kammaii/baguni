@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ import com.google.firebase.storage.StorageReference;
 
 import net.awesomekorean.podo.AdsManager;
 import net.awesomekorean.podo.ConfirmQuit;
+import net.awesomekorean.podo.LoadingPage;
 import net.awesomekorean.podo.MediaPlayerManager;
 import net.awesomekorean.podo.PlaySoundPool;
 import net.awesomekorean.podo.R;
@@ -73,11 +75,8 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
     public static Map<Integer, byte[]> wordAudioByte = new HashMap<>();
     public static Map<Integer, byte[]> sentenceAudioByte = new HashMap<>();
 
-    ConstraintLayout layoutLoading;
-    ProgressBar loading;
-    Button btnStart;
-    TextView loadingText;
     int downloadProgress;
+    int downloadMax;
 
     ConstraintLayout layoutPassed;
     ConstraintLayout layoutFailed;
@@ -91,6 +90,8 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
 
     PlaySoundPool playSoundPool;
 
+    FrameLayout frameLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,13 +100,10 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
+        frameLayout = findViewById(R.id.frameLayout);
         btnClose = findViewById(R.id.btnClose);
         progressBar = findViewById(R.id.progressBar);
         tvProgress = findViewById(R.id.tvProgress);
-        layoutLoading = findViewById(R.id.layoutLoading);
-        loading = findViewById(R.id.loading);
-        btnStart = findViewById(R.id.btnStart);
-        loadingText = findViewById(R.id.loadingText);
         layoutPassed = findViewById(R.id.layoutPassed);
         layoutFailed = findViewById(R.id.layoutFailed);
         progressBarPassed = findViewById(R.id.progressBarPassed);
@@ -116,16 +114,18 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
         btnYes = findViewById(R.id.btnYes);
         btnNo = findViewById(R.id.btnNo);
         btnClose.setOnClickListener(this);
-        btnStart.setOnClickListener(this);
         btnComplete.setOnClickListener(this);
         btnYes.setOnClickListener(this);
         btnNo.setOnClickListener(this);
 
+        Intent intent = new Intent(getApplicationContext(), LoadingPage.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+        frameLayout.setEnabled(false);
+
         adsManager = AdsManager.getInstance();
 
-        loadingText.setVisibility(View.VISIBLE);
-        btnStart.setVisibility(View.GONE);
-        setLayout(View.VISIBLE, View.GONE, View.GONE);
+        setLayout(View.GONE, View.GONE);
 
         // 전면광고 로드 체크
         if(adsManager.interstitialAd == null || !adsManager.interstitialAd.isLoaded()) {
@@ -155,8 +155,7 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
 
 
     // 레이아웃 세팅
-    private void setLayout(int layoutL, int layoutP, int layoutF) {
-        layoutLoading.setVisibility(layoutL);
+    private void setLayout(int layoutP, int layoutF) {
         layoutPassed.setVisibility(layoutP);
         layoutFailed.setVisibility(layoutF);
     }
@@ -190,7 +189,7 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
 
         // 단어 이미지 & 오디오 다운로드
         downloadProgress = 0;
-        loading.setMax(wordFront.size() + sentenceFront.size());
+        downloadMax = wordFront.size() + sentenceFront.size();
 
         for(int i=0; i<wordFront.size(); i++) {
             wordImage.add(getResources().getIdentifier(wordImageString.get(i), "drawable", getPackageName()));
@@ -202,7 +201,8 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
                 public void onSuccess(byte[] bytes) {
                     wordAudioByte.put(index, bytes);
                     downloadProgress++;
-                    loading.setProgress(downloadProgress);
+                    final LoadingPage loadingPage = (LoadingPage)LoadingPage.activity;
+                    loadingPage.setTextLoading(downloadProgress, downloadMax);
 
                     // 단어 오디오 다운로드 끝나면
                     if(downloadProgress == wordFront.size()) {
@@ -217,12 +217,13 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
                                 public void onSuccess(byte[] bytes) {
                                     sentenceAudioByte.put(index, bytes);
                                     downloadProgress++;
-                                    loading.setProgress(downloadProgress);
+                                    loadingPage.setTextLoading(downloadProgress, downloadMax);
 
                                     // 오디오 다운로드 끝나면
-                                    if(downloadProgress == loading.getMax()) {
-                                        loadingText.setVisibility(View.INVISIBLE);
-                                        btnStart.setVisibility(View.VISIBLE);
+                                    if(downloadProgress == downloadMax) {
+                                        loadingPage.finish();
+                                        frameLayout.setEnabled(true);
+                                        replaceFragment(LessonReviewWord.newInstance());
                                     }
                                 }
                             });
@@ -248,7 +249,7 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
             int score = correctCount*100/totalQuizNo;
 
             if(correctCount >= cutLine) {   // 합격
-                setLayout(View.GONE, View.VISIBLE, View.GONE);
+                setLayout(View.VISIBLE, View.GONE);
                 progressBarPassed.setProgress(score);
                 animator = ObjectAnimator.ofInt(progressBarPassed, "progress", 0, score);
                 tvScorePassed.setText(correctCount + "/" + totalQuizNo);
@@ -256,7 +257,7 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
                 playSoundPool.playSoundYay();
 
             } else {    // 불합격
-                setLayout(View.GONE, View.GONE, View.VISIBLE);
+                setLayout(View.GONE, View.VISIBLE);
                 progressBarFailed.setProgress(score);
                 animator = ObjectAnimator.ofInt(progressBarFailed, "progress", 0, score);
                 tvScoreFailed.setText(correctCount + "/" + totalQuizNo);
@@ -291,12 +292,6 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
                 break;
 
 
-            case R.id.btnStart :
-                setLayout(View.GONE, View.GONE, View.GONE);
-                replaceFragment(LessonReviewWord.newInstance());
-                break;
-
-
             case R.id.btnComplete :
                 adsManager.playFullAds(getApplicationContext());
                 UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
@@ -307,7 +302,7 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
 
             case R.id.btnYes :
                 reviewInit();
-                setLayout(View.GONE, View.GONE, View.GONE);
+                setLayout(View.GONE, View.GONE);
                 replaceFragment(LessonReviewWord.newInstance());
                 break;
 
