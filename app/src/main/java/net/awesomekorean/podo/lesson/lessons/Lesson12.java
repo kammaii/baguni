@@ -11,7 +11,7 @@ public class Lesson12 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonTitle = "but";
     private String lessonSubTitle = "~지만";
     private LessonItem specialLesson = new S_Lesson05();
-    private Integer dayCount = 10;
+    private Integer dayCount = 9;
 
     private String[] wordFront = {"어렵다", "말하다", "쓰다", "읽다", "쉽다"};
 
@@ -87,7 +87,7 @@ public class Lesson12 extends LessonInit_Lock implements Lesson, LessonItem, Ser
 
     private String[] dialog = {
             "한국어 공부 어때요?",
-            "한국어는 어려워요. 하지만 재미있어요.",
+            "한국어는 어려워요.\n하지만 재미있어요.",
             "뭐가 제일 어려워요?",
             "말하기랑 쓰기가 어려워요.\n하지만 읽기는 쉬워요."
     };

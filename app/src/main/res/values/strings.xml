@@ -164,7 +164,7 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="ALREADY_REWARDED">You have already been rewarded</string>
     <string name="PODO_LESSON_GOAL">podo lesson\'s goal</string>
     <string name="BEGINNER">Beginner</string>
-    <string name="INTERMEDIATE">Intermediate (to be updated)</string>
+    <string name="INTERMEDIATE">Intermediate</string>
     <string name="ADVANCED">Advanced (to be updated)</string>
     <string name="PODO_LESSON_GOAL_BEGINNER_1">
         "Learn minimum words and expressions that you mostly use everyday."</string>
@@ -267,9 +267,9 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="CONCEPT_TITLE_1">podo\'s lesson</string>
     <string name="CONCEPT_TITLE_2">CONCEPT</string>
     <string name="CONCEPT_BEGINNER">Beginner Lesson:</string>
-    <string name="CONCEPT_BEGINNER_CONTENTS">Learning the minimum words and expressions used most in everyday life, 200 words, 50 expressions (1st~3rd weeks)</string>
+    <string name="CONCEPT_BEGINNER_CONTENTS">Learning the minimum words and expressions used most in everyday life, about 260 words, 45 expressions (1st~25th days)</string>
     <string name="CONCEPT_INTERMEDIATE">Intermediate Lesson:</string>
-    <string name="CONCEPT_INTERMEDIATE_CONTENTS">Practice everyday conversation using only words and expressions learned in the beginner lesson (4th weeks)</string>
+    <string name="CONCEPT_INTERMEDIATE_CONTENTS">Practice everyday conversation using only words and expressions learned in the beginner lesson (26th~30th days)</string>
     <string name="CONCEPT_TEACHER_COMMENTS">All lessons were made and recorded by myself, a Korean teacher.</string>
     <string name="BENEFITS_TITLE">Benefits</string>
     <string name="BENEFITS_ADS">Ads removal\n(lifetime)</string>

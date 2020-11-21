@@ -54,11 +54,15 @@ import net.awesomekorean.podo.lesson.lessonReviewRewards.LessonReview01;
 import net.awesomekorean.podo.lesson.lessonReviewRewards.LessonReview02;
 import net.awesomekorean.podo.lesson.lessonReviewRewards.LessonReview03;
 import net.awesomekorean.podo.lesson.lessonReviewRewards.LessonReview04;
+import net.awesomekorean.podo.lesson.lessonReviewRewards.LessonReview05;
+import net.awesomekorean.podo.lesson.lessonReviewRewards.LessonReview06;
 import net.awesomekorean.podo.lesson.lessonReviewRewards.Rewards00;
 import net.awesomekorean.podo.lesson.lessonReviewRewards.Rewards01;
 import net.awesomekorean.podo.lesson.lessonReviewRewards.Rewards02;
 import net.awesomekorean.podo.lesson.lessonReviewRewards.Rewards03;
 import net.awesomekorean.podo.lesson.lessonReviewRewards.Rewards04;
+import net.awesomekorean.podo.lesson.lessonReviewRewards.Rewards05;
+import net.awesomekorean.podo.lesson.lessonReviewRewards.Rewards06;
 import net.awesomekorean.podo.lesson.lessons.Lesson00;
 import net.awesomekorean.podo.lesson.lessons.Lesson01;
 import net.awesomekorean.podo.lesson.lessons.Lesson02;
@@ -137,8 +141,9 @@ public class MainLesson extends Fragment implements View.OnClickListener {
             new Lesson20(), new Lesson18(), new Lesson21(), new Lesson23(), new Lesson35(), new LessonReview03(),
             new Rewards03(), new Lesson24(), new Lesson25(), new Lesson26(), new Lesson30(), new Lesson31(),
             new Lesson32(), new Lesson33(), new Lesson34(), new LessonReview04(), new Rewards04(),
-            new Lesson36(), new Lesson37(), new Lesson38(), new Lesson39(), new Lesson40(), new Lesson41(),
-            new Lesson42(), new Lesson43(), new Lesson44(), new Lesson45()
+            new Lesson36(), new Lesson37(), new Lesson38(), new Lesson39(), new Lesson40(), new LessonReview05(),
+            new Rewards05(), new Lesson41(), new Lesson42(), new Lesson43(), new Lesson44(), new Lesson45(),
+            new LessonReview06(), new Rewards06()
     };
 
     LessonItem[] intermediate = {

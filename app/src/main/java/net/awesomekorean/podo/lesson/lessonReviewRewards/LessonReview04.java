@@ -25,6 +25,7 @@ public class LessonReview04 extends LessonInit implements LessonItem, LessonRevi
     private String lessonTitle = "";
     private String lessonSubTitle = "";
 
+
     private Lesson[] lessons = {
             new Lesson24(), new Lesson25(), new Lesson26(), new Lesson30(), new Lesson31(), new Lesson32(),
             new Lesson33(), new Lesson34()
@@ -101,5 +102,4 @@ public class LessonReview04 extends LessonInit implements LessonItem, LessonRevi
     public String getLessonSubTitle() {
         return lessonSubTitle;
     }
-
 }

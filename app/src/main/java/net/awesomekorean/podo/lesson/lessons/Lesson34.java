@@ -9,7 +9,7 @@ public class Lesson34 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonId = "L_34";
     private String lessonTitle = "allow";
     private String lessonSubTitle = "~아/어도 돼요";
-    private Integer dayCount = 21;
+    private Integer dayCount = 18;
 
     private String[] wordFront = {"지갑", "놓다", "잠시", "괜찮다", "천천히", "여권"};
 

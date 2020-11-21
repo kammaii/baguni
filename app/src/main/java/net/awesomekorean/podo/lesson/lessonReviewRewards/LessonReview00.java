@@ -68,5 +68,4 @@ public class LessonReview00 extends LessonInit implements LessonItem, LessonRevi
     public String getLessonSubTitle() {
         return lessonSubTitle;
     }
-
 }

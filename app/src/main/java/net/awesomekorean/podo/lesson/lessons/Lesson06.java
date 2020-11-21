@@ -10,6 +10,7 @@ public class Lesson06 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonTitle = "progressive";
     private String lessonSubTitle = "~고 있어요";
     private LessonItem specialLesson = new S_Lesson06();
+    private Integer dayCount = 6;
 
     private String[] wordFront = {"지금", "이따", "같이", "헬스장"};
 
@@ -141,5 +142,10 @@ public class Lesson06 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     @Override
     public LessonItem getSLesson() {
         return specialLesson;
+    }
+
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
     }
 }

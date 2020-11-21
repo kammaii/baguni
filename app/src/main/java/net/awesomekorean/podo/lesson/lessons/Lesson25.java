@@ -10,6 +10,7 @@ public class Lesson25 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonTitle = "try";
     private String lessonSubTitle = "~아/어 보다";
 
+
     private String[] wordFront = {"알다", "모르다", "쓰다", "가르치다", "선생님", "만들다", "받다"};
 
     private String[] wordBack = {"know", "don't know", "use", "teach", "teacher", "make", "receive"};

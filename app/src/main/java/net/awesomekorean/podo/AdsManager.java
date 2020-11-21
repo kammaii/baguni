@@ -77,7 +77,7 @@ public class AdsManager {
         UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
         int isChallenger = userInformation.getIsChallenger();
 
-        if(isChallenger > 0) {
+        if(isChallenger == 0) {
             if (interstitialAd != null && interstitialAd.isLoaded()) {
                 interstitialAd.show();
                 System.out.println("전면 광고를 재생합니다.");

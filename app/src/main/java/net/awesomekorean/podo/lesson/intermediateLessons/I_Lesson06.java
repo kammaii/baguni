@@ -34,7 +34,7 @@ public class I_Lesson06 extends LessonInit_Lock implements I_Lesson, LessonItem,
             "Thank you. Please wait.",
             "Yes.",
             "Thank you for waiting.\nYour room number is 1234.",
-            "What time can you eat breakfast?",
+            "What time can I eat breakfast?",
             "It is from 6 to 10.",
             "What time is check-out?",
             "It is until 11 am."

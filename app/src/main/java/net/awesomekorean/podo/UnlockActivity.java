@@ -148,6 +148,17 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
 
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(userInformation != null) {
+            userInformation = SharedPreferencesInfo.getUserInfo(context);
+            pointHave.setText(String.valueOf(userInformation.getPoints()));
+        }
+    }
+
+
+    @Override
     public void onClick(View v) {
 
         switch (v.getId()) {

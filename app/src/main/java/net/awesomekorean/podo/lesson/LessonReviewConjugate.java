@@ -187,6 +187,7 @@ public class LessonReviewConjugate extends Fragment implements View.OnClickListe
                 toggleButton.setTextOn(lessonReview.getBaseForm()[answerList[i]]);
                 toggleButton.setTextOff(lessonReview.getBaseForm()[answerList[i]]);
                 toggleButton.setTag(stringBaseForm);
+                toggleButton.setPadding(10,10,10,10);
                 toggleButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.toggle_pink_transparent));
                 flexBaseForm.addView(toggleButton);
 
@@ -195,6 +196,7 @@ public class LessonReviewConjugate extends Fragment implements View.OnClickListe
                 toggleButton.setTextOn(lessonReview.getConjugation()[selectedBaseFormIndex][answerList[i]]);
                 toggleButton.setTextOff(lessonReview.getConjugation()[selectedBaseFormIndex][answerList[i]]);
                 toggleButton.setTag(stringConjugation);
+                toggleButton.setPadding(10,10,10,10);
                 toggleButton.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.toggle_purple_transparent));
                 flexConjugation.addView(toggleButton);
             }

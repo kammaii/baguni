@@ -12,7 +12,7 @@ public class Lesson16 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonTitle = "possibility";
     private String lessonSubTitle = "~(으)ㄹ 수 있어요";
     private LessonItem specialLesson = new S_Lesson10();
-    private Integer dayCount = 12;
+    private Integer dayCount = 10;
 
     private String[] wordFront = {"예전에", "언어교환", "배우다", "좋다", "비슷하다", "단어"};
 
@@ -21,7 +21,7 @@ public class Lesson16 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] wordPronunciation = {"[예저네]", "[어너교환]", "-", "[조타]", "[비스타다]", "[다너]"};
 
     private String[] sentenceFront = {
-            "할 수 있어요?.",
+            "할 수 있어요?",
             "한국어 할 수 있어요?",
             "네, 저는 한국 사람이에요.",
             "저는 일본 사람이에요.",

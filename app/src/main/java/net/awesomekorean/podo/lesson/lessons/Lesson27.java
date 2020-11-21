@@ -10,7 +10,7 @@ public class Lesson27 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonTitle = "because, so";
     private String lessonSubTitle = "~아/어서";
     private LessonItem specialLesson = new S_Lesson08();
-    private Integer dayCount = 8;
+    private Integer dayCount = 7;
 
     private String[] wordFront = {"살다", "싸다", "비싸다", "사다", "팔다", "하지만"};
 

@@ -28,7 +28,7 @@ public class PlaySoundPool {
 
     // 퀴즈 정답/오답 플레이
     public void playSoundLesson(int sound) {
-        volume = getDeviceVolume();
+        volume = getDeviceVolume()/5;
         soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
@@ -54,7 +54,7 @@ public class PlaySoundPool {
 
     // 예~ 플레이
     public void playSoundYay() {
-        volume = getDeviceVolume();
+        volume = getDeviceVolume()/5;
         soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {
@@ -67,7 +67,7 @@ public class PlaySoundPool {
 
     // 딩딩~ 플레이
     public void playSoundDingDing() {
-        volume = getDeviceVolume();
+        volume = getDeviceVolume()/5;
         soundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
             @Override
             public void onLoadComplete(SoundPool soundPool, int sampleId, int status) {

@@ -86,6 +86,8 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
     public LinearLayout collectResult;
     AdsManager adsManager;
 
+    int loadingProgress = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,6 +138,7 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
         Intent intent = new Intent(getApplicationContext(), LoadingPage.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
+        recyclerView.setEnabled(false);
         lesson = (I_Lesson) getIntent().getSerializableExtra(getResources().getString(R.string.LESSON));
         title.setText(lesson.getLessonTitle());
 
@@ -269,9 +272,13 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
                 public void onSuccess(byte[] bytes) {
                     System.out.println("오디오를 로드했습니다.");
                     audiosDialog.put(audioIndexDialog, bytes);
+                    LoadingPage loadingPage = (LoadingPage)LoadingPage.activity;
+                    loadingProgress++;
+                    loadingPage.setTextLoading(loadingProgress, dialogLength);
+
                     if(audiosDialog.size() == dialogLength) {
-                        LoadingPage loadingPage = (LoadingPage)LoadingPage.activity;
                         loadingPage.finish();
+                        recyclerView.setEnabled(true);
 
                         list = new ArrayList<>();
                         adapter = new IntermediateAdapter(getApplicationContext(), list, lessonId, audiosDialog);

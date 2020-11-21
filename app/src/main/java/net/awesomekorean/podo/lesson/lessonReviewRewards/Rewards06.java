@@ -5,12 +5,12 @@ import net.awesomekorean.podo.lesson.lessons.LessonItem;
 
 import java.io.Serializable;
 
-public class Rewards00 extends LessonInit implements LessonItem, Serializable {
+public class Rewards06 extends LessonInit implements LessonItem, Serializable {
 
-    private String lessonId = "RW_00";
+    private String lessonId = "RW_06";
     private String lessonTitle = "";
     private String lessonSubTitle = "";
-    private Integer dayCount = 4;
+    private Integer dayCount = 25;
 
 
 

@@ -10,6 +10,8 @@ public class Rewards04 extends LessonInit implements LessonItem, Serializable {
     private String lessonId = "RW_04";
     private String lessonTitle = "";
     private String lessonSubTitle = "";
+    private Integer dayCount = 19;
+
 
 
     @Override
@@ -25,6 +27,11 @@ public class Rewards04 extends LessonInit implements LessonItem, Serializable {
     @Override
     public String getLessonSubTitle() {
         return lessonSubTitle;
+    }
+
+    @Override
+    public Integer getDayCount() {
+        return dayCount;
     }
 
 }

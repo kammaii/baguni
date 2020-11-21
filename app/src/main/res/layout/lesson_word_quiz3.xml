@@ -54,12 +54,13 @@
             android:textColor="@color/BLACK" />
         <ImageView
             android:id="@+id/btnReset"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_marginRight="20dp"
             app:layout_constraintTop_toTopOf="@id/answerLayout"
             app:layout_constraintBottom_toBottomOf="@id/answerLayout"
             app:layout_constraintEnd_toEndOf="@id/answerLayout"
             android:src="@drawable/close_red"
+            android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
