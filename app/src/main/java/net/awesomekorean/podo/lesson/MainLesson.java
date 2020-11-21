@@ -114,6 +114,7 @@ import net.awesomekorean.podo.lesson.lessons.LessonItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
@@ -170,6 +171,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     Button btnCloseChallengeResult;
 
     int specialLessonCount;
+    Shader shader;
 
 
     @Nullable
@@ -208,20 +210,13 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        Shader shader = new LinearGradient(0,0,100,0, new int[]{ContextCompat.getColor(context, R.color.PINK2), ContextCompat.getColor(context, R.color.PURPLE)}, new float[]{0, 1}, Shader.TileMode.CLAMP);
+        shader = new LinearGradient(0,0,100,0, new int[]{ContextCompat.getColor(context, R.color.PINK2), ContextCompat.getColor(context, R.color.PURPLE)}, new float[]{0, 1}, Shader.TileMode.CLAMP);
 
         int isChallenger = userInformation.getIsChallenger();
 
         // 챌린저 진행중
         if(isChallenger == 1) {
-            textChallenge.getPaint().setShader(shader);
-            Long timeStart = userInformation.getDateChallengeStart();
-            Long timeNow = UnixTimeStamp.getTimeNow();
-            int dayCount = (int) Math.floor((timeNow-timeStart)/86400 + 1);
-            textChallenge.setText("Day "+dayCount);
-            textChallenge.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
-            layoutChallenge.setEnabled(false);
-            iconFinger.setVisibility(GONE);
+            setChallengeCount();
 
 
         // 챌린지 종료
@@ -286,6 +281,18 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         int lastClickItem = SharedPreferencesInfo.getLastClickItem(context, true);
         recyclerView.scrollToPosition(lastClickItem);
         return view;
+    }
+
+
+    private void setChallengeCount() {
+        textChallenge.getPaint().setShader(shader);
+        Long timeStart = userInformation.getDateChallengeStart();
+        Long timeNow = UnixTimeStamp.getTimeNow();
+        int dayCount = (int) Math.floor((timeNow-timeStart)/86400 + 1);
+        textChallenge.setText("Day "+dayCount);
+        textChallenge.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+        layoutChallenge.setEnabled(false);
+        iconFinger.setVisibility(GONE);
     }
 
 
@@ -451,7 +458,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
             case R.id.layoutChallenge :
                 Intent intent = new Intent(context, Challenge.class);
-                startActivity(intent);
+                startActivityForResult(intent, 200);
                 break;
 
             case R.id.btnCloseChallengeResult :
@@ -459,6 +466,18 @@ public class MainLesson extends Fragment implements View.OnClickListener {
                 break;
         }
     }
+
+
+    // 챌린지 구매 완료 시
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode) {
+        super.startActivityForResult(intent, requestCode);
+
+        if(requestCode == RESULT_OK) {
+            setChallengeCount();
+        }
+    }
+
 
     @Override
     public void onResume() {

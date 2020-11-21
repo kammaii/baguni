@@ -135,8 +135,6 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Bi
 
         bp.consumePurchase(productId);
 
-        Intent intent = new Intent();
-        setResult(RESULT_OK, intent);
         finish();
     }
 

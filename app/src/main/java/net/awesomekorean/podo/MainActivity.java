@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
             case R.id.btnPurchasePoints :
                 intent = new Intent(getApplicationContext(), TopUp.class);
-                startActivityForResult(intent, 300);
+                startActivity(intent);
                 break;
 
             case R.id.btnPointInfo :

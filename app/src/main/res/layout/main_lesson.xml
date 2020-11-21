@@ -391,13 +391,11 @@
         android:visibility="gone"
         android:orientation="vertical"
         android:background="@drawable/bg_white_10"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         app:layout_constraintTop_toTopOf="parent"
         android:paddingBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/bubblesTop"

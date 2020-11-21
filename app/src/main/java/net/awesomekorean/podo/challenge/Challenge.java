@@ -153,6 +153,9 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
             }
         });
 
+        //todo: 업데이트전에 지우기
+        bp.consumePurchase(productId);
+
         Intent intent = new Intent();
         setResult(RESULT_OK, intent);
         finish();

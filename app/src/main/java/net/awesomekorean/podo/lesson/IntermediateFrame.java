@@ -3,6 +3,7 @@ package net.awesomekorean.podo.lesson;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,6 +49,8 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
 
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
+    ConstraintLayout layout;
+
     ImageView btnClose;
     TextView title;
     RecyclerView recyclerView;
@@ -86,7 +89,9 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
     public LinearLayout collectResult;
     AdsManager adsManager;
 
-    int loadingProgress = 1;
+    int loadingProgress = 0;
+
+    ConstraintSet set = new ConstraintSet();
 
 
     @Override
@@ -102,6 +107,7 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
             adsManager.loadFullAds(getApplicationContext());
         }
 
+        layout = findViewById(R.id.layout);
         btnClose = findViewById(R.id.btnClose);
         title = findViewById(R.id.title);
         recyclerView = findViewById(R.id.recyclerView);
@@ -180,6 +186,7 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
             btnSelector.setBackground(ContextCompat.getDrawable(this, R.drawable.ripple_custom));
             btnSelector.setText(sentenceSplit[i]);
             btnSelector.setOnClickListener(this);
+            btnSelector.setPadding(10,10,10,10);
             flexboxLayout.addView(btnSelector);
         }
         layoutAnswer.setVisibility(View.VISIBLE);
@@ -218,23 +225,28 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
                 playAudio(0);
 
             } else {
-                layoutAnswer.setVisibility(View.VISIBLE);
                 correctAnswer = list.get(dialogCount).getDialog();
                 correctAnswer = correctAnswer.replaceAll("\n", " "); // 줄바꿈을 공백으로 변경
                 makeAnswerBtns();
             }
 
+
+        // 레슨 종료
         } else if (dialogCount == lesson.getDialog().length) {
             adapter.isFinish = true;
             adapter.notifyDataSetChanged();
             layoutAnswer.setVisibility(View.GONE);
             layoutCompleted.setVisibility(View.VISIBLE);
+            set.clone(layout);
+            set.connect(recyclerView.getId(), ConstraintSet.BOTTOM, layoutCompleted.getId(), ConstraintSet.TOP, 20);
+            set.applyTo(layout);
         }
-        recyclerView.smoothScrollToPosition(list.size()-1);
+
+        recyclerView.smoothScrollToPosition(list.size());
     }
 
 
-    // 대화오디오 재생하기
+    // 대화오디오 재생하기 (playMode 0:다음대화재생, 2:전체재생)
     public void playAudio(int playMode) {
         if(dialogCount < audiosDialog.size()) {
             mediaPlayerManager.stopMediaPlayer();
@@ -399,6 +411,9 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
                 adapter.notifyDataSetChanged();
                 dialogCount = 0;
                 layoutCompleted.setVisibility(View.GONE);
+                set.clone(layout);
+                set.connect(recyclerView.getId(), ConstraintSet.BOTTOM, layoutAnswer.getId(), ConstraintSet.TOP, 20);
+                set.applyTo(layout);
                 addDialog();
                 break;
 

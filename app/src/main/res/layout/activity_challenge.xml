@@ -353,13 +353,13 @@
 
             <ImageView
                 android:id="@+id/interview_picture_3"
-                android:src="@drawable/people2"
+                android:src="@drawable/kevin"
                 app:layout_constraintTop_toBottomOf="@id/interview_fold_3"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
 
             <TextView
                 android:id="@+id/interview_name_3"

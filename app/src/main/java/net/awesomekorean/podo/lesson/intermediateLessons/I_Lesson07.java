@@ -22,7 +22,7 @@ public class I_Lesson07 extends LessonInit_Lock implements I_Lesson, LessonItem,
             "얼마나 가야 돼요?",
             "5분정도 가면 돼요.",
             "그리고 이 근처에 서점 있어요?",
-            "서점은 서울역 앞에 있어요.",
+            "서점은 서울역 안에 있어요.",
             "정말 고맙습니다.",
             "아니에요. 괜찮아요."
     };
