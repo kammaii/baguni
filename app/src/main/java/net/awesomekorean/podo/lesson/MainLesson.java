@@ -290,8 +290,9 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         Long timeNow = UnixTimeStamp.getTimeNow();
         int dayCount = (int) Math.floor((timeNow-timeStart)/86400 + 1);
         textChallenge.setText("Day "+dayCount);
-        textChallenge.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+        textChallenge.setTextSize(15);
         layoutChallenge.setEnabled(false);
+        iconFinger.clearAnimation();
         iconFinger.setVisibility(GONE);
     }
 
@@ -470,10 +471,9 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
     // 챌린지 구매 완료 시
     @Override
-    public void startActivityForResult(Intent intent, int requestCode) {
-        super.startActivityForResult(intent, requestCode);
-
-        if(requestCode == RESULT_OK) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK) {
             setChallengeCount();
         }
     }

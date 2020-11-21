@@ -17,9 +17,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.anjlab.android.iab.v3.BillingProcessor;
-import com.anjlab.android.iab.v3.Constants;
-import com.anjlab.android.iab.v3.TransactionDetails;
+import com.android.billingclient.api.BillingClient;
+import com.android.billingclient.api.BillingClientStateListener;
+import com.android.billingclient.api.BillingFlowParams;
+import com.android.billingclient.api.BillingResult;
+import com.android.billingclient.api.ConsumeParams;
+import com.android.billingclient.api.ConsumeResponseListener;
+import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.PurchasesUpdatedListener;
+import com.android.billingclient.api.SkuDetails;
+import com.android.billingclient.api.SkuDetailsParams;
+import com.android.billingclient.api.SkuDetailsResponseListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -33,15 +41,15 @@ import net.awesomekorean.podo.UnixTimeStamp;
 import net.awesomekorean.podo.UserInformation;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator;
 
-public class Challenge extends AppCompatActivity implements View.OnClickListener, BillingProcessor.IBillingHandler {
+public class Challenge extends AppCompatActivity implements View.OnClickListener, PurchasesUpdatedListener {
 
     FirebaseAnalytics firebaseAnalytics;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    BillingProcessor bp;
-    private String KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjttlMN7KIO22BMxNl1H2oN6FjRAUqQPvrlOKKybEwj0f2mXNreqpt5n/6/SV4+TAnADJSJO1j9MoN1fvVkYtr0zJtEe62hBcBouyqRKt/uWGhcy6ToMUlNjl9Wxf9UaSrJ3c0IePZvRtlGhd9y2OpK99uMfLjfqxY7+UIjnqBIO8qXSiy+E1jUrlR6AhZoBrwSfVSVPjOXya5K2uEngttMWaYwrnVhmBeEmjdIAjt0021plp4t7bYP5zSvwQp3dbomgnwE33njXWhn3ohla8m6wxZUPpZzvtCWKRo+SegyXx+wX2OVKcIkK27IrK9NEmrJzzamL2DLj/QhXKnk6aAQIDAQAB";
+    //private String KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjttlMN7KIO22BMxNl1H2oN6FjRAUqQPvrlOKKybEwj0f2mXNreqpt5n/6/SV4+TAnADJSJO1j9MoN1fvVkYtr0zJtEe62hBcBouyqRKt/uWGhcy6ToMUlNjl9Wxf9UaSrJ3c0IePZvRtlGhd9y2OpK99uMfLjfqxY7+UIjnqBIO8qXSiy+E1jUrlR6AhZoBrwSfVSVPjOXya5K2uEngttMWaYwrnVhmBeEmjdIAjt0021plp4t7bYP5zSvwQp3dbomgnwE33njXWhn3ohla8m6wxZUPpZzvtCWKRo+SegyXx+wX2OVKcIkK27IrK9NEmrJzzamL2DLj/QhXKnk6aAQIDAQAB";
 
     FragmentPagerAdapter adapter;
     ArrayList<Integer> imageList;
@@ -59,6 +67,9 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
     boolean interviewClicked1 = false;
     boolean interviewClicked2 = false;
     boolean interviewClicked3 = false;
+
+    BillingClient billingClient;
+    SkuDetails skuDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,85 +109,127 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         textChallenge.getPaint().setShader(shader);
 
         // analytics 로그 이벤트 얻기
-        Bundle params = new Bundle();
+        Bundle bundle = new Bundle();
         firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
-        firebaseAnalytics.logEvent("challenge_page_open", params);
+        firebaseAnalytics.logEvent("challenge_page_open", bundle);
         FirebaseMessaging.getInstance().subscribeToTopic("challenge_page_open");
 
-        bp = new BillingProcessor(this, KEY, this);
-        bp.initialize();
-    }
+        billingClient = BillingClient.newBuilder(getApplicationContext())
+                .enablePendingPurchases()
+                .setListener(this).build();
 
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(!bp.handleActivityResult(requestCode, resultCode, data)) {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        if(bp != null) {
-            bp.release();
-        }
-        super.onDestroy();
-    }
-
-
-    @Override
-    public void onProductPurchased(String productId, TransactionDetails details) {
-        // * 구매 완료시 호출
-
-        UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
-        Long timeStart = UnixTimeStamp.getTimeNow();
-        Long timeExpire = timeStart + 2592000;
-
-        userInformation.setIsChallenger(1);
-        userInformation.setDateChallengeStart(timeStart);
-        userInformation.setDateChallengeExpire(timeExpire);
-
-        SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
-
-        db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail).set(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
+        // 구글플레이에 연결하기
+        billingClient.startConnection(new BillingClientStateListener() {
             @Override
-            public void onSuccess(Void aVoid) {
-                System.out.println("챌린지를 구매했습니다.");
-                Toast.makeText(getApplicationContext(), getString(R.string.THANKS_PURCHASING), Toast.LENGTH_LONG).show();
-                FirebaseMessaging.getInstance().subscribeToTopic("purchase_challenge");
+            public void onBillingSetupFinished(BillingResult billingResult) {
+
+                // 구글플레이와 연결 성공
+                if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    System.out.println("구글플레이와 연결을 성공했습니다.");
+                    getSkuDetail();
+
+                } else {
+                    System.out.println("구글플레이와 연결을 실패했습니다. : " + billingResult.getDebugMessage());
+                }
             }
-        }).addOnFailureListener(new OnFailureListener() {
+
             @Override
-            public void onFailure(@NonNull Exception e) {
-                System.out.println("DB에 챌린지정보 저장을 실패했습니다.: " +  e);
-                Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING) + e, Toast.LENGTH_LONG).show();
+            public void onBillingServiceDisconnected() {
+                System.out.println("구글플레이와 연결이 끊어졌습니다.");
             }
         });
-
-        //todo: 업데이트전에 지우기
-        bp.consumePurchase(productId);
-
-        Intent intent = new Intent();
-        setResult(RESULT_OK, intent);
-        finish();
     }
 
-    @Override
-    public void onPurchaseHistoryRestored() {
-        System.out.println("포인트 구매 복원!");
+
+    // 상품 정보 받아오기
+    public void getSkuDetail() {
+        List<String> skuList = new ArrayList<>();
+        skuList.add(getString(R.string.SKU_CHALLENGER));
+
+        SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
+        params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
+        billingClient.querySkuDetailsAsync(params.build(), new SkuDetailsResponseListener() {
+            @Override
+            public void onSkuDetailsResponse(BillingResult billingResult, List<SkuDetails> list) {
+
+                if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    System.out.println("챌린지 상품 정보를 받았습니다.");
+                    skuDetails = list.get(0);
+                    btnChallenge.setText(getString(R.string.CHALLENGE_BUTTON) + " " + skuDetails.getPrice());
+
+                } else {
+                    System.out.println("챌린지 상품 정보 받아오기를 실패했습니다. : " + billingResult.getDebugMessage());
+                }
+            }
+        });
     }
 
+
+    // 결제 처리
     @Override
-    public void onBillingError(int errorCode, Throwable error) {
-        if(errorCode != Constants.BILLING_RESPONSE_RESULT_USER_CANCELED) {
-            System.out.println("구매 오류가 발생했습니다." +  errorCode);
-            Toast.makeText(getApplicationContext(), "FAILED Purchasing: "+errorCode, Toast.LENGTH_LONG).show();
+    public void onPurchasesUpdated(BillingResult billingResult, @Nullable List<Purchase> list) {
+
+        // 결제 성공
+        if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+            System.out.println("결제를 성공했습니다.");
+            UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
+            Long timeStart = UnixTimeStamp.getTimeNow();
+            Long timeExpire = timeStart + 2592000;
+
+            userInformation.setIsChallenger(1);
+            userInformation.setDateChallengeStart(timeStart);
+            userInformation.setDateChallengeExpire(timeExpire);
+
+            SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
+
+            db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail).set(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    System.out.println("챌린지를 구매했습니다.");
+                    Toast.makeText(getApplicationContext(), getString(R.string.THANKS_PURCHASING), Toast.LENGTH_LONG).show();
+                    FirebaseMessaging.getInstance().subscribeToTopic("purchase_challenge");
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    System.out.println("DB에 챌린지정보 저장을 실패했습니다.: " +  e);
+                    Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING) + e, Toast.LENGTH_LONG).show();
+                }
+            });
+
+
+            // 상품 소모하기
+            ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
+                @Override
+                public void onConsumeResponse(BillingResult billingResult, String s) {
+
+                    if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                        System.out.println("상품을 성공적으로 소모하였습니다.");
+                    } else {
+                        System.out.println("상품 소모를 실패했습니다. : " + billingResult.getResponseCode());
+                    }
+                }
+            };
+
+            ConsumeParams consumeParams = ConsumeParams.newBuilder()
+                    .setPurchaseToken(list.get(0).getPurchaseToken()).build();
+
+            billingClient.consumeAsync(consumeParams, consumeListener);
+
+            Intent intent = new Intent();
+            setResult(RESULT_OK, intent);
+            finish();
+
+
+        // 결제 취소
+        } else if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
+            System.out.println("결제를 취소했습니다.");
+
+
+        //결제 실패
+        } else {
+            System.out.println("결제를 실패했습니다. : " + billingResult.getResponseCode());
         }
-    }
-
-    @Override
-    public void onBillingInitialized() {
-        System.out.println("포인트 구매 초기화!");
     }
 
 
@@ -227,7 +280,8 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.btnChallenge :
-                bp.purchase(this, getString(R.string.SKU_CHALLENGE));
+                BillingFlowParams flowParams = BillingFlowParams.newBuilder().setSkuDetails(skuDetails).build();
+                billingClient.launchBillingFlow(this, flowParams);
                 break;
         }
     }
