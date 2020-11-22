@@ -27,7 +27,7 @@ public class I_Lesson04 extends LessonInit_Lock implements I_Lesson, LessonItem,
             "이거 예쁘네요. 얼마예요?",
             "50,000원이에요.",
             "좀 싸게 해주면 안돼요?",
-            "알겠어요. 한국어 잘하니까 싸게 해 줄게요.\n45,000원만 주세요.",
+            "알겠어요. 한국어 잘하니까 싸게 해 줄게요. 45,000원만 주세요.",
             "고맙습니다!"
     };
 
@@ -46,7 +46,7 @@ public class I_Lesson04 extends LessonInit_Lock implements I_Lesson, LessonItem,
             "This is pretty. How much?",
             "It is 50,000 won.",
             "Can you give me a discount?",
-            "OK. I’ll give you cheaply because you are good at Korean.\nGive me 45,000 won only.",
+            "OK. I’ll give you cheaply because you are good at Korean. Give me 45,000 won only.",
             "Thank you!"
     };
 

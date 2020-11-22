@@ -44,9 +44,9 @@ public class I_Lesson09 extends LessonInit_Lock implements I_Lesson, LessonItem,
             "How about Seoul?",
             "There are a lot of fun things in Seoul.",
             "How about Busan?",
-            "There are many delicious\nthings in Busan.",
+            "There are many delicious things in Busan.",
             "How was the weather?",
-            "It was a little cold\nbecause it was winter,\nbut it was okay.",
+            "It was a little cold because it was winter, but it was okay.",
             "Do you want to go again?",
             "Yes, I will go again next year."
     };

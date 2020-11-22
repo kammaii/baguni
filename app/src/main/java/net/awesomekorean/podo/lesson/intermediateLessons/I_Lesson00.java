@@ -14,8 +14,8 @@ public class I_Lesson00 extends LessonInit implements I_Lesson, LessonItem, Seri
     private String lessonSubTitle = "식당 예약";
 
     private String[] dialog = {
-            "안녕하세요?\n포도 식당입니다.",
-            "안녕하세요?\n오늘 저녁 예약할 수 있어요?",
+            "안녕하세요? 포도 식당입니다.",
+            "안녕하세요? 오늘 저녁 예약할 수 있어요?",
             "네, 몇 시에요?",
             "저녁 6시요.",
             "몇 분이에요?",
@@ -25,7 +25,7 @@ public class I_Lesson00 extends LessonInit implements I_Lesson, LessonItem, Seri
             "예약했습니다.",
             "고맙습니다.",
             "(몇 시간 후)",
-            "안녕하세요?\n오늘 예약 시간을 바꾸고 싶어요.",
+            "안녕하세요? 오늘 예약 시간을 바꾸고 싶어요.",
             "네, 몇 시로 바꿀까요?",
             "저녁 7시요.",
             "네, 바꿨습니다.",
@@ -33,8 +33,8 @@ public class I_Lesson00 extends LessonInit implements I_Lesson, LessonItem, Seri
     };
 
     private String[] dialogEng = {
-            "Hello?\nThis is a ‘podo’ restaurant.",
-            "Hello?\nCan I make a reservation\ntonight?.",
+            "Hello? This is a ‘podo’ restaurant.",
+            "Hello? Can I make a reservation tonight?.",
             "Yes, what time?",
             "6 o'clock in the evening.",
             "How many people?",
@@ -44,7 +44,7 @@ public class I_Lesson00 extends LessonInit implements I_Lesson, LessonItem, Seri
             "I made a reservation.",
             "Thank you.",
             "(After a few hours)",
-            "Hello?\nI want to change\nthe reservation time today.",
+            "Hello? I want to change the reservation time today.",
             "ok, what time should I change it?",
             "7 o'clock in the evening.",
             "ok, I changed it.",
