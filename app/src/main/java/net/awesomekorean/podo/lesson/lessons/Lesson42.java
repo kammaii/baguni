@@ -33,7 +33,7 @@ public class Lesson42 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "Suddenly I want to eat spicy food.",
             "Would you like to go to that restaurant?",
             "That restaurant is not tasty.",
-            "Let's go other restaurant."
+            "Let's go other place."
     };
 
     private String[] sentenceExplain = {

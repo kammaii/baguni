@@ -36,7 +36,7 @@ public class LessonReview05 extends LessonInit implements LessonItem, LessonRevi
     };
 
     private String[] baseForm = {
-            "주문하다", "이사하다", "찾다", "축하하다", "만나다", "기억하다"
+            "주문하다", "찾다", "축하하다", "만나다", "기억하다"
     };
 
     private String[][] conjugation = {

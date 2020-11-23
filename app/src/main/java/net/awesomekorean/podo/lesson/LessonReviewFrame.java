@@ -60,16 +60,16 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
 
     public static LessonReview lessonReview;
 
-    public static List<String> wordFront = new ArrayList<>();
-    public static List<String> wordBack = new ArrayList<>();
-    public static List<String> wordImageString = new ArrayList<>();
-    public static List<String> wordAudioString = new ArrayList<>();
-    public static List<String> wordAudioFolder = new ArrayList<>();
+    public static List<String> wordFront;
+    public static List<String> wordBack;
+    public static List<String> wordImageString;
+    public static List<String> wordAudioString;
+    public static List<String> wordAudioFolder;
 
-    public static List<String> sentenceFront = new ArrayList<>();
-    public static List<String> sentenceBack = new ArrayList<>();
-    public static List<String> sentenceAudioString = new ArrayList<>();
-    public static List<String> sentenceAudioFolder = new ArrayList<>();
+    public static List<String> sentenceFront;
+    public static List<String> sentenceBack;
+    public static List<String> sentenceAudioString;
+    public static List<String> sentenceAudioFolder;
 
     List<Integer> wordImage = new ArrayList<>();
     public static Map<Integer, byte[]> wordAudioByte = new HashMap<>();
@@ -165,29 +165,40 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
     private void setLessonReview() {
         Lesson[] lessons = lessonReview.getLessons();
 
+        wordFront = new ArrayList<>();
+        wordBack = new ArrayList<>();
+        wordImageString = new ArrayList<>();
+        wordAudioString = new ArrayList<>();
+        wordAudioFolder = new ArrayList<>();
+
+        sentenceFront = new ArrayList<>();
+        sentenceBack = new ArrayList<>();
+        sentenceAudioString = new ArrayList<>();
+        sentenceAudioFolder = new ArrayList<>();
+
         // 리뷰 아이템 세팅
         for(int i=0; i<lessons.length; i++) {
             String lessonId = lessons[i].getLessonId().toLowerCase();
 
             for(int j=0; j<lessons[i].getWordFront().length; j++) {
-                this.wordFront.add(lessons[i].getWordFront()[j]);
-                this.wordBack.add(lessons[i].getWordBack()[j]);
-                this.wordImageString.add(lessonId + "_word_" + j);
-                this.wordAudioString.add(lessonId + "_word_" + j + ".mp3");
-                this.wordAudioFolder.add("lesson/" + lessonId);
+                wordFront.add(lessons[i].getWordFront()[j]);
+                wordBack.add(lessons[i].getWordBack()[j]);
+                wordImageString.add(lessonId + "_word_" + j);
+                wordAudioString.add(lessonId + "_word_" + j + ".mp3");
+                wordAudioFolder.add("lesson/" + lessonId);
             }
 
             for(int j=0; j<lessons[i].getReviewId().length; j++) {
                 int index = lessons[i].getReviewId()[j];
-                this.sentenceFront.add(lessons[i].getSentenceFront()[index]);
-                this.sentenceBack.add(lessons[i].getSentenceBack()[index]);
-                this.sentenceAudioString.add(lessonId + "_sentence_" + index + ".mp3");
-                this.sentenceAudioFolder.add("lesson/" + lessonId + "/");
+                sentenceFront.add(lessons[i].getSentenceFront()[index]);
+                sentenceBack.add(lessons[i].getSentenceBack()[index]);
+                sentenceAudioString.add(lessonId + "_sentence_" + index + ".mp3");
+                sentenceAudioFolder.add("lesson/" + lessonId + "/");
             }
         }
 
 
-        // 단어 이미지 & 오디오 다운로드
+        // 단어 & 문장 오디오 다운로드
         downloadProgress = 0;
         downloadMax = wordFront.size() + sentenceFront.size();
 

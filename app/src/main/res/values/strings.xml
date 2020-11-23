@@ -231,7 +231,7 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
         Chiara Sartini\nItaly</string>
     <string name="INTERVIEW_2_SUMMARY">
         Korean is a beautiful language but definitely not the easiest.
-        That is why I try to surround myself with it as mush as possible
+        That is why I try to surround myself with it as mush as possible.
     </string>
     <string name="INTERVIEW_2_DETAIL">
         When it comes to learning a new language, the most important thing is to find something of genuine interest for me.
@@ -241,14 +241,14 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     </string>
     <string name="INTERVIEW_2_NAME">Elen Isakidu\nGeorgia</string>
     <string name="INTERVIEW_3_SUMMARY">
-        Korean is a beautiful language but definitely not the easiest.
-        That is why I try to surround myself with it as mush as possible
+        Learn grammar &amp; vocabulary steadily and review everything once a month.
+        And watch &amp; listen as much everyday Korean contents. (movies, dramas, musics or even TV show).
     </string>
     <string name="INTERVIEW_3_DETAIL">
-        When it comes to learning a new language, the most important thing is to find something of genuine interest for me.
-        Korean is a beautiful language but definitely not the easiest.
-        That is why I try to surround myself with it as mush as possible, by listening to music and podcasts, watching YouTube videos on various topics, with and without subtitles.
-        Naver\'s daily Korean conversation is also a good way to improve your listening skills and vocabulary with casual useful conversations.
+        Personally, I try to work my Korean by following these few steps :\n
+        - Learn grammar &amp; vocabulary steadily and review everything once a month.\n
+        - Use what I learn by writing examples and ask teacher to check and correct.\n
+        - Watch &amp; listen as much everyday Korean contents. (movies, dramas, musics or even TV show).
     </string>
     <string name="INTERVIEW_3_NAME">Kevin Ohayoun\nFrance</string>
     <string name="COMMONALITY_TITLE">Their commonality</string>
@@ -413,47 +413,43 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
 
 
     <!--    스페셜레슨-->
-    <string name="SL_01_CONTENTS">"All Korean verbs and adjectives have a base form.
-It means things that end with '~다', such as '먹다 (to eat)', '가다 (to go)' and '사다 (to buy)'.
+    <string name="SL_01_CONTENTS">"Korean verbs and adjectives have a base form.
+Base form ends with '~다' such as '먹다 (to eat)', '가다 (to go)' and '사다 (to buy)'.
 
-You'll use base forms when looking for a word on dictionary, but you should change the base form to the form that you want to use when talking or writing.
-For example, '먹다 (to eat)' changes as followed.
+You'll need to look up the word as a base form on a dictionary, but when you actually use a word in a conversation or writing you should transform it into the form that you want to express.
+For example, '먹다 (to eat)' changes as below.
 
 - 먹다 (to eat) : base form
 - 먹어요 (I eat)
 - 먹으면 (if I eat)
 - 먹어서 (because I eat)
-- 먹고 (after I eat)
+- 먹고나서 (after I eat)
 
-For most of the words base forms you only need to change ""다"" to other forms.
-But sometimes there are irregular words that change parts that are not '다' as well.
+Mostly you can only change the last syllable '~다' of the base form into the other form, but sometimes there are irregular words that you have to change not only '~다' but also the other syllables as well.
 For example...
 
-- 듣다 (to listen) : base form
+- 듣다 (to listen / base form)
 - 들어요 (I listen)
 - 들으면 (If I listen)
 - 들어서(because I listen)
-- 듣고(after I listen)
+- 듣고나서(after I listen)
 
-Many students think that irregular words are difficult, but you don't need to worry about that.
-Because most of irregular forms are for easier pronunciation.
-In the example above, you can pronounce easier by changing irregularly to '들어요[드러요]' instead of '듣어요[드더요]'.
-Therefore, if you use it several times through speaking practice, you will naturally be able to remember irregular words."</string>
+Many students think that irregular words are difficult, but you don't need to worry because most of the irregular forms are for easier pronunciation.
+In the example above, you can pronounce the word easier by changing it irregularly into '들어요[드러요]' instead of '듣어요[드더요]'.
+Therefore, if you use it several times through speaking practice, you will be able to remember irregular words naturally."</string>
 
 
-    <string name="SL_03_CONTENTS">"The first conjugation you learn is the '아요/어요' form.
-Let's call it '아/어요' for short.
-'아/어요' is not too formal and can be polite enough.
-Therefore, it is most often used in everyday conversations.
+    <string name="SL_03_CONTENTS">"The first conjugation you will learn is the '아요/어요' form(Shortly call '아/어요' form).
+'아/어요' form is not too formal but can sound polite enough.
+Therefore, it is used often in everyday conversation.
 
-There are three rules for converting the base form to '아/어요'.
-Let's take a look with an example.(You don't need to know the meaning of the words
-in the example right now. Let's focus on the process of changing the base form into '아/어요'.)
+There are three rules to transform the base form into '아/어요'.
+Let's take a look at the example. (You don't need to know the meaning of the words in the example right now. Let's focus on the process of changing the base form into '아/어요' form.)
 
 1.
 
 하다 -> 해요
-: The base form of a verb or adjective ending with '~하다' is simply converted to '해요'.
+: The base form of a verb or adjective ending with '~하다' can be simply changed to '해요'.
 
 ex)
 공부하다 -> 공부해요
@@ -462,11 +458,11 @@ ex)
 
 2.
 
-When there is a vowel 'ㅏ' or 'ㅗ' -> 아요
-: In the base form, you should see the letter right before the '다'.
-If the letter has a vowel 'ㅏ' or 'ㅗ', this word should be added with '아요'.
-Let's take a look the word '가다'.
-The previous letter of '다' is '가' and '가' has a vowel 'ㅏ'.
+If the syllable before '~다' has 'ㅏ' or 'ㅗ' vowel -> '아요'
+: You should check the syllable right before the '~다' In the base form.
+If the syllable has 'ㅏ' or 'ㅗ' vowel, this word should be added with '아요'.
+Let's take a look at the word '가다'.
+The previous syllable of '다' is '가' and '가' has a vowel 'ㅏ'.
 Therefore, the word '가다' is conjugated to '가' + '아요' = '가아요',
 and '가아요' can be simplified to '가요'.
 
@@ -477,11 +473,11 @@ ex)
 
 3.
 
-Everything except 1 and 2 -> 어요
+Every word except 1 and 2 -> '어요'
 : Let's look at the word '먹다.
 This word doesn't end with '하다'.
-And since the vowels of the '먹' is 'ㅓ', it's not type 2 as well.
-Therefore, this word is type 3 and you should add '어요'.
+And since the vowels of the '먹' is 'ㅓ', it's not fall into the type 2 as well.
+Therefore, this word is type 3 and you can add '어요' after the base form.
 
 ex)
 '먹다' -> '먹' + '어요' = '먹어요'
@@ -491,67 +487,56 @@ ex)
 So far, we have looked at the '아/어요' and let's make a promise with me now.
 Just think about this rule until Lesson 10 and forget about this.
 Actually there are only a few Koreans who know this rule.
-When you learn new verbs or adjectives just take a look '아/어요' as well.
+When you learn new verbs or adjectives, just take a look '아/어요' as well.
 And just say '아요' or '어요' as it is pronounced comfortably. It might be correct.
 
-I'm going to say one more interesting thing and finish this lesson.
-The '아/어요' is so powerful that it can have a variety meanings depending on how you speak or what's the situation.
+I'm going to give you one more interesting thing and finish this lesson.
+The '아/어요' is very powerful that it can have a various meanings depending on the way you speak or the situation.
 
 For example, let's see the word '먹어요'.
-a. '먹어요.' (You eat)
-b. '먹어요?' (Do you eat?)
-c. '먹어요!!' (You must to eat!)
-There are many other meanings, but let's just remember two things of 'a' and 'b'."</string>
+a. "먹어요." (You eat)
+b. "먹어요?" (Do you eat?)
+c. "먹어요!!" (You must eat!)
+There are more meanings, but let's just remember type 'a' and 'b' from above examples."</string>
 
-    <string name="SL_04_CONTENTS">"Students who use a language without particles have a lot of difficulty with particles in Korean.
-The most difficult are '은/는', '이/가' and '을/를'.
-We'll learn each particle later and I'm going to explain why we use the particles in this lesson.
 
-There are two sentences in English.
+    <string name="SL_04_CONTENTS">"Particles in Korean is quite hard for those students who use language which doesn't have particles.
+The most difficult particles are '은/는', '이/가' and '을/를'.
+We'll learn each particle later and I'm going to explain why korean use particles in this lesson.
 
+There are two sentences in English as below.
 1. I eat lion.
-2. Lion eat I. (Of course,'The lion eats me' is correct but ignore it now)
+2. Lion eat I. (Of course, 'The lion eats me' is the correct sentence but ignore it for now)
 
 The subject of sentence 1 is 'I' and the object is 'lion'.
 However, the subject of sentence 2 is 'lion' and the object is 'I'.
-In other words, depending on the position of the word, the subject and the object are determined and the meaning of sentence becomes completely different.
+In english, depending on the position of the word in the sentence structure, the subject and the object can be determined and the meanings of sentences become completely different.
 
 Now let's look at the Korean sentence using particles.
-
 1. 나는 사자를 먹어요
 2. 사자를 나는 먹어요
-
-'나' meaning 'I' is added subject particle '는'
-and '사자' meaning 'lion' is added object particle '를'.
-When you use particles, the role of the word is fixed.
-So the sentence always has the same meaning no matter where the word is.
+In the first sentence, subject particle '는' is added after '나' meaning 'I', and object particle '를' is added after '사자' meaning 'lion' in the second sentence.
+When you use particles the role of the word is fixed, so the sentence always has the same meaning no matter where you put the word.
 Therefore, sentence 1 and 2 is totally same meaning as 'I eat lion'.
 
-This is the difference between a language that uses particles and a language that does not.
+This is the difference between language that use particles and language does not use particles.
 But it's not a good idea to change the position of words all the time.
-Korean language generally uses the order of 'subject-object-predicate',
-so it would be better to follow this order."</string>
+In general Korean language structure is 'subject-object-predicate', so it would be better to follow this order."</string>
 
 
-    <string name="SL_05_CONTENTS">"There are 2 basic tips to make your pronunciation better.
+    <string name="SL_05_CONTENTS">"There are 2 basic tips to improve your pronunciation.
 
-1.
+1. The consonant 'ㅇ' is a silent consonant(Only if it's not a Batchim).
+Therefore, when there is a syllable which has a Batchim before the consonant 'ㅇ' syllable, the Batchim can replace the next syllable's consonant 'ㅇ' to read it naturally.
+For example, '사람이에요' has a Batchim 'ㅁ' in the syllable '람' and the next syllable '이' has a consonant 'ㅇ' which is a silent phoneme.
+So you can pronounce it like [사라미에요].
 
- The consonant (not batchim) 'ㅇ' is a kind of an empty place because it has no sound.
-Therefore, when there is a batchim before the consonant 'ㅇ', you can put this batchim into the place of the consonant 'ㅇ' for reading naturally.
-For example, '사람이에요' has a batchim 'ㅁ' in the letter '람' and the next letter of '이' has a consonant 'ㅇ' that is an empty place.
-So it is good to read [사라미에요].
-
-2.
-
- batchim 'ㅎ' makes following consonants stronger.
-If the consonants 'ㄱ', 'ㄷ', 'ㅈ' comes after batchim 'ㅎ', they sound each 'ㅋ', 'ㅌ', 'ㅊ'.
-
+2. Batchim 'ㅎ' makes the sound of following syllable stronger.
+If the syllables which composed with 'ㄱ', 'ㄷ', 'ㅈ' comes after or before the syllable with 'ㅎ', they sound like 'ㅋ', 'ㅌ', 'ㅊ' respectively.
 ex)
-- '좋다' -> [조타]
-- '놓고' -> [노코]
-- '많지' -> [만치]
-"</string>
+- 좋다 -> [조타]
+- 놓고 -> [노코]
+- 많지 -> [만치]"</string>
 
 
     <string name="SL_06_CONTENTS">"1. 5시에 운동을 해요.
@@ -561,7 +546,7 @@ Which one is correct?
 
 1.
 
-Use '에' after the noun to indicate the time.
+You can use '~에' after the 'time/hour', so this sentence is correct.
 
 ex)
 - 5시에 운동을 해요.
@@ -570,20 +555,18 @@ ex)
 
 2.
 
-Use '에서' after the noun to indicate the place.
+You should use '~에서' after the 'place/location' not 'time' so this sentence is incorrect.
 
 ex)
 - 학교에서 한국어를 공부해요.
 - 집에서 TV를 봐요.
 - 식당에서 밥을 먹어요.
 
-Isn't it too easy? Now, let's learn a little bit more.
+It may sound easy so far. Let's learn a little further now.
 
 2-1.
 
-In a sentence with a verb indicating existence (있다/없다)
-and a verb indicating movement (가다/오다/도착하다/다니다...),
-we use '에' after the noun indicating the place.
+There's some case that you have to use '~에' following after a 'place/location'. When you want to talk about the existence('있다/없다') or movement('가다/오다/도착하다/다니다...'), you can use '~에' after the noun indicating the place.
 
 ex)
 - 서점에 책이 있어요.
@@ -592,13 +575,11 @@ ex)
 - 어제 한국에 도착했어요.
 - 한국어 학교에 다녀요.
 
-In other words, we unconditionally use '에' after the noun that indicating the time,
-and we basically use ""에서"" after the noun that indicates the place.
-but sometimes use '에' after the noun that indicating the place according to verb of its sentence.
-"</string>
+In a nutshell, you can use '~에' unconditionally after the noun indicating the time, and basically you can use '~에서' after the noun indicating the place.
+But sometimes you can use '~에' after the noun indicating the place depending on the verb of the sentence."</string>
 
 
-    <string name="SL_07_CONTENTS">"How do you say the words below in Korean?
+    <string name="SL_07_CONTENTS">"How do you say below words in Korean?
 
 - Bibimbap restaurant
 - Spaghetti restaurant
@@ -608,79 +589,71 @@ but sometimes use '에' after the noun that indicating the place according to ve
 - 스파게티 식당
 - 떡볶이 식당
 
-Is that right?
+Does it sound right?
 
-You can say '식당' when you talk about a restaurant.
-But native speakers often say the 'food' + '집'(house).
-So the restaurants above could be
+Restaurant is '식당' in Korean but native Korean often say 'food' + '집'(house) instead of saying 'food' + 식당(restaurant).
+So above example sentences can be changed as below.
 
 - 비빔밥집
 - 스파게티집
 - 떡볶이집
 
-In this way, it can be much more natural.
-Well, how can we say Korean restaurant?
-Korean food is called '한국 음식' and is called '한식' shortly.
-Therefore, you can say '한식집' or '한식당'. "</string>
+This way sounds more natural.
+Then, how can you say Korean restaurant in Korean?
+Korean food is called '한국 음식' or  shortly '한식' so you can say '한식집' or '한식당'."</string>
 
 
     <string name="SL_08_CONTENTS">"1.
 
-As we learned in previous lesson, '아서/어서' is used as a reason or cause.
+As you learned in the previous lesson, '아서/어서' is a reason or cause.
 
 ex)
 - 만나서 반가워요. ('만나다' -> '만나서')
 - 저거는 50% 세일이어서 5,000원이에요. ('이다' -> '이어서')
 - 겨울이어서 날씨가 추워요. ('이다' -> '이어서')
 
-'이다 -> 이어서' is better to say '이라서' in the conversation.
-So in the real conversation the above are ...
-
+In '이다 -> 이어서' case, it is better to say '이라서' in the actual conversation as below
 - 저거는 50% 세일이라서 5,000원이에요.
 - 겨울이라서 날씨가 추워요.
 
 2.
 
-We also use '아서/어서' to refer to the relationship between time.
-At this time, there must be a close connection between what happened before and what happened afterwards.
+You can also use '아서/어서' to describe the timeline of two happenings.
+In this case, there must be a close connection between what happened before and what happened afterwards.
 
 ex)
 - 한국에 가서 한국어를 배워요.
 - 친구를 만나서 얘기해요.
-- 식당에 가서 밥을 먹어요.
-"</string>
+- 식당에 가서 밥을 먹어요."</string>
 
 
-    <string name="SL_09_CONTENTS">"'Newly-coined word' is a new word made popular by young people.
-Some people say it's better not to use it because it's not a standard language.
-But I think it is helpful to foreigners to make learning korean more fun.
-However, it is recommended not to use it in formal situations.
+    <string name="SL_09_CONTENTS">"Neologism' is often created by young generation and become popular.
+Some people say that it's better not to use it because it's not a standard language.
+But I think foreigners can learn Korean more fun through the newly-coined word or abbreviation.
+However, some words are not recommended to use in a formal situation.
 
-Well, let's look at some of the most common new words used in 2019.
+Below words are the most common used newly-coined words recently.
 
 1. 인플루언서
-
-: Korean pronunciation of English 'influencer'.
-It means the people who have a large number of followers In social media and influence the public.
+: This is a loanword adopted  from English word 'influencer'.
+'인플루언서' is an individual who has a large number of followers in social media and power to affect opinion and decisions of other people.
 
 2. 편스토랑
-
 : A combination of '편의점 (convenience store)' and '레스토랑 (restaurant)'.
-It means a convenience store where you can have a good meal like a restaurant.
+It's a convenience store where you can have a quality meal like a restaurant.
 
 3. 소떡소떡
-
-: It's a snack that '소시지 (sausage)' and '떡 (rice cake)' are alternately sticked and baked.
+: It's a Korean street food snack that  skewered alternately '소시지 (sausage)' with '떡 (rice cake)' and baked.
 That's why it is called '소떡소떡'.
 
 4. 스포
-
-: It's from English 'spoiler'. The act of telling others about the contents of a movie in advance.
+: It's from English word 'spoiler'.
+It's an behavior or piece of plot that reveals critical part like ending of of the movie/drama/show.
 
 5. 꾸안꾸
-
-: It is made up of shortened '꾸민 듯 안 꾸민 듯 (like not put makeup)'.
-It means that you put on makeup naturally, as if you did not do makeup."
+: This is an abbreviation of '꾸민 듯 안 꾸민 듯.
+It means someone's outfit looks natural but not too shady and someone's make-up looks natural that you cannot tell if she/he put on a make-up or not. You can use the word like '꾸안꾸 style'(natural outfit) and
+'꾸안꾸 make-up'(natural make-up)."
     </string>
 
 
@@ -689,24 +662,23 @@ It means that you put on makeup naturally, as if you did not do makeup."
 "You might wonder why there are Chinese character lesson.
 Since Korea used Chinese characters in the past, there are lots of words made from Chinese characters.
 
-Usually formal writing uses the words from Chinese character.
-Therefore, if you don't know the words from Chinese character, you could be overwhelmed because there are too many unknown words when you start reading Korean articles.
+Usually in a formal writing, the high level of vocabulary derived from Chinese character is used.
+Therefore, if you don't know the words from Chinese character, you could be overwhelmed by many unfamiliar words when you start reading Korean articles.
 
-However, because each Chinese character has its own meaning, learning very easy Chinese characters can help you to understand the meaning of words.
-Therefore, let's pick only very easy Chinese characters and learn together.
+However, because each Chinese character has its own meaning, learning a few easy Chinese characters can help you to understand the meaning of Korean words better.
+Therefore, let's study a few easy Chinese characters.
 
 The first Chinese character we will learn is '人'(사람 인).
-This Chinese character has the meaning of '사람'(people) and the sound of '인'.
+This Chinese character has the meaning of '사람'(people) and you can read it as '인'.
 The shape of this letter is also very interesting.
-It is a letter made of people walking as shown in the picture of this lesson.
-Therefore, if there is a letter '인' in Korean word, we can guess that it is related to 'people'.
+This letter represents a human's walking posture.
+Therefore, if there is a syllable '인' in Korean word, we can guess that it is related to 'people'.
 
 ex)
 - 한국인 : Korean
 - 인간 : human
 - 인구 : population
-- 인격 : personality
-"
+- 인격 : personality"
     </string>
 
 
@@ -717,27 +689,19 @@ ex)
 Which one is correct?
 
 1.
-
-Use '좋아요' after the Subject(which is able to use with '이/가') and it's base form is '좋다'(good).
-So it means the 'Subject' is good.
+The base form of '좋아요' is '좋다'(adjective) and it can be used after the subject(which is able to use with '이/가'). But first sentence put '좋아요' after object which is incorrect, so you have to change it like '저는 스키가 좋아요'.
 
 ex)
-- 저는 스키가 좋아요.
 - 저는 치킨이 좋아요.
 - 오늘은 날씨가 좋아요.
 
 2.
 
-Use '좋아해요' after the Object(which is able to use with '을/를') and it's base form is '좋아하다'(like).
-So it means the 'Subject' likes 'Object'.
+The base form of '좋아해요' is '좋아하다'(verb) and it can be used after the object(which is able to use with '을/를'). So this sentence sounds natural.
 
 ex)
-- 저는 스키를 좋아해요.
 - 저는 치킨을 좋아해요.
-- 눈이 오는 날씨를 좋아해요.
-
-Sometimes we omit '은/는' and '이/가' in real conversation.
-In this case, never be confused, you just remember it means 'good' or 'like'."
+- 눈이 오는 날씨를 좋아해요."
     </string>
 
 

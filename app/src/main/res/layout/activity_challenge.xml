@@ -329,7 +329,7 @@
 
             <TextView
                 android:id="@+id/interview_3"
-                android:text="@string/INTERVIEW_2_SUMMARY"
+                android:text="@string/INTERVIEW_3_SUMMARY"
                 android:textColor="@color/NAVY"
                 android:textSize="15dp"
                 app:layout_constraintStart_toEndOf="@id/interview_quote_start_3"
