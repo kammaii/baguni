@@ -72,7 +72,7 @@ public class Lesson06 extends LessonInit_Lock implements Lesson, LessonItem, Ser
 
     private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
-    private int[] reviewId = {2,5,10};
+    private int[] reviewId = {5,10};
 
 
     @Override

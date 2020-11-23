@@ -70,7 +70,7 @@ public class Lesson21 extends LessonInit_Lock implements Lesson, LessonItem, Ser
 
     private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
-    private int[] reviewId = {3,5,7,8,10};
+    private int[] reviewId = {3,7};
 
 
     @Override

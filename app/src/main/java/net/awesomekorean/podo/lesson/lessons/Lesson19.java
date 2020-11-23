@@ -57,7 +57,7 @@ public class Lesson19 extends LessonInit implements Lesson, LessonItem, Serializ
 
     private int[] peopleImage = {R.drawable.male_b,R.drawable.male_p};
 
-    private int[] reviewId = {0,3,4,5};
+    private int[] reviewId = {};
 
 
     @Override
