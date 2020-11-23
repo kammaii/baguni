@@ -50,7 +50,7 @@ public class Lesson25 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "'그게' = '그것이'",
             "When you want to describe a noun with an adjective or verb, use the '~ (으) ㄴ / 는 / (으) ㄹ' form.\nHowever, it is recommended to learn through the sentences in a practical way rather than memorizing it grammatically because the transformations are very diverse and there are many exceptions.\n\n'만들다' -> '만들' + '은' = '만들은' -> '만든' (irregular)\n\nex)\n'읽다' -> '읽은'\n'먹다' -> '먹은'\n'배우다' -> '배운'",
-            "However, it is good to learn the '~ (으) ㄴ / 는 / (으) ㄹ' form that can be changed depending on the tense.\n\npast tense : (으)ㄴ\npresent tense : 는\nfuture tense : (으)ㄹ\n\nex)\n'가르치다' \n-> '가르친' (past tense) : 한국어를 가르친 선생님 (The teacher who taught Korean)\n-> '가르치는' (present tense) : 한국어를 가르치는 선생님 (The teacher  who is teaching Korean)\n-> '가르칠' (future tense) : 한국어를 가르칠 선생님 (The teacher who will teach Korean)",
+            "However, it is good to learn the '~ (으) ㄴ / 는 / (으) ㄹ' form that can be changed depending on the tense.\n\npast tense : '(으)ㄴ'\npresent tense : '는'\nfuture tense : '(으)ㄹ'\n\nex)\n'가르치다' \n-> '가르친' (past tense) : '한국어를 가르친 선생님' (The teacher who taught Korean)\n-> '가르치는' (present tense) : '한국어를 가르치는 선생님' (The teacher  who is teaching Korean)\n-> '가르칠' (future tense) : '한국어를 가르칠 선생님' (The teacher who will teach Korean)",
             "'쓰다' -> '써요' -> '써 보다'",
             "-",
             "Korean usually say '다운로드'(download) as '다운' in a simple way.\nAnd the verb '받다' often can be used with '다운'.\nKorean would rather say '다운받다' a mix of English word and Korean than 'download'.\n\n'보다' -> '보' + 'ㄹ 게요' = '볼게요'"

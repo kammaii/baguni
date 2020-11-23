@@ -39,7 +39,7 @@ public class Lesson30 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceExplain = {
-            "When you want to check something with others, you can use '안' or '~지 않아요'.\n\n무슨 소리 안 들려요?\n무슨 소리 들리지 않아요?",
+            "When you want to check something with others, you can use '안' or '~지 않아요'.\n\n'무슨 소리 안 들려요?'\n'무슨 소리 들리지 않아요?'",
             "-",
             "When you want to describe a noun with an adjective or verb, use the '~ (으) ㄴ / 는 / (으) ㄹ' form like we'd learned.\n\nAgain, because there are many conjugations and exceptions in this form, it is better to remember them naturally when you learn words rather than trying to learn the rules.\n\n'비가 내리다' -> '비가 내리' + '는' = '비가 내리는'",
             "When you guess something happening present or happened in the past, use the form '~(으)ㄴ/는 것 같다'.\n\n'소리이다' -> '소리이' + 'ㄴ 것 같다' = '소리인 것 같다'",

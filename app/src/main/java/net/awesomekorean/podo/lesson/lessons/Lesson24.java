@@ -52,7 +52,7 @@ public class Lesson24 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "'자요' -> '자도'\n\nex)\n'바빠요' -> '바빠도'\n'많아요' -> '많아도'\n'봐요' -> '봐도'",
             "-",
             "In English, you say 'go and see the doctor' but in Korean, you better say 'go to the hospital' and this way sounds more natural.",
-            "When you want to say 'have visited' somewhere, use this expression.\n\n'갔다' + '왔다' = '갔다 왔다'\n\nConversely, when someone visited your place and left, you can say '왔다 갔다'.\n\nex)\n우리 집에 누가 왔다 갔어요?",
+            "When you want to say 'have visited' somewhere, use this expression.\n\n'갔다' + '왔다' = '갔다 왔다'\n\nConversely, when someone visited your place and left, you can say '왔다 갔다'.\n\nex)\n'우리 집에 누가 왔다 갔어요?'",
             "-",
             "'많다' -> '많' + '아서' = '많아서'",
             "When you want to express the meaning of 'limited', you can use '은 / 는'.",

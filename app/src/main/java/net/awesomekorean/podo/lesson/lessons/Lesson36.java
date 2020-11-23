@@ -47,7 +47,7 @@ public class Lesson36 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "-",
-            "Caution!\n잘못하다 : do wrong\n잘 못 하다 : do not well\n\nex)\n- 죄송해요. 제가 잘못했어요.\n- 저는 컴퓨터를 잘 못 해요.",
+            "Caution!\n'잘못하다' : do wrong\n'잘 못 하다' : do not well\n\nex)\n- '죄송해요. 제가 잘못했어요.'\n- '저는 컴퓨터를 잘 못 해요.'",
             "-",
             "-",
             "-",

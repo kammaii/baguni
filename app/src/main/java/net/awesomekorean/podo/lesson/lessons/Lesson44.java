@@ -37,7 +37,7 @@ public class Lesson44 extends LessonInit_Lock implements Lesson, LessonItem, Ser
 
     private String[] sentenceExplain = {
             "-",
-            "'(으)로' is used as a meaning of method.\n(Refer to 'more expression - (으)로')\nYou can consider the '인터넷' as a place and say '인터넷에서 옷을 샀어요'.",
+            "'(으)로' is used as a meaning of method.\nYou can consider the '인터넷' as a place and say '인터넷에서 옷을 샀어요'.",
             "You can use '(으)시' form to make it honorific expression.\nIn the previous lesson, we've learned '~(으)세요' form.\nAt this time, '(으)시' form was already used.\nFor example,\n'먹다' -> '먹' + '으시' + '어요' = '먹으시어요' -> '먹으셔요' -> '먹으세요'\n\nIt's important to get used to it by reading a lot of '(으)시' form because it's a bit complicated to conjugate.\n'어떠하다' -> '어떠하' + '세요' = '어떠하세요' -> '어떠세요'",
             "'보다' -> '보' + '시' + '었어요' = '보시었어요' -> '보셨어요'",
             "-",

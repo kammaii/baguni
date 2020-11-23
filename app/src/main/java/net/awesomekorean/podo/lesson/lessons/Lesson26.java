@@ -53,7 +53,7 @@ public class Lesson26 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "Be careful not to write '한국에 어디에'.\n'에' only needs to be written once at the end.",
             "-",
             "-",
-            "'울' in '서울' has a Batchim, so '이랑' is added.\nIf the noun doesn't end with a Batchim, you can us '랑'\nex) 경주랑 제주도에 가봤어요."
+            "'울' in '서울' has a Batchim, so '이랑' is added.\nIf the noun doesn't end with a Batchim, you can us '랑'\nex) '경주랑 제주도에 가봤어요.'"
     };
 
     private String[] dialog = {

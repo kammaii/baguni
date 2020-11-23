@@ -46,7 +46,7 @@ public class Lesson22 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "-",
-            "It is used as a meaning of 'when' or 'during'.\n\nN + '때'\nA/V + '(으)ㄹ 때\n\nex)\n'휴가' -> '휴가' + '때' = '휴가 때'\n'어리다' -> '어리' + 'ㄹ 때' = '어릴 때'\n'먹다' -> '먹' + '을 때' = '먹을 때'\n\nHowever, if it's a noun indicates 'time' or 'date'( such as '오전', '오후', '아침', '점심', '저녁' and '요일), you have to use '에' instead of '때'.\n\nex) \n오전 때 (x) / 오전에 (o)\n아침 때 (x) / 아침에 (o)\n월요일 때 (x) / 월요일에 (o)",
+            "It is used as a meaning of 'when' or 'during'.\n\nN + '때'\nA/V + '(으)ㄹ 때\n\nex)\n'휴가' -> '휴가' + '때' = '휴가 때'\n'어리다' -> '어리' + 'ㄹ 때' = '어릴 때'\n'먹다' -> '먹' + '을 때' = '먹을 때'\n\nHowever, if it's a noun indicates 'time' or 'date'( such as '오전', '오후', '아침', '점심', '저녁' and '요일), you have to use '에' instead of '때'.\n\nex) \n'오전 때' (x) / '오전에' (o)\n'아침 때' (x) / '아침에' (o)\n'월요일 때' (x) / '월요일에' (o)",
             "'귀엽다' -> '귀엽' + '어요' = '귀엽어요' -> '귀여워요' (irregular)",
             "-",
             "-",

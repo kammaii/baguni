@@ -48,7 +48,7 @@ public class Lesson40 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] sentenceExplain = {
             "-",
             "-",
-            "월 : comes from Chinese character\n달 : native Korean\n\nThere are 2 ways to count months.\n3개월 [삼개월]\n3달 [세달]\n\nDon't be confused that 3월[삼월] means March.",
+            "'월' : comes from Chinese character\n'달' : native Korean\n\nThere are 2 ways to count months.\n'3개월' [삼개월]\n'3달' [세달]\n\nDon't be confused that '3월'[삼월] means 'March'.",
             "If you use '정도' or '쯤' following after the word indicating quantity, it means 'about(approximately)'.",
             "When you want to say 'few', 'little', you can use '~밖에' and have to put negative form after.\n\nex)\n'~밖에 안~'\n'~밖에 못~'\n'~밖에 없다'",
             "You can use '이렇게' to express a big surprise.",

@@ -62,7 +62,7 @@ public class Lesson18 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "-",
-            "In English, there are many forms like 'reservation', 'booking' and 'appointment' but they are all '예약' in Korean.\n\nex)\n호텔예약 : booking\n식당예약 : reservation\n병원예약 : appointment",
+            "In English, there are many forms like 'reservation', 'booking' and 'appointment' but they are all '예약' in Korean.\n\nex)\n'호텔예약' : booking\n'식당예약' : reservation\n'병원예약' : appointment",
             "conjugate 'V-아/어 주세요'\n'기다리다' -> '기다리' + '어요' = '기다리어요' -> '기다려요'\n'기다려요' -> '기다려' + '주세요' = '기다려 주세요'",
             "-"
     };

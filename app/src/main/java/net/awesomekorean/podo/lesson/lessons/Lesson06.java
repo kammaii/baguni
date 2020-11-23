@@ -58,7 +58,7 @@ public class Lesson06 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "conjugate '아요/어요'\n: '가다' -> '가' + '아요' = '가아요' -> '가요'",
             "-",
-            "You can use '랑/이랑' as we learned from the previous lesson.\n'저' + '랑' = '저랑 헬스장에 가요'\n* 저(me): A polite expression to refer to yourself. You can call yourself as '저' when you are talking someone except close friends and those who are younger than you.\nOr you can also use '랑/이랑' with '같이'(together). '저랑 같이 헬스장에 가요'",
+            "You can use '랑/이랑' as we learned from the previous lesson.\n'저' + '랑' = '저랑 헬스장에 가요'\n* '저'(me): A polite expression to refer to yourself. You can call yourself as '저' when you are talking someone except close friends and those who are younger than you.\nOr you can also use '랑/이랑' with '같이'(together). '저랑 같이 헬스장에 가요'",
             "When you want to mention a moment within a few hours, you can use '이따' or '이따가'.\nIt's for conversational language.",
             "-"
     };

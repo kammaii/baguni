@@ -46,7 +46,7 @@ public class Lesson27 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "'살다'  -> '살' + '고 있다' = '살고 있다'",
             "-",
             "-",
-            "Don't be confused.\n'사다 ' -> '사요'  (to buy)\n'살다' -> '살아요'  (to live)\n\nWhen you want to say the reason, use the '아/어서' form.\n'싸요' -> '싸' + '서' = '싸서'\n\nYou can also use '(으)니까' form in the same way.\n'싸다' -> '싸' + '니까' = '싸니까'\n\n(See the Lesson 6 - confusing expression : '아/어서' vs '으니까')",
+            "Don't be confused.\n'사다 ' -> '사요'  (to buy)\n'살다' -> '살아요'  (to live)\n\nWhen you want to say the reason, use the '아/어서' form.\n'싸요' -> '싸' + '서' = '싸서'\n\nYou can also use '(으)니까' form in the same way.\n'싸다' -> '싸' + '니까' = '싸니까'",
             "-",
             "-",
             "'도' means 'also'.",

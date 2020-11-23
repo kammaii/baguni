@@ -42,7 +42,7 @@ public class Lesson34 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     };
 
     private String[] sentenceExplain = {
-            "It is often used when you forget to bring something.\n\n'놓다 ' + '그리고' + '오다' = '놓고 오다'\n\nㅎ + ㄱ = [ㅋ] \n놓고 [노코]",
+            "It is often used when you forget to bring something.\n\n'놓다 ' + '그리고' + '오다' = '놓고 오다'\n\nㅎ + ㄱ = [ㅋ] \n'놓고' [노코]",
             "-",
             "-",
             "'기다려요' -> '기다려' + '주세요' = '기다려 주세요'",
