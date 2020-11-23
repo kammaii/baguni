@@ -21,7 +21,7 @@ public class Lesson27 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] sentenceFront = {
             "저는 살고 있어요.",
             "저는 태국에서 살고 있어요.",
-            "매일 사요.",
+            "많이 사요.",
             "망고가 아주 싸서 많이 사요.",
             "태국에는 망고가 아주 싸서 많이 사요.",
             "태국 망고를 팔아요.",
@@ -59,7 +59,7 @@ public class Lesson27 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "한국에도 태국 망고를 팔아요.\n하지만 너무 비싸서 못 사요."
     };
 
-    private int[] peopleImage = {1,2};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {1,4,6,8};
 

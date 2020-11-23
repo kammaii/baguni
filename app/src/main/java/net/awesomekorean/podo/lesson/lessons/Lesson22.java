@@ -62,7 +62,7 @@ public class Lesson22 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "엄마, 아빠랑\n한국 여행 갔을 때\n찍은 거예요."
     };
 
-    private int[] peopleImage = {3,4};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {1,3,5,8};
 

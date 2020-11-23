@@ -64,7 +64,7 @@ public class Lesson10 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "12시 반부터 1시 반까지예요."
     };
 
-    private int[] peopleImage = {8,7};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
     private int[] reviewId = {2,5,8,9};
 

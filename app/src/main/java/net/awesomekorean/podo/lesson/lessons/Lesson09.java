@@ -70,7 +70,7 @@ public class Lesson09 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "30분 걸려요."
     };
 
-    private int[] peopleImage = {5,6};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {4,7,10,11};
 

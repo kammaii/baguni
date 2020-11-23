@@ -66,7 +66,7 @@ public class Lesson24 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "아니요.\n평일에는 일이 많아서 시간이 없어요.\n주말에 갈 거예요."
     };
 
-    private int[] peopleImage = {8,7};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
     private int[] reviewId = {0,1,4,6,9,10};
 

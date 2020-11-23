@@ -51,7 +51,7 @@ public class LessonDialog extends Fragment implements Button.OnClickListener {
 
     View view;
 
-    RecyclerView recyclerView;
+    public RecyclerView recyclerView;
 
     static ImageView btnPlay;
     static ImageView btnPause;
@@ -154,38 +154,23 @@ public class LessonDialog extends Fragment implements Button.OnClickListener {
         }
 
 
-        // 대화 개수에 맞게 사람이미지를 array 로 만듦
-        int[] arrayPeopleImage = new int[dialogLength];
-        int count = 0;
-        for(int i=0; i<dialogLength; i++) {
-            String stringPeopleImage;
-            if(count == 0) {
-                stringPeopleImage = "people" + peopleImage[0];
-                count = 1;
-            } else {
-                stringPeopleImage = "people" + peopleImage[1];
-                count = 0;
-            }
-            int intPeopleImage = getResources().getIdentifier(stringPeopleImage, "drawable", packageName);
-            arrayPeopleImage[i] = intPeopleImage;
-        }
-
-
         // 대화아이템 세팅
         ArrayList<LessonDialogItems> list = new ArrayList<>();
         for(int i=0; i<dialogLength; i++) {
             LessonDialogItems item = new LessonDialogItems();
-            item.setPeopleImage(arrayPeopleImage[i]);
             item.setDialog(dialog[i]);
             if(i % 2 == 0) {
                 item.setAOrB(1);
+                item.setPeopleImage(peopleImage[0]);
             }else {
                 item.setAOrB(0);
+                item.setPeopleImage(peopleImage[1]);
             }
             list.add(item);
         }
 
         LessonDialogAdapter adapter = new LessonDialogAdapter(list);
+
 
         // 대화 아이템 클릭 이벤트
         adapter.setOnItemClickListener(new LessonDialogAdapter.OnItemClickListener() {
@@ -225,7 +210,7 @@ public class LessonDialog extends Fragment implements Button.OnClickListener {
             case R.id.btnPlay :
                 setToggleBtnUnChecked();
                 setPlayBtn(View.GONE, View.VISIBLE);
-                mediaPlayerManager.setAndPlayAllDialog(audiosDialog);
+                mediaPlayerManager.setAndPlayAllDialog(this, audiosDialog);
                 break;
 
             case R.id.btnPause :

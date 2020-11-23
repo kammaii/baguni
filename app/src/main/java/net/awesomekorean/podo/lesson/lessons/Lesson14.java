@@ -95,7 +95,7 @@ public class Lesson14 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "요즘 드라마 봐요?\n저도 추천해 주세요."
     };
 
-    private int[] peopleImage = {3,4};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {2,7,12,16,20};
 

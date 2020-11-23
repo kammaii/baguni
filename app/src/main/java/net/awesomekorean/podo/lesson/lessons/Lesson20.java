@@ -62,7 +62,7 @@ public class Lesson20 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "'유명하다' -> '유명하' + 'ㄴ' = '유명한'",
-            "~고' form is used.",
+            "'~고' form is used.",
             "-",
             "'여기' : here\n'저기' : there\n'거기' : there",
             "'시원하다' -> '시원하' + 'ㄴ' = '시원한'",
@@ -77,7 +77,7 @@ public class Lesson20 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "좋아요. \n 거기에서 시원한 주스 마셔요."
     };
 
-    private int[] peopleImage = {11,12};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {1,3,6,10,13};
 

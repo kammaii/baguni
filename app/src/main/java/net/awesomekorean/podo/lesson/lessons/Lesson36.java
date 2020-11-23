@@ -1,5 +1,7 @@
 package net.awesomekorean.podo.lesson.lessons;
 
+import net.awesomekorean.podo.R;
+
 import java.io.Serializable;
 
 public class Lesson36 extends LessonInit_Lock implements Lesson, LessonItem, Serializable {
@@ -61,7 +63,7 @@ public class Lesson36 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "SNS 중독이에요.\n자기 전에 SNS 하지 마세요."
     };
 
-    private int[] peopleImage = {8,7};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
     private int[] reviewId = {1,4,6,9};
 

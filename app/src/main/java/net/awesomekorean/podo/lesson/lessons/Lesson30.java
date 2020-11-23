@@ -43,7 +43,7 @@ public class Lesson30 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "When you want to describe a noun with an adjective or verb, use the '~ (으) ㄴ / 는 / (으) ㄹ' form like we'd learned.\n\nAgain, because there are many conjugations and exceptions in this form, it is better to remember them naturally when you learn words rather than trying to learn the rules.\n\n'비가 내리다' -> '비가 내리' + '는' = '비가 내리는'",
             "When you guess something happening present or happened in the past, use the form '~(으)ㄴ/는 것 같다'.\n\n'소리이다' -> '소리이' + 'ㄴ 것 같다' = '소리인 것 같다'",
-            "'가지다'(to take) + '오다'(to come) = '가져오다'\n\n'가져와요' -> '가져와' + 'ㅆ어요' = '가져왔어요'",
+            "'가지다'(to take) + '오다'(to come) = '가져오다'\n\n'가져와요' -> '가져와(ㅆ어)요' = '가져왔어요'",
             "-",
             "'비가 내리다' : rain is falling \n'비가 오다' : rain is coming\n\nBoth are the same meaning and they are all used in the actual conversation, so it's good to remember them all.",
             "'오다' -> '오' + '는 것 같다' = '오는 것 같다'"
@@ -56,7 +56,7 @@ public class Lesson30 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "아니요. 괜찮아요.\n많이 안 오는 것 같아요."
     };
 
-    private int[] peopleImage = {8,7};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
     private int[] reviewId = {1,3,5,7};
 

@@ -69,7 +69,7 @@ public class Lesson15 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "괜찮아요.\n조금 이해할 수 있어요.\n두 번 볼 거예요."
     };
 
-    private int[] peopleImage = {4,3};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
     private int[] reviewId = {1,5,8,10,12};
 

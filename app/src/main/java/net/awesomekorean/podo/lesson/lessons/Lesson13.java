@@ -62,7 +62,7 @@ public class Lesson13 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "밥을 먹기 30분 전에 먹어요."
     };
 
-    private int[] peopleImage = {1,2};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {1,4,5,9};
 

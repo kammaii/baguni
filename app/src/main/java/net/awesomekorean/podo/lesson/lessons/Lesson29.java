@@ -77,7 +77,7 @@ public class Lesson29 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "주로 음식, 여행, 운동 이야기 많이 해요."
     };
 
-    private int[] peopleImage = {5,6};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {2,5,8,10,13};
 

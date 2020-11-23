@@ -57,7 +57,7 @@ public class Lesson31 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String[] sentenceExplain = {
             "-",
             "-",
-            "'내리다' -> '내리' + '어요' = '내리어요' -> '내려요'\n'내려요' -> '내려' + 'ㅆ어요' = '내렸어요'",
+            "'내리다' -> '내리' + '어요' = '내리어요' -> '내려요'\n'내려요' -> '내려(ㅆ어)요' = '내렸어요'",
             "-",
             "In an actual conversation, you can also casually say '아까'.\n\n'아까 기차에서 내렸어요.'",
             "-",
@@ -65,7 +65,7 @@ public class Lesson31 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "When you guess the future behavior, you can use '~(으)ㄹ 것 같다'.\n\n'도착하다' -> '도착하' + 'ㄹ 것 같아요' = '도착할 것 같아요'",
             "-",
             "-",
-            "'타요' -> '타' + 'ㅆ어요' = '탔어요'",
+            "'타요' -> '타(ㅆ어)요' = '탔어요'",
             "= '저는 아까 택시 탔어요'",
             "-",
             "'늦다' -> '늦' + '을 것 같아요' = '늦을 것 같아요'",
@@ -80,7 +80,7 @@ public class Lesson31 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "미안해요.\n저는 방금 택시 탔어요.\n조금 늦을 것 같아요."
     };
 
-    private int[] peopleImage = {9,10};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {0,1,4,5,8,11,14};
 

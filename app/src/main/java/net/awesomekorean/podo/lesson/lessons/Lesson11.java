@@ -86,7 +86,7 @@ public class Lesson11 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "BTS는 노래를 잘 불러요.\n그리고 춤도 잘 춰요."
     };
 
-    private int[] peopleImage = {9,10};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {2,6,7,17};
 

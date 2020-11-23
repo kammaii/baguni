@@ -70,7 +70,7 @@ public class Lesson06 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "좋아요."
     };
 
-    private int[] peopleImage = {12,11};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
     private int[] reviewId = {2,5,10};
 

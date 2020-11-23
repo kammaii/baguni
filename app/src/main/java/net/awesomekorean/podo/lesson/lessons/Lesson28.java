@@ -61,7 +61,7 @@ public class Lesson28 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "네, 그래서 TV를 보면서 운동해요."
     };
 
-    private int[] peopleImage = {3,4};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {2,5,6,7,9};
 

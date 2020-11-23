@@ -80,7 +80,7 @@ public class Lesson17 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "좋아요.\n그동안 한국어 공부 열심히 해서 잘 할 수 있을 거예요."
     };
 
-    private int[] peopleImage = {5,6};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {5,8,11,13};
 

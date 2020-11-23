@@ -95,7 +95,7 @@ public class Lesson16 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "한국어에 일본어랑 비슷한 단어\n많이 있어요. 그래서 다른 언어보다\n쉬울 수 있어요."
     };
 
-    private int[] peopleImage = {2,1};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
     private int[] reviewId = {1,3,6,8,10,12,16,18};
 

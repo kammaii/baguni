@@ -1,5 +1,7 @@
 package net.awesomekorean.podo.lesson.lessons;
 
+import net.awesomekorean.podo.R;
+
 import java.io.Serializable;
 
 public class Lesson39 extends LessonInit_Lock implements Lesson, LessonItem, Serializable {
@@ -48,7 +50,7 @@ public class Lesson39 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "저도 같이 가요.\n저는 학생을 만나러 서점 근처에 가고 있어요."
     };
 
-    private int[] peopleImage = {1,2};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {0,2,3,5};
 

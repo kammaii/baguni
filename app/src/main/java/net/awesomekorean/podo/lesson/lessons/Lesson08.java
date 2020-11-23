@@ -89,7 +89,7 @@ public class Lesson08 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "그래서 아침도 못 먹어요."
     };
 
-    private int[] peopleImage = {4,4};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.female_p};
 
     private int[] reviewId = {3,7,13,17};
 

@@ -1,5 +1,7 @@
 package net.awesomekorean.podo.lesson.lessons;
 
+import net.awesomekorean.podo.R;
+
 import java.io.Serializable;
 
 public class Lesson38 extends LessonInit_Lock implements Lesson, LessonItem, Serializable {
@@ -56,7 +58,7 @@ public class Lesson38 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "아니요, 집에 있어요.\n더 사오지 않아도 돼요."
     };
 
-    private int[] peopleImage = {11,12};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {1,4,5,7};
 

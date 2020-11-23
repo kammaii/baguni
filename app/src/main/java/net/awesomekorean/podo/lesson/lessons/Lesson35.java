@@ -67,7 +67,7 @@ public class Lesson35 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "그래요? 제 차 타고 같이 가요."
     };
 
-    private int[] peopleImage = {5,6};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {2,5,6,7,8};
 

@@ -92,7 +92,7 @@ public class Lesson12 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "말하기랑 쓰기가 어려워요.\n하지만 읽기는 쉬워요."
     };
 
-    private int[] peopleImage = {12,11};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
     private int[] reviewId = {1,8,11,18};
 

@@ -75,7 +75,7 @@ public class Lesson33 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "고마워요.\n지금 빨리 들어 볼게요."
     };
 
-    private int[] peopleImage = {1,2};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {3,7,9,13};
 

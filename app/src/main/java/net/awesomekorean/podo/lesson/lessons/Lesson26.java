@@ -63,7 +63,7 @@ public class Lesson26 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "서울이랑 제주도에 가 봤어요."
     };
 
-    private int[] peopleImage = {12,11};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
     private int[] reviewId = {1,3,6,9};
 

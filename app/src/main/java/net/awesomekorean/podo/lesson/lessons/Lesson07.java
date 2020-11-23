@@ -73,7 +73,7 @@ public class Lesson07 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "눈은 별로 안 와요."
     };
 
-    private int[] peopleImage = {1,2};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {2,5,8,12};
 

@@ -179,6 +179,7 @@ public class MediaPlayerManager {
                         if(isOneDialog) {
                             playOneDialog();
                         } else {
+                            System.out.println("플레이");
                             playMediaPlayer(false);
                         }
                     }
@@ -251,14 +252,18 @@ public class MediaPlayerManager {
 
 
     public int getDuration() {
+
         if(mediaPlayer != null) {
             int duration = mediaPlayer.getDuration();
+
             if(duration < 0) {
                 System.out.println("getDuration must not be less than zero");
                 return 0;
+
             } else {
                 return duration;
             }
+
         } else {
             System.out.println("can't getDuration. mediaPlayer is null");
             return 0;
@@ -268,17 +273,14 @@ public class MediaPlayerManager {
 
     // 레슨 dialog 개별 플레이
     public void playOneDialog() {
-
         playMediaPlayer(false);
 
         if(mediaPlayer != null) {
-
             mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
-
-                    lessonDialog = LessonDialog.newInstance();
-                    lessonDialog.setToggleBtnUnChecked();
+                lessonDialog = LessonDialog.newInstance();
+                lessonDialog.setToggleBtnUnChecked();
                 }
             });
         }
@@ -286,8 +288,7 @@ public class MediaPlayerManager {
 
 
     // 레슨 dialog 전체 플레이
-    public void setAndPlayAllDialog(final Map<Integer, byte[]> audiosDialog) {
-
+    public void setAndPlayAllDialog(final LessonDialog frame, final Map<Integer, byte[]> audiosDialog) {
         setMediaPlayerByte(false, audiosDialog.get(dialogIndex));
 
         if(mediaPlayer != null) {
@@ -308,7 +309,8 @@ public class MediaPlayerManager {
                         lessonDialog.setPlayBtn(View.VISIBLE, View.GONE);
 
                     } else {
-                        setAndPlayAllDialog(audiosDialog);
+                        frame.recyclerView.scrollToPosition(dialogIndex);
+                        setAndPlayAllDialog(frame, audiosDialog);
                     }
                 }
             });

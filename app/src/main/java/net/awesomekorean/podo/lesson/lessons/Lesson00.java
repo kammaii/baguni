@@ -52,7 +52,7 @@ public class Lesson00 extends LessonInit implements Lesson, LessonItem, Serializ
             "안녕히 가세요."
     };
 
-    private int[] peopleImage = {1,2};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {};
 

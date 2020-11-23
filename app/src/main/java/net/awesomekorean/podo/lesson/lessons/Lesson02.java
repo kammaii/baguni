@@ -68,7 +68,7 @@ public class Lesson02 extends LessonInit implements Lesson, LessonItem, Serializ
             "저거는 50% 세일이에요.\n 그래서 5,000(오천)원이에요."
     };
 
-    private int[] peopleImage = {4,3};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
     private int[] reviewId = {2,5};
 

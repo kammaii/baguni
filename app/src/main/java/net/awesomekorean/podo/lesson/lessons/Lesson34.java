@@ -58,7 +58,7 @@ public class Lesson34 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "네, 괜찮아요.\n천천히 갔다 와도 돼요."
     };
 
-    private int[] peopleImage = {3,4};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {2,4,8};
 

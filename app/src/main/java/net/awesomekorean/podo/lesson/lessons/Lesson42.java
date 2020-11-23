@@ -1,5 +1,7 @@
 package net.awesomekorean.podo.lesson.lessons;
 
+import net.awesomekorean.podo.R;
+
 import java.io.Serializable;
 
 public class Lesson42 extends LessonInit_Lock implements Lesson, LessonItem, Serializable {
@@ -52,7 +54,7 @@ public class Lesson42 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "아니요. 저 식당은 맛없어요. 다른 곳으로 가요."
     };
 
-    private int[] peopleImage = {7,8};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {1,2,4,6};
 

@@ -1,5 +1,7 @@
 package net.awesomekorean.podo.lesson.lessons;
 
+import net.awesomekorean.podo.R;
+
 import java.io.Serializable;
 
 public class Lesson41 extends LessonInit_Lock implements Lesson, LessonItem, Serializable {
@@ -53,7 +55,7 @@ public class Lesson41 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "부모님 일을 도와주기로 했어요."
     };
 
-    private int[] peopleImage = {6,5};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
     private int[] reviewId = {1,3,5,7};
 

@@ -72,7 +72,7 @@ public class Lesson03 extends LessonInit implements Lesson, LessonItem, Serializ
             "카카오톡에서 얘기해요."
     };
 
-    private int[] peopleImage = {5,6};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {3,5,8,11};
 

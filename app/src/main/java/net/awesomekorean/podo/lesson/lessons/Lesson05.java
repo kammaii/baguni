@@ -74,7 +74,7 @@ public class Lesson05 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "재미있는 영화를 볼 거예요."
     };
 
-    private int[] peopleImage = {9,10};
+    private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};
 
     private int[] reviewId = {3,8,13};
 

@@ -64,7 +64,7 @@ public class Lesson01 extends LessonInit implements Lesson, LessonItem, Serializ
             "한국 사람이에요."
     };
 
-    private int[] peopleImage = {2,1};
+    private int[] peopleImage = {R.drawable.female_b,R.drawable.male_p};
 
     private int[] reviewId = {2,6,9};
 
