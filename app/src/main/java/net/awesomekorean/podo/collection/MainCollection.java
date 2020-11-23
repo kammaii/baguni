@@ -60,9 +60,6 @@ import static net.awesomekorean.podo.MainActivity.textCollection;
 
 public class MainCollection extends Fragment implements Button.OnClickListener {
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-
     View view;
 
     public static CheckBox selectAll; // 전체 선택/해제 체크박스
@@ -360,14 +357,16 @@ public class MainCollection extends Fragment implements Button.OnClickListener {
             }
 
         } else {
-            for (int i = 0; i < listAllData.size(); i++) {
-                String front = listAllData.get(i).getFront();
-                String back = listAllData.get(i).getBack();
-                Pattern pattern = Pattern.compile("^" + text, Pattern.CASE_INSENSITIVE);
-                Matcher matcherFront = pattern.matcher(front);
-                Matcher matcherBack = pattern.matcher(back);
-                if (matcherFront.find() || matcherBack.find()) {
-                    list.add(listAllData.get(i));
+            if(listAllData != null) {
+                for (int i = 0; i < listAllData.size(); i++) {
+                    String front = listAllData.get(i).getFront();
+                    String back = listAllData.get(i).getBack();
+                    Pattern pattern = Pattern.compile("^" + text, Pattern.CASE_INSENSITIVE);
+                    Matcher matcherFront = pattern.matcher(front);
+                    Matcher matcherBack = pattern.matcher(back);
+                    if (matcherFront.find() || matcherBack.find()) {
+                        list.add(listAllData.get(i));
+                    }
                 }
             }
         }

@@ -41,6 +41,12 @@ import net.awesomekorean.podo.lesson.lessons.Lesson36;
 import net.awesomekorean.podo.lesson.lessons.Lesson37;
 import net.awesomekorean.podo.lesson.lessons.Lesson38;
 import net.awesomekorean.podo.lesson.lessons.Lesson39;
+import net.awesomekorean.podo.lesson.lessons.Lesson40;
+import net.awesomekorean.podo.lesson.lessons.Lesson41;
+import net.awesomekorean.podo.lesson.lessons.Lesson42;
+import net.awesomekorean.podo.lesson.lessons.Lesson43;
+import net.awesomekorean.podo.lesson.lessons.Lesson44;
+import net.awesomekorean.podo.lesson.lessons.Lesson45;
 
 import java.util.HashMap;
 import java.util.List;
@@ -61,7 +67,8 @@ public class LessonProgress {
             new Lesson17(), new Lesson18(), new Lesson19(), new Lesson20(), new Lesson21(), new Lesson22(),
             new Lesson23(), new Lesson24(), new Lesson25(), new Lesson26(), new Lesson27(), new Lesson28(),
             new Lesson29(), new Lesson30(), new Lesson31(), new Lesson32(), new Lesson33(), new Lesson34(),
-            new Lesson35(), new Lesson36(), new Lesson37(), new Lesson38(), new Lesson39()};
+            new Lesson35(), new Lesson36(), new Lesson37(), new Lesson38(), new Lesson39(), new Lesson40(),
+            new Lesson41(), new Lesson42(), new Lesson43(), new Lesson44(), new Lesson45()};
 
     private int totalWordNo;
     private int totalSentenceNo;
