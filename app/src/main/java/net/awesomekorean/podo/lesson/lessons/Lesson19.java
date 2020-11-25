@@ -11,6 +11,8 @@ public class Lesson19 extends LessonInit implements Lesson, LessonItem, Serializ
     private String lessonSubTitle = "고맙습니다";
     private LessonItem specialLesson = new S_Lesson01();
     private Integer dayCount = 2;
+    private boolean isActive = true;
+
 
     private String[] wordFront = {"안녕히 주무세요", "고맙습니다", "죄송합니다", "잘 먹겠습니다", "잘 먹었습니다", "어서오세요"};
 
@@ -131,5 +133,10 @@ public class Lesson19 extends LessonInit implements Lesson, LessonItem, Serializ
     @Override
     public Integer getDayCount() {
         return dayCount;
+    }
+
+    @Override
+    public boolean getIsActive() {
+        return isActive;
     }
 }

@@ -39,7 +39,6 @@ public class AdsManager {
 
     public InterstitialAd interstitialAd;
     public RewardedAd rewardedAd;
-    public UnifiedNativeAd unifiedNativeAd;
 
     private static AdsManager instance = new AdsManager();
     public static AdsManager getInstance() {
@@ -156,34 +155,4 @@ public class AdsManager {
             loadRewardAds(activity);
         }
     }
-
-/*
-    // 네이티브 광고 로드하기
-    public void loadNativeAds(Context context) {
-        AdLoader adLoader = new AdLoader.Builder(context, BuildConfig.ADMOB_NATIVE_ID)
-                .forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
-                    @Override
-                    public void onUnifiedNativeAdLoaded(UnifiedNativeAd ad) {
-                        System.out.println("네이티브 광고 로드에 성공했습니다.");
-                        unifiedNativeAd = ad;
-                    }
-                })
-
-                .withAdListener(new AdListener() {
-                    @Override
-                    public void onAdFailedToLoad(int errorCode) {
-                        System.out.println("네이티브 광고 로드에 실패했습니다.");
-                    }
-                })
-
-                .withNativeAdOptions(new NativeAdOptions.Builder()
-                        // Methods in the NativeAdOptions.Builder class can be
-                        // used here to specify individual options settings.
-                        .build())
-                .build();
-
-        adLoader.loadAd(new AdRequest.Builder().build());
-    }
-
- */
 }

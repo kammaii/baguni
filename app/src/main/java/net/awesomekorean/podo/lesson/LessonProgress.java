@@ -48,7 +48,9 @@ import net.awesomekorean.podo.lesson.lessons.Lesson43;
 import net.awesomekorean.podo.lesson.lessons.Lesson44;
 import net.awesomekorean.podo.lesson.lessons.Lesson45;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -76,7 +78,7 @@ public class LessonProgress {
     private String[][] wordFront = new String[lessons.length][];
     private String[][] wordBack = new String[lessons.length][];
     private String[][] sentenceFront = new String[lessons.length][];
-    private String[][] setnenceBack = new String[lessons.length][];
+    private String[][] sentenceBack = new String[lessons.length][];
 
     private List<String> lessonComplete;
     private Map<String, String> myWords = new HashMap<>();
@@ -108,9 +110,9 @@ public class LessonProgress {
             for(int j=0; j<lengthSentence; j++) {
                 int reviewNo = lessons[i].getReviewId()[j];
                 sentenceFront[i] = new String[lengthSentence];
-                setnenceBack[i] = new String[lengthSentence];
+                sentenceBack[i] = new String[lengthSentence];
                 sentenceFront[i][j] = lessons[i].getSentenceFront()[reviewNo];
-                setnenceBack[i][j] = lessons[i].getSentenceBack()[reviewNo];
+                sentenceBack[i][j] = lessons[i].getSentenceBack()[reviewNo];
             }
         }
     }

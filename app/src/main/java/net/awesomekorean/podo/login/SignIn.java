@@ -230,7 +230,6 @@ public class SignIn extends AppCompatActivity implements Button.OnClickListener 
         informationRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                SharedPreferencesInfo.setSignIn(getApplicationContext(), true);
                 SharedPreferencesInfo.setUserEmail(getApplicationContext(), userEmail);
 
                 if(documentSnapshot.exists()) {
@@ -359,6 +358,7 @@ public class SignIn extends AppCompatActivity implements Button.OnClickListener 
             case R.id.btnSignUp :
                 intent = new Intent(this, SignUp.class);
                 startActivity(intent);
+                finish();
                 break;
 
         }

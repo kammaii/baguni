@@ -137,6 +137,7 @@ public class LessonWordQuiz2 extends Fragment implements Button.OnClickListener 
             button.setPadding(gap10, gap20, gap10, gap20);
             button.setBackgroundDrawable(ContextCompat.getDrawable(activity, R.drawable.toggle_white_purple));
             button.setTag("button"+i);
+            button.setTransformationMethod(null);
             button.setChecked(false);
 
             if(i < wordNo) {

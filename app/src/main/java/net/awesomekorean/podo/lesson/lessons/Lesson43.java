@@ -24,9 +24,9 @@ public class Lesson43 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "가격도 싸고 맛있어요.",
             "다음에 또 와요.",
             "이제 나갈까요?",
-            "앉아있고 싶어요.",
-            "조금만 더 앉아있고 싶어요.",
-            "너무 배불러서 조금만 더 앉아있고 싶어요."
+            "앉아 있고 싶어요.",
+            "조금만 더 앉아 있고 싶어요.",
+            "너무 배불러서 조금만 더 앉아 있고 싶어요."
     };
 
     private String[] sentenceBack = {
@@ -46,7 +46,7 @@ public class Lesson43 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "-",
             "-",
             "'(으)ㄹ까요?' and '(으)ㄹ래요?' is very similar.\nTherefore, this sentence can be changed into '이제 나갈래요?'",
-            "'아/어 있다' form indicates that the status persists after an action has ended.\n'앉다' -> '앉' + '아 있다' = '앉아 있다'\n'앉아 있다' -> '앉아 있' + '고 싶다' = '앉아있고 싶다'",
+            "'아/어 있다' form indicates that the status persists after an action has ended.\n'앉다' -> '앉' + '아 있다' = '앉아 있다'\n'앉아 있다' -> '앉아 있' + '고 싶다' = '앉아 있고 싶다'",
             "-",
             "'배부르다' -> '배불러요' (irregular)"
     };
@@ -56,7 +56,7 @@ public class Lesson43 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "이 식당, 인기가 많은 것 같아요.",
             "네, 가격도 싸고 맛있어요.",
             "다음에 또 와요. 이제 나갈까요?",
-            "아니요. 너무 배불러서 조금만 더 앉아있고 싶어요."
+            "아니요. 너무 배불러서 조금만 더 앉아 있고 싶어요."
     };
 
     private int[] peopleImage = {R.drawable.male_b,R.drawable.female_p};

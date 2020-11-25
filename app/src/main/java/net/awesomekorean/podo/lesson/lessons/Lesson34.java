@@ -11,11 +11,11 @@ public class Lesson34 extends LessonInit_Lock implements Lesson, LessonItem, Ser
     private String lessonSubTitle = "~아/어도 돼요";
     private Integer dayCount = 18;
 
-    private String[] wordFront = {"지갑", "놓다", "잠시", "괜찮다", "천천히", "여권"};
+    private String[] wordFront = {"지갑", "놓다", "잠시", "천천히", "여권"};
 
-    private String[] wordBack = {"wallet", "put", "for a while", "Okay", "slowly", "passport"};
+    private String[] wordBack = {"wallet", "put", "for a while", "slowly", "passport"};
 
-    private String[] wordPronunciation = {"-", "[노타]", "-", "[괜찬타]", "-", "[여꿘]"};
+    private String[] wordPronunciation = {"-", "[노타]", "-", "-", "[여꿘]"};
 
     private String[] sentenceFront = {
             "놓고 왔어요.",

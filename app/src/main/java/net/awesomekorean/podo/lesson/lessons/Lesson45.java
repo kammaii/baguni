@@ -23,7 +23,7 @@ public class Lesson45 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "옷을 바꾸고 싶어요.",
             "문제가 있습니까?",
             "옷에 어떤 문제가 있습니까?",
-            "사이즈가 달라요.",
+            "사이즈(Size)가 달라요.",
             "보내드릴까요?",
             "옷을 다시 보내드릴까요?",
             "전화드리겠습니다.",

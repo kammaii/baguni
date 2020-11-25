@@ -210,7 +210,6 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
             }
 
         } else {
-            SharedPreferencesInfo.setSignIn(context, false);
             intent = new Intent(context, SignIn.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
@@ -420,7 +419,6 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                         .setTitle(getString(R.string.SIGN_OUT)).setMessage(getString(R.string.SIGN_OUT_MESSAGE))
                         .setPositiveButton(getString(R.string.SIGN_OUT), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
-                                SharedPreferencesInfo.setSignIn(context, false);
                                 intent = new Intent(context, SignIn.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                 startActivity(intent);

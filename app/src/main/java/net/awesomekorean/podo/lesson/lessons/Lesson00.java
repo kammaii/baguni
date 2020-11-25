@@ -9,6 +9,7 @@ public class Lesson00 extends LessonInit implements Lesson, LessonItem, Serializ
     private String lessonId = "L_00";
     private String lessonTitle = "greetings";
     private String lessonSubTitle = "안녕하세요?";
+    private boolean isActive = true;
 
     private String[] wordFront = {"안녕하세요", "다음", "또", "보다", "가다"};
 
@@ -119,5 +120,10 @@ public class Lesson00 extends LessonInit implements Lesson, LessonItem, Serializ
     @Override
     public String getLessonTitle() {
         return lessonTitle;
+    }
+
+    @Override
+    public boolean getIsActive() {
+        return isActive;
     }
 }

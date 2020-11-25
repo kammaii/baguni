@@ -12,6 +12,7 @@ public class Lesson01 extends LessonInit implements Lesson, LessonItem, Serializ
     private String lessonTitle = "introduce";
     private String lessonSubTitle = "저는~";
     private LessonItem specialLesson = new S_Lesson03();
+    private boolean isActive = true;
 
     private String[] wordFront = {"이름", "뭐", "어느", "나라", "사람", "한국"};
 
@@ -135,5 +136,10 @@ public class Lesson01 extends LessonInit implements Lesson, LessonItem, Serializ
     @Override
     public LessonItem getSLesson() {
         return specialLesson;
+    }
+
+    @Override
+    public boolean getIsActive() {
+        return isActive;
     }
 }

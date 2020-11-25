@@ -115,7 +115,8 @@ public class LessonFinish extends AppCompatActivity implements View.OnClickListe
         int getTotalSentenceNo = lessonProgress.getTotalSentenceNo();
         int getMyWordNo = lessonProgress.getMyWords().size();
         int getMySentenceNo = lessonProgress.getMySentences().size();
-        int progress = ((getMyWordNo + getMySentenceNo) * 100 /(getTotalWordNo + getTotalSentenceNo));
+        double calProgress = (double) (getMyWordNo + getMySentenceNo) * 100 /(getTotalWordNo + getTotalSentenceNo);
+        int progress = (int) Math.round(calProgress);
 
         tvProgress.setText(progress + "%");
 

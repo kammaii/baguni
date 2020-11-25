@@ -38,7 +38,6 @@ public class MakeNewDb {
                 System.out.println("유저정보 DB를 만들었습니다");
                 UserInformation userInformation = new UserInformation();
                 SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
-                SharedPreferencesInfo.setSignIn(getApplicationContext(), true);
                 System.out.println("앱에 유저 데이터를 저장했습니다.");
 
                 Toast.makeText(context, activity.getString(R.string.WELCOME), Toast.LENGTH_LONG).show();

@@ -22,11 +22,11 @@ public class Lesson36 extends LessonInit_Lock implements Lesson, LessonItem, Ser
             "잘 잤어요?",
             "잘 못 잤어요?",
             "어제 잘 못 잤어요?",
-            "SNS 했어요.",
-            "새벽까지 SNS 했어요.",
-            "SNS 중독이에요.",
-            "SNS 하지 마세요.",
-            "자기 전에 SNS 하지 마세요."
+            "인스타그램 했어요.",
+            "새벽까지 인스타그램 했어요.",
+            "인스타그램 중독이에요.",
+            "인스타그램 하지 마세요.",
+            "자기 전에 인스타그램 하지 마세요."
     };
 
     private String[] sentenceBack = {
