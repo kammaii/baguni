@@ -15,7 +15,7 @@ public class I_Lesson07 extends LessonInit_Lock implements I_Lesson, LessonItem,
 
     private String[] dialog = {
             "네?",
-            "저… 죄송한데, 서울역이 어디에 있어요?",
+            "죄송한데, 서울역이 어디에 있어요?",
             "저기 은행 보여요?",
             "네.",
             "저 은행에서 왼쪽으로 가면 돼요.",
@@ -29,16 +29,16 @@ public class I_Lesson07 extends LessonInit_Lock implements I_Lesson, LessonItem,
 
     private String[] dialogEng = {
             "Yes?",
-            "Excuse me but, where is Seoul Station?",
+            "Sorry but, where is Seoul Station?",
             "Do you see the bank over there?",
             "Yes.",
-            "You can go left at that bank.",
+            "You can go to the left side of the bank.",
             "How long does it take?",
             "It takes about 5 minutes.",
             "And is there any bookstore around here?",
             "The bookstore is in the Seoul Station.",
             "Thank you very much.",
-            "It's okay."
+            "No worries."
     };
 
     private int[] peopleImage = {R.drawable.pedestrian_b, R.drawable.female_p};

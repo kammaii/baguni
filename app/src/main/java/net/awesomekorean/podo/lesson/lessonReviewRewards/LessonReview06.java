@@ -42,13 +42,13 @@ public class LessonReview06 extends LessonInit implements LessonItem, LessonRevi
     };
 
     private String[][] translate = {
-            {"I decided to go back", "Would you like to go back?", "Shall I(we) go back?"},
-            {"Would you like to sit down?", "Should I(we) sit down?", "Sit down (honorific)", "Sit down (formal)"},
-            {"Would you like to wear it?", "Should I(we) wear it?", "Put on (honorific)", "Put on (formal)"},
-            {"Would you like to take it off?", "Shall I(we) take it off?", "Take off (honorific)", "Take off (formal)"},
-            {"I decided to change", "Would you like to change it?", "Shall I(we) change it?", "Change (honorific)", "Change (formal)"},
-            {"I decided to check", "Would you like to check?", "Shall I(we) check?", "Confirm (honorific)", "Confirm (formal)"},
-            {"I decided to call", "Would you like to call?", "Shall I call you?", "Call (honorific)", "Call (formal) "}
+            {"I decided to go back", "Would you like to go back?", "Should I(Shall we) go back?"},
+            {"Would you like to sit down?", "Should I(Shall we) sit down?", "Sit down (honorific)", "Sit down (formal)"},
+            {"Would you like to put it on?", "Should I(Shall we) put it on?", "Put on (honorific)", "Put on (formal)"},
+            {"Would you like to take it off?", "Should I(Shall we) take it off?", "Take off (honorific)", "Take off (formal)"},
+            {"I decided to change it", "Would you like to change it?", "Should I(Shall we) change it?", "Change (honorific)", "Change (formal)"},
+            {"I decided to check it", "Would you like to check it?", "Should I(Shall we) check it?", "Check (honorific)", "Check (formal)"},
+            {"I decided to call", "Would you like to call?", "Should I call you? (Shall we call him?)", "Call (honorific)", "Call (formal) "}
     };
 
 

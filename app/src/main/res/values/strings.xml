@@ -82,7 +82,6 @@
 
 
     <!--    레슨-->
-    <string name="CONFIRM_QUIT_LESSON">"Do you want to go back to main?\n(You can be rewarded points when you finish the lesson)"</string>
     <string name="CONFIRM_QUIT">"Do you want to go back to main?"</string>
     <string name="HANGUL">Hangul</string>
     <string name="CONSONANT">Consonant</string>
@@ -201,9 +200,6 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="CORRECTED_WRITING">Corrected Writing</string>
     <string name="REWRITE">Rewrite</string>
     <string name="COMMENT">Comment</string>
-    <string name="STUDENT_FEEDBACK">Student\'s Feedback</string>
-    <string name="GIVE_US_FEEDBACK">Give us your feedback</string>
-    <string name="THANKYOU_FEEDBACK">Thank you for your feedback</string>
     <string name="SEND">Send</string>
     <string name="TIPS_CORRECTION_TITLE">Write your story</string>
     <string name="TIPS_CORRECTION">
@@ -359,15 +355,8 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
 
 
     <!--    구매-->
-    <string name="GO_PREMIUM">Go Premium</string>
-    <string name="ALREADY_SUBSCRIBE">You are already subscribed.</string>
     <string name="THANKS_PURCHASING">Thank you for your purchasing.</string>
     <string name="ERROR_PURCHASING">There\'s an error. Please contact us by email. </string>
-    <string name="PREMIUM_POLICY">Your Google account will be charged at confirmation of purchase.
-        Subscription will be automatically renewed as soon as your subscription expires.
-        If you don\'t want to renew your subscription, you can manage it from Google account settings.
-        Subscriptions that have already been paid are not refundable.
-    </string>
     <string name="SUBSCRIBE_OPTION_A">Monthly</string>
     <string name="SUBSCRIBE_OPTION_B">Yearly</string>
     <string name="SUBSCRIBE_OPTION_C">Lifetime</string>
@@ -413,7 +402,8 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
 
 
     <!--    스페셜레슨-->
-    <string name="SL_01_CONTENTS">"Korean verbs and adjectives have a base form.
+    <string name="SL_01_CONTENTS">
+"Korean verbs and adjectives have a base form.
 Base form ends with '~다' such as '먹다 (to eat)', '가다 (to go)' and '사다 (to buy)'.
 
 You'll need to look up the word as a base form on a dictionary, but when you actually use a word in a conversation or writing you should transform it into the form that you want to express.
@@ -426,6 +416,7 @@ For example, '먹다 (to eat)' changes as below.
 - 먹고나서 (after I eat)
 
 Mostly you can only change the last syllable '~다' of the base form into the other form, but sometimes there are irregular words that you have to change not only '~다' but also the other syllables as well.
+
 For example...
 
 - 듣다 (to listen / base form)
@@ -436,10 +427,13 @@ For example...
 
 Many students think that irregular words are difficult, but you don't need to worry because most of the irregular forms are for easier pronunciation.
 In the example above, you can pronounce the word easier by changing it irregularly into '들어요[드러요]' instead of '듣어요[드더요]'.
-Therefore, if you use it several times through speaking practice, you will be able to remember irregular words naturally."</string>
+
+Therefore, if you use it several times through speaking practice, you will be able to remember irregular words naturally."
+    </string>
 
 
-    <string name="SL_03_CONTENTS">"The first conjugation you will learn is the '아요/어요' form(Shortly call '아/어요' form).
+    <string name="SL_03_CONTENTS">
+"The first conjugation you will learn is the '아요/어요' form(Shortly call '아/어요' form).
 '아/어요' form is not too formal but can sound polite enough.
 Therefore, it is used often in everyday conversation.
 
@@ -448,13 +442,13 @@ Let's take a look at the example. (You don't need to know the meaning of the wor
 
 1.
 
-하다 -> 해요
+'하다' -> '해요'
 : The base form of a verb or adjective ending with '~하다' can be simply changed to '해요'.
 
 ex)
-공부하다 -> 공부해요
-운동하다 -> 운동해요
-좋아하다 -> 좋아해요
+- 공부하다 -> 공부해요
+- 운동하다 -> 운동해요
+- 좋아하다 -> 좋아해요
 
 2.
 
@@ -497,10 +491,12 @@ For example, let's see the word '먹어요'.
 a. "먹어요." (You eat)
 b. "먹어요?" (Do you eat?)
 c. "먹어요!!" (You must eat!)
-There are more meanings, but let's just remember type 'a' and 'b' from above examples."</string>
+There are more meanings, but let's just remember type 'a' and 'b' from above examples."
+    </string>
 
 
-    <string name="SL_04_CONTENTS">"Particles in Korean is quite hard for those students who use language which doesn't have particles.
+    <string name="SL_04_CONTENTS">
+"Particles in Korean is quite hard for those students who use language which doesn't have particles.
 The most difficult particles are '은/는', '이/가' and '을/를'.
 We'll learn each particle later and I'm going to explain why korean use particles in this lesson.
 
@@ -521,25 +517,31 @@ Therefore, sentence 1 and 2 is totally same meaning as 'I eat lion'.
 
 This is the difference between language that use particles and language does not use particles.
 But it's not a good idea to change the position of words all the time.
-In general Korean language structure is 'subject-object-predicate', so it would be better to follow this order."</string>
+In general Korean language structure is 'subject-object-predicate', so it would be better to follow this order."
+    </string>
 
 
-    <string name="SL_05_CONTENTS">"There are 2 basic tips to improve your pronunciation.
+    <string name="SL_05_CONTENTS">
+"There are 2 basic tips to improve your pronunciation.
 
 1. The consonant 'ㅇ' is a silent consonant(Only if it's not a Batchim).
 Therefore, when there is a syllable which has a Batchim before the consonant 'ㅇ' syllable, the Batchim can replace the next syllable's consonant 'ㅇ' to read it naturally.
+
 For example, '사람이에요' has a Batchim 'ㅁ' in the syllable '람' and the next syllable '이' has a consonant 'ㅇ' which is a silent phoneme.
 So you can pronounce it like [사라미에요].
 
 2. Batchim 'ㅎ' makes the sound of following syllable stronger.
 If the syllables which composed with 'ㄱ', 'ㄷ', 'ㅈ' comes after or before the syllable with 'ㅎ', they sound like 'ㅋ', 'ㅌ', 'ㅊ' respectively.
+
 ex)
 - 좋다 -> [조타]
 - 놓고 -> [노코]
-- 많지 -> [만치]"</string>
+- 많지 -> [만치]"
+    </string>
 
 
-    <string name="SL_06_CONTENTS">"1. 5시에 운동을 해요.
+    <string name="SL_06_CONTENTS">
+"1. 5시에 운동을 해요.
 2. 5시에서 운동을 해요.
 
 Which one is correct?
@@ -579,7 +581,8 @@ In a nutshell, you can use '~에' unconditionally after the noun indicating the 
 But sometimes you can use '~에' after the noun indicating the place depending on the verb of the sentence."</string>
 
 
-    <string name="SL_07_CONTENTS">"How do you say below words in Korean?
+    <string name="SL_07_CONTENTS">
+"How do you say below words in Korean?
 
 - Bibimbap restaurant
 - Spaghetti restaurant
@@ -603,7 +606,8 @@ Then, how can you say Korean restaurant in Korean?
 Korean food is called '한국 음식' or  shortly '한식' so you can say '한식집' or '한식당'."</string>
 
 
-    <string name="SL_08_CONTENTS">"1.
+    <string name="SL_08_CONTENTS">
+"1.
 
 As you learned in the previous lesson, '아서/어서' is a reason or cause.
 
@@ -624,10 +628,12 @@ In this case, there must be a close connection between what happened before and 
 ex)
 - 한국에 가서 한국어를 배워요.
 - 친구를 만나서 얘기해요.
-- 식당에 가서 밥을 먹어요."</string>
+- 식당에 가서 밥을 먹어요."
+    </string>
 
 
-    <string name="SL_09_CONTENTS">"Neologism' is often created by young generation and become popular.
+    <string name="SL_09_CONTENTS">
+"Neologism is often created by young generation and become popular.
 Some people say that it's better not to use it because it's not a standard language.
 But I think foreigners can learn Korean more fun through the newly-coined word or abbreviation.
 However, some words are not recommended to use in a formal situation.
@@ -648,7 +654,7 @@ That's why it is called '소떡소떡'.
 
 4. 스포
 : It's from English word 'spoiler'.
-It's an behavior or piece of plot that reveals critical part like ending of of the movie/drama/show.
+It's an behavior or piece of plot that reveals critical part like ending of the movie/drama/show.
 
 5. 꾸안꾸
 : This is an abbreviation of '꾸민 듯 안 꾸민 듯.
@@ -683,7 +689,7 @@ ex)
 
 
     <string name="SL_11_CONTENTS">
-        "1. 저는 스키를 좋아요.
+"1. 저는 스키를 좋아요.
 2. 저는 스키를 좋아해요.
 
 Which one is correct?
@@ -706,19 +712,16 @@ ex)
 
 
     <string name="SL_12_CONTENTS">
-        "
-1.
+"1.
 
 1) 시간이 없어서 빨리 가세요.
 2) 시간이 없으니까 빨리 가세요.
 
 Which one is correct?
 
-'아/어서' is not allowed in 'order' or 'request' statements.
-Therefore, sentence 1)  is a weird sentence.
-Likewise, instead of
-'이 식당은 비빔밥이 맛있어서 비빔밥 먹으세요',
-'이 식당은 비빔밥이 맛있으니까 비빔밥 먹으세요' is the correct expression.
+'아/어서' is not allowed to be used in imperative or request sentences.
+Therefore, the first sentence is incorrect.
+In the same manner, instead of saying '이 식당은 비빔밥이 맛있어서 비빔밥 먹으세요', you can say '이 식당은 비빔밥이 맛있으니까 비빔밥 먹으세요' to make it correct.
 
 
 2.
@@ -728,8 +731,8 @@ Likewise, instead of
 
 Which one is correct?
 
-'으니까' is not available for past tense.
-Therefore, sentence 1)  is correct.
+'으니까' cannot be used with the past tense.
+Therefore, the first sentence is correct.
 
 
 3.
@@ -739,31 +742,27 @@ Therefore, sentence 1)  is correct.
 
 Which one is correct?
 
-Everyone can easily see that 1) is the right sentence.
-But you may not know why.
-'으니까' cannot be used in adjectives expressing emotions.
-For example, '반갑다', '고맙다', '미안하다'.
+Everyone may easily notice that the first sentence is correct without knowing the reason.
+'으니까' cannot be used with adjectives which express emotions like '반갑다', '고맙다', '미안하다'.
 
 
 SUMMARY)
-There are three rules, but you don't have to remember them all.
-Usually, you can use '아/어서' and use '으니까' only when expressing 'order' or 'request'.
-"
+There are three rules, but you don't need to remember all.
+Usually, you can use '아/어서' but if it's imperative or request sentences, use '으니까'."
     </string>
 
 
-
     <string name="SL_13_CONTENTS">
-        "여기 : here
-저기 : there
-거기 : there
+"'여기' : here
+'저기' : there
+'거기' : there
 
-It's easy to know '여기' and '저기', but there are also a word '거기' in Korean.
-In English, '저기' and '거기' are translated as 'there'. What is the difference?
+It's easy to catch the meaning of '여기' and '저기', but there is one more word '거기' in Korean.
+Both '저기' and '거기' are translated as 'there' in English but, what would be the difference?
 
 1.
 
-It can be identified as the place of the speaker and listener.
+Each word can be used depending on where speaker or listener is.
 
 '여기': a place close to the speaker
 
@@ -771,275 +770,260 @@ ex)
 - 여기로 오세요. : Come here.
 - 여기 앉으세요. : Sit down here.
 
-'저기': a place far away from both the speaker and the listener.
-In other words, the speaker and the listener are currently in the same place and talking about 'there(저기)' where is far from both speaker and listner.
+'저기': a place far from both the speaker and the listener.
+In other words, the speaker and the listener are currently in the same place and talking about 'there(저기)' which is far from them.
 
 ex)
-- 저기에 뭐가 있어요? : What is there?
+- 저기에 뭐가 있어요? : What is in there?
 - 저기로 가요 : Let's go there.
 
 '거기': A place close to the listener.
-In other words, the speaker and the listener are not in the same place and are talking about the 'there(거기)' where the listener is.
+In other words, the speaker and the listener are not in the same place and speaker is talking about 'there(거기)' which is close to the listener.
 
 ex)
-- 거기는 날씨가 어때요? : What's the weather there?
+- 거기는 날씨가 어때요? : What's the weather like there?
 - 거기에 어떻게 가요? : How can I get there?
-
 
 2.
 
 In addition, there is one more thing to know about '거기'.
-We use '거기' when we talk about a place that was once mentioned during a conversation.
+You can use '거기' as a place that already mentioned during the conversation.
 
 ex)
-- 저기에 가 보세요. 거기에 물이 있어요. : Go over there. There's some water.
-- 저기에서 기다리세요. 데니 씨가 거기로 갈 거예요. : Wait over there. Denny will be there.
-"
+- 제 가방 보세요. 거기에 물이 있어요. : Look in my bag. There's water.
+- 저기 괜찮은 식당이 있어요. 근데 거기 좀 비싸요. : There's a nice restaurant. But it's a bit expensive."
     </string>
 
 
     <string name="SL_14_CONTENTS">
-        "1.
+"1.
 
 - Indirect expression
 
-
-You can speak your thoughts directly and strongly, but you can also express them indirectly.
-In this case, the '~(으)ㄴ/는 것 같다' form, which means guess, can also be used to indirectly say my thoughts.
+You can express your thoughts directly and strongly, but you can also say it indirectly.
+When you want to speak indirectly, you can use '~(으)ㄴ/는 것 같다' form which means 'I think'.
 
 ex)
 
-한국 음식 맛있는 것 같아요. (I think Korean food is yummy.)
-한국 드라마 재미있는 것 같아요. (I think Korean drama is interesting.)
-한국어 공부 쉬운 것 같아요. (I think learning Korean is easy.)
+- 한국 음식 맛있는 것 같아요. (I think Korean food is yummy.)
+- 한국 드라마 재미있는 것 같아요. (I think Korean drama is fun.)
+- 한국어 공부 쉬운 것 같아요. (I think learning Korean is easy.)
 
-English speaking students usually say their thoughts, '저는 생각해요. blabla...'.
-Because in English, they say 'I think blabla...'.
-Of course we can understand that, but if you use the form '~(으)ㄴ/는 것 같다', you will be able to speak your thoughts in a more natural Korean language.
-
+People from English speaking countries usually say '저는 생각해요 blah, blah,' because in English they often say like 'I think blah, blah,'.
+Korean people can understand it, but if you use '~(으)ㄴ/는 것 같다' form, you will be able to express your feelings more natural in Korean.
 
 2.
 
 - About negative answer
 
+We've learned to use '안' or '못' to make negative sentences.
+And we've also learned '~지 않아요' or '~지 못해요' in the same meaning.
 
-We'd learned to use '안' or '못' to make negative statements.
-And we learned '~지 않아요' or '~지 못해요' in the same meaning.
+However, the former one could be too direct expression depending on the situation.
 
-However, depending on the situation, these negative statements could be too direct expression.
+For example, when someone asks you a favor which you cannot do, you can say '못 해요' but it could be a too strong rejection that may sound impolite.
+But if you reject the request by using '~(으)ㄹ 것 같아요', it will sound more polite.
 
-For example, if someone asks me and I say '못 해요' in the situation that I can't accept the request, it's too direct to be an excuse to the other person.
-In this case, if you use '~(으)ㄹ 것 같아요', you can speak negative sentences more polite.
-
-In other words,
+Therefore, speaking negative sentences as below could be a better expression.
 '못 해요' -> '못 할 것 같아요'
 '안 해요' -> '안 할 것 같아요'
-could be a better expression.
 
 ex)
-"이따가 헬스장에 같이 가요."
-"오늘 바빠서 못 갈 것 같아요."
+- 이따가 헬스장에 같이 가요.
+- 오늘 바빠서 못 갈 것 같아요.
 
-"내일 아침 같이 먹어요."
-"안 될 것 같아요."
-"피곤해서 일찍 못 일어날 것 같아요.""
+- 내일 아침 같이 먹어요.
+- 안 될 것 같아요.
+- 피곤해서 일찍 못 일어날 것 같아요."
     </string>
+
 
     <string name="SL_15_CONTENTS">
         "1.
 
-The difference between '뭐' and '무슨' is not difficult.
+The difference between '뭐' and '무슨' is not difficult to understand.
 '뭐' + Verb
 '무슨' + Noun
 
-Let's Take a look at the conversation below.
+Let's look at the conversation below.
 
 ex)
 
-어제 뭐 했어요? // 뭐 + 하다(Verb)
-공부했어요.
-무슨 공부 했어요? // 무슨 + 공부(Noun)
-한국어 공부 했어요.
+- 어제 뭐 했어요? // 뭐 + 하다(Verb)
+- 공부했어요.
+- 무슨 공부 했어요? // 무슨 + 공부(Noun)
+- 한국어 공부 했어요.
 
 
 2.
 
 Now let's compare '무슨' and '어떤'.
 
-'무슨 공부 했어요?'
-'어떤 공부 했어요?'
+- 무슨 공부 했어요?
+- 어떤 공부 했어요?
 
-In real life, the above two sentences are almost same.
+In an actual conversation, the above two sentences are almost the same.
 
-However,
+However if you look into the detail, while '무슨' is asking about what the object itself is, '어떤' is asking about the object's characteristics, contents, personality and etc.
 
-In more detail,
-'무슨' is asking about what the object itself is.
-'어떤' is asking about it's characteristics, content, and personality etc.
-
-Therefore, depending on the situation, it may be necessary to distinguish between '무슨' and '어떤'.
+Therefore, there's some case that you have to use '무슨' and '어떤' separately depending on the situation.
 
 For example,
 
-'데니 씨는 무슨 사람이에요?'
-'데니 씨는 어떤 사람이에요?'
+- 데니 씨는 무슨 사람이에요?
+- 데니 씨는 어떤 사람이에요?
 
-Asking '무슨 사람' can be used in situations that you don't know who '데니 씨' is.
-However, it is more natural to use '누구'(who) rather than '무슨 사람'.
-Therefore, '데니 씨는 누구예요?' is correct.
-
-In situations that you know already who '데니 씨' is and ask about his personality or characteristics, you should use '어떤'.
+Asking '무슨 사람' can be used in a situation that you don't know who '데니 씨' is.
+However, it is more natural to use '누구'(who) rather than '무슨(what)'.
+Therefore, to make the first sentence correct, you have to change it as '데니 씨는 누구예요?'.
+In a situation that you already know who '데니 씨' is and you want to ask about his personality or characteristics, you should use '어떤' like the second sentence of the example above.
 
 
 Let's take one more example.
 
-'어제 본 영화 무슨 영화예요?'
-'어제 본 영화 어떤 영화예요?'
+- 어제 본 영화 무슨 영화예요?
+- 어제 본 영화 어떤 영화예요?
 
-If you look at the answer to the above sentence, it will be easy to understand.
+If you look at the answer for questions above, it will be easier to understand.
 
-'어제 본 영화 무슨 영화예요?' -> 'Lion king 이에요.'
-'어제 본 영화 어떤 영화예요?' -> '재미있는 영화예요.'"
+- 어제 본 영화 무슨 영화예요?' -> 'Lion king 이에요.
+- 어제 본 영화 어떤 영화예요?' -> '재미있는 영화예요."
     </string>
 
-    <string name="SL_16_CONTENTS">
-        "'가게 밖으로 나가서 오른쪽으로 가세요.'
 
-In the last lesson, we learned '(으)로' as a direction.
-However, in addition to the direction, there are a lot of other meanings.
-Let's learn only 3 more meanings  with some examples that are often used in daily life.
+    <string name="SL_16_CONTENTS">
+"- 가게 밖으로 나가서 오른쪽으로 가세요.
+
+In the last lesson, we learned the '(으)로' means 'direction' but actually there are a lot more meanings.
+Let's learn only 3 more meanings that often used in a conversation through the examples.
 
 1. way, method
- a. 버스로 왔어요. (I came by bus.)
- b. 비행기로 1시간 걸려요. (It takes a hour by plane.)
- c. 한국어로 말해요. (Speak in Korean.)
- d. 숟가락으로 아이스크림을 먹어요. (I eat ice cream with a spoon.)
+ - 버스로 왔어요. (I came by bus.)
+ - 비행기로 1시간 걸려요. (It takes a hour by flight.)
+ - 한국어로 말해요. (Speak in Korean.)
 
 2. material, ingredient
- a. 안 입는 옷으로 가방을 만들었어요. (I made a bag with clothes that I don't wear.)
- b. 오렌지로 주스를 만들었어요. (I made juice from orange.)
- c. 떡볶이는 쌀로 만들어요. (Tteokbokki is made from rice.)
+ - 안 입는 옷으로 가방을 만들었어요. (I made a bag with clothes I don't wear.)
+ - 오렌지로 주스를 만들었어요. (I made juice with orange.)
+ - 떡볶이는 쌀로 만들어요. (떡볶이 is made with rice.)
+ - 숟가락으로 아이스크림을 먹어요. (I eat ice cream with a spoon.)
 
 3. reason, cause
- a. 코로나 바이러스로 많은 사람들이 힘들었어요. (The corona virus made it difficult for many people.)
- b. 맛있는 음식으로 스트레스가 풀렸어요. (The stress had been relieved by the delicious food.)
- c. 한국 드라마로 한국에 흥미가 생겼어요. (I got interested in Korea by a Korean drama.)
+ - 코로나 바이러스로 많은 사람들이 힘들어요. (People are having a hard time due to the corona virus.)
+ - 맛있는 음식으로 스트레스가 풀렸어요. (I relieved stress by eating some delicious food.)
+ - 한국 드라마로 한국에 흥미가 생겼어요. (I became interested in Korea by watching Korean tv series.)
 "
     </string>
 
+
     <string name="SL_17_CONTENTS">
-        "- 이따 전화 할게요.
+"- 이따 전화 할게요.
 - 이따 전화 할 거예요.
 
-What's difference of 2 sentences above?
-When translated into English, they are both 'will' or 'be going to'.
-Therefore, students often misuse them.
+What's the difference between 2 sentences above?
+In an English translation, both sentences are the same like 'I will call you later', so students often misuse '~(으)ㄹ게요' and '~(으)ㄹ 거예요'
 
-The difference between the two is very simple.
-- '~(으)ㄹ게요' : Promise between the speaker and the listener
-- '~(으)ㄹ 거예요' : Only the speaker's plan, will / future tense
+Actually the difference is very simple.
+- '~(으)ㄹ게요' : Promise between a speaker and listener
+- '~(으)ㄹ 거예요' : The speaker's plan or intention
 
-In other words, when using'~(으)ㄹ게요', it is natural in the situation where a consensus is formed between the speaker and the listener.
-- ""조용히 좀 해주세요."" (Please be quiet.)
-  ""미안해요. 밖에 나갈게요."" (I'm sorry. I'll go out.)
-- ""지금 좀 바빠요."" (I'm a little busy now.)
-  ""그럼 나중에 다시 전화 할게요."" (Then, I'll call you again later.)
-- ""맛있게 드세요."" (Please enjoy this food.)
-  ""고마워요. 잘 먹을게요."" (Thank you. I'll eat well.)
+In other words, It sound natural to use '~(으)ㄹ게요' when the  consensus is made between the speaker and listener.
+- 조용히 좀 해주세요. (Please be quiet.)
+- 미안해요. 밖에 나갈게요. I'm sorry. I'll go out.)
 
-And when you want to express your will, such as a simple future or a new year goal, it is good to use '~(으)ㄹ 거예요' as follows..
+- 지금 좀 바빠요. (I'm a little busy now.)
+- 그럼 나중에 다시 전화 할게요. (Then, I'll call you back later.)
+
+- 맛있게 드세요. (Enjoy your meal.)
+- 고마워요. 잘 먹을게요. (Thank you. I'll enjoy it.)
+
+And when you want to deliver your plan such as a new year's resolution or talk about what will happen in the near future, you can use '~(으)ㄹ 거예요' as follows.
+
 - 내일 비가 올 거예요. (It will rain tomorrow.)
 - 새해에는 한국어를 열심히 공부할 거예요! (I'll study Korean hard in the new year!)
-- 한국 여행을 가면 떡볶이를 먹을 거예요. (When I go on a trip to Korea, I'll eat Tteokbokki.)"
+- 한국 여행을 가면 떡볶이를 먹을 거예요. (I'll eat 떡볶이 when I travel to Korea.)"
     </string>
 
+
     <string name="SL_18_CONTENTS">
-        "- 커피를 마시러 카페에 가요.
+"- 커피를 마시러 카페에 가요.
 - 커피를 마시려고 카페에 가요.
 
-Are these two sentences correct or wrong?
+Are these two sentences both correct or wrong?
 
-Both are correct sentences.
+Both sentences are correct.
 
 Then, Let's look at the next sentences.
 
 1. 커피를 마시러 카페를 샀어요.
 2. 커피를 마시려고 카페를 샀어요.
 
-Only the verb changed '가다' to '샀다', but are both sentences correct again?
+Only the verb was changed from '가다' to '샀다', but still are both sentences all correct?
 
 No.
 
-1 is wrong and only 2 is correct now.
-Why?
-
+First one is wrong and only second one is correct this time.
+But why is that?
 
 1.
-In the previous lesson, the reason for saying '(으)러 가다' form instead of '(으)러' is
-the only verbs that have the meaning of 'movement', such as  '가다', '오다', '올라가다' and '나오다', can be followed after '(으)러'.
+In the previous lesson, we've learned '(으)러 가다' form. The reason why it's called '(으)러 가다' form not '(으)러' form is that only the verbs indicating the movement such as '가다', '오다', '올라가다' and '나오다' can be followed by '(으)러'.
 
-In other words, the '(으)러' form is an expression to explain 'The reason of movement'.
-
+In other words, the '(으)러 가다' form is an expression to explain 'The purpose of the movement' but the first sentence used the verb '샀다' which doesn't related to the movement. So the first sentence is incorrect.
 
 2.
-Let's look at the next sentences to see the second difference.
+Let's look at the next sentences to see another difference.
 
 1. 커피를 마시러 카페에 갈 거예요.
 2. 커피를 마시려고 카페에 갈 거예요.
 
-Both sentences are used the future tense.
-Now, which sentence is correct now?
+Both sentences are in the future tense.
+In this case, which sentence is correct?
 
-The answer is no.1.
+First sentence is correct.
 
 '(으)러' can be used in all past, present and future tense.
-However, '(으)려고' can only be used in the past and present tense.
-It cannot be used in the future tense.
+However, '(으)려고' cannot be used in the future tense but only in the past and present tense.
 
-In other words, '(으)려고' is an expression to explain 'The reason of the situation that has already occurred or is in progress'.
-"
+In other words, '(으)려고' is an expression to explain 'The cause of the situation which happened in the past or happening now'."
     </string>
 
+
     <string name="SL_19_CONTENTS">
-        "As we learned before, the two expressions are very similar.
+"As we've learned before, the two expressions are very similar.
 
 - 뭐 좀 먹을까요? = 뭐 좀 먹을래요?
 - 이제 나갈까요? = 이제 나갈래요?
 
-
-1. Common
+1. Common features
 Both expressions have the meaning of 'Shall we ~ together'.
 So, you can use it with '같이' as below.
 
 - 뭐 좀 (같이) 먹을까요? = 뭐 좀 (같이) 먹을래요?
 - 이제 (같이) 나갈까요? = 이제 (같이) 나갈래요?
 
-
 2. Difference: '~(으)ㄹ까요?'
-'~(으)ㄹ까요?' is used to suggest my opinion to the other person. Let's take a look at the example again.
+'~(으)ㄹ까요?' is to suggest my opinion to the other person. Let's take a look at the example again.
 
 - 뭐 좀 먹을까요?
 - 이제 나갈까요?
 
-Likewise, depending on the situation, it could be 'I' not 'together'.
+Depending on the context, it could mean 'Should I' not 'Shall we'.
 
 For example,
-- 저는 너무 배고파요. (저) 먼저 뭐 좀 먹을까요? : I'm so hungry. Can I eat something first?
-- 피곤해요? (저) 이제 나갈까요? :  Are you tired? Shall I go out now?
-
+- 저는 지금 너무 배고파요. (저) 먼저 뭐 좀 먹을까요? : I'm so hungry now. Should I eat something first?
+- 피곤해요? (저) 이제 나갈까요? :  Are you tired? Should I leave now?
 
 3. Difference: '~(으)ㄹ래요?'
-'~(으)ㄹ래요?' is used to ask for the other person's opinion. Let's take a look at the example,
+'~(으)ㄹ래요?' is to ask for the other person's opinion. Let's take a look at the example,
 
 - 뭐 좀 먹을래요?
 - 이제 나갈래요?
 
-Depending on the situation, it could be 'only you' not 'together'.
+Depending on the context, it could mean 'Do you' not 'Shall we'.
 
 For example,
 - 배고파요? (너) 뭐 좀 먹을래요? : Are you hungry? Do you want to eat some food?
-- 저 피곤해요. (너) 이제 나갈래요? : I'm tired. Can you go out now?
-
+- 저 피곤해요. (너) 이제 나갈래요? : I'm tired. Can you leave now?
 
 4. One more : '~(으)ㄹ래요.'
 This time, I didn't write a question mark after '~(으)ㄹ래요'.
@@ -1051,39 +1035,38 @@ So you can use it like this:
 "
     </string>
 
+
     <string name="SL_20_CONTENTS">
-        "The words spoken to a person of the same age or younger is called '반말',
-and the words spoken to people who are older than me or who have a higher social position are called '존댓말'(honorific).
+"The words spoken to a person who's in the same age or younger than you is called '반말',
+and the words spoken to people who are older than you or have a higher social position than you are called '존댓말'(honorific).
 
-Many Korean learners find it difficult to say this '존댓말'.
-And they also like the most of the Korean culture that respects others with '존댓말'.
+Many Korean learners feel difficult to speak in '존댓말'.
+But they also like the culture that Korean show respect to others using '존댓말'.
 
-In general, the way to make honorifics in Korean is to use the '(으)시' form that we learned in the previous lesson.
-However, there are a lot of words that don't use the '(으)시' form and have completely new words.
-Let's take a look at some of the most used words in everyday life.
+In general, the way to make honorifics in Korean is to use the '(으)시' form that we've learned in the previous lesson.
+However, there are a lot of words which represent the honorific meaning by themselves without using the '(으)시' form.
+Let's take a look at some words which can be used often in daily conversations.
 
-1. 주다(give) -> 드리다
+1. '주다'(give) -> '드리다'
 - 선물을 드리다.
 - 인사를 드리다.
 
-2. 먹다(eat) -> 드시다
+2. '먹다'(eat) -> '드시다'
 - 물을 드시다.
 - 빵을 드시다.
 
-3. 있다(be) -> 계시다
+3. '있다'(be) -> '계시다'
 - 집에 계시다.
 - 회사에 계시다.
 
-4. 아프다(sick) -> 편찮으시다
+4. '아프다'(sick) -> '편찮으시다'
 - 몸이 편찮으시다.
 
-5. 죽다(die) -> 돌아가시다
+5. '죽다'(die) -> '돌아가시다'
 - 할아버지께서 돌아가시다.
 
-6. 생일(birthday) -> 생신
-- 생신 축하드려요.
-
-"
+6. '생일'(birthday) -> '생신'
+- 생신 축하드려요."
     </string>
 
 

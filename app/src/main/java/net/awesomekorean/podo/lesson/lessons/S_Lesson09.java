@@ -7,8 +7,8 @@ import java.io.Serializable;
 public class S_Lesson09 extends LessonInit_Lock implements LessonItem, LessonSpecial, Serializable {
 
     private String lessonId = "SL_09";
-    private String lessonTitle = "coinage";
-    private String lessonSubTitle = "coinage";
+    private String lessonTitle = "neologism";
+    private String lessonSubTitle = "neologism";
 
     private int contents = R.string.SL_09_CONTENTS;
 

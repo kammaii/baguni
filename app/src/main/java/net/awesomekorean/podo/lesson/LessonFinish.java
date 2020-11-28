@@ -45,7 +45,7 @@ public class LessonFinish extends AppCompatActivity implements View.OnClickListe
     Context context;
     AdsManager adsManager;
 
-    Lesson lesson = LessonFrame.lesson;
+    Lesson lesson;
 
     LessonProgress lessonProgress;
     RecyclerView recyclerView;
@@ -93,6 +93,8 @@ public class LessonFinish extends AppCompatActivity implements View.OnClickListe
 
         UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
         List<String> lessonComplete = userInformation.getLessonComplete();
+
+        lesson = LessonFrame.lesson;
 
         if (lessonComplete.contains(lesson.getLessonId())) {
             tvWord.setText("+"+0);

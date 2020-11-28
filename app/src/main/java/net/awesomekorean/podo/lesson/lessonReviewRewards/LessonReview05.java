@@ -48,11 +48,11 @@ public class LessonReview05 extends LessonInit implements LessonItem, LessonRevi
     };
 
     private String[][] translate = {
-            {"Don't order", "You don't have to order", "Go to order", "To order"},
-            {"Don't find", "Can't find it", "You don't have to look for it", "Go to find", "To find"},
-            {"You don't have to celebrate", "Go to celebrate", "To celebrate"},
-            {"Don't meet", "Can't meet", "You don't have to meet", "Go to meet", "To meet"},
-            {"Can't remember", "You don't have to remember", "To remember"}
+            {"Don't order", "You don't need to order", "Go to order", "To order"},
+            {"Don't find", "Shouldn't find it", "You don't need to look for it", "Go to find", "To find"},
+            {"You don't need to celebrate", "Go to celebrate", "To celebrate"},
+            {"Don't meet", "Shouldn't meet", "You don't need to meet", "Go to meet", "To meet"},
+            {"Shouldn't remember", "You don't need to remember", "To remember"}
     };
 
 

@@ -31,14 +31,14 @@ public class I_Lesson05 extends LessonInit_Lock implements I_Lesson, LessonItem,
     };
 
     private String[] dialogEng = {
-            "Please give me a passport.",
-            "Yes, here.",
+            "May I have your passport please?",
+            "Yes, here it is.",
             "Why did you come to Korea?",
-            "I came on a trip.",
+            "I'm here to travel.",
             "Did you come alone?",
             "No, I came with my family.",
             "Have you been to Korea before?",
-            "No, this is the first time.",
+            "No, this is my first time.",
             "How long will you stay in Korea?",
             "I’ll stay for a week.",
             "Where will you stay?",

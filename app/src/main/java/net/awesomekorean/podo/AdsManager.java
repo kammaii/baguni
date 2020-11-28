@@ -145,7 +145,8 @@ public class AdsManager {
 
                 @Override
                 public void onRewardedAdFailedToShow(AdError adError) {
-                    Toast.makeText(activity, "Failed to load ad. Please try it again.", Toast.LENGTH_LONG).show();
+                    String errCode = String.valueOf(adError.getCode());
+                    Toast.makeText(activity, "Failed to play ad. Please try it again. errCode: " + errCode, Toast.LENGTH_LONG).show();
                 }
             };
             rewardedAd.show(activity, adCallback);

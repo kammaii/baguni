@@ -29,14 +29,14 @@ public class I_Lesson06 extends LessonInit_Lock implements I_Lesson, LessonItem,
     private String[] dialogEng = {
             "Welcome.",
             "Check-in, please.",
-            "Please give me your passport.",
-            "OK, here.",
-            "Thank you. Please wait.",
+            "May I have your passport please?",
+            "OK, here it is.",
+            "Thank you. Wait a moment please.",
             "Yes.",
             "Thank you for waiting. Your room number is 1234.",
-            "What time can I eat breakfast?",
-            "It is from 6 to 10.",
-            "What time is check-out?",
+            "What time do you start to serve breakfast?",
+            "From 6am to 10am.",
+            "When is the check-out time?",
             "It is until 11 am."
     };
 
