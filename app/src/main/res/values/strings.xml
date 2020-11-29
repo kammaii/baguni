@@ -8,7 +8,7 @@
     <string name="WELCOME"> Welcome to Podo</string>
     <string name="EMAIL"> Email</string>
     <string name="PASSWORD"> Password</string>
-    <string name="PASSWORD_SIX_CHARACTERS_LONG">Should be at least 6 characters</string>
+    <string name="PASSWORD_SIX_CHARACTERS_LONG">Enter at least 6 characters</string>
     <string name="WRONG_EMAIL"> Wrong email!!</string>
     <string name="WRONG_PASS"> Wrong password!!</string>
     <string name="EMAIL_EXIST">This email already exists</string>
@@ -28,9 +28,9 @@
     <string name="ALREADY_HAVE_ACCOUNT"> Already have an account?</string>
     <string name="GOOGLE_FAILED">Google sign in failed</string>
     <string name="FACEBOOK_FAILED">Facebook sign in failed</string>
-    <string name="SIGNUP_SUCCEED">Sign up succeeded</string>
+    <string name="SIGNUP_SUCCEED">You have been successfully signed up</string>
     <string name="SIGNUP_FAILED">Sign up failed</string>
-    <string name="SIGNIN_SUCCEED">Sign in succeeded</string>
+    <string name="SIGNIN_SUCCEED">You have been successfully signed in</string>
     <string name="SIGNIN_FAILED">Sign in failed</string>
     <string name="ENGLISH">English</string>
     <string name="THAI">Thai</string>
@@ -48,8 +48,8 @@
     <string name="MESSAGE">Message</string>
     <string name="CONFIRM_EXIT">Do you want to exit podo?</string>
     <string name="CONFIRM_REPORT">Do you have something to tell \'podo\'? \n (bug report or suggestions)</string>
-    <string name="WHAT_POINT">What is the point?</string>
-    <string name="THINGS_YOU_CAN_DO_WITH_POINTS">Things you can do with points</string>
+    <string name="WHAT_POINT">What is the \'podo point\'?</string>
+    <string name="THINGS_YOU_CAN_DO_WITH_POINTS">What you can do with points</string>
     <string name="UNLOCK_LESSONS">Lesson: Unlock Lessons</string>
     <string name="UNLOCK_READINGS">Reading: Unlock Readings</string>
     <string name="ASK_CORRECTION">Writing: Ask a Korean teacher for correction</string>
@@ -91,21 +91,21 @@
     <string name="NUMBERS">Numbers</string>
     <string name="NUMBERS_INTRO_TITLE">How to say numbers in Korean</string>
     <string name="NUMBERS_INTRO">"Many Korean learners think Korean numbers are really difficult.
-Because there are two systems of Korean numbers(Sino-Korean number / Native-Korean number) and you should use each number system depending on what the number is used for.
-Therefore whenever students say numbers, they are confused about which system of number to use.
+Because there are two systems of Korean numbers(Sino-Korean number / Native-Korean number) and you should separately use each number system depending on what the number is used for.
+Therefore students often confused with which number system they have to apply when they use numbers.
 
 In general, each number system is used in the following situations:
 
 1. Sino-Korean number: Number itself
-2. Native-Korean number: Counting numbers (that's why we should use this with an 'unit noun' together)
+2. Native-Korean number: Counting numbers (That's why you should use this with an 'unit noun' together)
 
 But when you learn Korean numbers, you can see that this rule is not always correct.
 (For example, why the hour is Native-Korean number but the minute is Sino-Korean number?)
 
-So I suggest to students
-'Just listen and follow the correct number a lot. Then you will feel something strange right before you try to use the wrong number.'
+So I suggest students to
+'Just listen and follow the example usages of numbers a lot. Then you will feel something strange right before you try to use the wrong number.'
 
-This lesson is designed to learn Sino-Korean number and Native-Korean number as well as to practice the numbers repeatedly in different situations.
+This lesson is to learn Sino-Korean number and Native-Korean number as well as to practice the numbers repeatedly in different situations.
 
 Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="SINO_NUMBER">Sino-Korean number</string>
@@ -139,16 +139,16 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="YOU_CAN_DO_BETTER">You can do better next time!</string>
     <string name="YOU_NEED">You need at least \'18/20\' to go to the next stage</string>
     <string name="TRY_AGAIN">Try again?</string>
-    <string name="GET_POINT">Get the points</string>
+    <string name="GET_POINT">Collect more points</string>
     <string name="GO_TO_MAIN">Go to main</string>
     <string name="UNLOCK">Do you want to unlock this by using points?</string>
     <string name="UNLOCK_INACTIVE">You haven\'t completed the previous lesson yet. Do you want to use double points to unlock this lesson?</string>
-    <string name="UNLOCK_FAILED">You don\'t have points enough.</string>
-    <string name="UNLOCK_SUCCEEDED">Unlock succeeded</string>
-    <string name="AUDIO_LOADING">Audio is loading now. Please try again.</string>
-    <string name="FAIL_LOAD_AUDIO">Failed to load the audio. Please try again.</string>
+    <string name="UNLOCK_FAILED">You don\'t have enough points.</string>
+    <string name="UNLOCK_SUCCEEDED">You\'ve successfully unlock the lesson</string>
+    <string name="AUDIO_LOADING">Loading audio now. Please try again.</string>
+    <string name="FAIL_LOAD_AUDIO">Failed to load audio. Please try again.</string>
     <string name="SELECT_ANSWER">Select your answer</string>
-    <string name="LESSON_COMPLETE">Lesson Complete!</string>
+    <string name="LESSON_COMPLETE">Lesson Completed!</string>
     <string name="PLAY_ALL_AUDIO">Play all audio</string>
     <string name="CONJUGATE_CORRECTLY">Conjugate correctly</string>
     <string name="CHOOSE_BASE_FORM">Choose the right base form</string>
@@ -159,14 +159,14 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="ADVANCED_LEVEL">Advanced Level</string>
     <string name="REVIEW">REVIEW</string>
     <string name="REWARDS">REWARDS</string>
-    <string name="PLEASE_COMPLETE_PREVIOUS_LESSON">Please complete previous lesson</string>
-    <string name="ALREADY_REWARDED">You have already been rewarded</string>
+    <string name="PLEASE_COMPLETE_PREVIOUS_LESSON">Please complete the previous lesson</string>
+    <string name="ALREADY_REWARDED">You have already achieved the rewards</string>
     <string name="PODO_LESSON_GOAL">podo lesson\'s goal</string>
     <string name="BEGINNER">Beginner</string>
     <string name="INTERMEDIATE">Intermediate</string>
     <string name="ADVANCED">Advanced (to be updated)</string>
     <string name="PODO_LESSON_GOAL_BEGINNER_1">
-        "Learn minimum words and expressions that you mostly use everyday."</string>
+        "Learn minimum words and expressions that you can use almost everyday."</string>
     <string name="PODO_LESSON_GOAL_BEGINNER_2">
         "Don't waste your time and effort to learn something you don't use often."</string>
     <string name="PODO_LESSON_GOAL_INTERMEDIATE_1">
@@ -188,14 +188,14 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
 
     <!--    쓰기-->
     <string name="CORRECTION">Correction</string>
-    <string name="WRITING_SAVED">Writing is saved</string>
+    <string name="WRITING_SAVED">Your writing has been saved</string>
     <string name="WRITING_SHORT">Writing should be at least 20 letters. </string>
-    <string name="WRITING_DELETE">Are you sure want to delete this writing?</string>
+    <string name="WRITING_DELETE">Are you sure you want to delete this writing?</string>
     <string name="LETTERS">letters</string>
     <string name="WRITE_HERE">Write here</string>
     <string name="REVIEWED">Reviewed</string>
     <string name="REVIEWING">Reviewing</string>
-    <string name="REQUEST_RESULT">Request is submitted. You\'ll get the feedback in 2days.</string>
+    <string name="REQUEST_RESULT">Your request has been submitted. You\'ll get the feedback in 2days.</string>
     <string name="ORIGINAL_WRITING">Original Writing</string>
     <string name="CORRECTED_WRITING">Corrected Writing</string>
     <string name="REWRITE">Rewrite</string>
@@ -237,14 +237,14 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     </string>
     <string name="INTERVIEW_2_NAME">Elen Isakidu\nGeorgia</string>
     <string name="INTERVIEW_3_SUMMARY">
-        Learn grammar &amp; vocabulary steadily and review everything once a month.
-        And watch &amp; listen as much everyday Korean contents. (movies, dramas, musics or even TV show).
+        Learn grammar and vocabulary steadily and review everything once a month.
+        Watch and listen Korean contents as much as possible everyday. (Korean contents such as movies, dramas, music or even TV show)
     </string>
     <string name="INTERVIEW_3_DETAIL">
-        Personally, I try to work my Korean by following these few steps :\n
-        - Learn grammar &amp; vocabulary steadily and review everything once a month.\n
-        - Use what I learn by writing examples and ask teacher to check and correct.\n
-        - Watch &amp; listen as much everyday Korean contents. (movies, dramas, musics or even TV show).
+        Personally, I try to work on my Korean skill by following a few steps below :\n
+        - Learn grammar and vocabulary steadily and review everything once a month.\n
+        - Use what I\'ve learned by writing examples and ask my teacher to check and correct it.\n
+        - Watch and listen Korean contents as much as possible everyday. (Korean contents such as movies, dramas, music or even TV show)
     </string>
     <string name="INTERVIEW_3_NAME">Kevin Ohayoun\nFrance</string>
     <string name="COMMONALITY_TITLE">Their commonality</string>
@@ -255,22 +255,22 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="TEACHER_NAME">Danny Park\nSouth Korea</string>
     <string name="SOLUTION_TITLE">Solution</string>
     <string name="SOLUTION_CONTENTS_1">NOW, WE PROPOSE A</string>
-    <string name="SOLUTION_CONTENTS_2">TO YOU WHO WANT TO LEARN KOREAN QUICKLY</string>
+    <string name="SOLUTION_CONTENTS_2">FOR THOSE WHO WANT TO LEARN KOREAN QUICKLY</string>
     <string name="GOAL_AND_CONCEPT_TITLE">Goal And Concept</string>
     <string name="GOAL_TITLE_1">podo challenger\'s</string>
     <string name="GOAL_TITLE_2">GOAL</string>
-    <string name="GOAL_CONTENTS">Complete all beginner/intermediate lessons of podo in 30 days!</string>
+    <string name="GOAL_CONTENTS">Complete all beginner/intermediate lessons on \'podo\' in 30 days!</string>
     <string name="CONCEPT_TITLE_1">podo\'s lesson</string>
     <string name="CONCEPT_TITLE_2">CONCEPT</string>
     <string name="CONCEPT_BEGINNER">Beginner Lesson:</string>
-    <string name="CONCEPT_BEGINNER_CONTENTS">Learning the minimum words and expressions used most in everyday life, about 260 words, 45 expressions (1st~25th days)</string>
+    <string name="CONCEPT_BEGINNER_CONTENTS">Learning the minimum words and expressions used the most in everyday life, about 260 words, 45 expressions (1st~25th days)</string>
     <string name="CONCEPT_INTERMEDIATE">Intermediate Lesson:</string>
-    <string name="CONCEPT_INTERMEDIATE_CONTENTS">Practice everyday conversation using only words and expressions learned in the beginner lesson (26th~30th days)</string>
-    <string name="CONCEPT_TEACHER_COMMENTS">All lessons were made and recorded by myself, a Korean teacher.</string>
+    <string name="CONCEPT_INTERMEDIATE_CONTENTS">Practice daily conversation using only the words and expressions you\'ve learned in the beginner lesson (26th~30th days)</string>
+    <string name="CONCEPT_TEACHER_COMMENTS">All lessons were created and recorded by myself, who is a Korean teacher.</string>
     <string name="BENEFITS_TITLE">Benefits</string>
-    <string name="BENEFITS_ADS">Ads removal\n(lifetime)</string>
-    <string name="BENEFITS_LESSONS">All beginner/intermediate\nand special lessons open\n(lifetime)</string>
-    <string name="BENEFITS_PROGRESS">Daily goal progress indicator\n(Try achieving your goal\nevery day for 30 days.)</string>
+    <string name="BENEFITS_ADS">Remove Ads\n(lifetime)</string>
+    <string name="BENEFITS_LESSONS">Unlock all beginner/intermediate\nand special lessons\n(lifetime)</string>
+    <string name="BENEFITS_PROGRESS">Daily goal progress indicator\n(Try to achieve your goal\nevery day in 30 days)</string>
     <string name="BENEFITS_POINTS">1,000 points will be provided\nupon reaching the final goal\nwithin the challenge period\n($20 value)</string>
     <string name="POINTS_TITLE">What can you do with the points?</string>
     <string name="POINTS_ANSWER_1">
@@ -285,15 +285,16 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="POINTS_WRITING_CONTENTS">Write what you want to say in Korean. The Korean teacher directly provides correction and supplementary explanations.</string>
     <string name="CHALLENGE_BUTTON">Become A podo Challenger</string>
     <string name="CHALLENGE_ICON">podo\nChallenge</string>
-    <string name="CHALLENGE_POLICY">Your Google account will be charged at confirmation of purchase.
+    <string name="CHALLENGE_POLICY">The payment will be charged to your Google account at confirmation of purchase.
         This purchase is one-time purchase. Refunds are only possible within 24 hours of purchase.
-        Reward points are awarded on the 31st day if all lessons are completed within 30 days of payment time.
+        Reward points will be provided on the 31st day if all lessons are completed within 30 days after payment time.
+        If you have any trouble with purchasing, please contact \'akorean.app@gmail.com\'.
     </string>
-    <string name="CHALLENGE_SUCCEED_MESSAGE">You have succeeded in the challenge!\nLet\'s keep going!</string>
-    <string name="CHALLENGE_FAILED">Failed in the challenge</string>
+    <string name="CHALLENGE_SUCCEED_MESSAGE">You have successfully completed the challenge!\nLet\'s keep going!</string>
+    <string name="CHALLENGE_FAILED">You haven\'t completed the challenge</string>
     <string name="CHALLENGE_FAILED_MESSAGE">
-        But \'podo\' will give you 100 points. Don\'t stop challenging your Korean learning.
-        (If you have any problems achieving the challenge, please contact us by email.)</string>
+        But \'podo\' would like to offer you 100 points. Don\'t stop challenging your Korean learning.
+        (If there is any error with the challenge result, please contact us by email.)</string>
 
 
 
@@ -310,7 +311,7 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="NO_COLLECTION">Collect your own flashcards here and practice repeatedly. You can collect them by pressing the star button in lessons and readings. You can also press the \'+\' button to add it yourself.</string>
     <string name="FRONT">Front</string>
     <string name="BACK">Back</string>
-    <string name="COLLECTION_SAVED">Collection is saved</string>
+    <string name="COLLECTION_SAVED">Collection saved</string>
     <string name="COLLECTION_SYNCHRONISED">Collection is synchronized</string>
 
 
@@ -340,14 +341,14 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="EVALUATION_APP">Evaluate this app</string>
     <string name="HISTORY">History of requests</string>
     <string name="RECOMMEND">Recommend this app</string>
-    <string name="GET_POINTS_BY_AD">Get points by watching ads</string>
-    <string name="GET_POINTS_BY_PURCHASING">Get points by purchasing</string>
-    <string name="AD_LOAD_FAILED">Failed to load ad. Please try it again.</string>
-    <string name="BUG_REPORT">Report bug or suggestions</string>
+    <string name="GET_POINTS_BY_AD">Achieve points by watching ads</string>
+    <string name="GET_POINTS_BY_PURCHASING">Achieve points by purchasing</string>
+    <string name="AD_LOAD_FAILED">Failed to load ads. Please try it again.</string>
+    <string name="BUG_REPORT">Report errors or suggestions</string>
     <string name="LOG_OUT">Log out</string>
     <string name="SAVE_NEW_NAME">Saved new name</string>
     <string name="UPDATED_USERNAME">Updated user name</string>
-    <string name="UPDATED_USERNAME_FAILED">User name update failed</string>
+    <string name="UPDATED_USERNAME_FAILED">Failed to update User name</string>
     <string name="SIGN_OUT">Sign Out</string>
     <string name="SIGN_OUT_MESSAGE">Do you want to sign out?</string>
     <string name="REPORT_RESULT">Thank you for your valuable opinion.\n
@@ -355,7 +356,7 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
 
 
     <!--    구매-->
-    <string name="THANKS_PURCHASING">Thank you for your purchasing.</string>
+    <string name="THANKS_PURCHASING">Thank you for your purchase.</string>
     <string name="ERROR_PURCHASING">There\'s an error. Please contact us by email. </string>
     <string name="SUBSCRIBE_OPTION_A">Monthly</string>
     <string name="SUBSCRIBE_OPTION_B">Yearly</string>
@@ -366,14 +367,14 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="BEST_VALUE">Best Value</string>
     <string name="GET_PODO_PREMIUM">Get podo premium</string>
     <string name="NO_ADS">No Ads</string>
-    <string name="NO_ADS_DETAIL">You can focus on learning without advertising.</string>
+    <string name="NO_ADS_DETAIL">You can focus on learning without watching Ads.</string>
     <string name="UNLOCKED_LESSONS">Unlocked Lessons</string>
     <string name="UNLOCKED_LESSONS_DETAIL">All special lessons and readings will be unlocked.</string>
     <string name="UNLIMITED_COLLECTIONS">Unlimited Collections</string>
     <string name="UNLIMITED_COLLECTIONS_DETAIL">You can collect unlimited flash cards.</string>
-    <string name="GET_PODO_POINTS">Get podo points</string>
+    <string name="GET_PODO_POINTS">Collect podo points</string>
     <string name="GET_PODO_POINTS_DETAIL">
-        You can use points to unlock the special lessons and readings or to ask Korean native teachers to correct your Korean writing.
+        You can use points to unlock the special lessons and readings or to send the writing correction request to the Korean native teacher.
     </string>
     <string name="PURCHASE_POINTS">Purchase Points</string>
     <string name="POINT_OPTION_A">100 points</string>
@@ -382,8 +383,9 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="POINT_OPTION_A_PRICE">$2</string>
     <string name="POINT_OPTION_B_PRICE">$18</string>
     <string name="POINT_OPTION_C_PRICE">$10</string>
-    <string name="POINT_POLICY">Your Google account will be charged at confirmation of purchase.
-        This purchase is one-time purchase. Points that have already been paid are not refundable.
+    <string name="POINT_POLICY">The payment will be charged to your Google account at the confirmation of purchase.
+        This purchase is one-time purchase. Purchased points are not refundable.
+        If you have any trouble with purchasing, please contact \'akorean.app@gmail.com\'.
     </string>
 
 
