@@ -3,14 +3,14 @@ apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         multiDexEnabled true
         applicationId "net.awesomekorean.podo"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 42
-        versionName "podo:2.1.1"
+        versionCode 43
+        versionName "podo:2.1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

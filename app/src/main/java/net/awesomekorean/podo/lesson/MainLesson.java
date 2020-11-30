@@ -474,6 +474,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK) {
+            userInformation = SharedPreferencesInfo.getUserInfo(context);
             setChallengeCount();
         }
     }

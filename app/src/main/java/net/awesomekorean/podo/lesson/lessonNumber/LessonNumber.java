@@ -9,6 +9,8 @@ public class LessonNumber extends LessonInit implements LessonItem {
     private String lessonTitle = "numbers";
     private String lessonSubTitle = "숫자";
     private Integer dayCount = 5;
+    private boolean isActive = true;
+
 
     @Override
     public String getLessonId() {
@@ -28,6 +30,11 @@ public class LessonNumber extends LessonInit implements LessonItem {
     @Override
     public Integer getDayCount() {
         return dayCount;
+    }
+
+    @Override
+    public boolean getIsActive() {
+        return isActive;
     }
 }
 
