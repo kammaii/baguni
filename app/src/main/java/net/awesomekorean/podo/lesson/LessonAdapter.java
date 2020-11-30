@@ -176,16 +176,15 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                     if(item.getSLesson().getIsActive()) {
                         if (!item.getSLesson().getIsLocked()) {
                             intent = new Intent(context, LessonSpecialFrame.class);
-                            intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item.getSLesson());
-                            context.startActivity(intent);
 
-                        // 포인트 사용 확인창 띄우기
+                            // 포인트 사용 확인창 띄우기
                         } else {
                             intent = new Intent(context, UnlockActivity.class);
                             intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), context.getResources().getString(R.string.SPECIAL_LESSON));
                             intent.putExtra(context.getResources().getString(R.string.LESSON_ID), item.getSLesson().getLessonId());
-                            context.startActivity(intent);
                         }
+                        intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item.getSLesson());
+                        context.startActivity(intent);
 
                         // 활성화되지 않은 스페셜레슨을 클릭했을 때
                     } else {
