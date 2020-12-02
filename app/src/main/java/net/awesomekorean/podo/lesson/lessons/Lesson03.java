@@ -6,14 +6,13 @@ import net.awesomekorean.podo.R;
 
 import java.io.Serializable;
 
-public class Lesson03 extends LessonInit implements Lesson, LessonItem, Serializable {
+public class Lesson03 extends LessonInit_Lock implements Lesson, LessonItem, Serializable {
 
     private String lessonId = "L_03";
     private String lessonTitle = "possession, existence";
-    private String lessonSubTitle = "~있어요?";
+    private String lessonSubTitle = "있어요";
     private LessonItem specialLesson = new S_Lesson04();
     private Integer dayCount = 3;
-    private boolean isActive = true;
 
 
     private String[] wordFront = {"있다", "친구", "얘기하다", "어디", "한국어"};
@@ -150,10 +149,5 @@ public class Lesson03 extends LessonInit implements Lesson, LessonItem, Serializ
     @Override
     public Integer getDayCount() {
         return dayCount;
-    }
-
-    @Override
-    public boolean getIsActive() {
-        return isActive;
     }
 }

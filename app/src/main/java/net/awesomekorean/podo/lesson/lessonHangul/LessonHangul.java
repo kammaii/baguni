@@ -6,7 +6,7 @@ import net.awesomekorean.podo.lesson.lessons.LessonItem;
 public class LessonHangul extends LessonInit implements LessonItem {
 
     private String lessonId = "H_hangul";
-    private String lessonTitle = "hangul";
+    private String lessonTitle = "Hangul";
     private String lessonSubTitle = "한글";
     private Integer dayCount = 1;
 

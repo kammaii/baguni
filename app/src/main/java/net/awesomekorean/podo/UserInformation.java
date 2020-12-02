@@ -31,7 +31,7 @@ public class UserInformation {
         for(int i=0; i<7; i++) {
             this.attendance.add(false);
         }
-        this.points = 20;
+        this.points = 10;
         this.pointsPurchased = 0;
         this.isChallenger = 0;
         this.isChallengeRewarded = 0;

@@ -9,7 +9,7 @@ import javax.annotation.meta.When;
 public class Lesson10 extends LessonInit_Lock implements Lesson, LessonItem, Serializable {
 
     private String lessonId = "L_10";
-    private String lessonTitle = "from to(time)";
+    private String lessonTitle = "from to (time)";
     private String lessonSubTitle = "~부터~까지";
 
     private String[] wordFront = {"시간", "일하다", "몇", "오전", "오후", "점심", "언제"};

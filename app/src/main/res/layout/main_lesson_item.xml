@@ -61,13 +61,13 @@
         android:layout_height="100dp">
 
         <TextView
-            android:id="@+id/tvItemTitle"
+            android:id="@+id/tvItemSubTitle"
             android:gravity="center"
-            android:text="title"
+            android:text="sub title"
             android:textColor="@color/WHITE"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:autoSizeMaxTextSize="20dp"
+            android:textSize="18dp"
+            android:autoSizeMaxTextSize="18dp"
             android:autoSizeMinTextSize="10dp"
             android:autoSizeStepGranularity="1dp"
             android:autoSizeTextType="uniform"
@@ -232,8 +232,8 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tvItemSubTitle"
-        android:text="sub title"
+        android:id="@+id/tvItemTitle"
+        android:text="title"
         android:textSize="15dp"
         android:fontFamily="@font/nanumgothic_regular"
         app:layout_constraintTop_toBottomOf="@id/layoutItem"

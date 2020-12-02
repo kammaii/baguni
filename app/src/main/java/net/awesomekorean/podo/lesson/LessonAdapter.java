@@ -220,17 +220,17 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         LessonItem item = list.get(position);
-        holder.tvItemNo.setText(String.valueOf(position + 1));
+        holder.tvItemNo.setText(String.valueOf(position));
 
         if(!item.getIsLocked()) {
-            if(!item.getLessonTitle().contains(" ")) {
-                holder.tvItemTitle.setMaxLines(1);
+            if(item.getLessonSubTitle().length() < 7) {
+                holder.tvItemSubTitle.setMaxLines(1);
             } else {
-                holder.tvItemTitle.setMaxLines(2);
+                holder.tvItemSubTitle.setMaxLines(2);
             }
-        holder.tvItemTitle.setText(item.getLessonTitle());
+            holder.tvItemSubTitle.setText(item.getLessonSubTitle());
         } else {
-            holder.tvItemTitle.setText("");
+            holder.tvItemSubTitle.setText("");
         }
 
         if(isChallenger == 1) {
@@ -242,7 +242,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             }
         }
 
-        holder.tvItemSubTitle.setText(item.getLessonSubTitle());
+        holder.tvItemTitle.setText(item.getLessonTitle());
         holder.layoutItemLeft.setVisibility(View.GONE);
         holder.layoutItemRight.setVisibility(View.GONE);
 
@@ -289,8 +289,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         Drawable drawable = null;
 
         if(type.equals("RW")) {     // 리워드
-            holder.tvItemTitle.setText(R.string.REWARDS);
-            holder.tvItemTitle.setMaxLines(1);
+            holder.tvItemSubTitle.setText(R.string.REWARDS);
+            holder.tvItemSubTitle.setMaxLines(1);
             if(item.getIsCompleted()) {
                 drawable = ContextCompat.getDrawable(context, R.drawable.reward_active_purple);
 
@@ -301,8 +301,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         } else {      // 레슨 & 리뷰 & 스페셜레슨
 
             if(type.equals("LR")) {     // 리뷰
-                holder.tvItemTitle.setText(R.string.REVIEW);
-                holder.tvItemTitle.setMaxLines(1);
+                holder.tvItemSubTitle.setText(R.string.REVIEW);
+                holder.tvItemSubTitle.setMaxLines(1);
             }
 
             if(type.equals("IL")) {     // 중급레슨
@@ -315,7 +315,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                 } else {
                     drawable = ContextCompat.getDrawable(context, R.drawable.lesson_inactive_blue);
                 }
-                holder.tvItemSubTitle.setTextColor(ContextCompat.getColor(context, R.color.BLUE));
+                holder.tvItemTitle.setTextColor(ContextCompat.getColor(context, R.color.BLUE));
                 holder.currentItem.setImageResource(R.drawable.circle_pink);
 
             } else {
@@ -329,7 +329,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                     drawable = ContextCompat.getDrawable(context, R.drawable.lesson_inactive_purple);
                 }
             }
-            holder.tvItemSubTitle.setTextColor(ContextCompat.getColor(context, R.color.PURPLE));
+            holder.tvItemTitle.setTextColor(ContextCompat.getColor(context, R.color.PURPLE));
             holder.currentItem.setImageResource(R.drawable.circle_light_blue);
         }
 

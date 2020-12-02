@@ -149,28 +149,28 @@ public class SignIn extends AppCompatActivity implements Button.OnClickListener 
     private void handleFacebookAccessToken(final AccessToken accessToken) {
         System.out.println("로그인 페이스북!");
         AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
-        firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // 페이스북 로그인 성공
-                            progressBarLayout.setVisibility(View.VISIBLE);
-                            System.out.println("로그인 페이스북 성공!");
-                            final String userEmail = task.getResult().getUser().getEmail();
+        firebaseAuth.signInWithCredential(credential).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                // 페이스북 로그인 성공
+                progressBarLayout.setVisibility(View.VISIBLE);
+                System.out.println("로그인 페이스북 성공!");
+                String userEmail = authResult.getUser().getEmail();
+                System.out.println("유저이메일: " + userEmail);
 
-                            //출석부 확인 후 메인페이지로 넘어가기
-                            getUserInfoAndGoToMain(userEmail, "Facebook");
+                //출석부 확인 후 메인페이지로 넘어가기
+                getUserInfoAndGoToMain(userEmail, "Facebook");
+            }
 
-                        } else {
-                            // 로그인 실패
-                            System.out.println("로그인 페이스북 실패!");
-
-                            Toast.makeText(getApplicationContext(), getString(R.string.FACEBOOK_FAILED), Toast.LENGTH_LONG).show();
-                            progressBarLayout.setVisibility(View.GONE);
-                        }
-                    }
-                });
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // 로그인 실패
+                System.out.println("로그인 페이스북 실패! : " + e);
+                Toast.makeText(getApplicationContext(), getString(R.string.FACEBOOK_FAILED), Toast.LENGTH_LONG).show();
+                progressBarLayout.setVisibility(View.GONE);
+            }
+        });
     }
 
     View.OnFocusChangeListener focusChangeListener = (new View.OnFocusChangeListener() {

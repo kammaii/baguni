@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class Lesson09 extends LessonInit_Lock implements Lesson, LessonItem, Serializable {
 
     private String lessonId = "L_09";
-    private String lessonTitle = "from to(place)";
+    private String lessonTitle = "from to (place)";
     private String lessonSubTitle = "~에서~까지";
     private LessonItem specialLesson = new S_Lesson12();
 

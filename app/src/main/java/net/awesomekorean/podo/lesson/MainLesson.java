@@ -133,18 +133,13 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     SeekBar seekBar;
 
     LessonItem[] beginner = {
-            new LessonHangul(), new Lesson00(),
-            new Lesson19(), new Lesson01(), new Lesson02(), new Lesson03(), new LessonReview00(), new Rewards00(),
-            new LessonNumber(), new Lesson04(), new Lesson05(), new Lesson06(), new Lesson07(),
-            new Lesson08(), new Lesson27(), new LessonReview01(), new Rewards01(), new Lesson09(), new Lesson10(),
-            new Lesson11(), new Lesson12(), new Lesson13(), new Lesson14(), new Lesson15(), new Lesson16(),
-            new LessonReview02(), new Rewards02(), new Lesson22(), new Lesson28(), new Lesson29(), new Lesson17(),
-            new Lesson20(), new Lesson18(), new Lesson21(), new Lesson23(), new Lesson35(), new LessonReview03(),
-            new Rewards03(), new Lesson24(), new Lesson25(), new Lesson26(), new Lesson30(), new Lesson31(),
-            new Lesson32(), new Lesson33(), new Lesson34(), new LessonReview04(), new Rewards04(),
-            new Lesson36(), new Lesson37(), new Lesson38(), new Lesson39(), new Lesson40(), new LessonReview05(),
-            new Rewards05(), new Lesson41(), new Lesson42(), new Lesson43(), new Lesson44(), new Lesson45(),
-            new LessonReview06(), new Rewards06()
+            new LessonHangul(), new Lesson00(), new Lesson01(), new Lesson02(), new Lesson19(), new Lesson03(), new LessonReview00(), new Rewards00(),
+            new LessonNumber(), new Lesson04(), new Lesson05(), new Lesson06(), new Lesson07(), new Lesson08(), new Lesson27(), new LessonReview01(), new Rewards01(),
+            new Lesson09(), new Lesson10(), new Lesson11(), new Lesson12(), new Lesson13(), new Lesson14(), new Lesson15(), new Lesson16(), new LessonReview02(), new Rewards02(),
+            new Lesson22(), new Lesson28(), new Lesson29(), new Lesson17(), new Lesson20(), new Lesson18(), new Lesson21(), new Lesson23(), new Lesson35(), new LessonReview03(), new Rewards03(),
+            new Lesson24(), new Lesson25(), new Lesson26(), new Lesson30(), new Lesson31(), new Lesson32(), new Lesson33(), new Lesson34(), new LessonReview04(), new Rewards04(),
+            new Lesson36(), new Lesson37(), new Lesson38(), new Lesson39(), new Lesson40(), new LessonReview05(), new Rewards05(),
+            new Lesson41(), new Lesson42(), new Lesson43(), new Lesson44(), new Lesson45(), new LessonReview06(), new Rewards06()
     };
 
     LessonItem[] intermediate = {
