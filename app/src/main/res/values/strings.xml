@@ -27,7 +27,7 @@
     <string name="CONFIRM_PASS">Confirm Password</string>
     <string name="ALREADY_HAVE_ACCOUNT"> Already have an account?</string>
     <string name="GOOGLE_FAILED">Google sign in failed</string>
-    <string name="FACEBOOK_FAILED">Facebook sign in failed</string>
+    <string name="FACEBOOK_FAILED">Can\'t login with your Facebook.\nPlease enter a different account.</string>
     <string name="SIGNUP_SUCCEED">You have been successfully signed up</string>
     <string name="SIGNUP_FAILED">Sign up failed</string>
     <string name="SIGNIN_SUCCEED">You have been successfully signed in</string>
@@ -213,10 +213,10 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <!--    챌린지-->
     <string name="ISSUE_TITLE">Learner\'s Issue</string>
     <string name="ISSUE_QUESTION">What is the most effective way to learn Korean?</string>
-    <string name="ISSUE_ANSWER">Among a lot of students I taught, I asked the students who improved their Korean skills the fastest how to learn.</string>
+    <string name="ISSUE_ANSWER">Let\'s look at the interviews from students who improved their Korean skills faster than others.</string>
     <string name="INTERVIEW_TITLE">Interview</string>
     <string name="INTERVIEW_1_SUMMARY">
-        Take time to practice almost everyday. It does not necessarily have to be through reading or studying in a book. Some days I might only watch videos on youtube or listen to a podcast.
+        Take time to practice almost everyday. It does not necessarily have to be through reading or studying in a book.
     </string>
     <string name="INTERVIEW_1_DETAIL">
         At the beginning, try to get a basic understanding of the grammar but do not focus exclusively on it. In order to increase my vocabulary, focus on the most commonly used words first, do not worry about memorizing every single word.
@@ -238,7 +238,7 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="INTERVIEW_2_NAME">Elen Isakidu\nGeorgia</string>
     <string name="INTERVIEW_3_SUMMARY">
         Learn grammar and vocabulary steadily and review everything once a month.
-        Watch and listen Korean contents as much as possible everyday. (Korean contents such as movies, dramas, music or even TV show)
+        Watch and listen Korean contents as much as possible everyday.
     </string>
     <string name="INTERVIEW_3_DETAIL">
         Personally, I try to work on my Korean skill by following a few steps below :\n
@@ -250,7 +250,7 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="COMMONALITY_TITLE">Their commonality</string>
     <string name="COMMONALITY_CONTENTS">Be exposed to Korean as much as possible every day.</string>
     <string name="COMMONALITY_TEACHER_COMMENTS">
-        "As a Korean teacher, I totally agree.\nThe Korean language you are learning is not a field of study.\nIt’s everyday life.\n\nConsistently learning in everyday life is the fastest and most powerful way to speak Korean."
+        "As a Korean teacher, I totally agree.\n\nConsistently learning in everyday life is the fastest and most powerful way to speak Korean."
     </string>
     <string name="TEACHER_NAME">Danny Park\nSouth Korea</string>
     <string name="SOLUTION_TITLE">Solution</string>
@@ -263,26 +263,25 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="CONCEPT_TITLE_1">podo\'s lesson</string>
     <string name="CONCEPT_TITLE_2">CONCEPT</string>
     <string name="CONCEPT_BEGINNER">Beginner Lesson:</string>
-    <string name="CONCEPT_BEGINNER_CONTENTS">Learning the minimum words and expressions used the most in everyday life, about 260 words, 45 expressions (1st~25th days)</string>
+    <string name="CONCEPT_BEGINNER_CONTENTS">Learning the minimum words and expressions used the most in everyday life, about 260 words, 45 expressions</string>
     <string name="CONCEPT_INTERMEDIATE">Intermediate Lesson:</string>
-    <string name="CONCEPT_INTERMEDIATE_CONTENTS">Practice daily conversation using only the words and expressions you\'ve learned in the beginner lesson (26th~30th days)</string>
-    <string name="CONCEPT_TEACHER_COMMENTS">All lessons were created and recorded by myself, who is a Korean teacher.</string>
+    <string name="CONCEPT_INTERMEDIATE_CONTENTS">Practice daily conversation using only the words and expressions you\'ve learned in the beginner lesson</string>
     <string name="BENEFITS_TITLE">Benefits</string>
     <string name="BENEFITS_ADS">Remove Ads\n(lifetime)</string>
     <string name="BENEFITS_LESSONS">Unlock all beginner/intermediate\nand special lessons\n(lifetime)</string>
-    <string name="BENEFITS_PROGRESS">Daily goal progress indicator\n(Try to achieve your goal\nevery day in 30 days)</string>
+    <string name="BENEFITS_PROGRESS">Daily goal progress indicator</string>
     <string name="BENEFITS_POINTS">1,000 points will be provided\nupon reaching the final goal\nwithin the challenge period\n($20 value)</string>
-    <string name="POINTS_TITLE">What can you do with the points?</string>
+    <string name="POINTS_TITLE">What\'s the next after challenge</string>
     <string name="POINTS_ANSWER_1">
-        After completing all the beginner and intermediate lessons, it\'s time to learn new vocabulary and expressions.\n\nYou can use your points to continue your desired learning among the various methods below.
+        You can use your points to continue your desired learning among the various methods below.
     </string>
     <string name="POINTS_ANSWER_2">After 30 days you can speak Korean.</string>
     <string name="POINTS_ADVANCED_TITLE">Advanced Lesson:</string>
     <string name="POINTS_ADVANCED_CONTENTS">(To be updated)</string>
     <string name="POINTS_READING_TITLE">Reading:</string>
-    <string name="POINTS_READING_CONTENTS">This is an easy-to-read article written by a Korean teacher using only the easiest words and expressions as possible. You can also practice correct pronunciation through audio recorded by the teacher.</string>
+    <string name="POINTS_READING_CONTENTS">This is an easy-to-read article. You can also practice correct pronunciation through audio recorded by the teacher.</string>
     <string name="POINTS_WRITING_TITLE">Writing:</string>
-    <string name="POINTS_WRITING_CONTENTS">Write what you want to say in Korean. The Korean teacher directly provides correction and supplementary explanations.</string>
+    <string name="POINTS_WRITING_CONTENTS">Write what you want to say in Korean. The Korean teacher provides correction and supplementary explanations.</string>
     <string name="CHALLENGE_BUTTON">Become A podo Challenger</string>
     <string name="CHALLENGE_ICON">podo\nChallenge</string>
     <string name="CHALLENGE_POLICY">The payment will be charged to your Google account at confirmation of purchase.

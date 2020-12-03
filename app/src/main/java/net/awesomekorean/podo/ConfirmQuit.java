@@ -84,9 +84,10 @@ public class ConfirmQuit extends AppCompatActivity implements View.OnClickListen
 
                         } else {
                             unitId = intent.getStringExtra(getResources().getString(R.string.LESSON_ID));
-                            if (adsManager.interstitialAd.isLoaded()) {
-                                adsManager.playFullAds(context);
-                            }
+                        }
+
+                        if (adsManager.interstitialAd.isLoaded()) {
+                            adsManager.playFullAds(context);
                         }
 
                         // 완료리스트에 업데이트

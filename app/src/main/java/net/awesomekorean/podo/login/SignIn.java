@@ -147,26 +147,33 @@ public class SignIn extends AppCompatActivity implements Button.OnClickListener 
     // 사용자가 정상적으로 로그인한 후에 GoogleSignInAccount 개체에서 ID 토큰을 가져와서
     // Firebase 사용자 인증 정보로 교환하고 Firebase 사용자 인증 정보를 사용해 Firebase에 인증합니다.
     private void handleFacebookAccessToken(final AccessToken accessToken) {
-        System.out.println("로그인 페이스북!");
         AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
         firebaseAuth.signInWithCredential(credential).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
                 // 페이스북 로그인 성공
                 progressBarLayout.setVisibility(View.VISIBLE);
-                System.out.println("로그인 페이스북 성공!");
+                System.out.println("로그인 성공!");
                 String userEmail = authResult.getUser().getEmail();
+                if(userEmail == null) {
+                    userEmail = authResult.getUser().getProviderData().get(0).getEmail();
+                }
                 System.out.println("유저이메일: " + userEmail);
 
-                //출석부 확인 후 메인페이지로 넘어가기
-                getUserInfoAndGoToMain(userEmail, "Facebook");
+                // userEmail 확인 후 메인페이지로 넘어가기
+                if(userEmail == null) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.FACEBOOK_FAILED), Toast.LENGTH_LONG).show();
+                } else {
+                    getUserInfoAndGoToMain(userEmail, "Facebook");
+                }
+
             }
 
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 // 로그인 실패
-                System.out.println("로그인 페이스북 실패! : " + e);
+                System.out.println("로그인 실패! : " + e);
                 Toast.makeText(getApplicationContext(), getString(R.string.FACEBOOK_FAILED), Toast.LENGTH_LONG).show();
                 progressBarLayout.setVisibility(View.GONE);
             }

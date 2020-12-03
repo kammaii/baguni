@@ -248,13 +248,7 @@ public class ReadingFrame extends AppCompatActivity implements Button.OnClickLis
         switch (view.getId()) {
 
             case R.id.btnBack :
-                if(mediaPlayerManager != null) {
-                    mediaPlayerManager.stopMediaPlayer();
-                }
-
-                btnSetting(View.VISIBLE, View.GONE, View.GONE);
-                seekBar.setProgress(0);
-                finish();
+                openConfirmQuit();
                 break;
 
             case R.id.btnCollect:
@@ -366,6 +360,7 @@ public class ReadingFrame extends AppCompatActivity implements Button.OnClickLis
         Intent intent = new Intent(context, ConfirmQuit.class);
         intent.putExtra(getResources().getString(R.string.IS_READING), true);
         intent.putExtra(getResources().getString(R.string.READING_ID), reading.getReadingId());
+        intent.putExtra(getResources().getString(R.string.FINISH), true);
         startActivityForResult(intent, 200);
     }
 

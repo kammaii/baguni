@@ -710,14 +710,6 @@
                 android:layout_width="0dp"
                 android:layout_height="3dp"/>
 
-            <View
-                android:id="@+id/goal_bg_2"
-                android:background="@drawable/bg_goal_transparent"
-                app:layout_constraintTop_toBottomOf="@id/goal_line_dot"
-                app:layout_constraintBottom_toTopOf="@id/concept_line_dot"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"/>
-
             <ImageView
                 android:id="@+id/concept_star"
                 android:src="@drawable/star_navy_small"
@@ -825,72 +817,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
 
-            <View
-                android:id="@+id/concept_line_dot"
-                android:background="@drawable/line_dot_navy_horizontal"
-                app:layout_constraintTop_toBottomOf="@id/concept_intermediate_contents"
-                app:layout_constraintStart_toStartOf="@id/goal_title"
-                app:layout_constraintEnd_toEndOf="@id/goal_title"
-                android:layerType="software"
-                android:layout_marginTop="20dp"
-                android:layout_width="0dp"
-                android:layout_height="3dp"/>
-
-            <ImageView
-                android:id="@+id/concept_quote_start"
-                android:src="@drawable/quote_start_blue"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/concept_line_dot"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <ImageView
-                android:id="@+id/concept_quote_end"
-                android:src="@drawable/quote_end_blue"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/concept_teacher_comments"
-                android:layout_marginRight="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/concept_teacher_comments"
-                android:text="@string/CONCEPT_TEACHER_COMMENTS"
-                android:textColor="@color/NAVY"
-                android:textSize="15dp"
-                app:layout_constraintStart_toEndOf="@id/concept_quote_start"
-                app:layout_constraintEnd_toStartOf="@id/concept_quote_end"
-                app:layout_constraintTop_toBottomOf="@id/concept_line_dot"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
-
-            <ImageView
-                android:id="@+id/concept_picture"
-                android:src="@drawable/danny"
-                app:layout_constraintTop_toBottomOf="@id/concept_teacher_comments"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp"/>
-
-            <TextView
-                android:id="@+id/concept_teacher_name"
-                android:text="@string/TEACHER_NAME"
-                android:textColor="@color/NAVY2"
-                android:gravity="right"
-                android:textSize="15dp"
-                app:layout_constraintEnd_toStartOf="@id/concept_picture"
-                app:layout_constraintBottom_toBottomOf="@id/concept_picture"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
 
 <!--            Benefits-->
 
@@ -905,7 +831,7 @@
                 android:id="@+id/benefits_bg"
                 android:src="@drawable/bg_issue"
                 android:adjustViewBounds="true"
-                app:layout_constraintTop_toBottomOf="@id/concept_teacher_name"
+                app:layout_constraintTop_toBottomOf="@id/concept_intermediate_contents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
