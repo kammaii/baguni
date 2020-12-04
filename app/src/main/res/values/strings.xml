@@ -266,23 +266,24 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="CONCEPT_BEGINNER_CONTENTS">Learning the minimum words and expressions used the most in everyday life, about 260 words, 45 expressions</string>
     <string name="CONCEPT_INTERMEDIATE">Intermediate Lesson:</string>
     <string name="CONCEPT_INTERMEDIATE_CONTENTS">Practice daily conversation using only the words and expressions you\'ve learned in the beginner lesson</string>
+    <string name="CONCEPT_ANSWER">After 30 days you can speak Korean.</string>
     <string name="BENEFITS_TITLE">Benefits</string>
     <string name="BENEFITS_ADS">Remove Ads\n(lifetime)</string>
     <string name="BENEFITS_LESSONS">Unlock all beginner/intermediate\nand special lessons\n(lifetime)</string>
     <string name="BENEFITS_PROGRESS">Daily goal progress indicator</string>
     <string name="BENEFITS_POINTS">1,000 points will be provided\nupon reaching the final goal\nwithin the challenge period\n($20 value)</string>
-    <string name="POINTS_TITLE">What\'s the next after challenge</string>
-    <string name="POINTS_ANSWER_1">
+    <string name="NEXT_TITLE">What\'s the next after challenge</string>
+    <string name="NEXT_ANSWER_1">
         You can use your points to continue your desired learning among the various methods below.
     </string>
-    <string name="POINTS_ANSWER_2">After 30 days you can speak Korean.</string>
-    <string name="POINTS_ADVANCED_TITLE">Advanced Lesson:</string>
-    <string name="POINTS_ADVANCED_CONTENTS">(To be updated)</string>
-    <string name="POINTS_READING_TITLE">Reading:</string>
-    <string name="POINTS_READING_CONTENTS">This is an easy-to-read article. You can also practice correct pronunciation through audio recorded by the teacher.</string>
-    <string name="POINTS_WRITING_TITLE">Writing:</string>
-    <string name="POINTS_WRITING_CONTENTS">Write what you want to say in Korean. The Korean teacher provides correction and supplementary explanations.</string>
-    <string name="CHALLENGE_BUTTON">Become A podo Challenger</string>
+    <string name="NEXT_ADVANCED_TITLE">Advanced Lesson:</string>
+    <string name="NEXT_ADVANCED_CONTENTS">(To be updated)</string>
+    <string name="NEXT_READING_TITLE">Reading:</string>
+    <string name="NEXT_READING_CONTENTS">This is an easy-to-read article. You can also practice correct pronunciation through audio recorded by the teacher.</string>
+    <string name="NEXT_WRITING_TITLE">Writing:</string>
+    <string name="NEXT_WRITING_CONTENTS">Write what you want to say in Korean. The Korean teacher provides correction and supplementary explanations.</string>
+    <string name="CHALLENGE_BUTTON">Become a podo Challenger\n</string>
+    <string name="CHALLENGE_BUTTON_2">(one-time purchase)</string>
     <string name="CHALLENGE_ICON">podo\nChallenge</string>
     <string name="CHALLENGE_POLICY">The payment will be charged to your Google account at confirmation of purchase.
         This purchase is one-time purchase. Refunds are only possible within 24 hours of purchase.

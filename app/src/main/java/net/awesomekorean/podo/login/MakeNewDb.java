@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import net.awesomekorean.podo.MainActivity;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
+import net.awesomekorean.podo.UnixTimeStamp;
 import net.awesomekorean.podo.UserInformation;
 import net.awesomekorean.podo.message.MessageItems;
 
@@ -30,13 +31,13 @@ public class MakeNewDb {
 
     public void makeNewDb(final Activity activity, final Context context, final String userEmail, final String method) {
         final UserInformation userInformation = new UserInformation();
+        userInformation.setDateSignUp(UnixTimeStamp.getTimeNow());
 
         CollectionReference userRef = db.collection(activity.getString(R.string.DB_USERS));
         userRef.document(userEmail).set(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 System.out.println("유저정보 DB를 만들었습니다");
-                UserInformation userInformation = new UserInformation();
                 SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
                 System.out.println("앱에 유저 데이터를 저장했습니다.");
 

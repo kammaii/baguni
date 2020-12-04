@@ -13,6 +13,7 @@ import java.util.List;
 
 public class UserInformation {
 
+    private Long dateSignUp;
     private List<Boolean> attendance = new ArrayList<>(7); // [0]~[6], 일~토
     private int points;
     private int pointsPurchased;
@@ -208,5 +209,13 @@ public class UserInformation {
 
     public void setPointsPurchased(int pointsPurchased) {
         this.pointsPurchased += pointsPurchased;
+    }
+
+    public Long getDateSignUp() {
+        return dateSignUp;
+    }
+
+    public void setDateSignUp(Long dateSignUp) {
+        this.dateSignUp = dateSignUp;
     }
 }
