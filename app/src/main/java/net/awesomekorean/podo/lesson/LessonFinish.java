@@ -133,23 +133,6 @@ public class LessonFinish extends AppCompatActivity implements View.OnClickListe
         Animation aniMoveDown = AnimationUtils.loadAnimation(context, R.anim.move_up_small);
         tvWord.startAnimation(aniMoveDown);
         tvSentence.startAnimation(aniMoveDown);
-
-        setLessonFinish();
-    }
-
-
-    private void setLessonFinish() {
-
-        String lessonId = lesson.getLessonId();
-        FirebaseCrashlytics.getInstance().log("lessonId : " + lessonId);
-
-        System.out.println("레슨아이디 : " + lessonId);
-
-        // analytics 로그 이벤트 얻기
-        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
-        Bundle bundle = new Bundle();
-        bundle.putString("lessonId", lessonId);
-        firebaseAnalytics.logEvent("lesson_finish", bundle);
     }
 
 

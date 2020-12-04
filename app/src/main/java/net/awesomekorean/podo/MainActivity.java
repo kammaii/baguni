@@ -27,6 +27,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
@@ -395,6 +396,13 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         if(userInformation != null) {
             userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
             userPoint.setText(String.valueOf(userInformation.getPoints()));
+
+            // 애널리틱스 로그이벤트 (챌린저 진행 중인 유저가 아니면서 포인트가 5 이하일 때)
+            if(userInformation.getPoints() < 5 && userInformation.getIsChallenger() != 1) {
+                Bundle params = new Bundle();
+                FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+                firebaseAnalytics.logEvent("point_not_enough", params);
+            }
         }
 
         if(!IsOnline.isOnline(getApplicationContext())) {
