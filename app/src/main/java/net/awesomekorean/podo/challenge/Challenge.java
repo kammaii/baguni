@@ -71,6 +71,8 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
     BillingClient billingClient;
     SkuDetails skuDetails;
 
+    Bundle params;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +92,10 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         interviewFold2.setOnClickListener(this);
         interviewFold3.setOnClickListener(this);
         btnChallenge.setOnClickListener(this);
+
+        params = new Bundle();
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+        firebaseAnalytics.logEvent("challenge_open", params);
 
 
         imageList = new ArrayList<>();
@@ -197,6 +203,8 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 }
             });
 
+            firebaseAnalytics.logEvent("challenge_purchase", params);
+
 
             // 상품 소모하기
             ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
@@ -224,11 +232,13 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         // 결제 취소
         } else if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
             System.out.println("결제를 취소했습니다.");
+            firebaseAnalytics.logEvent("challenge_cancel", params);
 
 
-        //결제 실패
+            //결제 실패
         } else {
             System.out.println("결제를 실패했습니다. : " + billingResult.getResponseCode());
+            firebaseAnalytics.logEvent("challenge_fail", params);
         }
     }
 
@@ -238,6 +248,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()) {
 
             case R.id.btnBack :
+                firebaseAnalytics.logEvent("challenge_close", params);
                 finish();
                 break;
 

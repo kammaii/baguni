@@ -70,6 +70,8 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
     TextView price500;
     TextView price1000;
 
+    Bundle params;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,10 +98,9 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
         btnGetPoint.setOnClickListener(this);
 
         // analytics 로그 이벤트 얻기
-        Bundle params = new Bundle();
+        params = new Bundle();
         firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
-        firebaseAnalytics.logEvent("purchase_page_open", params);
-        FirebaseMessaging.getInstance().subscribeToTopic("purchase_open");
+        firebaseAnalytics.logEvent("topUp_open", params);
 
         setPurchase(pointB, checkPointB, getString(R.string.SKU_1000));
 
@@ -178,17 +179,20 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
             System.out.println("결제를 성공했습니다.");
             final UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
             int havePoint = userInformation.getPoints();
-            int newPoint = 0;
+            int newPoint;
+            int purchasePoint = 0;
 
             for (Purchase purchase : list) {
                 if(purchase.getSku().equals(getString(R.string.SKU_100))) {
-                    newPoint = havePoint + 100;
+                    purchasePoint = 100;
                 } else if(purchase.getSku().equals(getString(R.string.SKU_500))) {
-                    newPoint = havePoint + 500;
+                    purchasePoint = 500;
                 } else {
-                    newPoint = havePoint + 1000;
+                    purchasePoint = 1000;
                 }
             }
+
+            newPoint = havePoint + purchasePoint;
 
             userInformation.setPoints(newPoint);
             userInformation.setPointsPurchased(newPoint); //todo: should fix this!
@@ -216,6 +220,9 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
                 }
             });
 
+            params.putInt("purchasePoint", purchasePoint);
+            firebaseAnalytics.logEvent("topUp_purchase", params);
+
 
             // 상품 소모하기
             ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
@@ -241,11 +248,13 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
             // 결제 취소
         } else if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
             System.out.println("결제를 취소했습니다.");
+            firebaseAnalytics.logEvent("topUp_cancel", params);
 
 
             //결제 실패
         } else {
             System.out.println("결제를 실패했습니다. : " + billingResult.getResponseCode());
+            firebaseAnalytics.logEvent("topUp_fail", params);
         }
     }
 
@@ -257,6 +266,7 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
 
             case R.id.btnClose :
                 finish();
+                firebaseAnalytics.logEvent("topUp_close", params);
                 break;
 
             case R.id.pointA :

@@ -9,6 +9,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 public class ConfirmQuit extends AppCompatActivity implements View.OnClickListener {
 
     Context context;
@@ -93,6 +95,12 @@ public class ConfirmQuit extends AppCompatActivity implements View.OnClickListen
                         // 완료리스트에 업데이트
                         UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
                         userInformation.updateCompleteList(context, unitId, isReading);
+
+                        // 애널리틱스 로그이벤트
+                        Bundle params = new Bundle();
+                        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+                        params.putString(getResources().getString(R.string.LESSON_ID), unitId);
+                        firebaseAnalytics.logEvent("lesson_finish", params);
 
                     } else {
                         System.out.println("레슨/읽기를 완료하지 않고 메인으로 나갑니다.");
