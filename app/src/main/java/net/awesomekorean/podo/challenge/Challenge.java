@@ -238,6 +238,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
             //결제 실패
         } else {
             System.out.println("결제를 실패했습니다. : " + billingResult.getResponseCode());
+            params.putInt("responseCode", billingResult.getResponseCode());
             firebaseAnalytics.logEvent("challenge_fail", params);
         }
     }
