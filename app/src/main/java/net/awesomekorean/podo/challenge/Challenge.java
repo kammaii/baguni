@@ -3,14 +3,17 @@ package net.awesomekorean.podo.challenge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.graphics.LinearGradient;
+import android.graphics.Paint;
 import android.graphics.Shader;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,7 +52,6 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
     FirebaseAnalytics firebaseAnalytics;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    //private String KEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjttlMN7KIO22BMxNl1H2oN6FjRAUqQPvrlOKKybEwj0f2mXNreqpt5n/6/SV4+TAnADJSJO1j9MoN1fvVkYtr0zJtEe62hBcBouyqRKt/uWGhcy6ToMUlNjl9Wxf9UaSrJ3c0IePZvRtlGhd9y2OpK99uMfLjfqxY7+UIjnqBIO8qXSiy+E1jUrlR6AhZoBrwSfVSVPjOXya5K2uEngttMWaYwrnVhmBeEmjdIAjt0021plp4t7bYP5zSvwQp3dbomgnwE33njXWhn3ohla8m6wxZUPpZzvtCWKRo+SegyXx+wX2OVKcIkK27IrK9NEmrJzzamL2DLj/QhXKnk6aAQIDAQAB";
 
     FragmentPagerAdapter adapter;
     ArrayList<Integer> imageList;
@@ -61,7 +63,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
     ImageView interviewFold1;
     ImageView interviewFold2;
     ImageView interviewFold3;
-    Button btnChallenge;
+    ConstraintLayout btnChallenge;
     TextView textChallenge;
 
     boolean interviewClicked1 = false;
@@ -72,6 +74,14 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
     SkuDetails skuDetails;
 
     Bundle params;
+
+    int discount = 0;
+    private final String DISCOUNT = "discount";
+    ImageView discountTape;
+    TextView discountPercent;
+    TextView priceOriginal;
+    TextView price;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +97,10 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         interviewFold3 = findViewById(R.id.interview_fold_3);
         btnChallenge = findViewById(R.id.btnChallenge);
         textChallenge = findViewById(R.id.textChallenge);
+        discountTape = findViewById(R.id.discountTape);
+        discountPercent = findViewById(R.id.discountPercent);
+        priceOriginal = findViewById(R.id.priceOriginal);
+        price = findViewById(R.id.price);
         btnBack.setOnClickListener(this);
         interviewFold1.setOnClickListener(this);
         interviewFold2.setOnClickListener(this);
@@ -96,7 +110,11 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         params = new Bundle();
         firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
         firebaseAnalytics.logEvent("challenge_open", params);
+        FirebaseMessaging.getInstance().subscribeToTopic("challenge_page_open");
 
+
+        discount = getIntent().getIntExtra(DISCOUNT, 0);
+        initDiscount();
 
         imageList = new ArrayList<>();
         imageList.add(R.drawable.benefits_ads);
@@ -114,11 +132,6 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         Shader shader = new LinearGradient(0,0,100,0, new int[]{ContextCompat.getColor(getApplicationContext(), R.color.PINK2), ContextCompat.getColor(getApplicationContext(), R.color.PURPLE)}, new float[]{0, 1}, Shader.TileMode.CLAMP);
         textChallenge.getPaint().setShader(shader);
 
-        // analytics 로그 이벤트 얻기
-        Bundle bundle = new Bundle();
-        firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
-        firebaseAnalytics.logEvent("challenge_page_open", bundle);
-        FirebaseMessaging.getInstance().subscribeToTopic("challenge_page_open");
 
         billingClient = BillingClient.newBuilder(getApplicationContext())
                 .enablePendingPurchases()
@@ -146,11 +159,18 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         });
     }
 
+    private void initDiscount() {
+        discountTape.setVisibility(View.GONE);
+        discountPercent.setVisibility(View.GONE);
+        priceOriginal.setVisibility(View.GONE);
+    }
+
 
     // 상품 정보 받아오기
     public void getSkuDetail() {
         List<String> skuList = new ArrayList<>();
         skuList.add(getString(R.string.SKU_CHALLENGER));
+        skuList.add(getString(R.string.SKU_CHALLENGER) + "_" + discount);
 
         SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
         params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
@@ -160,8 +180,32 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
                 if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
                     System.out.println("챌린지 상품 정보를 받았습니다.");
-                    skuDetails = list.get(0);
-                    btnChallenge.setText(getString(R.string.CHALLENGE_BUTTON) + skuDetails.getPrice() + " " + getString(R.string.CHALLENGE_BUTTON_2));
+                    System.out.println("리스트 : " + list);
+
+                    for(SkuDetails sku : list) {
+                        if(sku.getSku().equals(getString(R.string.SKU_CHALLENGER))) {
+                            priceOriginal.setText(sku.getPrice());
+                            if(discount == 0) {
+                                skuDetails = sku;
+                            }
+                        } else {
+                            price.setText(sku.getPrice());
+                            if(discount != 0) {
+                                skuDetails = sku;
+                            }
+                        }
+                    }
+
+                    if(discount != 0) {
+                        discountTape.setVisibility(View.VISIBLE);
+                        discountPercent.setVisibility(View.VISIBLE);
+                        discountPercent.setText(discount + "%");
+                        priceOriginal.setPaintFlags(priceOriginal.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+                        priceOriginal.setVisibility(View.VISIBLE);
+
+                    } else {
+                        price.setText(skuDetails.getPrice());
+                    }
 
                 } else {
                     System.out.println("챌린지 상품 정보 받아오기를 실패했습니다. : " + billingResult.getDebugMessage());
@@ -295,5 +339,12 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 billingClient.launchBillingFlow(this, flowParams);
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        firebaseAnalytics.logEvent("challenge_close", params);
+        finish();
     }
 }

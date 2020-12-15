@@ -5,6 +5,7 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -31,9 +32,12 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
+import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import net.awesomekorean.podo.challenge.Challenge;
 import net.awesomekorean.podo.collection.MainCollection;
 import net.awesomekorean.podo.lesson.MainLesson;
 import net.awesomekorean.podo.login.SignIn;
@@ -49,6 +53,9 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+
+    private final String SEGMENT_CHALLENGE = "challenge";
+    private final String DISCOUNT = "discount";
 
     FragmentManager fm;
     FragmentTransaction tran;
@@ -188,6 +195,49 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
         Intent intent = new Intent(this, FirebaseCloudMessage.class);
         startService(intent);
+
+
+        // 딥링크 리스너
+        FirebaseDynamicLinks.getInstance()
+                .getDynamicLink(getIntent())
+                .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
+                    @Override
+                    public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
+                        System.out.println("딥링크 수신 성공");
+
+                        Uri deepLink = null;
+                        if (pendingDynamicLinkData != null) {
+                            deepLink = pendingDynamicLinkData.getLink();
+                        }
+                        System.out.println("딥링크 Uri : " + deepLink);
+
+                        if(deepLink != null) {
+                            String segment = deepLink.getLastPathSegment();
+                            String discount = deepLink.getQueryParameter(DISCOUNT);
+
+                            Intent deepLinkIntent;
+                            if(segment.equals(SEGMENT_CHALLENGE)) {
+                                deepLinkIntent = new Intent(getApplicationContext(), Challenge.class);
+                            } else {
+                                deepLinkIntent = new Intent(getApplicationContext(), TopUp.class);
+                            }
+
+                            int percent = Integer.parseInt(discount);
+
+                            deepLinkIntent.putExtra(DISCOUNT, percent);
+                            startActivity(deepLinkIntent);
+
+                            System.out.println("세그먼트 : " + segment);
+                            System.out.println("할인 : " + discount);
+                            System.out.println("퍼센트 : " + percent);
+                        }
+                    }
+                }).addOnFailureListener(this, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.println("딥링크 수신 실패 : " + e);
+                    }
+                });
     }
 
 

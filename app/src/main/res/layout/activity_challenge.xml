@@ -1055,6 +1055,7 @@
                 android:textColor="@color/NAVY"
                 android:textSize="15dp"
                 app:layout_constraintStart_toStartOf="@id/next_writing"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/next_writing"
                 android:layout_marginRight="20dp"
                 android:layout_width="0dp"
@@ -1094,30 +1095,87 @@
 
     <!--            Button-->
 
-    <LinearLayout
-        android:id="@+id/btnLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btnChallenge"
         android:gravity="center"
-        android:background="@color/WHITE"
+        android:background="@drawable/bg_purple_10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/btnChallenge"
+
+        <TextView
+            android:id="@+id/btnTitle"
             android:text="@string/CHALLENGE_BUTTON"
             android:textAllCaps="false"
             android:textColor="@color/WHITE"
-            android:textSize="17dp"
-            android:lineSpacingExtra="8dp"
-            android:background="@drawable/bg_purple_30"
-            android:layout_margin="15dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:textSize="15dp"
+            android:gravity="center"
             android:paddingTop="8dp"
-            android:paddingBottom="8dp"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-    </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center|bottom"
+            app:layout_constraintTop_toBottomOf="@id/btnTitle"
+            android:paddingBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/priceOriginal"
+                android:text="THB 600.00"
+                android:textColor="@color/WHITE"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/price"
+                android:text="THB 500.00"
+                android:textColor="@color/WHITE"
+                android:textSize="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/btnSubTitle"
+                android:text="@string/CHALLENGE_BUTTON_2"
+                android:textAllCaps="false"
+                android:textColor="@color/WHITE"
+                android:textSize="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/discountTape"
+            android:src="@drawable/tape"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:id="@+id/discountPercent"
+            android:text="20%"
+            android:textColor="@color/PURPLE"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:rotation="-45"
+            android:paddingTop="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -67,6 +67,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-ads'
     implementation 'com.facebook.android:facebook-login:[5,6)'
+    implementation 'com.google.firebase:firebase-dynamic-links'
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-crashlytics'

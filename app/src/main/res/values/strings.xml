@@ -282,11 +282,11 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="NEXT_READING_CONTENTS">This is an easy-to-read article. You can also practice correct pronunciation through audio recorded by the teacher.</string>
     <string name="NEXT_WRITING_TITLE">Writing:</string>
     <string name="NEXT_WRITING_CONTENTS">Write what you want to say in Korean. The Korean teacher provides correction and supplementary explanations.</string>
-    <string name="CHALLENGE_BUTTON">Become a podo Challenger\n</string>
-    <string name="CHALLENGE_BUTTON_2">(one-time purchase)</string>
+    <string name="CHALLENGE_BUTTON">Become a podo Challenger</string>
+    <string name="CHALLENGE_BUTTON_2">(single payment)</string>
     <string name="CHALLENGE_ICON">podo\nChallenge</string>
     <string name="CHALLENGE_POLICY">The payment will be charged to your Google account at confirmation of purchase.
-        This purchase is one-time purchase. Refunds are only possible within 24 hours of purchase.
+        This purchase is one-time payment. Refunds are only possible within 24 hours of purchase.
         Reward points will be provided on the 31st day if all lessons are completed within 30 days after payment time.
         If you have any trouble with purchasing, please contact \'akorean.app@gmail.com\'.
     </string>
