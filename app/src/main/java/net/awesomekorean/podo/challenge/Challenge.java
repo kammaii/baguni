@@ -73,7 +73,6 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
     BillingClient billingClient;
     SkuDetails skuDetails;
 
-    Bundle params;
 
     int discount = 0;
     private final String DISCOUNT = "discount";
@@ -107,11 +106,10 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         interviewFold3.setOnClickListener(this);
         btnChallenge.setOnClickListener(this);
 
-        params = new Bundle();
+        Bundle bundleOpen = new Bundle();
         firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
-        firebaseAnalytics.logEvent("challenge_open", params);
+        firebaseAnalytics.logEvent("challenge_open", bundleOpen);
         FirebaseMessaging.getInstance().subscribeToTopic("challenge_page_open");
-
 
         discount = getIntent().getIntExtra(DISCOUNT, 0);
         initDiscount();
@@ -149,6 +147,10 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
                 } else {
                     System.out.println("구글플레이와 연결을 실패했습니다. : " + billingResult.getDebugMessage());
+                    Bundle bundleConnectionFail = new Bundle();
+                    bundleConnectionFail.putInt("responseCode", billingResult.getResponseCode());
+                    bundleConnectionFail.putString("message", billingResult.getDebugMessage());
+                    firebaseAnalytics.logEvent("challenge_connection_fail", bundleConnectionFail);
                 }
             }
 
@@ -188,7 +190,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                             if(discount == 0) {
                                 skuDetails = sku;
                             }
-                        } else {
+                        } else if(sku.getSku().equals(getString(R.string.SKU_CHALLENGER) + "_" + discount)) {
                             price.setText(sku.getPrice());
                             if(discount != 0) {
                                 skuDetails = sku;
@@ -209,6 +211,10 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
                 } else {
                     System.out.println("챌린지 상품 정보 받아오기를 실패했습니다. : " + billingResult.getDebugMessage());
+                    Bundle bundleConnectionFail = new Bundle();
+                    bundleConnectionFail.putInt("responseCode", billingResult.getResponseCode());
+                    bundleConnectionFail.putString("message", billingResult.getDebugMessage());
+                    firebaseAnalytics.logEvent("challenge_connection_fail", bundleConnectionFail);
                 }
             }
         });
@@ -247,7 +253,8 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 }
             });
 
-            firebaseAnalytics.logEvent("challenge_purchase", params);
+            Bundle bundlePurchase = new Bundle();
+            firebaseAnalytics.logEvent("challenge_purchase", bundlePurchase);
 
 
             // 상품 소모하기
@@ -276,14 +283,17 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         // 결제 취소
         } else if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
             System.out.println("결제를 취소했습니다.");
-            firebaseAnalytics.logEvent("challenge_cancel", params);
+            Bundle bundleCancel = new Bundle();
+            firebaseAnalytics.logEvent("challenge_cancel", bundleCancel);
 
 
-            //결제 실패
+        //결제 실패
         } else {
             System.out.println("결제를 실패했습니다. : " + billingResult.getResponseCode());
-            params.putInt("responseCode", billingResult.getResponseCode());
-            firebaseAnalytics.logEvent("challenge_fail", params);
+            Bundle bundleFail = new Bundle();
+            bundleFail.putInt("responseCode", billingResult.getResponseCode());
+            bundleFail.putString("message", billingResult.getDebugMessage());
+            firebaseAnalytics.logEvent("challenge_fail", bundleFail);
         }
     }
 
@@ -293,7 +303,8 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         switch (v.getId()) {
 
             case R.id.btnBack :
-                firebaseAnalytics.logEvent("challenge_close", params);
+                Bundle bundleClose = new Bundle();
+                firebaseAnalytics.logEvent("challenge_close", bundleClose);
                 finish();
                 break;
 
@@ -345,7 +356,8 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        firebaseAnalytics.logEvent("challenge_close", params);
+        Bundle bundleClose = new Bundle();
+        firebaseAnalytics.logEvent("challenge_close", bundleClose);
         finish();
     }
 }

@@ -1127,6 +1127,7 @@
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/priceOriginal"
+                android:visibility="gone"
                 android:text="THB 600.00"
                 android:textColor="@color/WHITE"
                 android:textSize="13dp"
@@ -1154,6 +1155,7 @@
 
         <ImageView
             android:id="@+id/discountTape"
+            android:visibility="gone"
             android:src="@drawable/tape"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
