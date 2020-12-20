@@ -1098,7 +1098,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btnChallenge"
         android:gravity="center"
-        android:background="@drawable/bg_purple_10"
+        android:background="@drawable/bg_grey_light_10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -1164,6 +1164,7 @@
 
         <TextView
             android:id="@+id/discountPercent"
+            android:visibility="gone"
             android:text="20%"
             android:textColor="@color/PURPLE"
             android:textSize="15dp"

@@ -34,6 +34,7 @@ import com.android.billingclient.api.SkuDetailsResponseListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -44,7 +45,9 @@ import net.awesomekorean.podo.UnixTimeStamp;
 import net.awesomekorean.podo.UserInformation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import me.relex.circleindicator.CircleIndicator;
 
@@ -130,10 +133,15 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         Shader shader = new LinearGradient(0,0,100,0, new int[]{ContextCompat.getColor(getApplicationContext(), R.color.PINK2), ContextCompat.getColor(getApplicationContext(), R.color.PURPLE)}, new float[]{0, 1}, Shader.TileMode.CLAMP);
         textChallenge.getPaint().setShader(shader);
 
+        btnChallenge.setEnabled(false);
+        btnChallenge.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_grey_light_10));
+
 
         billingClient = BillingClient.newBuilder(getApplicationContext())
+                .setListener(this)
                 .enablePendingPurchases()
-                .setListener(this).build();
+                .build();
+
 
         // 구글플레이에 연결하기
         billingClient.startConnection(new BillingClientStateListener() {
@@ -143,6 +151,8 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 // 구글플레이와 연결 성공
                 if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
                     System.out.println("구글플레이와 연결을 성공했습니다.");
+                    btnChallenge.setEnabled(true);
+                    btnChallenge.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_purple_10));
                     getSkuDetail();
 
                 } else {
@@ -157,6 +167,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onBillingServiceDisconnected() {
                 System.out.println("구글플레이와 연결이 끊어졌습니다.");
+                //todo: 연결 다시 시도하기
             }
         });
     }
@@ -211,10 +222,10 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
                 } else {
                     System.out.println("챌린지 상품 정보 받아오기를 실패했습니다. : " + billingResult.getDebugMessage());
-                    Bundle bundleConnectionFail = new Bundle();
-                    bundleConnectionFail.putInt("responseCode", billingResult.getResponseCode());
-                    bundleConnectionFail.putString("message", billingResult.getDebugMessage());
-                    firebaseAnalytics.logEvent("challenge_connection_fail", bundleConnectionFail);
+                    Bundle bundleSkuFail = new Bundle();
+                    bundleSkuFail.putInt("responseCode", billingResult.getResponseCode());
+                    bundleSkuFail.putString("message", billingResult.getDebugMessage());
+                    firebaseAnalytics.logEvent("challenge_getSku_fail", bundleSkuFail);
                 }
             }
         });
@@ -228,6 +239,16 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         // 결제 성공
         if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
             System.out.println("결제를 성공했습니다.");
+            List<String> orderId = new ArrayList<>();
+            List<Integer> purchaseState = new ArrayList<>();
+
+            for(Purchase purchase : list) {
+                System.out.println("orderId : " + purchase.getOrderId());
+                System.out.println("purchaseState : " + purchase.getPurchaseState());
+                orderId.add(purchase.getOrderId());
+                purchaseState.add(purchase.getPurchaseState());
+            }
+
             UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
             Long timeStart = UnixTimeStamp.getTimeNow();
             Long timeExpire = timeStart + 2592000;
@@ -252,6 +273,21 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                     Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING) + e, Toast.LENGTH_LONG).show();
                 }
             });
+
+
+            // todo: 안정화되면 삭제하기
+            // 구매기록 대조를 위한 저장
+            Map<String, Object> confirmChallenger = new HashMap<>();
+            confirmChallenger.put("userEmail", MainActivity.userEmail);
+            confirmChallenger.put("orderId", orderId);
+            confirmChallenger.put("purchaseState", purchaseState);
+            db.collection("android/podo/challenger").add(confirmChallenger).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    System.out.println("구매기록을 저장했습니다.");
+                }
+            });
+
 
             Bundle bundlePurchase = new Bundle();
             firebaseAnalytics.logEvent("challenge_purchase", bundlePurchase);
@@ -294,6 +330,28 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
             bundleFail.putInt("responseCode", billingResult.getResponseCode());
             bundleFail.putString("message", billingResult.getDebugMessage());
             firebaseAnalytics.logEvent("challenge_fail", bundleFail);
+
+
+            // todo: 안정화 되면 삭제하기
+            // 결제 실패 원인 DB에 저장하기
+            Map<String, Object> challengeFail = new HashMap<>();
+            challengeFail.put("userEmail", MainActivity.userEmail);
+            if(skuDetails != null) {
+                challengeFail.put("sku", skuDetails.getSku());
+                challengeFail.put("skuPrice", skuDetails.getPrice());
+            }
+            if(list != null) {
+                challengeFail.put("orderId", list.get(0).getOrderId());
+                challengeFail.put("purchaseState", list.get(0).getPurchaseState());
+            }
+            challengeFail.put("responseCode", billingResult.getResponseCode());
+            challengeFail.put("message", billingResult.getDebugMessage());
+            db.collection("android/podo/challengeFail").add(challengeFail).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                @Override
+                public void onSuccess(DocumentReference documentReference) {
+                    System.out.println("결제실패 원인을 저장했습니다.");
+                }
+            });
         }
     }
 
