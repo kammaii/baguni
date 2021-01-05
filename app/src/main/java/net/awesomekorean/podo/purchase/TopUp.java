@@ -195,7 +195,7 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
             newPoint = havePoint + purchasePoint;
 
             userInformation.setPoints(newPoint);
-            userInformation.setPointsPurchased(newPoint); //todo: should fix this!
+            userInformation.setPointsPurchased(purchasePoint);
 
             SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
 

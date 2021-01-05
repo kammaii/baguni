@@ -141,23 +141,11 @@ public class LessonFrame extends AppCompatActivity implements View.OnClickListen
         wordAudioString = new String[lessonWordLength];
 
         for(int i=0; i<lessonWordLength; i++) {
-            final Integer index = i;
             wordAudioString[i] = lessonId.toLowerCase() + "_word_" + i + ".mp3";
             StorageReference storageRef = storage.getReference().child(folder).child(wordAudioString[i]);
             final long ONE_MEGABYTE = 1024 * 1024;
-            storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    System.out.println("오디오를 로드했습니다.");
-                    wordAudioByte.put(index, bytes);
-                    if(index == 0) {
-                        LoadingPage loadingPage = (LoadingPage)LoadingPage.activity;
-                        loadingPage.finish();
-
-                        replaceFragment(lessonWord);
-                    }
-                }
-            });
+            final OnSuccessListenerLoading onSuccessListenerLoading = new OnSuccessListenerLoading(i, this, lessonWord);
+            storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(onSuccessListenerLoading);
         }
     }
 

@@ -151,8 +151,6 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 // 구글플레이와 연결 성공
                 if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
                     System.out.println("구글플레이와 연결을 성공했습니다.");
-                    btnChallenge.setEnabled(true);
-                    btnChallenge.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_purple_10));
                     getSkuDetail();
 
                 } else {
@@ -219,6 +217,9 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                     } else {
                         price.setText(skuDetails.getPrice());
                     }
+
+                    btnChallenge.setEnabled(true);
+                    btnChallenge.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_purple_10));
 
                 } else {
                     System.out.println("챌린지 상품 정보 받아오기를 실패했습니다. : " + billingResult.getDebugMessage());

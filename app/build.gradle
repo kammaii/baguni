@@ -60,7 +60,7 @@ dependencies {
     annotationProcessor 'androidx.room:room-compiler:2.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata:2.0.0'
 
-    implementation platform('com.google.firebase:firebase-bom:26.0.0')
+    implementation platform('com.google.firebase:firebase-bom:26.1.1')
     implementation 'com.google.firebase:firebase-inappmessaging-display'
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-storage'

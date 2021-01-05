@@ -222,14 +222,16 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                                 deepLinkIntent = new Intent(getApplicationContext(), TopUp.class);
                             }
 
-                            int percent = Integer.parseInt(discount);
+                            if(discount != null) {
+                                int percent = Integer.parseInt(discount);
 
-                            deepLinkIntent.putExtra(DISCOUNT, percent);
-                            startActivity(deepLinkIntent);
+                                deepLinkIntent.putExtra(DISCOUNT, percent);
+                                startActivity(deepLinkIntent);
 
-                            System.out.println("세그먼트 : " + segment);
-                            System.out.println("할인 : " + discount);
-                            System.out.println("퍼센트 : " + percent);
+                                System.out.println("세그먼트 : " + segment);
+                                System.out.println("할인 : " + discount);
+                                System.out.println("퍼센트 : " + percent);
+                            }
                         }
                     }
                 }).addOnFailureListener(this, new OnFailureListener() {
