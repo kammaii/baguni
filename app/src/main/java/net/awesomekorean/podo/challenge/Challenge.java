@@ -13,6 +13,7 @@ import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -31,11 +32,15 @@ import com.android.billingclient.api.PurchasesUpdatedListener;
 import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.android.billingclient.api.SkuDetailsResponseListener;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import net.awesomekorean.podo.MainActivity;
@@ -244,17 +249,6 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         // 결제 성공
         if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
             System.out.println("챌린지를 구매했습니다.");
-//            List<String> orderId = new ArrayList<>();
-//            List<Integer> purchaseState = new ArrayList<>();
-
-/*
-            for(Purchase purchase : list) {
-                System.out.println("orderId : " + purchase.getOrderId());
-                System.out.println("purchaseState : " + purchase.getPurchaseState());
-                orderId.add(purchase.getOrderId());
-                purchaseState.add(purchase.getPurchaseState());
-            }
- */
 
             // 정상구매
             if(purchaseInfo.checkPurchase()) {
@@ -286,35 +280,35 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 Bundle bundlePurchase = new Bundle();
                 firebaseAnalytics.logEvent("challenge_purchase", bundlePurchase);
 
-
-                // 상품 소모하기
-                ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
-                    @Override
-                    public void onConsumeResponse(BillingResult billingResult, String s) {
-
-                        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                            System.out.println("상품을 성공적으로 소모하였습니다.");
-                        } else {
-                            System.out.println("상품 소모를 실패했습니다. : " + billingResult.getResponseCode());
-                        }
-                    }
-                };
-
-                ConsumeParams consumeParams = ConsumeParams.newBuilder()
-                        .setPurchaseToken(list.get(0).getPurchaseToken()).build();
-
-                billingClient.consumeAsync(consumeParams, consumeListener);
-
                 Intent intent = new Intent();
                 setResult(RESULT_OK, intent);
 
 
-                // 비정상 구매
+            // 비정상 구매
             } else {
                 Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING), Toast.LENGTH_LONG).show();
             }
 
             purchaseInfo.uploadInfo();
+
+
+            // 상품 소모하기
+            ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
+                @Override
+                public void onConsumeResponse(BillingResult billingResult, String s) {
+
+                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                        System.out.println("상품을 성공적으로 소모하였습니다.");
+                    } else {
+                        System.out.println("상품 소모를 실패했습니다. : " + billingResult.getResponseCode());
+                    }
+                }
+            };
+
+            ConsumeParams consumeParams = ConsumeParams.newBuilder()
+                    .setPurchaseToken(purchaseInfo.purchaseToken).build();
+
+            billingClient.consumeAsync(consumeParams, consumeListener);
 
 
         // 결제 취소

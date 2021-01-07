@@ -235,31 +235,30 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
                 params.putInt("purchasePoint", purchasePoint);
                 firebaseAnalytics.logEvent("topUp_purchase", params);
 
-
-                // 상품 소모하기
-                ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
-                    @Override
-                    public void onConsumeResponse(BillingResult billingResult, String s) {
-
-                        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                            System.out.println("상품을 성공적으로 소모하였습니다.");
-                        } else {
-                            System.out.println("상품 소모를 실패했습니다. : " + billingResult.getResponseCode());
-                        }
-                    }
-                };
-
-                ConsumeParams consumeParams = ConsumeParams.newBuilder()
-                        .setPurchaseToken(list.get(0).getPurchaseToken()).build();
-
-                billingClient.consumeAsync(consumeParams, consumeListener);
-
             // 비정상 구매
             } else {
                 Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING), Toast.LENGTH_LONG).show();
             }
 
             purchaseInfo.uploadInfo();
+
+            // 상품 소모하기
+            ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
+                @Override
+                public void onConsumeResponse(BillingResult billingResult, String s) {
+
+                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                        System.out.println("상품을 성공적으로 소모하였습니다.");
+                    } else {
+                        System.out.println("상품 소모를 실패했습니다. : " + billingResult.getResponseCode());
+                    }
+                }
+            };
+
+            ConsumeParams consumeParams = ConsumeParams.newBuilder()
+                    .setPurchaseToken(purchaseInfo.purchaseToken).build();
+
+            billingClient.consumeAsync(consumeParams, consumeListener);
 
 
         // 결제 취소

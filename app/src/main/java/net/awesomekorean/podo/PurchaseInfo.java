@@ -1,13 +1,20 @@
 package net.awesomekorean.podo;
 
 import android.content.Context;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.android.billingclient.api.AccountIdentifiers;
 import com.android.billingclient.api.BillingResult;
 import com.android.billingclient.api.Purchase;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class PurchaseInfo {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -20,7 +27,6 @@ public class PurchaseInfo {
     public int purchaseState;
     public Long purchaseTime;
     public AccountIdentifiers accountIdentifiers;
-    public String developerPayload;
     public String signature;
     public boolean acknowledged;
     public String sku;
@@ -41,7 +47,6 @@ public class PurchaseInfo {
         this.purchaseTime = purchase.getPurchaseTime();
         this.accountIdentifiers = purchase.getAccountIdentifiers();
         this.acknowledged = purchase.isAcknowledged();
-        this.developerPayload = purchase.getDeveloperPayload();
         this.signature = purchase.getSignature();
         this.sku = purchase.getSku();
         this.skuPrice = skuPrice;
@@ -58,7 +63,7 @@ public class PurchaseInfo {
     public boolean checkPurchase() {
         String GPA = "GPA";
         String subOrderId = orderId.substring(0, 3);
-        if(subOrderId.equals(GPA)) {
+        if (subOrderId.equals(GPA)) {
             System.out.println("True purchasing");
             return true;
         } else {
@@ -66,6 +71,7 @@ public class PurchaseInfo {
             return false;
         }
     }
+
 
     public void uploadInfo() {
         db.collection("android/podo/purchase").add(this).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
