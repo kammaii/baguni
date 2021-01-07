@@ -17,7 +17,7 @@
             android:id="@+id/recyclerView"
             android:background="@drawable/bg_white_10_stroke_grey"
             android:elevation="3dp"
-            android:padding="20dp"
+            android:padding="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
