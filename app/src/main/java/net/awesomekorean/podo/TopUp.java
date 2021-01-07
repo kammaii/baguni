@@ -1,4 +1,4 @@
-package net.awesomekorean.podo.purchase;
+package net.awesomekorean.podo;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -56,7 +56,7 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
     ImageView checkPointB;
     ImageView checkPointC;
 
-    Button btnGetPoint;
+    Button btnPurchasePoint;
 
     FirebaseAnalytics firebaseAnalytics;
 
@@ -87,7 +87,7 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
         checkPointA = findViewById(R.id.checkPointA);
         checkPointB = findViewById(R.id.checkPointB);
         checkPointC = findViewById(R.id.checkPointC);
-        btnGetPoint = findViewById(R.id.btnGetPoint);
+        btnPurchasePoint = findViewById(R.id.btnPurchasePoint);
         price100 = findViewById(R.id.price100);
         price500 = findViewById(R.id.price500);
         price1000 = findViewById(R.id.price1000);
@@ -95,7 +95,10 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
         pointA.setOnClickListener(this);
         pointB.setOnClickListener(this);
         pointC.setOnClickListener(this);
-        btnGetPoint.setOnClickListener(this);
+        btnPurchasePoint.setOnClickListener(this);
+
+        btnPurchasePoint.setEnabled(false);
+        btnPurchasePoint.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_grey_light_10));
 
         // analytics 로그 이벤트 얻기
         params = new Bundle();
@@ -162,7 +165,11 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
                         }
                     }
 
+                    btnPurchasePoint.setEnabled(true);
+                    btnPurchasePoint.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_purple_10));
+
                 } else {
+                    Toast.makeText(getApplicationContext(), billingResult.getDebugMessage(), Toast.LENGTH_LONG).show();
                     System.out.println("챌린지 상품 정보 받아오기를 실패했습니다. : " + billingResult.getDebugMessage());
                 }
             }
@@ -174,88 +181,102 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
     @Override
     public void onPurchasesUpdated(BillingResult billingResult, @Nullable List<Purchase> list) {
 
+        PurchaseInfo purchaseInfo = new PurchaseInfo(getApplicationContext(), billingResult, list.get(0), skuDetails.getPrice());
+
         // 결제 성공
         if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
-            System.out.println("결제를 성공했습니다.");
-            final UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
-            int havePoint = userInformation.getPoints();
-            int newPoint;
-            int purchasePoint = 0;
 
-            for (Purchase purchase : list) {
-                if(purchase.getSku().equals(getString(R.string.SKU_100))) {
-                    purchasePoint = 100;
-                } else if(purchase.getSku().equals(getString(R.string.SKU_500))) {
-                    purchasePoint = 500;
-                } else {
-                    purchasePoint = 1000;
-                }
-            }
+            // 정상 구매
+            if(purchaseInfo.checkPurchase()) {
+                System.out.println("결제를 성공했습니다.");
+                final UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
+                int havePoint = userInformation.getPoints();
+                int newPoint;
+                int purchasePoint = 0;
 
-            newPoint = havePoint + purchasePoint;
-
-            userInformation.setPoints(newPoint);
-            userInformation.setPointsPurchased(purchasePoint);
-
-            SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
-
-            db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail)
-                    .update(
-                            "points", userInformation.getPoints(),
-                            "pointsPurchased", userInformation.getPointsPurchased()
-                    )
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            System.out.println("DB에 구매한 포인트 저장을 성공했습니다.");
-                            Toast.makeText(getApplicationContext(), getString(R.string.THANKS_PURCHASING), Toast.LENGTH_LONG).show();
-                            FirebaseMessaging.getInstance().subscribeToTopic("purchase_point");
-
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    System.out.println("DB에 구매한 포인트 저장을 실패했습니다.: " +  e);
-                    Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING) + e, Toast.LENGTH_LONG).show();
-                }
-            });
-
-            params.putInt("purchasePoint", purchasePoint);
-            firebaseAnalytics.logEvent("topUp_purchase", params);
-
-
-            // 상품 소모하기
-            ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
-                @Override
-                public void onConsumeResponse(BillingResult billingResult, String s) {
-
-                    if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                        System.out.println("상품을 성공적으로 소모하였습니다.");
+                for (Purchase purchase : list) {
+                    if (purchase.getSku().equals(getString(R.string.SKU_100))) {
+                        purchasePoint = 100;
+                    } else if (purchase.getSku().equals(getString(R.string.SKU_500))) {
+                        purchasePoint = 500;
                     } else {
-                        System.out.println("상품 소모를 실패했습니다. : " + billingResult.getResponseCode());
+                        purchasePoint = 1000;
                     }
                 }
-            };
 
-            ConsumeParams consumeParams = ConsumeParams.newBuilder()
-                    .setPurchaseToken(list.get(0).getPurchaseToken()).build();
+                newPoint = havePoint + purchasePoint;
 
-            billingClient.consumeAsync(consumeParams, consumeListener);
+                userInformation.setPoints(newPoint);
+                userInformation.setPointsPurchased(purchasePoint);
 
-            finish();
+                SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
+
+                db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail)
+                        .update(
+                                "points", userInformation.getPoints(),
+                                "pointsPurchased", userInformation.getPointsPurchased()
+                        )
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                System.out.println("DB에 구매한 포인트 저장을 성공했습니다.");
+                                Toast.makeText(getApplicationContext(), getString(R.string.THANKS_PURCHASING), Toast.LENGTH_LONG).show();
+                                FirebaseMessaging.getInstance().subscribeToTopic("purchase_point");
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.println("DB에 구매한 포인트 저장을 실패했습니다.: " + e);
+                        Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING) + e, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                params.putInt("purchasePoint", purchasePoint);
+                firebaseAnalytics.logEvent("topUp_purchase", params);
 
 
-            // 결제 취소
+                // 상품 소모하기
+                ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
+                    @Override
+                    public void onConsumeResponse(BillingResult billingResult, String s) {
+
+                        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                            System.out.println("상품을 성공적으로 소모하였습니다.");
+                        } else {
+                            System.out.println("상품 소모를 실패했습니다. : " + billingResult.getResponseCode());
+                        }
+                    }
+                };
+
+                ConsumeParams consumeParams = ConsumeParams.newBuilder()
+                        .setPurchaseToken(list.get(0).getPurchaseToken()).build();
+
+                billingClient.consumeAsync(consumeParams, consumeListener);
+
+            // 비정상 구매
+            } else {
+                Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING), Toast.LENGTH_LONG).show();
+            }
+
+            purchaseInfo.uploadInfo();
+
+
+        // 결제 취소
         } else if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
             System.out.println("결제를 취소했습니다.");
             firebaseAnalytics.logEvent("topUp_cancel", params);
 
 
-            //결제 실패
+        //결제 실패
         } else {
             System.out.println("결제를 실패했습니다. : " + billingResult.getResponseCode());
             firebaseAnalytics.logEvent("topUp_fail", params);
+            Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING), Toast.LENGTH_LONG).show();
+            purchaseInfo.uploadInfo();
         }
+
+        finish();
     }
 
 
@@ -281,7 +302,7 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
                 setPurchase(pointC, checkPointC, getString(R.string.SKU_500));
                 break;
 
-            case R.id.btnGetPoint :
+            case R.id.btnPurchasePoint :
                 BillingFlowParams flowParams = BillingFlowParams.newBuilder().setSkuDetails(skuDetails).build();
                 billingClient.launchBillingFlow(this, flowParams);
                 break;

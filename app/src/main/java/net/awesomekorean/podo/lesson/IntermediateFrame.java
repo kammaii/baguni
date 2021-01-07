@@ -288,7 +288,7 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
                     loadingProgress++;
                     loadingPage.setTextLoading(loadingProgress, dialogLength);
 
-                    if(audiosDialog.size() == dialogLength) {
+                    if(loadingProgress == dialogLength) {
                         loadingPage.finish();
                         recyclerView.setEnabled(true);
 

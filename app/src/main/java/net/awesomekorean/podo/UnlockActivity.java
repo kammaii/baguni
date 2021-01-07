@@ -26,11 +26,8 @@ import net.awesomekorean.podo.lesson.IntermediateFrame;
 import net.awesomekorean.podo.lesson.LessonFrame;
 import net.awesomekorean.podo.lesson.LessonSpecialFrame;
 import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson;
-import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulAssembly;
-import net.awesomekorean.podo.lesson.lessonNumber.LessonNumberMenu;
 import net.awesomekorean.podo.lesson.lessons.Lesson;
 import net.awesomekorean.podo.lesson.lessons.LessonSpecial;
-import net.awesomekorean.podo.purchase.TopUp;
 import net.awesomekorean.podo.reading.Reading;
 import net.awesomekorean.podo.reading.ReadingFrame;
 

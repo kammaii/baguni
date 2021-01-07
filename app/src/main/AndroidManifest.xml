@@ -102,7 +102,7 @@
             android:name=".writing.WritingCorrected"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".purchase.TopUp"
+            android:name=".TopUp"
             android:screenOrientation="portrait" />
         <activity
             android:name=".profile.Profile"

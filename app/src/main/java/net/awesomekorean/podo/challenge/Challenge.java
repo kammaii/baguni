@@ -39,6 +39,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import net.awesomekorean.podo.MainActivity;
+import net.awesomekorean.podo.PurchaseInfo;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.UnixTimeStamp;
@@ -189,45 +190,46 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onSkuDetailsResponse(BillingResult billingResult, List<SkuDetails> list) {
 
-                if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    System.out.println("챌린지 상품 정보를 받았습니다.");
-                    System.out.println("리스트 : " + list);
+            if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                System.out.println("챌린지 상품 정보를 받았습니다.");
+                System.out.println("리스트 : " + list);
 
-                    for(SkuDetails sku : list) {
-                        if(sku.getSku().equals(getString(R.string.SKU_CHALLENGER))) {
-                            priceOriginal.setText(sku.getPrice());
-                            if(discount == 0) {
-                                skuDetails = sku;
-                            }
-                        } else if(sku.getSku().equals(getString(R.string.SKU_CHALLENGER) + "_" + discount)) {
-                            price.setText(sku.getPrice());
-                            if(discount != 0) {
-                                skuDetails = sku;
-                            }
+                for(SkuDetails sku : list) {
+                    if(sku.getSku().equals(getString(R.string.SKU_CHALLENGER))) {
+                        priceOriginal.setText(sku.getPrice());
+                        if(discount == 0) {
+                            skuDetails = sku;
+                        }
+                    } else if(sku.getSku().equals(getString(R.string.SKU_CHALLENGER) + "_" + discount)) {
+                        price.setText(sku.getPrice());
+                        if(discount != 0) {
+                            skuDetails = sku;
                         }
                     }
+                }
 
-                    if(discount != 0) {
-                        discountTape.setVisibility(View.VISIBLE);
-                        discountPercent.setVisibility(View.VISIBLE);
-                        discountPercent.setText(discount + "%");
-                        priceOriginal.setPaintFlags(priceOriginal.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
-                        priceOriginal.setVisibility(View.VISIBLE);
-
-                    } else {
-                        price.setText(skuDetails.getPrice());
-                    }
-
-                    btnChallenge.setEnabled(true);
-                    btnChallenge.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_purple_10));
+                if(discount != 0) {
+                    discountTape.setVisibility(View.VISIBLE);
+                    discountPercent.setVisibility(View.VISIBLE);
+                    discountPercent.setText(discount + "%");
+                    priceOriginal.setPaintFlags(priceOriginal.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+                    priceOriginal.setVisibility(View.VISIBLE);
 
                 } else {
-                    System.out.println("챌린지 상품 정보 받아오기를 실패했습니다. : " + billingResult.getDebugMessage());
-                    Bundle bundleSkuFail = new Bundle();
-                    bundleSkuFail.putInt("responseCode", billingResult.getResponseCode());
-                    bundleSkuFail.putString("message", billingResult.getDebugMessage());
-                    firebaseAnalytics.logEvent("challenge_getSku_fail", bundleSkuFail);
+                    price.setText(skuDetails.getPrice());
                 }
+
+                btnChallenge.setEnabled(true);
+                btnChallenge.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_purple_10));
+
+            } else {
+                System.out.println("챌린지 상품 정보 받아오기를 실패했습니다. : " + billingResult.getDebugMessage());
+                Toast.makeText(getApplicationContext(), billingResult.getDebugMessage(), Toast.LENGTH_LONG).show();
+                Bundle bundleSkuFail = new Bundle();
+                bundleSkuFail.putInt("responseCode", billingResult.getResponseCode());
+                bundleSkuFail.putString("message", billingResult.getDebugMessage());
+                firebaseAnalytics.logEvent("challenge_getSku_fail", bundleSkuFail);
+            }
             }
         });
     }
@@ -237,84 +239,82 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onPurchasesUpdated(BillingResult billingResult, @Nullable List<Purchase> list) {
 
+        PurchaseInfo purchaseInfo = new PurchaseInfo(getApplicationContext(), billingResult, list.get(0), skuDetails.getPrice());
+
         // 결제 성공
         if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
-            System.out.println("결제를 성공했습니다.");
-            List<String> orderId = new ArrayList<>();
-            List<Integer> purchaseState = new ArrayList<>();
+            System.out.println("챌린지를 구매했습니다.");
+//            List<String> orderId = new ArrayList<>();
+//            List<Integer> purchaseState = new ArrayList<>();
 
+/*
             for(Purchase purchase : list) {
                 System.out.println("orderId : " + purchase.getOrderId());
                 System.out.println("purchaseState : " + purchase.getPurchaseState());
                 orderId.add(purchase.getOrderId());
                 purchaseState.add(purchase.getPurchaseState());
             }
+ */
 
-            UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
-            Long timeStart = UnixTimeStamp.getTimeNow();
-            Long timeExpire = timeStart + 2592000;
+            // 정상구매
+            if(purchaseInfo.checkPurchase()) {
+                UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
+                Long timeStart = UnixTimeStamp.getTimeNow();
+                Long timeExpire = timeStart + 2592000;
 
-            userInformation.setIsChallenger(1);
-            userInformation.setDateChallengeStart(timeStart);
-            userInformation.setDateChallengeExpire(timeExpire);
+                userInformation.setIsChallenger(1);
+                userInformation.setDateChallengeStart(timeStart);
+                userInformation.setDateChallengeExpire(timeExpire);
 
-            SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
+                SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
 
-            db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail).set(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    System.out.println("챌린지를 구매했습니다.");
-                    Toast.makeText(getApplicationContext(), getString(R.string.THANKS_PURCHASING), Toast.LENGTH_LONG).show();
-                    FirebaseMessaging.getInstance().subscribeToTopic("purchase_challenge");
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    System.out.println("DB에 챌린지정보 저장을 실패했습니다.: " +  e);
-                    Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING) + e, Toast.LENGTH_LONG).show();
-                }
-            });
-
-
-            // todo: 안정화되면 삭제하기
-            // 구매기록 대조를 위한 저장
-            Map<String, Object> confirmChallenger = new HashMap<>();
-            confirmChallenger.put("userEmail", MainActivity.userEmail);
-            confirmChallenger.put("orderId", orderId);
-            confirmChallenger.put("purchaseState", purchaseState);
-            db.collection("android/podo/challenger").add(confirmChallenger).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                @Override
-                public void onSuccess(DocumentReference documentReference) {
-                    System.out.println("구매기록을 저장했습니다.");
-                }
-            });
-
-
-            Bundle bundlePurchase = new Bundle();
-            firebaseAnalytics.logEvent("challenge_purchase", bundlePurchase);
-
-
-            // 상품 소모하기
-            ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
-                @Override
-                public void onConsumeResponse(BillingResult billingResult, String s) {
-
-                    if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                        System.out.println("상품을 성공적으로 소모하였습니다.");
-                    } else {
-                        System.out.println("상품 소모를 실패했습니다. : " + billingResult.getResponseCode());
+                db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail).set(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        System.out.println("DB에 챌린지정보를 저장했습니다.:");
+                        Toast.makeText(getApplicationContext(), getString(R.string.THANKS_PURCHASING), Toast.LENGTH_LONG).show();
+                        FirebaseMessaging.getInstance().subscribeToTopic("purchase_challenge");
                     }
-                }
-            };
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.println("DB에 챌린지정보 저장을 실패했습니다.: " + e);
+                        Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING) + e, Toast.LENGTH_LONG).show();
+                    }
+                });
 
-            ConsumeParams consumeParams = ConsumeParams.newBuilder()
-                    .setPurchaseToken(list.get(0).getPurchaseToken()).build();
+                Bundle bundlePurchase = new Bundle();
+                firebaseAnalytics.logEvent("challenge_purchase", bundlePurchase);
 
-            billingClient.consumeAsync(consumeParams, consumeListener);
 
-            Intent intent = new Intent();
-            setResult(RESULT_OK, intent);
-            finish();
+                // 상품 소모하기
+                ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
+                    @Override
+                    public void onConsumeResponse(BillingResult billingResult, String s) {
+
+                        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                            System.out.println("상품을 성공적으로 소모하였습니다.");
+                        } else {
+                            System.out.println("상품 소모를 실패했습니다. : " + billingResult.getResponseCode());
+                        }
+                    }
+                };
+
+                ConsumeParams consumeParams = ConsumeParams.newBuilder()
+                        .setPurchaseToken(list.get(0).getPurchaseToken()).build();
+
+                billingClient.consumeAsync(consumeParams, consumeListener);
+
+                Intent intent = new Intent();
+                setResult(RESULT_OK, intent);
+
+
+                // 비정상 구매
+            } else {
+                Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING), Toast.LENGTH_LONG).show();
+            }
+
+            purchaseInfo.uploadInfo();
 
 
         // 결제 취소
@@ -328,32 +328,12 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
         } else {
             System.out.println("결제를 실패했습니다. : " + billingResult.getResponseCode());
             Bundle bundleFail = new Bundle();
-            bundleFail.putInt("responseCode", billingResult.getResponseCode());
-            bundleFail.putString("message", billingResult.getDebugMessage());
             firebaseAnalytics.logEvent("challenge_fail", bundleFail);
-
-
-            // todo: 안정화 되면 삭제하기
-            // 결제 실패 원인 DB에 저장하기
-            Map<String, Object> challengeFail = new HashMap<>();
-            challengeFail.put("userEmail", MainActivity.userEmail);
-            if(skuDetails != null) {
-                challengeFail.put("sku", skuDetails.getSku());
-                challengeFail.put("skuPrice", skuDetails.getPrice());
-            }
-            if(list != null) {
-                challengeFail.put("orderId", list.get(0).getOrderId());
-                challengeFail.put("purchaseState", list.get(0).getPurchaseState());
-            }
-            challengeFail.put("responseCode", billingResult.getResponseCode());
-            challengeFail.put("message", billingResult.getDebugMessage());
-            db.collection("android/podo/challengeFail").add(challengeFail).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                @Override
-                public void onSuccess(DocumentReference documentReference) {
-                    System.out.println("결제실패 원인을 저장했습니다.");
-                }
-            });
+            Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING), Toast.LENGTH_LONG).show();
+            purchaseInfo.uploadInfo();
         }
+
+        finish();
     }
 
 
