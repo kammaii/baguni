@@ -20,7 +20,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -144,8 +143,8 @@ public class LessonFrame extends AppCompatActivity implements View.OnClickListen
             wordAudioString[i] = lessonId.toLowerCase() + "_word_" + i + ".mp3";
             StorageReference storageRef = storage.getReference().child(folder).child(wordAudioString[i]);
             final long ONE_MEGABYTE = 1024 * 1024;
-            final OnSuccessListenerLoading onSuccessListenerLoading = new OnSuccessListenerLoading(i, this, lessonWord);
-            storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(onSuccessListenerLoading);
+            final OnSuccessListenerLesson onSuccessListenerLesson = new OnSuccessListenerLesson(i, this, lessonWord);
+            storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(onSuccessListenerLesson);
         }
     }
 

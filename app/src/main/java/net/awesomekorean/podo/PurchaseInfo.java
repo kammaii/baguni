@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.android.billingclient.api.AccountIdentifiers;
+import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingResult;
 import com.android.billingclient.api.Purchase;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,6 +16,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.List;
 
 public class PurchaseInfo {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -49,6 +52,8 @@ public class PurchaseInfo {
         this.acknowledged = purchase.isAcknowledged();
         this.signature = purchase.getSignature();
         this.sku = purchase.getSku();
+
+
         this.skuPrice = skuPrice;
         this.responseCode = billingResult.getResponseCode();
         this.responseMessage = billingResult.getDebugMessage();

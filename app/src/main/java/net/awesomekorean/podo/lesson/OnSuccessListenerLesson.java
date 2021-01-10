@@ -4,13 +4,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import net.awesomekorean.podo.LoadingPage;
 
-public class OnSuccessListenerLoading implements OnSuccessListener<byte[]> {
+public class OnSuccessListenerLesson implements OnSuccessListener<byte[]> {
 
     private Integer index;
     private LessonFrame lessonFrame;
     private LessonWord lessonWord;
 
-    OnSuccessListenerLoading(Integer index, LessonFrame lessonFrame, LessonWord lessonWord) {
+    OnSuccessListenerLesson(Integer index, LessonFrame lessonFrame, LessonWord lessonWord) {
         this.index = index;
         this.lessonFrame = lessonFrame;
         this.lessonWord = lessonWord;

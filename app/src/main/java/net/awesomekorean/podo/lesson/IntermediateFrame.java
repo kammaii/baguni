@@ -275,31 +275,11 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
         String folder = "intermediate/" + lessonId;
 
         for(int i=0; i<dialogLength; i++) {
-            final Integer audioIndexDialog = i;
             dialogAudio[i] = lessonId + "_" + i + ".mp3";
             StorageReference storageRef = storage.getReference().child(folder).child(dialogAudio[i]);
             final long ONE_MEGABYTE = 1024 * 1024;
-            storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    System.out.println("오디오를 로드했습니다.");
-                    audiosDialog.put(audioIndexDialog, bytes);
-                    LoadingPage loadingPage = (LoadingPage)LoadingPage.activity;
-                    loadingProgress++;
-                    loadingPage.setTextLoading(loadingProgress, dialogLength);
-
-                    if(loadingProgress == dialogLength) {
-                        loadingPage.finish();
-                        recyclerView.setEnabled(true);
-
-                        list = new ArrayList<>();
-                        adapter = new IntermediateAdapter(getApplicationContext(), list, lessonId, audiosDialog);
-                        recyclerView.setAdapter(adapter);
-
-                        addDialog();
-                    }
-                }
-            });
+            OnSuccessListenerIntermediate onSuccessListenerIntermediate = new OnSuccessListenerIntermediate(i, this, lessonId);
+            storageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(onSuccessListenerIntermediate);
         }
     }
 

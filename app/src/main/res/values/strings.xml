@@ -358,6 +358,8 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <!--    구매-->
     <string name="THANKS_PURCHASING">Thank you for your purchase.</string>
     <string name="ERROR_PURCHASING">Payment has been failed. Please contact the app developer.</string>
+    <string name="INVALID_PURCHASING">Invalid payment. Please contact the app developer.</string>
+    <string name="NOT_EXIST_PURCHASING">Purchasing item is not exist. Please contact the app developer.</string>
     <string name="SUBSCRIBE_OPTION_A">Monthly</string>
     <string name="SUBSCRIBE_OPTION_B">Yearly</string>
     <string name="SUBSCRIBE_OPTION_C">Lifetime</string>
