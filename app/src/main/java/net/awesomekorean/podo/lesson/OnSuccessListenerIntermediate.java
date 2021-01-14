@@ -26,7 +26,7 @@ public class OnSuccessListenerIntermediate implements OnSuccessListener<byte[]> 
         lessonFrame.loadingProgress++;
         loadingPage.setTextLoading(lessonFrame.loadingProgress, lessonFrame.dialogLength);
 
-        if(lessonFrame.loadingProgress == lessonFrame.dialogLength && LoadingPage.activity != null) {
+        if(lessonFrame.loadingProgress >= lessonFrame.dialogLength && LoadingPage.activity != null) {
             loadingPage.finish();
             lessonFrame.recyclerView.setEnabled(true);
 

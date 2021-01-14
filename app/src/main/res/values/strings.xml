@@ -209,7 +209,6 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     </string>
 
 
-
     <!--    챌린지-->
     <string name="ISSUE_TITLE">Learner\'s Issue</string>
     <string name="ISSUE_QUESTION">What is the most effective way to learn Korean?</string>
@@ -295,8 +294,6 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="CHALLENGE_FAILED_MESSAGE">
         But \'podo\' would like to offer you 100 points. Don\'t stop challenging your Korean learning.
         (If there is any error with the challenge result, please contact us by email.)</string>
-
-
 
 
     <!--    컬렉션-->
@@ -400,9 +397,7 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="SUBMITE">Submit</string>
     <string name="TEACHERS">Teachers</string>
 
-<!-- #####  여기까지만 교정하면 됨  ##### -->
-
-
+    <!-- #####  여기까지만 교정하면 됨  ##### -->
 
 
     <!--    스페셜레슨-->
@@ -665,7 +660,6 @@ It's an behavior or piece of plot that reveals critical part like ending of the 
 It means someone's outfit looks natural but not too shady and someone's make-up looks natural that you cannot tell if she/he put on a make-up or not. You can use the word like '꾸안꾸 style'(natural outfit) and
 '꾸안꾸 make-up'(natural make-up)."
     </string>
-
 
 
     <string name="SL_10_CONTENTS">
@@ -1072,7 +1066,6 @@ Let's take a look at some words which can be used often in daily conversations.
 6. '생일'(birthday) -> '생신'
 - 생신 축하드려요."
     </string>
-
 
 
     <!--번역 필요 없는 부분-->

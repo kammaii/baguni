@@ -244,7 +244,13 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onPurchasesUpdated(BillingResult billingResult, @Nullable List<Purchase> list) {
 
-        if(list != null) {
+        // 결제 취소
+        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
+            System.out.println("결제를 취소했습니다.");
+            Bundle bundleCancel = new Bundle();
+            firebaseAnalytics.logEvent("challenge_cancel", bundleCancel);
+
+        } else {
             PurchaseInfo purchaseInfo = new PurchaseInfo(getApplicationContext(), billingResult, list.get(0), skuDetails.getPrice());
 
             // 결제 성공
@@ -290,9 +296,6 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                     Toast.makeText(getApplicationContext(), getString(R.string.INVALID_PURCHASING), Toast.LENGTH_LONG).show();
                 }
 
-                purchaseInfo.uploadInfo();
-
-
                 // 상품 소모하기
                 ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
                     @Override
@@ -311,25 +314,14 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
                 billingClient.consumeAsync(consumeParams, consumeListener);
 
-
-            // 결제 취소
-            } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
-                System.out.println("결제를 취소했습니다.");
-                Bundle bundleCancel = new Bundle();
-                firebaseAnalytics.logEvent("challenge_cancel", bundleCancel);
-
-
-            //결제 실패
             } else {
                 System.out.println("결제를 실패했습니다. : " + billingResult.getResponseCode());
                 Bundle bundleFail = new Bundle();
                 firebaseAnalytics.logEvent("challenge_fail", bundleFail);
                 Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING), Toast.LENGTH_LONG).show();
-                purchaseInfo.uploadInfo();
             }
 
-        } else {
-            Toast.makeText(getApplicationContext(), getString(R.string.NOT_EXIST_PURCHASING), Toast.LENGTH_LONG).show();
+            purchaseInfo.uploadInfo();
         }
 
         finish();

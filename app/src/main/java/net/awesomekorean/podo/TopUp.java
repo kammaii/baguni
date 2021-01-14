@@ -181,97 +181,99 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
     @Override
     public void onPurchasesUpdated(BillingResult billingResult, @Nullable List<Purchase> list) {
 
-        PurchaseInfo purchaseInfo = new PurchaseInfo(getApplicationContext(), billingResult, list.get(0), skuDetails.getPrice());
-
-        // 결제 성공
-        if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
-
-            // 정상 구매
-            if(purchaseInfo.checkPurchase()) {
-                System.out.println("결제를 성공했습니다.");
-                final UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
-                int havePoint = userInformation.getPoints();
-                int newPoint;
-                int purchasePoint = 0;
-
-                for (Purchase purchase : list) {
-                    if (purchase.getSku().equals(getString(R.string.SKU_100))) {
-                        purchasePoint = 100;
-                    } else if (purchase.getSku().equals(getString(R.string.SKU_500))) {
-                        purchasePoint = 500;
-                    } else {
-                        purchasePoint = 1000;
-                    }
-                }
-
-                newPoint = havePoint + purchasePoint;
-
-                userInformation.setPoints(newPoint);
-                userInformation.setPointsPurchased(purchasePoint);
-
-                SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
-
-                db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail)
-                        .update(
-                                "points", userInformation.getPoints(),
-                                "pointsPurchased", userInformation.getPointsPurchased()
-                        )
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                System.out.println("DB에 구매한 포인트 저장을 성공했습니다.");
-                                Toast.makeText(getApplicationContext(), getString(R.string.THANKS_PURCHASING), Toast.LENGTH_LONG).show();
-                                FirebaseMessaging.getInstance().subscribeToTopic("purchase_point");
-
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        System.out.println("DB에 구매한 포인트 저장을 실패했습니다.: " + e);
-                        Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING) + e, Toast.LENGTH_LONG).show();
-                    }
-                });
-
-                params.putInt("purchasePoint", purchasePoint);
-                firebaseAnalytics.logEvent("topUp_purchase", params);
-
-            // 비정상 구매
-            } else {
-                Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING), Toast.LENGTH_LONG).show();
-            }
-
-            purchaseInfo.uploadInfo();
-
-            // 상품 소모하기
-            ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
-                @Override
-                public void onConsumeResponse(BillingResult billingResult, String s) {
-
-                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                        System.out.println("상품을 성공적으로 소모하였습니다.");
-                    } else {
-                        System.out.println("상품 소모를 실패했습니다. : " + billingResult.getResponseCode());
-                    }
-                }
-            };
-
-            ConsumeParams consumeParams = ConsumeParams.newBuilder()
-                    .setPurchaseToken(purchaseInfo.purchaseToken).build();
-
-            billingClient.consumeAsync(consumeParams, consumeListener);
-
-
         // 결제 취소
-        } else if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
+        if(billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
             System.out.println("결제를 취소했습니다.");
             firebaseAnalytics.logEvent("topUp_cancel", params);
 
-
-        //결제 실패
         } else {
-            System.out.println("결제를 실패했습니다. : " + billingResult.getResponseCode());
-            firebaseAnalytics.logEvent("topUp_fail", params);
-            Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING), Toast.LENGTH_LONG).show();
+            PurchaseInfo purchaseInfo = new PurchaseInfo(getApplicationContext(), billingResult, list.get(0), skuDetails.getPrice());
+
+            // 결제 성공
+            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK && list != null) {
+
+                // 정상 구매
+                if (purchaseInfo.checkPurchase()) {
+                    System.out.println("결제를 성공했습니다.");
+                    final UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
+                    int havePoint = userInformation.getPoints();
+                    int newPoint;
+                    int purchasePoint = 0;
+
+                    for (Purchase purchase : list) {
+                        if (purchase.getSku().equals(getString(R.string.SKU_100))) {
+                            purchasePoint = 100;
+                        } else if (purchase.getSku().equals(getString(R.string.SKU_500))) {
+                            purchasePoint = 500;
+                        } else {
+                            purchasePoint = 1000;
+                        }
+                    }
+
+                    newPoint = havePoint + purchasePoint;
+
+                    userInformation.setPoints(newPoint);
+                    userInformation.setPointsPurchased(purchasePoint);
+
+                    SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
+
+                    db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail)
+                            .update(
+                                    "points", userInformation.getPoints(),
+                                    "pointsPurchased", userInformation.getPointsPurchased()
+                            )
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    System.out.println("DB에 구매한 포인트 저장을 성공했습니다.");
+                                    Toast.makeText(getApplicationContext(), getString(R.string.THANKS_PURCHASING), Toast.LENGTH_LONG).show();
+                                    FirebaseMessaging.getInstance().subscribeToTopic("purchase_point");
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            System.out.println("DB에 구매한 포인트 저장을 실패했습니다.: " + e);
+                            Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING) + e, Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                    params.putInt("purchasePoint", purchasePoint);
+                    firebaseAnalytics.logEvent("topUp_purchase", params);
+
+
+                // 비정상 구매
+                } else {
+                    Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING), Toast.LENGTH_LONG).show();
+                }
+
+
+                // 상품 소모하기
+                ConsumeResponseListener consumeListener = new ConsumeResponseListener() {
+                    @Override
+                    public void onConsumeResponse(BillingResult billingResult, String s) {
+
+                        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                            System.out.println("상품을 성공적으로 소모하였습니다.");
+                        } else {
+                            System.out.println("상품 소모를 실패했습니다. : " + billingResult.getResponseCode());
+                        }
+                    }
+                };
+
+                ConsumeParams consumeParams = ConsumeParams.newBuilder()
+                        .setPurchaseToken(purchaseInfo.purchaseToken).build();
+
+                billingClient.consumeAsync(consumeParams, consumeListener);
+
+
+            // 결제 실패
+            } else {
+                System.out.println("결제를 실패했습니다. : " + billingResult.getResponseCode());
+                firebaseAnalytics.logEvent("topUp_fail", params);
+                Toast.makeText(getApplicationContext(), getString(R.string.ERROR_PURCHASING), Toast.LENGTH_LONG).show();
+            }
+
             purchaseInfo.uploadInfo();
         }
 
