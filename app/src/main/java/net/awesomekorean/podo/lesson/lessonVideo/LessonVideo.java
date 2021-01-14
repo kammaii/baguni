@@ -1,7 +1,10 @@
-package net.awesomekorean.podo.lesson;
+package net.awesomekorean.podo.lesson.lessonVideo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +16,11 @@ public class LessonVideo extends AppCompatActivity implements View.OnClickListen
 
     TextView title;
     ImageView btnBack;
+    LessonVideoAdapter adapter;
+    String videoTitle;
+    Intent intent;
+
+    String VIDEOTITLE = "videoTitle";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +29,17 @@ public class LessonVideo extends AppCompatActivity implements View.OnClickListen
 
         title = findViewById(R.id.title);
         btnBack = findViewById(R.id.btnBack);
+
+        intent = getIntent();
+        videoTitle = intent.getStringExtra(VIDEOTITLE);
+
+        if(videoTitle.equals("hangul")) {
+            adapter = new LessonVideoAdapter(getApplicationContext(), new LessonVideoHangul());
+        }
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setAdapter(adapter);
     }
 
     @Override

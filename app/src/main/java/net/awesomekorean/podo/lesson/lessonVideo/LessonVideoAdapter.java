@@ -1,91 +1,70 @@
-package net.awesomekorean.podo.reading;
+package net.awesomekorean.podo.lesson.lessonVideo;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
-import com.google.firebase.database.collection.LLRBBlackValueNode;
 
 import net.awesomekorean.podo.R;
-import net.awesomekorean.podo.lesson.LessonFrame;
+import net.awesomekorean.podo.SharedPreferencesInfo;
+import net.awesomekorean.podo.reading.Reading;
 
 import java.util.ArrayList;
 
-public class ReadingAdapter extends RecyclerView.Adapter<ReadingAdapter.ViewHolder> {
-
-    // 아이템 클릭 이벤트를 MainLesson 에서 처리하기 위한 인터페이스
-    public interface OnItemClickListener {
-        void onItemClick(View v, int pos);
-    }
-
-    private OnItemClickListener listener = null;
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
-    }
+public class LessonVideoAdapter extends RecyclerView.Adapter<LessonVideoAdapter.ViewHolder> {
 
     Context context;
 
-    private ArrayList<Reading> list;
+    private Video lessonVideo;
 
-    public ReadingAdapter(Context context, ArrayList<Reading> list) {
+    public LessonVideoAdapter(Context context, Video lessonVideo) {
         this.context = context;
-        this.list = list;
+        this.lessonVideo = lessonVideo;
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        LinearLayout readingItem;
-        TextView title;
-        ImageView readingImage;
-        TextView readingId;
+        TextView videoTitle;
+        ImageView videoImage;
+        TextView videoNo;
         ImageView iconLock;
-        ImageView rocket;
-        ImageView complete;
+        int isChallenger;
 
-        private ColorMatrixColorFilter filterGrey;
-        private ColorMatrixColorFilter filterNormal;
 
         ViewHolder(View itemView) {
             super(itemView);
 
-            readingItem = itemView.findViewById(R.id.readingItem);
-            title = itemView.findViewById(R.id.title);
-            readingImage = itemView.findViewById(R.id.readingImage);
-            readingId = itemView.findViewById(R.id.readingId);
+            videoTitle = itemView.findViewById(R.id.videoTitle);
+            videoImage = itemView.findViewById(R.id.videoImage);
+            videoNo = itemView.findViewById(R.id.videoNo);
             iconLock = itemView.findViewById(R.id.iconLock);
-            rocket = itemView.findViewById(R.id.rocket);
-            complete = itemView.findViewById(R.id.complete);
-
-            ColorMatrix matrix = new ColorMatrix();
-            matrix.setSaturation(0);
-            filterGrey = new ColorMatrixColorFilter(matrix);
-            matrix.setSaturation(1);
-            filterNormal = new ColorMatrixColorFilter(matrix);
+            isChallenger = SharedPreferencesInfo.getUserInfo(context).getIsChallenger();
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int position = getAdapterPosition();
+
                     if(position != RecyclerView.NO_POSITION) {
 
-                        // 아이템 클릭 이벤트
-                        if(listener != null) {
-                            listener.onItemClick(view, position);
+                        if(position == 0) {
+                            //todo: 샘플 동영상 재생
+
+                        } else if(isChallenger == 0) {
+                            //todo: 챌린저 권유창 띄우기
+
+                        } else {
+                            //todo : 클릭한 동영상 재생
                         }
                     }
                 }
@@ -99,58 +78,35 @@ public class ReadingAdapter extends RecyclerView.Adapter<ReadingAdapter.ViewHold
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View view = inflater.inflate(R.layout.main_reading_item, parent, false);
-        ReadingAdapter.ViewHolder holder = new ReadingAdapter.ViewHolder(view);
+        View view = inflater.inflate(R.layout.activity_lesson_video_item, parent, false);
+        LessonVideoAdapter.ViewHolder holder = new LessonVideoAdapter.ViewHolder(view);
         return holder;
     }
 
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Reading items = list.get(position);
-        holder.title.setText(items.getTitle());
-        // outOfMemoryError 방지용
-        try {
-            holder.readingImage.setImageResource(items.getReadingImage());
-        } catch (OutOfMemoryError e) {
-            FirebaseCrashlytics.getInstance().log("OutOfMemoryError");
-        }
+        holder.videoTitle.setText(lessonVideo.getVideoTitle()[position]);
+        holder.videoImage.setImageResource(lessonVideo.getVideoImage()[position]);
+        holder.videoNo.setText(position);
 
-        holder.readingId.setText(items.getReadingId().substring(2));
 
-        if (items.getIsCompleted()) {
-            holder.complete.setVisibility(View.VISIBLE);
+        if (position == 0) {
+            holder.iconLock.setVisibility(View.GONE);
 
         } else {
-            holder.complete.setVisibility(View.INVISIBLE);
-        }
+            if (holder.isChallenger == 0) {
+                holder.iconLock.setVisibility(View.VISIBLE);
 
-        if (items.getIsLock()) {
-            holder.readingImage.setColorFilter(holder.filterGrey);
-            holder.rocket.setColorFilter(holder.filterGrey);
-            holder.iconLock.setVisibility(View.VISIBLE);
-
-        } else {
-            holder.readingImage.setColorFilter(holder.filterNormal);
-            holder.rocket.setColorFilter(holder.filterNormal);
-            holder.iconLock.setVisibility(View.INVISIBLE);
-        }
-
-        int readingLevel = items.getReadingLevel();
-
-        if(readingLevel == 1) {
-            holder.rocket.setImageResource(R.drawable.rocket1);
-
-        } else if(readingLevel == 2) {
-            holder.rocket.setImageResource(R.drawable.rocket2);
-
-        } else if(readingLevel == 3) {
-            holder.rocket.setImageResource(R.drawable.rocket3);
+            } else {
+                holder.iconLock.setVisibility(View.GONE);
+            }
         }
     }
 
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return lessonVideo.getVideoTitle().length;
     }
 }
