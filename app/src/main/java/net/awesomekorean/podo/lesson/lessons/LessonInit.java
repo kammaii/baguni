@@ -46,4 +46,8 @@ public class LessonInit {
     public Integer getDayCount() {
         return dayCount;
     }
+
+    public boolean getHasVideo() {
+        return false;
+    }
 }

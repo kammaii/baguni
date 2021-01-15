@@ -23,4 +23,6 @@ public interface LessonItem {
     void setIsCompleted(boolean b);
 
     Integer getDayCount();
+
+    boolean getHasVideo();
 }

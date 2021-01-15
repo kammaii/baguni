@@ -20,7 +20,8 @@ public class LessonVideo extends AppCompatActivity implements View.OnClickListen
     String videoTitle;
     Intent intent;
 
-    String VIDEOTITLE = "videoTitle";
+    final String HANGUL = "H_hangul";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +32,9 @@ public class LessonVideo extends AppCompatActivity implements View.OnClickListen
         btnBack = findViewById(R.id.btnBack);
 
         intent = getIntent();
-        videoTitle = intent.getStringExtra(VIDEOTITLE);
+        videoTitle = intent.getStringExtra(getResources().getString(R.string.LESSON));
 
-        if(videoTitle.equals("hangul")) {
+        if(videoTitle.equals(HANGUL)) {
             adapter = new LessonVideoAdapter(getApplicationContext(), new LessonVideoHangul());
         }
 

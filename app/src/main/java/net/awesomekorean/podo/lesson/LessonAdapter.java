@@ -23,6 +23,7 @@ import net.awesomekorean.podo.UserInformation;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulMenu;
 import net.awesomekorean.podo.lesson.lessonNumber.LessonNumberFrame;
 import net.awesomekorean.podo.lesson.lessonNumber.LessonNumberMenu;
+import net.awesomekorean.podo.lesson.lessonVideo.LessonVideo;
 import net.awesomekorean.podo.lesson.lessons.LessonItem;
 
 import java.io.Serializable;
@@ -250,8 +251,45 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             setItemBackground(holder, item.getSLesson(), position);
         }
 
+        if(item.getHasVideo()) {
+            setVideoLessonBackground(holder, item);
+        }
+
         setLines(holder, position);
         setItemBackground(holder, item, position);
+    }
+
+
+    // 비디오 레슨 세팅
+    private void setVideoLessonBackground(ViewHolder holder, LessonItem item) {
+        final String HANGUL = "H_hangul";
+        String itemId = item.getLessonId();
+        Drawable drawable = ContextCompat.getDrawable(context, R.drawable.circle_video_purple);
+        holder.layoutItemLeft.getChildAt(1).setBackground(drawable);
+        holder.layoutItemRight.getChildAt(1).setBackground(drawable);
+        ((TextView)((ConstraintLayout)holder.layoutItemLeft.getChildAt(1)).getChildAt(0)).setText("");
+        ((TextView)((ConstraintLayout)holder.layoutItemRight.getChildAt(1)).getChildAt(0)).setText("");
+        ((TextView) holder.layoutItemLeft.getChildAt(2)).setText("video");
+        ((TextView) holder.layoutItemRight.getChildAt(2)).setText("video");
+
+        intent = new Intent(context, LessonVideo.class);
+
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(intent);
+            }
+        };
+
+        holder.layoutItemLeft.setOnClickListener(onClickListener);
+        holder.layoutItemRight.setOnClickListener(onClickListener);
+
+        switch (itemId) {
+            case HANGUL :
+                holder.layoutItemLeft.setVisibility(View.VISIBLE);
+                intent.putExtra(context.getResources().getString(R.string.LESSON), HANGUL);
+                break;
+        }
     }
 
 

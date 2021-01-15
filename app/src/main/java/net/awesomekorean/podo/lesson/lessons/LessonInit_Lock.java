@@ -45,4 +45,8 @@ public class LessonInit_Lock {
     public Integer getDayCount() {
         return dayCount;
     }
+
+    public boolean getHasVideo() {
+        return false;
+    }
 }
