@@ -312,6 +312,12 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="COLLECTION_SYNCHRONISED">Collection is synchronized</string>
 
 
+    <!--    비디오레슨-->
+    <string name="VIDEO_DIALOGUE_TITLE">PODO CHALLENGER ONLY</string>
+    <string name="VIDEO_DIALOGUE_CONTENTS">Will you become a podo Challenger?</string>
+
+
+
     <!--    Q&A-->
     <string name="QUESTION">Question</string>
     <string name="ASK_QUESTION">Ask a question</string>

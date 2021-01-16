@@ -4,5 +4,5 @@ public interface Video {
 
     String[] getVideoTitle();
     int[] getVideoImage();
-    String[] getVideoFile();
+    String[] getVideoId();
 }

@@ -1,11 +1,13 @@
 package net.awesomekorean.podo.lesson.lessonVideo;
 
-public class LessonVideoHangul implements Video{
+import net.awesomekorean.podo.R;
+
+public class LessonVideoHangul implements Video {
 
     String title = "Hangul";
-    int[] videoImage = {};
-    String[] videoTitle = {};
-    String[] videoFile = {};
+    int[] videoImage = {R.drawable.female_p, R.drawable.friend_b};
+    String[] videoTitle = {"Intro", "2번비디오"};
+    String[] videoId = {"mP4yU2tWtn0", "jjjj"};
 
     public String getTitle() {
         return title;
@@ -22,7 +24,7 @@ public class LessonVideoHangul implements Video{
     }
 
     @Override
-    public String[] getVideoFile() {
-        return videoFile;
+    public String[] getVideoId() {
+        return videoId;
     }
 }

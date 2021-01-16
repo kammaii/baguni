@@ -1,6 +1,7 @@
 package net.awesomekorean.podo.lesson.lessonVideo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.view.LayoutInflater;
@@ -14,13 +15,26 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
+import net.awesomekorean.podo.DialogueActivity;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
+import net.awesomekorean.podo.lesson.LessonDialogAdapter;
 import net.awesomekorean.podo.reading.Reading;
 
 import java.util.ArrayList;
 
 public class LessonVideoAdapter extends RecyclerView.Adapter<LessonVideoAdapter.ViewHolder> {
+
+    // 아이템 클릭 이벤트를 MainLesson 에서 처리하기 위한 인터페이스
+    public interface OnItemClickListener {
+        void onItemClick(View v, int pos);
+    }
+
+    private LessonVideoAdapter.OnItemClickListener listener = null;
+
+    public void setOnItemClickListener(LessonVideoAdapter.OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     Context context;
 
@@ -54,17 +68,11 @@ public class LessonVideoAdapter extends RecyclerView.Adapter<LessonVideoAdapter.
                 @Override
                 public void onClick(View view) {
                     int position = getAdapterPosition();
-
                     if(position != RecyclerView.NO_POSITION) {
+                        System.out.println("CLICKED : " + position);
 
-                        if(position == 0) {
-                            //todo: 샘플 동영상 재생
-
-                        } else if(isChallenger == 0) {
-                            //todo: 챌린저 권유창 띄우기
-
-                        } else {
-                            //todo : 클릭한 동영상 재생
+                        if(listener != null) {
+                            listener.onItemClick(view, position);
                         }
                     }
                 }
@@ -88,19 +96,17 @@ public class LessonVideoAdapter extends RecyclerView.Adapter<LessonVideoAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.videoTitle.setText(lessonVideo.getVideoTitle()[position]);
         holder.videoImage.setImageResource(lessonVideo.getVideoImage()[position]);
-        holder.videoNo.setText(position);
+        holder.videoNo.setText(String.valueOf(position));
 
+        if (holder.isChallenger == 0) {
+            holder.iconLock.setVisibility(View.VISIBLE);
+
+        } else {
+            holder.iconLock.setVisibility(View.GONE);
+        }
 
         if (position == 0) {
             holder.iconLock.setVisibility(View.GONE);
-
-        } else {
-            if (holder.isChallenger == 0) {
-                holder.iconLock.setVisibility(View.VISIBLE);
-
-            } else {
-                holder.iconLock.setVisibility(View.GONE);
-            }
         }
     }
 

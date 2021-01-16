@@ -19,20 +19,35 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".lesson.lessonVideo.LessonVideo"></activity>
-        <activity android:name=".challenge.Challenge"></activity>
-        <activity android:name=".lesson.lessonHangul.LessonHangulMenu" />
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".DialogueActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/DialogFullScreen" />
+        <activity
+            android:name=".lesson.lessonVideo.VideoFrame"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".lesson.lessonVideo.LessonVideo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".challenge.Challenge"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".lesson.lessonHangul.LessonHangulMenu"
+            android:screenOrientation="portrait" />
         <activity android:name=".qna.QnAReplied" />
         <activity android:name=".qna.QnAFrame" />
-        <activity android:name=".GetRandomPoint" />
+        <activity
+            android:name=".GetRandomPoint"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CollectResult"
-            android:screenOrientation="unspecified"
+            android:screenOrientation="portrait"
             android:theme="@style/DialogFullScreen" />
         <activity
             android:name=".LoadingPage"
-            android:screenOrientation="unspecified"
+            android:screenOrientation="portrait"
             android:theme="@style/DialogFullScreen" />
         <activity
             android:name=".lesson.IntermediateFrame"
@@ -49,15 +64,15 @@
 
         <activity
             android:name=".CloudMessageReceiver"
-            android:screenOrientation="unspecified"
+            android:screenOrientation="portrait"
             android:theme="@style/DialogFullScreen" />
         <activity
             android:name=".ConfirmQuit"
-            android:screenOrientation="unspecified"
+            android:screenOrientation="portrait"
             android:theme="@style/DialogFullScreen" />
         <activity
             android:name=".UnlockActivity"
-            android:screenOrientation="unspecified"
+            android:screenOrientation="portrait"
             android:theme="@style/DialogFullScreen" />
         <activity
             android:name=".lesson.lessonNumber.LessonNumberMenu"
