@@ -50,7 +50,7 @@ public class LessonVideoAdapter extends RecyclerView.Adapter<LessonVideoAdapter.
 
         TextView videoTitle;
         ImageView videoImage;
-        TextView videoNo;
+        TextView videoLength;
         ImageView iconLock;
         int isChallenger;
 
@@ -60,7 +60,7 @@ public class LessonVideoAdapter extends RecyclerView.Adapter<LessonVideoAdapter.
 
             videoTitle = itemView.findViewById(R.id.videoTitle);
             videoImage = itemView.findViewById(R.id.videoImage);
-            videoNo = itemView.findViewById(R.id.videoNo);
+            videoLength = itemView.findViewById(R.id.videoLength);
             iconLock = itemView.findViewById(R.id.iconLock);
             isChallenger = SharedPreferencesInfo.getUserInfo(context).getIsChallenger();
 
@@ -96,7 +96,7 @@ public class LessonVideoAdapter extends RecyclerView.Adapter<LessonVideoAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.videoTitle.setText(lessonVideo.getVideoTitle()[position]);
         holder.videoImage.setImageResource(lessonVideo.getVideoImage()[position]);
-        holder.videoNo.setText(String.valueOf(position));
+        holder.videoLength.setText(lessonVideo.getVideoLength()[position]);
 
         if (holder.isChallenger == 0) {
             holder.iconLock.setVisibility(View.VISIBLE);
