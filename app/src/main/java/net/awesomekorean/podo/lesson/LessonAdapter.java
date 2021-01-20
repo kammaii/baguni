@@ -21,9 +21,8 @@ import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.UnlockActivity;
 import net.awesomekorean.podo.UserInformation;
 import net.awesomekorean.podo.lesson.lessonHangul.LessonHangulMenu;
-import net.awesomekorean.podo.lesson.lessonNumber.LessonNumberFrame;
 import net.awesomekorean.podo.lesson.lessonNumber.LessonNumberMenu;
-import net.awesomekorean.podo.lesson.lessonVideo.LessonVideo;
+import net.awesomekorean.podo.lesson.lessonVideo.LessonVideoMenu;
 import net.awesomekorean.podo.lesson.lessons.LessonItem;
 
 import java.io.Serializable;
@@ -272,7 +271,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         ((TextView) holder.layoutItemLeft.getChildAt(2)).setText("video");
         ((TextView) holder.layoutItemRight.getChildAt(2)).setText("video");
 
-        intent = new Intent(context, LessonVideo.class);
+        intent = new Intent(context, LessonVideoMenu.class);
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override

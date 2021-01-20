@@ -11,12 +11,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import net.awesomekorean.podo.DialogueActivity;
+import net.awesomekorean.podo.DialogueActivityType1;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.challenge.Challenge;
 
-public class LessonVideo extends AppCompatActivity implements View.OnClickListener {
+public class LessonVideoMenu extends AppCompatActivity implements View.OnClickListener {
 
     TextView title;
     ImageView btnBack;
@@ -28,14 +28,14 @@ public class LessonVideo extends AppCompatActivity implements View.OnClickListen
 
     final String HANGUL = "H_hangul";
     final String VIDEO = "video";
-    final String TITLE = "title";
+    final String BTN_TEXT = "btnText";
     final String CONTENTS = "contents";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lesson_video);
+        setContentView(R.layout.activity_lesson_video_menu);
 
         title = findViewById(R.id.title);
         btnBack = findViewById(R.id.btnBack);
@@ -48,6 +48,7 @@ public class LessonVideo extends AppCompatActivity implements View.OnClickListen
 
             case HANGUL :
                 lessonVideo = new LessonVideoHangul();
+                title.setText(lessonVideo.getTitle());
                 break;
         }
 
@@ -60,9 +61,9 @@ public class LessonVideo extends AppCompatActivity implements View.OnClickListen
 
                 if(pos != 0 && isChallenger == 0) {
                     // 챌린저 권유창 띄우기
-                    intent = new Intent(getApplicationContext(), DialogueActivity.class);
-                    intent.putExtra(TITLE, getResources().getString(R.string.VIDEO_DIALOGUE_TITLE));
+                    intent = new Intent(getApplicationContext(), DialogueActivityType1.class);
                     intent.putExtra(CONTENTS, getResources().getString(R.string.VIDEO_DIALOGUE_CONTENTS));
+                    intent.putExtra(BTN_TEXT, getResources().getString(R.string.VIDEO_DIALOGUE_BTN_TEXT));
                     startActivityForResult(intent, 200);
 
                 } else {

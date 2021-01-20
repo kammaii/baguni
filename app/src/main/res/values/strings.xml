@@ -313,8 +313,9 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
 
 
     <!--    비디오레슨-->
-    <string name="VIDEO_DIALOGUE_TITLE">CHALLENGER ONLY</string>
-    <string name="VIDEO_DIALOGUE_CONTENTS">Join now?</string>
+    <string name="VIDEO_DIALOGUE_CONTENTS">Challenger ONLY</string>
+    <string name="VIDEO_DIALOGUE_BTN_TEXT">Join now?</string>
+
 
 
 

@@ -5,37 +5,38 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DialogueActivity extends AppCompatActivity implements View.OnClickListener {
+public class DialogueActivityType1 extends AppCompatActivity implements View.OnClickListener {
 
-    TextView tvTitle;
     TextView tvContents;
     Button btnYes;
-    Button btnNo;
+    ImageView btnClose;
 
-    String title;
     String contents;
-    final String TITLE = "title";
+    String btnText;
+
     final String CONTENTS = "contents";
+    final String BTN_TEXT = "btnText";
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dialogue);
+        setContentView(R.layout.activity_dialogue_type1);
 
-        tvTitle = findViewById(R.id.tvTitle);
         tvContents = findViewById(R.id.tvContents);
         btnYes = findViewById(R.id.btnYes);
-        btnNo = findViewById(R.id.btnNo);
+        btnClose = findViewById(R.id.btnClose);
         btnYes.setOnClickListener(this);
-        btnNo.setOnClickListener(this);
+        btnClose.setOnClickListener(this);
 
-        title = getIntent().getStringExtra(TITLE);
         contents = getIntent().getStringExtra(CONTENTS);
-        tvTitle.setText(title);
+        btnText = getIntent().getStringExtra(BTN_TEXT);
         tvContents.setText(contents);
+        btnYes.setText(btnText);
     }
 
 
@@ -50,7 +51,7 @@ public class DialogueActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
 
-            case R.id.btnNo :
+            case R.id.btnClose :
                 setResult(RESULT_CANCELED);
                 finish();
                 break;

@@ -21,14 +21,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DialogueActivity"
+        <activity android:name=".DialogueActivityType1"
             android:screenOrientation="portrait"
             android:theme="@style/DialogFullScreen" />
         <activity
             android:name=".lesson.lessonVideo.VideoFrame"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".lesson.lessonVideo.LessonVideo"
+            android:name=".lesson.lessonVideo.LessonVideoMenu"
             android:screenOrientation="portrait" />
         <activity
             android:name=".challenge.Challenge"
