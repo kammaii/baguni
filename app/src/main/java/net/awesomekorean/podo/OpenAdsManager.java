@@ -40,12 +40,7 @@ public class OpenAdsManager implements LifecycleObserver, Application.ActivityLi
     @OnLifecycleEvent(ON_START)
     public void onStart() {
         System.out.println("오픈광고 : onStart");
-
-        if(isAdAvailable()) {
-            showAdIfAvailable();
-        } else {
-            fetchAd();
-        }
+        showAdIfAvailable();
     }
 
     // 오픈광고 로드
