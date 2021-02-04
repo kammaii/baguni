@@ -66,7 +66,7 @@ public class Logo extends AppCompatActivity {
         firebaseAnalytics.setAnalyticsCollectionEnabled(BuildConfig.ANALYTICS);
         System.out.println("애널리틱스 : " + BuildConfig.ANALYTICS);
 
-
+/*
         // 애드몹 초기화
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -79,6 +79,8 @@ public class Logo extends AppCompatActivity {
                 adsManager.loadRewardAds(getApplicationContext());
             }
         });
+
+ */
 
         userEmail = SharedPreferencesInfo.getUserEmail(getApplicationContext());
 

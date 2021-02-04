@@ -1,20 +1,24 @@
 package net.awesomekorean.podo;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.appopen.AppOpenAd;
 import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
@@ -27,15 +31,6 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import java.io.Serializable;
 
 public class AdsManager {
-
-    private String ADMOB_APP_ID = "ca-app-pub-7371634469098812~7867291008";
-    private String ADMOB_TEST_ID_FULL_SCREEN = "ca-app-pub-3940256099942544/1033173712";
-    private String ADMOB_TEST_ID_REWARDED = "ca-app-pub-3940256099942544/5224354917";
-    private String ADMOB_TEST_ID_NATIVE = "ca-app-pub-3940256099942544/2247696110";
-
-    private String ADMOB_ID_FULL_SCREEN = "ca-app-pub-7371634469098812/6205713214";
-    private String ADMOB_ID_REWARDED = "ca-app-pub-7371634469098812/2074896515";
-    private String ADMOB_ID_NATIVE = "ca-app-pub-7371634469098812/4870095522";
 
     public InterstitialAd interstitialAd;
     public RewardedAd rewardedAd;
