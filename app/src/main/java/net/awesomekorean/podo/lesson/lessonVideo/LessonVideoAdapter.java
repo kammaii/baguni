@@ -94,7 +94,7 @@ public class LessonVideoAdapter extends RecyclerView.Adapter<LessonVideoAdapter.
             holder.iconLock.setVisibility(View.GONE);
         }
 
-        if (position == 0) {
+        if (position == 0 || position == 1) {
             holder.iconLock.setVisibility(View.GONE);
         }
     }
