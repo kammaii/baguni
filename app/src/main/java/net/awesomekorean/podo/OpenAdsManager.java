@@ -80,8 +80,6 @@ public class OpenAdsManager implements LifecycleObserver, Application.ActivityLi
 
     // 오픈광고 재생
     public void showAdIfAvailable() {
-        System.out.println("이즈쇼잉 : " + isShowingAd);
-        System.out.println("이즈어베일러블 : " + isAdAvailable());
 
         if(!isShowingAd && isAdAvailable()) {
             System.out.println("오픈광고를 재생합니다.");
@@ -130,6 +128,8 @@ public class OpenAdsManager implements LifecycleObserver, Application.ActivityLi
     public void onActivityResumed(@NonNull Activity activity) {
         System.out.println("오픈광고 : activityResumed");
         currentActivity = activity;
+        showAdIfAvailable();
+
     }
 
     @Override

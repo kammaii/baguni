@@ -9,7 +9,7 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 public class MyApplication extends Application {
 
     private AdsManager adsManager;
-    private static OpenAdsManager openAdsManager;
+    private OpenAdsManager openAdsManager;
 
     @Override
     public void onCreate() {
