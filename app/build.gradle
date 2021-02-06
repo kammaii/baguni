@@ -69,7 +69,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage'
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-ads'
-    implementation 'com.facebook.android:facebook-login:5.15.3'
     implementation 'com.google.firebase:firebase-dynamic-links'
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-messaging'
@@ -77,9 +76,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-perf'
 
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
-    implementation 'com.google.android.gms:play-services-basement:17.5.0'
+    implementation 'com.google.android.gms:play-services-basement:17.6.0'
     implementation 'com.google.android:flexbox:2.0.0'
     implementation 'me.relex:circleindicator:1.2.2'
+
+    implementation 'com.facebook.android:facebook-login:5.15.3'
+    implementation 'com.facebook.android:facebook-android-sdk:5.4.0'
+    implementation 'com.facebook.android:facebook-marketing:[4,5)'
 
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     implementation 'com.google.code.gson:gson:2.8.6'

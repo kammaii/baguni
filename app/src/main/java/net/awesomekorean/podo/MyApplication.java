@@ -26,8 +26,7 @@ public class MyApplication extends Application {
         });
 
         UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
-        int isChallenger = userInformation.getIsChallenger();
-        if(isChallenger == 0) {
+        if(userInformation != null && userInformation.getIsChallenger() == 0) {
             openAdsManager = new OpenAdsManager(this);
         }
     }
