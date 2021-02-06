@@ -94,7 +94,7 @@ public class OpenAdsManager implements LifecycleObserver, Application.ActivityLi
 
                 @Override
                 public void onAdFailedToShowFullScreenContent(AdError adError) {
-                    System.out.println("오픈광고가 재생을 실패했습니다. : " + adError.getMessage());
+                    System.out.println("오픈광고가 재생을 실패했습니다. : " + adError.getMessage() + currentActivity);
                 }
 
                 @Override
@@ -120,16 +120,13 @@ public class OpenAdsManager implements LifecycleObserver, Application.ActivityLi
 
     @Override
     public void onActivityStarted(@NonNull Activity activity) {
-        System.out.println("오픈광고 : activityStarted");
+        System.out.println("오픈광고 : activityStarted" + activity);
         currentActivity = activity;
     }
 
     @Override
     public void onActivityResumed(@NonNull Activity activity) {
         System.out.println("오픈광고 : activityResumed");
-        currentActivity = activity;
-        showAdIfAvailable();
-
     }
 
     @Override

@@ -25,6 +25,10 @@ public class MyApplication extends Application {
             }
         });
 
-        openAdsManager = new OpenAdsManager(this);
+        UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
+        int isChallenger = userInformation.getIsChallenger();
+        if(isChallenger == 0) {
+            openAdsManager = new OpenAdsManager(this);
+        }
     }
 }
