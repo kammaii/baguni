@@ -122,6 +122,10 @@ public class OpenAdsManager implements LifecycleObserver, Application.ActivityLi
     public void onActivityStarted(@NonNull Activity activity) {
         System.out.println("오픈광고 : activityStarted" + activity);
         currentActivity = activity;
+
+        if(activity.getLocalClassName().equals("lesson.LessonReviewFrame")) {
+            showAdIfAvailable();
+        }
     }
 
     @Override
