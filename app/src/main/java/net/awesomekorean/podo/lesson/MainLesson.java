@@ -314,6 +314,9 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
     // 레슨 활성/완료 세팅하기
     private void setCompletedLessons() {
+        if(userInformation == null) {
+            userInformation = SharedPreferencesInfo.getUserInfo(getContext());
+        }
         List<String> lessonComplete = userInformation.getLessonComplete();
         System.out.println("LESSON_COMPLETE:" + lessonComplete);
         int isChallenger = userInformation.getIsChallenger();

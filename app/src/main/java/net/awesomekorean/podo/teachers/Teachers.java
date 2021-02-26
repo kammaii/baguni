@@ -95,7 +95,36 @@ public class Teachers extends AppCompatActivity implements View.OnClickListener 
         requiredPoints.setText(Integer.toString(pointsNeed));
         holdingPoints.setText(String.valueOf(pointsHave));
 
+        // todo: 선생님 2인 이상 되면 삭제할 것
+        TeachersItems danny = new TeachersItems();
+        danny.setEmail("gabmanpark@gmail.com");
+        danny.setId("danny");
+        danny.setIsChecked(true);
+        danny.setName("Danny Park");
+        danny.setStatus(1);
+        danny.setTag("#male #fromSeoul #koreanTeacher");
+        list = new ArrayList<>();
+        list.add(danny);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        TeachersAdapter adapter = new TeachersAdapter(getApplicationContext(), list);
+        recyclerView.setAdapter(adapter);
+        progressBarLayout.setVisibility(View.GONE);
+        teacherName = danny.getName();
+        teacherId = danny.getId();
+        teacherEmail = danny.getEmail();
+        if (pointsHave >= pointsNeed) {
+            btnSubmit.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_purple_30));
+            btnSubmit.setEnabled(true);
+        } else {
+            btnSubmit.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_grey_30));
+            btnSubmit.setEnabled(false);
+        }
 
+
+
+        // todo: 선생님 2인 이상 되면 설정할 것
+        /*
         // DB 에서 선생님 정보들 가져와서 아래 리스트에 넣을 것
         list = new ArrayList<>();
         db.collection(getString(R.string.DB_TEACHERS)).whereGreaterThan("status", 0)
@@ -129,6 +158,9 @@ public class Teachers extends AppCompatActivity implements View.OnClickListener 
                         if(pointsHave >= pointsNeed) {
                             btnSubmit.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_purple_30));
                             btnSubmit.setEnabled(true);
+                        } else {
+                            btnSubmit.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_grey_30));
+                            btnSubmit.setEnabled(false);
                         }
                         teacherName = list.get(pos).getName();
                         teacherId = list.get(pos).getId();
@@ -141,6 +173,8 @@ public class Teachers extends AppCompatActivity implements View.OnClickListener 
                 progressBarLayout.setVisibility(View.GONE);
             }
         });
+
+         */
     }
 
 
