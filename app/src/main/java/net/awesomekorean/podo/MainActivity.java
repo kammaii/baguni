@@ -1,6 +1,7 @@
 package net.awesomekorean.podo;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
     private final String SEGMENT_CHALLENGE = "challenge";
     private final String DISCOUNT = "discount";
+    private final String TIMER = "timer";
 
     FragmentManager fm;
     FragmentTransaction tran;
@@ -106,6 +108,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
     Animation animation;
 
+    TextView textChallengeInMainLesson;
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         textReading = findViewById(R.id.textReading);
         textWriting = findViewById(R.id.textWriting);
         textCollection = findViewById(R.id.textCollection);
+
         textQnA = findViewById(R.id.textQnA);
         btnProfile.setOnClickListener(this);
         layoutPoint.setOnClickListener(this);
@@ -194,6 +199,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         Intent intent = new Intent(this, FirebaseCloudMessage.class);
         startService(intent);
 
+        SharedPreferencesInfo.setEventTimer(getApplicationContext(), 10);
+
 
         // 딥링크 리스너
         FirebaseDynamicLinks.getInstance()
@@ -212,6 +219,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                         if(deepLink != null) {
                             String segment = deepLink.getLastPathSegment();
                             String discount = deepLink.getQueryParameter(DISCOUNT);
+                            String timer = deepLink.getQueryParameter(TIMER);
 
                             Intent deepLinkIntent;
                             if(segment.equals(SEGMENT_CHALLENGE)) {
@@ -229,6 +237,13 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                                 System.out.println("세그먼트 : " + segment);
                                 System.out.println("할인 : " + discount);
                                 System.out.println("퍼센트 : " + percent);
+                            }
+
+                            if(timer != null) {
+                                long eventTime = Long.parseLong(timer);
+                                SharedPreferencesInfo.setEventTimer(getApplicationContext(), eventTime);
+                                setFrag(mainLesson);
+                                setMainBtns(btnLesson, textLesson, R.drawable.lesson_active, R.string.LESSON);
                             }
                         }
                     }

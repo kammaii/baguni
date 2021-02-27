@@ -1,11 +1,13 @@
 package net.awesomekorean.podo;
 
 import android.content.Context;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -83,6 +85,14 @@ public class UserInformation {
                 lessonComplete.add(unitId);
                 SharedPreferencesInfo.setUserInfo(context, this);
                 updateDb(context);
+
+                // L_00 완료시 이벤트 등록
+                if(unitId.equals("L_00")) {
+                    System.out.println("L_00를 완료했습니다. 이벤트를 등록합니다.");
+                    FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
+                    Bundle bundle = new Bundle();
+                    firebaseAnalytics.logEvent("L_00_complete", bundle);
+                }
             } else {
                 System.out.println("이미 완료한 레슨입니다.");
             }

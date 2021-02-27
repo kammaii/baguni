@@ -118,4 +118,27 @@ public class SharedPreferencesInfo {
         return level;
     }
 
+    // 타이머 불러오기
+    public static SharedPreferences getEventTimer(Context context) {
+        SharedPreferences sp = context.getSharedPreferences("eventTimer", MODE_PRIVATE);
+        return sp;
+    }
+
+    // 타이머 저장하기
+    public static void setEventTimer(Context context, long eventTime) {
+        SharedPreferences sp = context.getSharedPreferences("eventTimer", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
+        if(eventTime != 0) {
+            editor.putBoolean("isWorking", true);
+            editor.putLong("startTime", UnixTimeStamp.getTimeNow());
+            editor.putLong("eventTime", eventTime);
+
+        } else {
+            editor.putBoolean("isWorking", false);
+        }
+        editor.commit();
+    }
+
+
 }

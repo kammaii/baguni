@@ -161,6 +161,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
 
                 } else {
                     System.out.println("구글플레이와 연결을 실패했습니다. : " + billingResult.getDebugMessage());
+                    Toast.makeText(getApplicationContext(), "Connection failed : " + billingResult.getDebugMessage(), Toast.LENGTH_LONG).show();
                     Bundle bundleConnectionFail = new Bundle();
                     bundleConnectionFail.putInt("responseCode", billingResult.getResponseCode());
                     bundleConnectionFail.putString("message", billingResult.getDebugMessage());
