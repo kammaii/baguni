@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
     Animation animation;
 
-    TextView textChallengeInMainLesson;
+    Fragment thisFragment;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -199,7 +199,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         Intent intent = new Intent(this, FirebaseCloudMessage.class);
         startService(intent);
 
-        SharedPreferencesInfo.setEventTimer(getApplicationContext(), 10);
+        //todo: 이벤트 타이머 테스트용 (삭제할 것)
+        SharedPreferencesInfo.setEventTimer(getApplicationContext(), 0, 0);
 
 
         // 딥링크 리스너
@@ -230,20 +231,24 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
                             if(discount != null) {
                                 int percent = Integer.parseInt(discount);
-
                                 deepLinkIntent.putExtra(DISCOUNT, percent);
+
+                                if(timer != null) {
+                                    long eventTime = Long.parseLong(timer) * 60;
+                                    System.out.println("이벤트타임 : " + eventTime);
+                                    SharedPreferencesInfo.setEventTimer(getApplicationContext(), eventTime, percent);
+                                    if(thisFragment != null) {
+                                        fm = getSupportFragmentManager();
+                                        tran = fm.beginTransaction();
+                                        tran.detach(thisFragment).attach(mainLesson).commit();
+                                    }
+                                }
+
                                 startActivity(deepLinkIntent);
 
                                 System.out.println("세그먼트 : " + segment);
                                 System.out.println("할인 : " + discount);
                                 System.out.println("퍼센트 : " + percent);
-                            }
-
-                            if(timer != null) {
-                                long eventTime = Long.parseLong(timer);
-                                SharedPreferencesInfo.setEventTimer(getApplicationContext(), eventTime);
-                                setFrag(mainLesson);
-                                setMainBtns(btnLesson, textLesson, R.drawable.lesson_active, R.string.LESSON);
                             }
                         }
                     }
@@ -419,6 +424,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
 
     public void setFrag(Fragment frag) {
+        thisFragment = frag;
         fm = getSupportFragmentManager();
         tran = fm.beginTransaction();
         tran.replace(R.id.frameLayout, frag);

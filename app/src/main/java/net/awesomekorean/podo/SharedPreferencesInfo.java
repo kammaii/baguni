@@ -125,7 +125,7 @@ public class SharedPreferencesInfo {
     }
 
     // 타이머 저장하기
-    public static void setEventTimer(Context context, long eventTime) {
+    public static void setEventTimer(Context context, long eventTime, int percent) {
         SharedPreferences sp = context.getSharedPreferences("eventTimer", MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
 
@@ -133,10 +133,15 @@ public class SharedPreferencesInfo {
             editor.putBoolean("isWorking", true);
             editor.putLong("startTime", UnixTimeStamp.getTimeNow());
             editor.putLong("eventTime", eventTime);
+            editor.putInt("percent", percent);
 
         } else {
             editor.putBoolean("isWorking", false);
+            editor.putLong("startTime", 0);
+            editor.putLong("eventTime", 0);
+            editor.putInt("percent", 0);
         }
+
         editor.commit();
     }
 

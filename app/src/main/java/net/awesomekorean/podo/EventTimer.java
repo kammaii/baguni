@@ -21,13 +21,18 @@ public class EventTimer extends CountDownTimer {
     @Override
     public void onTick(long l) {
         System.out.println("타이머 작동중 : " + l/1000 + "초 / " + eventTime);
-        textView.setText("타이머 작동중 : " + l/1000);
+        int totalSec, hour, min, sec;
+        totalSec = (int) l/1000;
+        hour = totalSec/3600;
+        min = (totalSec - (hour * 3600)) / 60;
+        sec = (totalSec - (hour * 3600) - (min * 60));
+        textView.setText(String.format("%02d", hour) + " : " + String.format("%02d", min) + " : " + String.format("%02d", sec));
     }
 
     @Override
     public void onFinish() {
         System.out.println("타이머 종료");
         this.cancel();
-        SharedPreferencesInfo.setEventTimer(context, 0);
+        SharedPreferencesInfo.setEventTimer(context, 0, 0);
     }
 }

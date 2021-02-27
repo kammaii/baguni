@@ -2,6 +2,7 @@ package net.awesomekorean.podo.lesson;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
@@ -26,6 +27,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import net.awesomekorean.podo.EventTimer;
 import net.awesomekorean.podo.PlaySoundPool;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
@@ -155,9 +157,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
     int lastClickLevel;
 
-    ConstraintLayout layoutChallenge;
-    TextView textChallenge;
-    ImageView iconFinger;
+    TextView btnChallenge;
 
     ConstraintLayout challengeResult;
     TextView titleChallengeResult;
@@ -166,7 +166,8 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     Button btnCloseChallengeResult;
 
     int specialLessonCount;
-    Shader shader;
+
+    EventTimer eventTimer;
 
 
     @Nullable
@@ -181,9 +182,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         layoutInfo = view.findViewById(R.id.layoutInfo);
         btnCloseInfo = view.findViewById(R.id.btnCloseInfo);
         seekBar = view.findViewById(R.id.seekBar);
-        layoutChallenge = view.findViewById(R.id.layoutChallenge);
-        textChallenge = view.findViewById(R.id.textChallenge);
-        iconFinger = view.findViewById(R.id.iconFinger);
+        btnChallenge = view.findViewById(R.id.btnChallenge);
         challengeResult = view.findViewById(R.id.challengeResult);
         titleChallengeResult = view.findViewById(R.id.titleChallengeResult);
         challengeRewardPoints = view.findViewById(R.id.challengeRewardPoints);
@@ -193,9 +192,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         btnNextLevel.setOnClickListener(this);
         btnInfo.setOnClickListener(this);
         btnCloseInfo.setOnClickListener(this);
-        layoutChallenge.setOnClickListener(this);
         btnCloseChallengeResult.setOnClickListener(this);
-
 
         context = getContext();
         userInformation = SharedPreferencesInfo.getUserInfo(context);
@@ -205,7 +202,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        shader = new LinearGradient(0,0,100,0, new int[]{ContextCompat.getColor(context, R.color.PINK2), ContextCompat.getColor(context, R.color.PURPLE)}, new float[]{0, 1}, Shader.TileMode.CLAMP);
+        checkEventTimer();
 
         int isChallenger = userInformation.getIsChallenger();
 
@@ -216,7 +213,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
         // 챌린지 종료
         } else if(isChallenger == 2) {
-            layoutChallenge.setVisibility(GONE);
+            btnChallenge.setVisibility(GONE);
 
             // 챌린지 보상여부 체크
             if(userInformation.getIsChallengeRewarded() == 0) {
@@ -249,12 +246,8 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
         // 챌린저 아님
         } else {
-            textChallenge.getPaint().setShader(shader);
-            Animation animation = AnimationUtils.loadAnimation(context, R.anim.move_up_infinite);
-            iconFinger.startAnimation(animation);
+            //todo: textChallenge 세팅
         }
-
-
 
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -279,16 +272,49 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     }
 
 
+    // 이벤트 타이머 확인
+    private void checkEventTimer() {
+        System.out.println("이벤트 타이머를 확인합니다.");
+        SharedPreferences sp = SharedPreferencesInfo.getEventTimer(context);
+        boolean isWorking = sp.getBoolean("isWorking", false);
+        final Intent intent = new Intent(context, Challenge.class);
+
+        if(isWorking) {
+            System.out.println("이벤트 타이머가 작동중입니다.");
+            long timeNow = UnixTimeStamp.getTimeNow();
+            long startTime = sp.getLong("startTime", 0);
+            long eventTime = sp.getLong("eventTime", 0);
+            long passedTime = timeNow - startTime;
+
+
+            // 타이머 작동
+            if(passedTime < eventTime) {
+                final String DISCOUNT = "discount";
+                int percent = sp.getInt("percent", 0);
+
+                eventTimer = new EventTimer(context, eventTime - passedTime, btnChallenge);
+                intent.putExtra(DISCOUNT, percent);
+
+            } else {
+                SharedPreferencesInfo.setEventTimer(context, 0, 0);
+            }
+        }
+
+        btnChallenge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(intent);
+            }
+        });
+    }
+
+
     private void setChallengeCount() {
-        textChallenge.getPaint().setShader(shader);
         Long timeStart = userInformation.getDateChallengeStart();
         Long timeNow = UnixTimeStamp.getTimeNow();
         int dayCount = (int) Math.floor((timeNow-timeStart)/86400 + 1);
-        textChallenge.setText("Day "+dayCount);
-        textChallenge.setTextSize(15);
-        layoutChallenge.setEnabled(false);
-        iconFinger.clearAnimation();
-        iconFinger.setVisibility(GONE);
+        btnChallenge.setText("Day "+dayCount);
+        //todo: 챌린저 프로그레스 추가
     }
 
 
@@ -453,11 +479,6 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
             case R.id.btnCloseInfo :
                 layoutInfo.setVisibility(GONE);
-                break;
-
-            case R.id.layoutChallenge :
-                Intent intent = new Intent(context, Challenge.class);
-                startActivityForResult(intent, 200);
                 break;
 
             case R.id.btnCloseChallengeResult :
