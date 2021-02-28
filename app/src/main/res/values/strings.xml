@@ -350,11 +350,13 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="AD_LOAD_FAILED">Failed to load ads. Please try it again.</string>
     <string name="BUG_REPORT">Report errors or suggestions</string>
     <string name="LOG_OUT">Log out</string>
+    <string name="DELETE_ACCOUNT">Delete Account</string>
     <string name="SAVE_NEW_NAME">Saved new name</string>
     <string name="UPDATED_USERNAME">Updated user name</string>
     <string name="UPDATED_USERNAME_FAILED">Failed to update User name</string>
     <string name="SIGN_OUT">Sign Out</string>
     <string name="SIGN_OUT_MESSAGE">Do you want to sign out?</string>
+    <string name="DELETE_ACCOUNT_MESSAGE">Do you want to delete your account?</string>
     <string name="REPORT_RESULT">Thank you for your valuable opinion.\n
         I will review your comment and improve my App in the near future.</string>
 

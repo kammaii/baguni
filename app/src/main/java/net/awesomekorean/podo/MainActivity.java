@@ -217,6 +217,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                         }
                         System.out.println("딥링크 Uri : " + deepLink);
 
+                        //todo: 오픈광고랑 충돌발생 방지할 것
+
                         if(deepLink != null) {
                             String segment = deepLink.getLastPathSegment();
                             String discount = deepLink.getQueryParameter(DISCOUNT);

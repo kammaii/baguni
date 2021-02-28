@@ -81,6 +81,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     LinearLayout getPointByAd;
     LinearLayout getPointByPurchasing;
     LinearLayout logout;
+    LinearLayout deleteAccount;
 
     LinearLayout reportResult;
 
@@ -142,6 +143,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         getPointByAd = findViewById(R.id.getPointsByAd);
         getPointByPurchasing = findViewById(R.id.getPointsByPurchasing);
         logout = findViewById(R.id.logout);
+        deleteAccount = findViewById(R.id.deleteAccount);
         reportResult = findViewById(R.id.reportResult);
 
         arrowEditProfile = findViewById(R.id.arrowEditProfile);
@@ -158,6 +160,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         getPointByAd.setOnClickListener(this);
         getPointByPurchasing.setOnClickListener(this);
         logout.setOnClickListener(this);
+        deleteAccount.setOnClickListener(this);
 
         userInformation = SharedPreferencesInfo.getUserInfo(context);
 
@@ -423,6 +426,54 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                             }
                         })
                         .show();
+                break;
+
+            case R.id.deleteAccount :
+                new AlertDialog.Builder(this)
+                        .setTitle(getString(R.string.DELETE_ACCOUNT)).setMessage(getString(R.string.DELETE_ACCOUNT_MESSAGE))
+                        .setPositiveButton(getString(R.string.DELETE_ACCOUNT), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                // 계정삭제
+                                String userEmail = SharedPreferencesInfo.getUserEmail(context);
+                                if(userEmail != null) {
+                                    db.collection(context.getString(R.string.DB_USERS)).document(userEmail).delete()
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                                    user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if(task.isSuccessful()) {
+                                                                Toast.makeText(getApplicationContext(), "Successfully deleted your account.", Toast.LENGTH_LONG).show();
+                                                                intent = new Intent(context, SignIn.class);
+                                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                                                startActivity(intent);
+                                                                finish();
+                                                            }
+                                                        }
+
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(getApplicationContext(), "Failed to remove your account.", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    });
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(getApplicationContext(), "Failed to remove database : " + e, Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+
+                                }
+                            }
+                        }).setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+
+                            }
+                        }).show();
                 break;
         }
     }
