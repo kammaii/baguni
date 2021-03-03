@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,7 +53,7 @@ public class LessonWordQuiz3 extends Fragment implements Button.OnClickListener{
     ImageView btnAudio;
     ImageView btnReset;
 
-    LinearLayout totalPage;
+    ConstraintLayout totalPage;
 
     int quizCount = 0; // 단어퀴즈 순서
 
@@ -68,6 +69,9 @@ public class LessonWordQuiz3 extends Fragment implements Button.OnClickListener{
     }
 
     private LessonFrame activity;
+
+    Switch engSwitch;
+    EngHintSwitch engHintSwitch;
 
 
     @Nullable
@@ -90,6 +94,7 @@ public class LessonWordQuiz3 extends Fragment implements Button.OnClickListener{
         btnAudio = view.findViewById(R.id.btnAudio);
         btnReset = view.findViewById(R.id.btnReset);
         totalPage = view.findViewById(R.id.totalPage);
+        engSwitch = view.findViewById(R.id.engSwitch);
         btnAudio.setOnClickListener(this);
         btnReset.setOnClickListener(this);
         totalPage.setOnTouchListener(new View.OnTouchListener() {
@@ -103,6 +108,10 @@ public class LessonWordQuiz3 extends Fragment implements Button.OnClickListener{
         FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(activity);
         Bundle bundle = new Bundle();
         firebaseAnalytics.logEvent("lesson_quiz3", bundle);
+
+        TextView[] textViews = new TextView[]{answer};
+        engHintSwitch = new EngHintSwitch(getContext(), engSwitch, textViews);
+        engSwitch.setOnCheckedChangeListener(engHintSwitch);
 
 
         playSoundPool = new PlaySoundPool(activity);
@@ -218,6 +227,7 @@ public class LessonWordQuiz3 extends Fragment implements Button.OnClickListener{
 
         answer.setText(lesson.getWordBack()[quizCount]);
         answerImage.setImageResource(wordImage[quizCount]);
+        engHintSwitch.setEngHint();
 
         mediaPlayerManager.setMediaPlayerByte(false, activity.wordAudioByte.get(quizCount));
     }

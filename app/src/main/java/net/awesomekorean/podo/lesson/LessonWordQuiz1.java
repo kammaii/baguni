@@ -71,7 +71,7 @@ public class LessonWordQuiz1 extends Fragment implements Button.OnClickListener 
 
     private LessonFrame activity;
 
-    boolean engHint;
+    EngHintSwitch engHintSwitch;
 
     @Nullable
     @Override
@@ -111,23 +111,10 @@ public class LessonWordQuiz1 extends Fragment implements Button.OnClickListener 
                 return true;
             }
         });
-        engHint = SharedPreferencesInfo.getEngHint(getContext());
-        setEngHint(engHint);
-        engSwitch.setChecked(engHint);
 
-        engSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
-                    setEngHint(true);
-                    SharedPreferencesInfo.setEngHint(getContext(), true);
-                } else {
-                    setEngHint(false);
-                    SharedPreferencesInfo.setEngHint(getContext(), false);
-                }
-                engHint = SharedPreferencesInfo.getEngHint(getContext());
-            }
-        });
+        TextView[] textViews = new TextView[]{btnText1, btnText2, btnText3, btnText4};
+        engHintSwitch = new EngHintSwitch(getContext(), engSwitch, textViews);
+        engSwitch.setOnCheckedChangeListener(engHintSwitch);
 
         // analytics 로그 이벤트 얻기
         FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(activity);
@@ -142,23 +129,6 @@ public class LessonWordQuiz1 extends Fragment implements Button.OnClickListener 
         LessonFrame.setNavigationColor(activity, LessonFrame.navigationQuiz, R.drawable.bg_green_10);
 
         return view;
-    }
-
-
-    // 영어 표기 세팅
-    private void setEngHint(boolean engHint) {
-        int visible;
-
-        if(engHint) {
-            visible = View.VISIBLE;
-        } else {
-            visible = View.INVISIBLE;
-        }
-
-        btnText1.setVisibility(visible);
-        btnText2.setVisibility(visible);
-        btnText3.setVisibility(visible);
-        btnText4.setVisibility(visible);
     }
 
 
@@ -190,7 +160,7 @@ public class LessonWordQuiz1 extends Fragment implements Button.OnClickListener 
         btnText3.setText(lesson.getWordBack()[answerArray[2]]);
         btnText4.setText(lesson.getWordBack()[answerArray[3]]);
 
-        setEngHint(engHint);
+        engHintSwitch.setEngHint();
 
         mediaPlayerManager.setMediaPlayerByte(false, activity.wordAudioByte.get(quizNoNow));
     }
