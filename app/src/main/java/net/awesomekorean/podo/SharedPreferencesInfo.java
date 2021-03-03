@@ -146,4 +146,21 @@ public class SharedPreferencesInfo {
     }
 
 
+    // LessonQuiz1 EngHint 저장하기
+    public static void setEngHint(Context context, boolean b) {
+        SharedPreferences sp = context.getSharedPreferences("engHint", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("engHint", b);
+        editor.commit();
+        System.out.println("EngHint 를 저장했습니다: "+b);
+    }
+
+    public static boolean getEngHint(Context context) {
+        SharedPreferences sp = context.getSharedPreferences("engHint", MODE_PRIVATE);
+        boolean engHint = sp.getBoolean("engHint", false);
+        System.out.println("EngHint 를 불러옵니다: "+engHint);
+        return engHint;
+    }
+
+
 }

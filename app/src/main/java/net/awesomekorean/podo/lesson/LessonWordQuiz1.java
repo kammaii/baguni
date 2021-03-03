@@ -1,6 +1,7 @@
 package net.awesomekorean.podo.lesson;
 
 import android.content.Context;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -8,7 +9,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +25,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import net.awesomekorean.podo.MediaPlayerManager;
 import net.awesomekorean.podo.PlaySoundPool;
 import net.awesomekorean.podo.R;
+import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.lesson.lessons.Lesson;
 
 import java.util.ArrayList;
@@ -41,6 +45,7 @@ public class LessonWordQuiz1 extends Fragment implements Button.OnClickListener 
     TextView btnText3;
     TextView btnText4;
     ImageView btnAudio;
+    Switch engSwitch;
 
 
     int[] wordImage;
@@ -65,6 +70,8 @@ public class LessonWordQuiz1 extends Fragment implements Button.OnClickListener 
     }
 
     private LessonFrame activity;
+
+    boolean engHint;
 
     @Nullable
     @Override
@@ -92,6 +99,7 @@ public class LessonWordQuiz1 extends Fragment implements Button.OnClickListener 
         btnText3 = view.findViewById(R.id.btnText3);
         btnText4 = view.findViewById(R.id.btnText4);
         btnAudio = view.findViewById(R.id.btnAudio);
+        engSwitch = view.findViewById(R.id.engSwitch);
         btn1.setOnClickListener(this);
         btn2.setOnClickListener(this);
         btn3.setOnClickListener(this);
@@ -101,6 +109,23 @@ public class LessonWordQuiz1 extends Fragment implements Button.OnClickListener 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
+            }
+        });
+        engHint = SharedPreferencesInfo.getEngHint(getContext());
+        setEngHint(engHint);
+        engSwitch.setChecked(engHint);
+
+        engSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    setEngHint(true);
+                    SharedPreferencesInfo.setEngHint(getContext(), true);
+                } else {
+                    setEngHint(false);
+                    SharedPreferencesInfo.setEngHint(getContext(), false);
+                }
+                engHint = SharedPreferencesInfo.getEngHint(getContext());
             }
         });
 
@@ -117,6 +142,23 @@ public class LessonWordQuiz1 extends Fragment implements Button.OnClickListener 
         LessonFrame.setNavigationColor(activity, LessonFrame.navigationQuiz, R.drawable.bg_green_10);
 
         return view;
+    }
+
+
+    // 영어 표기 세팅
+    private void setEngHint(boolean engHint) {
+        int visible;
+
+        if(engHint) {
+            visible = View.VISIBLE;
+        } else {
+            visible = View.INVISIBLE;
+        }
+
+        btnText1.setVisibility(visible);
+        btnText2.setVisibility(visible);
+        btnText3.setVisibility(visible);
+        btnText4.setVisibility(visible);
     }
 
 
@@ -147,6 +189,8 @@ public class LessonWordQuiz1 extends Fragment implements Button.OnClickListener 
         btnText2.setText(lesson.getWordBack()[answerArray[1]]);
         btnText3.setText(lesson.getWordBack()[answerArray[2]]);
         btnText4.setText(lesson.getWordBack()[answerArray[3]]);
+
+        setEngHint(engHint);
 
         mediaPlayerManager.setMediaPlayerByte(false, activity.wordAudioByte.get(quizNoNow));
     }
