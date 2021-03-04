@@ -111,6 +111,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
     Fragment thisFragment;
 
+    ImageView stars;
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         textReading = findViewById(R.id.textReading);
         textWriting = findViewById(R.id.textWriting);
         textCollection = findViewById(R.id.textCollection);
+        stars = findViewById(R.id.stars);
 
         textQnA = findViewById(R.id.textQnA);
         btnProfile.setOnClickListener(this);
@@ -172,6 +175,10 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         setFrag(mainLesson);
 
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_200);
+
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink_infinite);
+        stars.startAnimation(animation);
+
 
         // 유저정보 가져오기 (Email, Name, Image)
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
