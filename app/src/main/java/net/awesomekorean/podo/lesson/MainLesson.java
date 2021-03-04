@@ -157,7 +157,8 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
     int lastClickLevel;
 
-    TextView btnChallenge;
+    ConstraintLayout btnChallenge;
+    TextView textChallenge;
 
     ConstraintLayout challengeResult;
     TextView titleChallengeResult;
@@ -166,6 +167,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     Button btnCloseChallengeResult;
 
     int specialLessonCount;
+    Shader shader;
 
     EventTimer eventTimer;
 
@@ -183,6 +185,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         btnCloseInfo = view.findViewById(R.id.btnCloseInfo);
         seekBar = view.findViewById(R.id.seekBar);
         btnChallenge = view.findViewById(R.id.btnChallenge);
+        textChallenge = view.findViewById(R.id.textChallenge);
         challengeResult = view.findViewById(R.id.challengeResult);
         titleChallengeResult = view.findViewById(R.id.titleChallengeResult);
         challengeRewardPoints = view.findViewById(R.id.challengeRewardPoints);
@@ -202,7 +205,10 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
+        shader = new LinearGradient(0,0,100,0, new int[]{ContextCompat.getColor(context, R.color.PINK2), ContextCompat.getColor(context, R.color.PURPLE)}, new float[]{0, 1}, Shader.TileMode.CLAMP);
+
         checkEventTimer();
+
 
         int isChallenger = userInformation.getIsChallenger();
 
@@ -246,7 +252,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
         // 챌린저 아님
         } else {
-            //todo: textChallenge 세팅
+            textChallenge.getPaint().setShader(shader);
         }
 
 
@@ -292,7 +298,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
                 final String DISCOUNT = "discount";
                 int percent = sp.getInt("percent", 0);
 
-                eventTimer = new EventTimer(context, eventTime - passedTime, btnChallenge);
+                //eventTimer = new EventTimer(context, eventTime - passedTime, btnChallenge);
                 intent.putExtra(DISCOUNT, percent);
 
             } else {
@@ -303,7 +309,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         btnChallenge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(intent);
+                startActivityForResult(intent, 200);
             }
         });
     }
@@ -313,7 +319,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         Long timeStart = userInformation.getDateChallengeStart();
         Long timeNow = UnixTimeStamp.getTimeNow();
         int dayCount = (int) Math.floor((timeNow-timeStart)/86400 + 1);
-        btnChallenge.setText("Day "+dayCount);
+        //btnChallenge.setText("Day "+dayCount);
         //todo: 챌린저 프로그레스 추가
     }
 

@@ -53,19 +53,55 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
 
-
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btnChallenge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/PINK_TRANSPARENT"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="00:00"
-        android:textSize="20dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/bgGradation"
+            android:src="@drawable/bg_white_15_gradation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="20dp"/>
+
+        <ImageView
+            android:src="@drawable/stars_a"
+            app:layout_constraintStart_toStartOf="@id/bgGradation"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginLeft="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:src="@drawable/stars_b"
+            app:layout_constraintEnd_toEndOf="@id/bgGradation"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginRight="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textChallenge"
+            android:text="@string/BE_PODO_CHALLENGER"
+            android:textSize="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper
         app:layout_constraintStart_toStartOf="@id/btnInfo"
