@@ -1,5 +1,6 @@
 package net.awesomekorean.podo;
 
+import android.app.Application;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
@@ -199,9 +200,6 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         Intent intent = new Intent(this, FirebaseCloudMessage.class);
         startService(intent);
 
-        //todo: 이벤트 타이머 테스트용 (삭제할 것)
-        SharedPreferencesInfo.setEventTimer(getApplicationContext(), 0, 0);
-
 
         // 딥링크 리스너
         FirebaseDynamicLinks.getInstance()
@@ -216,8 +214,6 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                             deepLink = pendingDynamicLinkData.getLink();
                         }
                         System.out.println("딥링크 Uri : " + deepLink);
-
-                        //todo: 오픈광고랑 충돌발생 방지할 것
 
                         if(deepLink != null) {
                             String segment = deepLink.getLastPathSegment();
