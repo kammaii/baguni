@@ -16,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -158,7 +159,13 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     int lastClickLevel;
 
     ConstraintLayout btnChallenge;
-    TextView textChallenge;
+    ConstraintLayout layoutChallengeProgress;
+    TextView challengeCount;
+    TextView countDayChallenge;
+    TextView textProgressChallenge;
+    ProgressBar progressChallenge;
+    ImageView starsA;
+    ImageView starsB;
 
     ConstraintLayout challengeResult;
     TextView titleChallengeResult;
@@ -167,7 +174,6 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     Button btnCloseChallengeResult;
 
     int specialLessonCount;
-    Shader shader;
 
     EventTimer eventTimer;
 
@@ -185,7 +191,13 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         btnCloseInfo = view.findViewById(R.id.btnCloseInfo);
         seekBar = view.findViewById(R.id.seekBar);
         btnChallenge = view.findViewById(R.id.btnChallenge);
-        textChallenge = view.findViewById(R.id.textChallenge);
+        layoutChallengeProgress = view.findViewById(R.id.layoutChallengeProgress);
+        challengeCount = view.findViewById(R.id.challengeCount);
+        countDayChallenge = view.findViewById(R.id.countDayChallenge);
+        textProgressChallenge = view.findViewById(R.id.textProgressChallenge);
+        progressChallenge = view.findViewById(R.id.progressChallenge);
+        starsA = view.findViewById(R.id.starsA);
+        starsB = view.findViewById(R.id.starsB);
         challengeResult = view.findViewById(R.id.challengeResult);
         titleChallengeResult = view.findViewById(R.id.titleChallengeResult);
         challengeRewardPoints = view.findViewById(R.id.challengeRewardPoints);
@@ -205,26 +217,22 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        shader = new LinearGradient(0,0,100,0, new int[]{ContextCompat.getColor(context, R.color.PINK2), ContextCompat.getColor(context, R.color.PURPLE)}, new float[]{0, 1}, Shader.TileMode.CLAMP);
-
-        checkEventTimer();
-
-
         int isChallenger = userInformation.getIsChallenger();
 
         // 챌린저 진행중
         if(isChallenger == 1) {
-            setChallengeCount();
+            setChallengeVisible(GONE, VISIBLE);
+            setChallengeInfo();
 
 
         // 챌린지 종료
         } else if(isChallenger == 2) {
-            btnChallenge.setVisibility(GONE);
+            setChallengeVisible(GONE, GONE);
 
             // 챌린지 보상여부 체크
             if(userInformation.getIsChallengeRewarded() == 0) {
-                int completeLessonSize = userInformation.getLessonComplete().size();
-                int totalLessonSize = beginner.length + intermediate.length + specialLessonCount;
+                int completeLessonSize = checkCompleteLessonNo();
+                int totalLessonSize = beginner.length + intermediate.length;
                 int rewardPoint;
                 System.out.println("완료레슨 : " + completeLessonSize);
                 System.out.println("토탈레슨 : " + totalLessonSize);
@@ -252,8 +260,13 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
         // 챌린저 아님
         } else {
-            textChallenge.getPaint().setShader(shader);
+            checkEventTimer();
+            setChallengeVisible(VISIBLE, GONE);
+            Animation animation = AnimationUtils.loadAnimation(context, R.anim.blink_infinite);
+            starsA.startAnimation(animation);
+            starsB.startAnimation(animation);
         }
+
 
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -278,8 +291,20 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     }
 
 
-    // 이벤트 타이머 확인
+    // 챌린지 버튼 세팅
+    private void setChallengeVisible(int a, int b) {
+        btnChallenge.setVisibility(a);
+        layoutChallengeProgress.setVisibility(b);
+        if(a == GONE) {
+            starsA.setVisibility(GONE);
+            starsB.setVisibility(GONE);
+        }
+    }
+
+
+    // 이벤트 타이머 확인 (비챌린저)
     private void checkEventTimer() {
+        challengeCount.setVisibility(GONE);
         System.out.println("이벤트 타이머를 확인합니다.");
         SharedPreferences sp = SharedPreferencesInfo.getEventTimer(context);
         boolean isWorking = sp.getBoolean("isWorking", false);
@@ -292,13 +317,14 @@ public class MainLesson extends Fragment implements View.OnClickListener {
             long eventTime = sp.getLong("eventTime", 0);
             long passedTime = timeNow - startTime;
 
-
             // 타이머 작동
             if(passedTime < eventTime) {
+                challengeCount.setVisibility(VISIBLE);
+
                 final String DISCOUNT = "discount";
                 int percent = sp.getInt("percent", 0);
 
-                //eventTimer = new EventTimer(context, eventTime - passedTime, btnChallenge);
+                eventTimer = new EventTimer(context, eventTime - passedTime, challengeCount, intent);
                 intent.putExtra(DISCOUNT, percent);
 
             } else {
@@ -315,12 +341,38 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     }
 
 
-    private void setChallengeCount() {
+    // 챌린저 정보 세팅
+    private void setChallengeInfo() {
         Long timeStart = userInformation.getDateChallengeStart();
         Long timeNow = UnixTimeStamp.getTimeNow();
         int dayCount = (int) Math.floor((timeNow-timeStart)/86400 + 1);
-        //btnChallenge.setText("Day "+dayCount);
-        //todo: 챌린저 프로그레스 추가
+        countDayChallenge.setText(Integer.toString(dayCount));
+        int totalLessonNo = beginner.length + intermediate.length;
+        int completeLessonNo = checkCompleteLessonNo();
+        int percent = completeLessonNo *100  / totalLessonNo;
+        textProgressChallenge.setText(completeLessonNo + " / " + (totalLessonNo));
+        progressChallenge.setProgress(percent);
+    }
+
+
+    // 완료레슨 개수 확인하기 (챌린저)
+    private int checkCompleteLessonNo() {
+        if(userInformation == null) {
+            userInformation = SharedPreferencesInfo.getUserInfo(getContext());
+        }
+        List<String> lessonComplete = userInformation.getLessonComplete();
+        int count = 0;
+        for(LessonItem item : beginner) {
+            if(lessonComplete.contains(item.getLessonId())) {
+                count++;
+            }
+        }
+        for(LessonItem item : intermediate) {
+            if(lessonComplete.contains(item.getLessonId())) {
+                count++;
+            }
+        }
+        return count;
     }
 
 
@@ -500,7 +552,14 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK) {
             userInformation = SharedPreferencesInfo.getUserInfo(context);
-            setChallengeCount();
+            if(userInformation.getIsChallenger() == 1) {
+                setChallengeInfo();
+                setChallengeVisible(GONE, VISIBLE);
+                SharedPreferencesInfo.setEventTimer(context, 0, 0);
+                if(eventTimer != null) {
+                    eventTimer.onFinish();
+                }
+            }
         }
     }
 
@@ -515,6 +574,11 @@ public class MainLesson extends Fragment implements View.OnClickListener {
             lastClickLevel = SharedPreferencesInfo.getLastClickLevel(context);
             setLessonItem(lastClickLevel);
             adapter.notifyDataSetChanged();
+        }
+
+        if(userInformation.getIsChallenger() == 1) {
+            setChallengeInfo();
+            setChallengeVisible(GONE, VISIBLE);
         }
     }
 }

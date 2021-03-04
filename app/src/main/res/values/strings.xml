@@ -211,6 +211,7 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
 
     <!--    챌린지-->
     <string name="BE_PODO_CHALLENGER">Be a podo challenger</string>
+    <string name="CHALLENGE_PROGRESS">Challenge Progress</string>
     <string name="ISSUE_TITLE">Learner\'s Issue</string>
     <string name="ISSUE_QUESTION">What is the most effective way to learn Korean?</string>
     <string name="ISSUE_ANSWER">Let\'s look at the interviews from students who improved their Korean skills faster than others.</string>

@@ -2,7 +2,9 @@ package net.awesomekorean.podo;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -140,6 +142,9 @@ public class SharedPreferencesInfo {
             editor.putLong("startTime", 0);
             editor.putLong("eventTime", 0);
             editor.putInt("percent", 0);
+            FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
+            Bundle bundle = new Bundle();
+            firebaseAnalytics.logEvent("eventTimer_finished", bundle);
         }
 
         editor.commit();
