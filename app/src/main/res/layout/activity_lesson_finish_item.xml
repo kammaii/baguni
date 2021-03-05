@@ -21,6 +21,7 @@
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/tvFront"
+            android:layout_gravity="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -40,6 +41,7 @@
             android:background="@color/GREY"/>
         <TextView
             android:id="@+id/tvBack"
+            android:layout_gravity="center"
             android:ellipsize="end"
             android:gravity="left|center_vertical"
             android:text="apple"
