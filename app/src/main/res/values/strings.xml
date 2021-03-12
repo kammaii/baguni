@@ -50,7 +50,7 @@
     <string name="CONFIRM_REPORT">Do you have something to tell \'podo\'? \n (bug report or suggestions)</string>
     <string name="WHAT_POINT">What is the \'podo point\'?</string>
     <string name="THINGS_YOU_CAN_DO_WITH_POINTS">What you can do with points</string>
-    <string name="UNLOCK_LESSONS">Lesson: Unlock Lessons</string>
+    <string name="UNLOCK_LESSONS">Lesson: Unlock beginner Lessons</string>
     <string name="UNLOCK_READINGS">Reading: Unlock Readings</string>
     <string name="ASK_CORRECTION">Writing: Ask a Korean teacher for correction</string>
     <string name="HOW_TO_COLLECT_POINTS">How to collect points</string>
@@ -315,8 +315,8 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
 
 
     <!--    비디오레슨-->
-    <string name="VIDEO_DIALOGUE_CONTENTS">Challenger ONLY</string>
-    <string name="VIDEO_DIALOGUE_BTN_TEXT">Join now?</string>
+    <string name="CHALLENGER_ONLY">Challenger ONLY</string>
+    <string name="JOIN_NOW">Join now?</string>
 
 
 

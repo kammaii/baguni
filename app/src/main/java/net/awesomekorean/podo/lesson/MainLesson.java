@@ -418,20 +418,16 @@ public class MainLesson extends Fragment implements View.OnClickListener {
                             list.get(i + 1).setIsActive(true);
                             list.get(i + 1).setIsCurrent(true);
                         }
+                    }
 
-                        // 스페셜레슨 세팅
-                        if (list.get(i).getSLesson() != null) {
-                            list.get(i).getSLesson().setIsActive(true);
-
-                            if (lessonComplete.contains(list.get(i).getSLesson().getLessonId())) {
-                                list.get(i).getSLesson().setIsCompleted(true);
-                            }
-                        }
+                    // 스페셜레슨 세팅
+                    if (list.get(i).getSLesson() != null && lessonComplete.contains(list.get(i).getSLesson().getLessonId())) {
+                        list.get(i).getSLesson().setIsCompleted(true);
                     }
                 }
 
             } else {
-                list.get(0).setIsCurrent(true);
+                list.get(0).setIsActive(true);
             }
 
         // 챌린저일 때
@@ -452,19 +448,15 @@ public class MainLesson extends Fragment implements View.OnClickListener {
                         list.get(i + 1).setIsActive(true);
                         list.get(i + 1).setIsCurrent(true);
                     }
-
-                    // 스페셜레슨 세팅
-                    if (list.get(i).getSLesson() != null) {
-                        list.get(i).getSLesson().setIsActive(true);
-
-                        if (lessonComplete.contains(list.get(i).getSLesson().getLessonId())) {
-                            list.get(i).getSLesson().setIsCompleted(true);
-                        }
-                    }
+                }
+                // 스페셜레슨 세팅
+                if (list.get(i).getSLesson() != null && lessonComplete.contains(list.get(i).getSLesson().getLessonId())) {
+                    list.get(i).getSLesson().setIsCompleted(true);
                 }
             }
         }
         list.get(0).setIsActive(true);
+        list.get(0).setIsLocked(false);
     }
 
 

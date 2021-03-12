@@ -456,7 +456,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                                                     }).addOnFailureListener(new OnFailureListener() {
                                                         @Override
                                                         public void onFailure(@NonNull Exception e) {
-                                                            Toast.makeText(getApplicationContext(), "Failed to remove your account.", Toast.LENGTH_LONG).show();
+                                                            Toast.makeText(getApplicationContext(), "Failed to remove your account. : " + e, Toast.LENGTH_LONG).show();
                                                         }
                                                     });
                                                 }

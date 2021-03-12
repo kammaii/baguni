@@ -2,11 +2,14 @@ package net.awesomekorean.podo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import net.awesomekorean.podo.challenge.Challenge;
 
 public class DialogueActivityType1 extends AppCompatActivity implements View.OnClickListener {
 
@@ -16,9 +19,11 @@ public class DialogueActivityType1 extends AppCompatActivity implements View.OnC
 
     String contents;
     String btnText;
+    boolean isForChallenger;
 
     final String CONTENTS = "contents";
     final String BTN_TEXT = "btnText";
+    final String IS_FOR_CHALLENGER = "isForChallenger";
 
 
 
@@ -35,6 +40,7 @@ public class DialogueActivityType1 extends AppCompatActivity implements View.OnC
 
         contents = getIntent().getStringExtra(CONTENTS);
         btnText = getIntent().getStringExtra(BTN_TEXT);
+        isForChallenger = getIntent().getBooleanExtra(IS_FOR_CHALLENGER, false);
         tvContents.setText(contents);
         btnYes.setText(btnText);
     }
@@ -46,7 +52,12 @@ public class DialogueActivityType1 extends AppCompatActivity implements View.OnC
         switch (view.getId()) {
 
             case R.id.btnYes :
-                setResult(RESULT_OK);
+                if(isForChallenger) {
+                    Intent intent = new Intent(getApplicationContext(), Challenge.class);
+                    startActivity(intent);
+                } else {
+                    setResult(RESULT_OK);
+                }
                 finish();
                 break;
 

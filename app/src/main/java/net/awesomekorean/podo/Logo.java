@@ -154,6 +154,11 @@ public class Logo extends AppCompatActivity {
                                                 });
                                             }
                                         });
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "Failed to load Database", Toast.LENGTH_LONG).show();
+                                        intent = new Intent(getApplicationContext(), SignIn.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
                                 }
                             }).addOnFailureListener(new OnFailureListener() {

@@ -62,8 +62,8 @@ public class LessonVideoMenu extends AppCompatActivity implements View.OnClickLi
                 if(pos !=0 && pos !=1 && isChallenger == 0) {
                     // 챌린저 권유창 띄우기
                     intent = new Intent(getApplicationContext(), DialogueActivityType1.class);
-                    intent.putExtra(CONTENTS, getResources().getString(R.string.VIDEO_DIALOGUE_CONTENTS));
-                    intent.putExtra(BTN_TEXT, getResources().getString(R.string.VIDEO_DIALOGUE_BTN_TEXT));
+                    intent.putExtra(CONTENTS, getResources().getString(R.string.CHALLENGER_ONLY));
+                    intent.putExtra(BTN_TEXT, getResources().getString(R.string.JOIN_NOW));
                     startActivityForResult(intent, 200);
 
                 } else {
