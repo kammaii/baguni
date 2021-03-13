@@ -9,7 +9,7 @@
                 android:angle="45"
                 android:startColor="#FF8495"
                 android:endColor="#6A69EF"/>
-            <corners android:radius="15dp" />
+            <corners android:radius="20dp" />
         </shape>
     </item>
 
@@ -20,7 +20,7 @@
         android:top="2dp">
         <shape android:shape="rectangle" >
             <solid android:color="@color/WHITE" />
-            <corners android:radius="15dp" />
+            <corners android:radius="20dp" />
         </shape>
     </item>
 

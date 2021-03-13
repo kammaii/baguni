@@ -61,7 +61,7 @@
         android:id="@+id/btnChallenge"
         android:visibility="visible"
         android:elevation="5dp"
-        android:background="@drawable/bg_purple_20_gradation"
+        android:background="@drawable/bg_white_20_gradation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,9 +73,10 @@
             android:id="@+id/challengeCount"
             android:text="24:50:00"
             android:textSize="13dp"
-            android:textColor="@color/PURPLE"
+            android:textColor="@color/WHITE"
+            android:textStyle="bold"
             android:gravity="center"
-            android:background="@drawable/bg_white_20"
+            android:background="@drawable/bg_purple_20_gradation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -85,9 +86,11 @@
             android:layout_height="0dp"/>
 
         <TextView
+            android:id="@+id/textChallenge"
             android:text="@string/BE_PODO_CHALLENGER"
-            android:textColor="@color/WHITE"
             android:textSize="15dp"
+            android:textColor="@color/PINK2"
+            android:textStyle="bold"
             android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/challengeCount"
@@ -100,7 +103,7 @@
 <!--    챌린저 진행중-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutChallengeProgress"
-        android:visibility="visible"
+        android:visibility="gone"
         android:elevation="5dp"
         android:background="@drawable/bg_white_20"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -204,7 +207,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/stars_b"
         android:elevation="15dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintEnd_toEndOf="@id/btnChallenge"
         app:layout_constraintBottom_toBottomOf="@id/btnChallenge"/>
 
@@ -495,7 +498,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    // 챌린지 결과
+<!--    챌린지 결과-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/challengeResult"
         android:visibility="gone"

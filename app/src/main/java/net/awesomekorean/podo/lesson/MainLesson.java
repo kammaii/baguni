@@ -159,6 +159,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
     int lastClickLevel;
 
     ConstraintLayout btnChallenge;
+    TextView textChallenge;
     ConstraintLayout layoutChallengeProgress;
     TextView challengeCount;
     TextView countDayChallenge;
@@ -191,6 +192,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         btnCloseInfo = view.findViewById(R.id.btnCloseInfo);
         seekBar = view.findViewById(R.id.seekBar);
         btnChallenge = view.findViewById(R.id.btnChallenge);
+        textChallenge = view.findViewById(R.id.textChallenge);
         layoutChallengeProgress = view.findViewById(R.id.layoutChallengeProgress);
         challengeCount = view.findViewById(R.id.challengeCount);
         countDayChallenge = view.findViewById(R.id.countDayChallenge);
@@ -260,6 +262,9 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
         // 챌린저 아님
         } else {
+            textChallenge.measure(0,0);
+            Shader shader = new LinearGradient(0,0,textChallenge.getMeasuredWidth(),0, ContextCompat.getColor(context, R.color.PINK2), ContextCompat.getColor(context, R.color.PURPLE), Shader.TileMode.CLAMP);
+            textChallenge.getPaint().setShader(shader);
             checkEventTimer();
             setChallengeVisible(VISIBLE, GONE);
             Animation animation = AnimationUtils.loadAnimation(context, R.anim.blink_infinite);
