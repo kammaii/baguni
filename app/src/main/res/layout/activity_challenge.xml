@@ -1099,6 +1099,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btnChallenge"
         android:gravity="center"
+        android:elevation="1dp"
         android:background="@drawable/bg_grey_light_10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

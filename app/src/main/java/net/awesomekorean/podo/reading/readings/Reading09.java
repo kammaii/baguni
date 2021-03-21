@@ -13,7 +13,7 @@ public class Reading09 extends ReadingInit implements Reading, Serializable {
 
 
     final String[] article = {
-            "한국어에는 ‘한자어 숫자’(sino-Korean number)와 ‘고유어 숫자’(native-Korean number)가 있습니다.\n그래서 한국어를 공부하는 학생들이 숫자를 많이 어려워 합니다. \n특히 시간을 이야기 할 때 ‘시간’은 한자어를 ‘분’은 고유어를 사용해야 하기 때문에 정말 ",
+            "한국어에는 ‘한자어 숫자’(sino-Korean number)와 ‘고유어 숫자’(native-Korean number)가 있습니다.\n그래서 한국어를 공부하는 학생들이 숫자를 많이 어려워 합니다. \n특히 시간을 이야기 할 때 ‘시간’은 고유어를 ‘분’은 한자어를 사용해야 하기 때문에 정말 ",
             "헷갈려",
             " 합니다. \n그럼 왜 이렇게 사용하는 걸까요? \n\n",
             "이유",
