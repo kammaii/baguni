@@ -7,6 +7,7 @@
     <!--    로그인-->
     <string name="WELCOME"> Welcome to Podo</string>
     <string name="EMAIL"> Email</string>
+    <string name="EMAIL_SIGN_UP"> Please enter your active email</string>
     <string name="PASSWORD"> Password</string>
     <string name="PASSWORD_SIX_CHARACTERS_LONG">Enter at least 6 characters</string>
     <string name="WRONG_EMAIL"> Wrong email!!</string>

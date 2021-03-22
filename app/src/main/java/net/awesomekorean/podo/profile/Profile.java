@@ -3,6 +3,7 @@ package net.awesomekorean.podo.profile;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -417,7 +418,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                 startActivity(intent);
                                 FirebaseAuth.getInstance().signOut();
-                                finish();
+                                finishAffinity();
                             }
                         })
                         .setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {

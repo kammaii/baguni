@@ -240,7 +240,6 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
                                 if(timer != null) {
                                     long eventTime = Long.parseLong(timer) * 60;
-                                    System.out.println("이벤트타임 : " + eventTime);
                                     SharedPreferencesInfo.setEventTimer(getApplicationContext(), eventTime, percent);
                                     if(thisFragment != null) {
                                         fm = getSupportFragmentManager();

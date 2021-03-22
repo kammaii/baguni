@@ -199,10 +199,11 @@ public class SignIn extends AppCompatActivity implements Button.OnClickListener 
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // 구글 로그인 성공
+                System.out.println("구글로그인 성공");
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-
+                System.out.println("구글로그인 실패 : " + e);
             }
         }
     }

@@ -378,6 +378,7 @@ public class Challenge extends AppCompatActivity implements View.OnClickListener
                 break;
 
             case R.id.btnChallenge :
+                btnChallenge.setEnabled(false);
                 BillingFlowParams flowParams = BillingFlowParams.newBuilder().setSkuDetails(skuDetails).build();
                 billingClient.launchBillingFlow(this, flowParams);
                 break;

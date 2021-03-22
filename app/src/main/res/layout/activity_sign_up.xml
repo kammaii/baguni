@@ -95,6 +95,7 @@
                 android:id="@+id/email"
                 android:layout_weight="0.6"
                 android:background="@drawable/bg_white_30_stroke_grey"
+                android:hint="@string/EMAIL_SIGN_UP"
                 android:drawableRight="@drawable/successgrey"
                 android:paddingRight="15dp"
                 android:textSize="15dp"

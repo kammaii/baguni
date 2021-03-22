@@ -71,6 +71,11 @@ public class GetRandomPoint extends AppCompatActivity implements View.OnClickLis
         box3.setOnClickListener(this);
         btnGetPoint.setOnClickListener(this);
 
+        box1.setClickable(true);
+        box2.setClickable(true);
+        box3.setClickable(true);
+
+
         lessonItem = (LessonItem) getIntent().getSerializableExtra(getResources().getString(R.string.LESSON));
 
         playSoundPool = new PlaySoundPool(context);
@@ -102,6 +107,9 @@ public class GetRandomPoint extends AppCompatActivity implements View.OnClickLis
                 break;
 
             default:
+                box1.setClickable(false);
+                box2.setClickable(false);
+                box3.setClickable(false);
                 v.startAnimation(animation);
                 // 포인트 랜덤으로 가져오기
                 reward = RandomRewards.randomRewards();

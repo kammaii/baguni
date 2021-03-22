@@ -9,9 +9,9 @@ public class RandomRewards {
 
         Random random = new Random();
 
-        int reward1 = 4;    // 60%
-        int reward2 = 6;   // 25%
-        int reward3 = 8;   // 10%
+        int reward1 = 4;    // 50%
+        int reward2 = 6;   // 30%
+        int reward3 = 8;   // 15%
         int reward4 = 10;   // 5%
 
         int reward = 0;
@@ -22,13 +22,13 @@ public class RandomRewards {
         if (select >= 0 && select <= 4) {
             reward = reward4;
 
-        } else if (select >= 5 && select <= 14) {
+        } else if (select >= 5 && select <= 19) {
             reward = reward3;
 
-        } else if (select >= 15 && select <= 39) {
+        } else if (select >= 20 && select <= 49) {
             reward = reward2;
 
-        } else if (select >= 40 && select <= 99) {
+        } else if (select >= 50 && select <= 99) {
             reward = reward1;
 
         }

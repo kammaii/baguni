@@ -100,6 +100,7 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
         btnPurchasePoint.setEnabled(false);
         btnPurchasePoint.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.bg_grey_light_10));
 
+
         // analytics 로그 이벤트 얻기
         params = new Bundle();
         firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
@@ -305,6 +306,7 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
                 break;
 
             case R.id.btnPurchasePoint :
+                btnPurchasePoint.setEnabled(false);
                 BillingFlowParams flowParams = BillingFlowParams.newBuilder().setSkuDetails(skuDetails).build();
                 billingClient.launchBillingFlow(this, flowParams);
                 break;
