@@ -166,6 +166,4 @@ public class SharedPreferencesInfo {
         System.out.println("EngHint 를 불러옵니다: "+engHint);
         return engHint;
     }
-
-
 }

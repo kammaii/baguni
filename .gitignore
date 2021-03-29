@@ -12,3 +12,4 @@
 nativetemplates/build
 /captures
 .externalNativeBuild
+app/release/app-release.aab
