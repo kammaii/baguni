@@ -92,8 +92,6 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
         btnWatchAds.setOnClickListener(this);
         btnClose.setOnClickListener(this);
 
-        userInformation = SharedPreferencesInfo.getUserInfo(context);
-        userPoint = userInformation.getPoints();
 
         extra = getIntent().getStringExtra(getResources().getString(R.string.EXTRA_ID));
 
@@ -122,24 +120,17 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
     }
 
 
-    // 리워드 보상 포인트 반영
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK) {
-            userInformation = SharedPreferencesInfo.getUserInfo(context);
-            userPoint = userInformation.getPoints();
+    // 포인트 변경 후 체크
+    private void checkPoint() {
+        if(userPoint >= unlockPrice) {
+            unlockFirst.setVisibility(View.VISIBLE);
+            unlockSecond.setVisibility(View.GONE);
+            btnYes.performClick();
 
-            if(userPoint >= unlockPrice) {
-                unlockFirst.setVisibility(View.VISIBLE);
-                unlockSecond.setVisibility(View.GONE);
-                btnYes.performClick();
-
-            } else {
-                unlockFirst.setVisibility(View.GONE);
-                unlockSecond.setVisibility(View.VISIBLE);
-                pointHave.setText(String.valueOf(userPoint));
-            }
+        } else {
+            unlockFirst.setVisibility(View.GONE);
+            unlockSecond.setVisibility(View.VISIBLE);
+            pointHave.setText(String.valueOf(userPoint));
         }
     }
 
@@ -150,7 +141,14 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
 
         if(userInformation != null) {
             userInformation = SharedPreferencesInfo.getUserInfo(context);
-            pointHave.setText(String.valueOf(userInformation.getPoints()));
+            userPoint = userInformation.getPoints();
+            pointHave.setText(String.valueOf(userPoint));
+            checkPoint();
+
+        // 처음 실행했을 때
+        } else {
+            userInformation = SharedPreferencesInfo.getUserInfo(context);
+            userPoint = userInformation.getPoints();
         }
     }
 
@@ -237,7 +235,7 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
 
             case R.id.btnPurchasePoints :
                 intent = new Intent(context, TopUp.class);
-                startActivityForResult(intent, 300);
+                startActivity(intent);
                 break;
 
 

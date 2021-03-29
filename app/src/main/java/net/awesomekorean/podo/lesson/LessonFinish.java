@@ -1,5 +1,6 @@
 package net.awesomekorean.podo.lesson;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +18,16 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.review.model.ReviewErrorCode;
+import com.google.android.play.core.review.testing.FakeReviewManager;
+import com.google.android.play.core.tasks.OnCompleteListener;
+import com.google.android.play.core.tasks.OnFailureListener;
+import com.google.android.play.core.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import net.awesomekorean.podo.AdsManager;
 import net.awesomekorean.podo.PlaySoundPool;
 import net.awesomekorean.podo.R;
@@ -30,6 +41,8 @@ import java.util.List;
 import java.util.Map;
 
 public class LessonFinish extends AppCompatActivity implements View.OnClickListener {
+
+    FirebaseAnalytics firebaseAnalytics;
 
     TextView tvWord;
     TextView tvSentence;
@@ -51,6 +64,8 @@ public class LessonFinish extends AppCompatActivity implements View.OnClickListe
     LessonFinishAdapter adapter;
     boolean btnMyWordsClicked;
     boolean btnMySentencesClicked;
+
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,6 +145,55 @@ public class LessonFinish extends AppCompatActivity implements View.OnClickListe
         Animation aniMoveDown = AnimationUtils.loadAnimation(context, R.anim.move_up_small);
         tvWord.startAnimation(aniMoveDown);
         tvSentence.startAnimation(aniMoveDown);
+
+
+        // 인앱리뷰 여부 체크하기
+        int completeLessonSize = userInformation.getLessonComplete().size();
+
+        if(completeLessonSize == 5 || completeLessonSize == 10 || completeLessonSize == 15 || completeLessonSize == 20) {
+
+            btnComplete.setEnabled(false);
+            bundle = new Bundle();
+            firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+
+            final ReviewManager reviewManager = ReviewManagerFactory.create(this);
+            Task<ReviewInfo> request = reviewManager.requestReviewFlow();
+            request.addOnCompleteListener(new OnCompleteListener<ReviewInfo>() {
+                @Override
+                public void onComplete(@NonNull Task<ReviewInfo> task) {
+
+                    if(task.isSuccessful()) {
+                        System.out.println("인앱리뷰요청 성공");
+                        firebaseAnalytics.logEvent("inAppReview_request_succeed", bundle);
+
+                        ReviewInfo reviewInfo = task.getResult();
+                        Task<Void> flow = reviewManager.launchReviewFlow(LessonFinish.this, reviewInfo);
+                        flow.addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                System.out.println("인앱리뷰 완료");
+                                firebaseAnalytics.logEvent("inAppReview_succeed", bundle);
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(Exception e) {
+                                System.out.println("인앱리뷰 실패" + e);
+                                bundle.putString("errorMsg", e.getMessage());
+                                firebaseAnalytics.logEvent("inAppReview_failed", bundle);
+                            }
+                        });
+
+                    } else {
+                        System.out.println("인앱리뷰요청 실패 : " + task.getException().getMessage());
+                        bundle.putString("errorMsg", task.getException().getMessage());
+                        firebaseAnalytics.logEvent("inAppReview_request_failed", bundle);
+                    }
+
+                    btnComplete.setEnabled(true);
+                }
+            });
+        }
     }
 
 
