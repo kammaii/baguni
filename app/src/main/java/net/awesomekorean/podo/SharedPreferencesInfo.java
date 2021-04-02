@@ -166,4 +166,29 @@ public class SharedPreferencesInfo {
         System.out.println("EngHint 를 불러옵니다: "+engHint);
         return engHint;
     }
+
+    // 챌린저 할인 이벤트 대상여부
+    public static void setChallengerDiscountAvailable(Context context, boolean b) {
+        setBoolean(context, "challengerDiscountAvailable", b);
+        SharedPreferences sp = context.getSharedPreferences("challengerDiscountAvailable", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("challengerDiscountAvailable", b);
+        editor.commit();
+        System.out.println("EngHint 를 저장했습니다: "+b);
+    }
+
+    public static boolean getChallengerDiscountAvailable(Context context) {
+        SharedPreferences sp = context.getSharedPreferences("challengerDiscountAvailable", MODE_PRIVATE);
+        boolean challengerDiscountAvailable = sp.getBoolean("challengerDiscountAvailable", false);
+        System.out.println("challengerDiscountAvailable 를 불러옵니다: "+challengerDiscountAvailable);
+        return challengerDiscountAvailable;
+    }
+
+    public static void setBoolean(Context context, String string, boolean b) {
+        SharedPreferences sp = context.getSharedPreferences(string, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean(string, b);
+        editor.commit();
+        System.out.println(string +"을/를 저장했습니다: "+b);
+    }
 }

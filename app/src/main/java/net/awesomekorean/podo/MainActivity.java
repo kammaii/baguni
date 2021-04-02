@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -39,6 +40,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import net.awesomekorean.podo.challenge.Challenge;
+import net.awesomekorean.podo.challenge.ChallengePopUpDiscount;
 import net.awesomekorean.podo.collection.MainCollection;
 import net.awesomekorean.podo.lesson.MainLesson;
 import net.awesomekorean.podo.login.SignIn;
@@ -241,11 +243,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                                 if(timer != null) {
                                     long eventTime = Long.parseLong(timer) * 60;
                                     SharedPreferencesInfo.setEventTimer(getApplicationContext(), eventTime, percent);
-                                    if(thisFragment != null) {
-                                        fm = getSupportFragmentManager();
-                                        tran = fm.beginTransaction();
-                                        tran.detach(thisFragment).attach(mainLesson).commit();
-                                    }
+                                    resetFragment();
                                 }
 
                                 startActivity(deepLinkIntent);
@@ -463,11 +461,21 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     }
 
 
+    private void resetFragment() {
+        if(thisFragment != null) {
+            fm = getSupportFragmentManager();
+            tran = fm.beginTransaction();
+            tran.detach(thisFragment).attach(mainLesson).commit();
+        }
+    }
+
+
     @Override
     protected void onResume() {
         super.onResume();
         checkPlayService();
         System.out.println("메인 보임!");
+
         if(userInformation != null) {
             userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
             userPoint.setText(String.valueOf(userInformation.getPoints()));
@@ -480,6 +488,13 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
             }
         }
 
+        // 챌린저 할인 대상 체크
+        if(SharedPreferencesInfo.getChallengerDiscountAvailable(getApplicationContext())) {
+            intent = new Intent(getApplicationContext(), ChallengePopUpDiscount.class);
+            startActivityForResult(intent, 200);
+        }
+
+
         if(!IsOnline.isOnline(getApplicationContext())) {
             Toast.makeText(getApplicationContext(), "Internet connection required.", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, SignIn.class);
@@ -488,6 +503,16 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode==RESULT_OK) {
+            if (requestCode == 200) {
+                resetFragment();
+            }
+        }
+    }
 
     @Override
     public void onBackPressed() {

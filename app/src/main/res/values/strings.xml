@@ -297,6 +297,10 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="CHALLENGE_FAILED_MESSAGE">
         But \'podo\' would like to offer you 100 points. Don\'t stop challenging your Korean learning.
         (If there is any error with the challenge result, please contact us by email.)</string>
+    <string name="CHALLENGE_POPUP_DISCOUNT_TITLE">Are you enjoying podo?</string>
+    <string name="CHALLENGE_POPUP_DISCOUNT_CONTENTS">Be a CHALLENGER with a specially discounted price!</string>
+    <string name="VALID_1_HOUR">Valid for 1 hour ONLY</string>
+    <string name="GET_DISCOUNT">Get 20% OFF</string>
 
 
     <!--    컬렉션-->
@@ -318,8 +322,6 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <!--    비디오레슨-->
     <string name="CHALLENGER_ONLY">Challenger ONLY</string>
     <string name="JOIN_NOW">Join now?</string>
-
-
 
 
     <!--    Q&A-->

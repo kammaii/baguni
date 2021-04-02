@@ -92,6 +92,8 @@ public class UserInformation {
                     FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
                     Bundle bundle = new Bundle();
                     firebaseAnalytics.logEvent("L_00_complete", bundle);
+
+                    SharedPreferencesInfo.setChallengerDiscountAvailable(context, true);
                 }
             } else {
                 System.out.println("이미 완료한 레슨입니다.");
