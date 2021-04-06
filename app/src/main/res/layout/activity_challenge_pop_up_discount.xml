@@ -33,31 +33,63 @@
             android:id="@+id/title"
             android:text="@string/CHALLENGE_POPUP_DISCOUNT_TITLE"
             android:textSize="25dp"
-            android:textColor="@color/NAVY"
+            android:textColor="@color/PURPLE"
             android:textStyle="bold"
             android:gravity="center"
-            android:lineSpacingExtra="10dp"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <ImageView
             android:id="@+id/image"
-            android:src="@drawable/challenge"
+            android:src="@drawable/promotion_pop_up"
+            android:layout_margin="10dp"
             app:layout_constraintTop_toBottomOf="@id/title"
             android:layout_width="match_parent"
             android:layout_height="250dp"/>
 
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/text1"
+                android:text="Be a"
+                android:textSize="15dp"
+                android:textColor="@color/NAVY"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="challenger"
+                android:textSize="15dp"
+                android:textColor="@color/RED_STRONG"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:lineSpacingExtra="10dp"
+                android:layout_marginLeft="5dp"
+                app:layout_constraintStart_toEndOf="@id/text1"
+                app:layout_constraintTop_toBottomOf="@id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
         <TextView
             android:id="@+id/contents"
-            android:text="@string/CHALLENGE_POPUP_DISCOUNT_CONTENTS"
-            android:textSize="20dp"
+            android:text="with a specially discounted price!"
+            android:textSize="15dp"
             android:textColor="@color/NAVY"
             android:gravity="center"
             android:lineSpacingExtra="10dp"
-            app:layout_constraintTop_toBottomOf="@id/image"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
 
         <TextView
             android:id="@+id/valid"
@@ -65,7 +97,7 @@
             android:textSize="20dp"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:textColor="@color/RED"
+            android:textColor="@color/RED_STRONG"
             android:gravity="center"
             android:lineSpacingExtra="10dp"
             app:layout_constraintTop_toBottomOf="@id/contents"
@@ -75,11 +107,11 @@
         <Button
             android:id="@+id/btnGet"
             android:text="@string/GET_DISCOUNT"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@color/WHITE"
-            android:background="@drawable/bg_red_15"
+            android:background="@drawable/bg_red_30"
             app:layout_constraintTop_toBottomOf="@id/valid"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_margin="20dp"
