@@ -178,6 +178,12 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
         "Make sentences using only what you've learned in the beginner lessons."</string>
     <string name="PODO_LESSON_GOAL_ADVANCED_1">
         "It's time to upgrade your expressiveness by learning new(more advanced) words and expressions."</string>
+    <string name="REWARD_RATE">
+        - 4 points : 50%\n
+        - 6 points : 30%\n
+        - 8 points : 15%\n
+        - 10 points : 5%
+    </string>
 
 
     <!--    읽기-->
