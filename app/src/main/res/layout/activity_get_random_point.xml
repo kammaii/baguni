@@ -32,27 +32,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <ImageView
-        android:id="@+id/rewardRate"
-        android:src="@drawable/question"
-        app:layout_constraintTop_toBottomOf="@id/congratulation"
-        app:layout_constraintEnd_toEndOf="@id/congratulation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/tvRewardRate"
-        android:visibility="gone"
-        android:text="@string/REWARD_RATE"
-        android:textColor="@color/BLACK"
-        android:background="@drawable/bg_purple_10_transparent"
-        app:layout_constraintEnd_toStartOf="@id/rewardRate"
-        app:layout_constraintTop_toBottomOf="@id/rewardRate"
-        android:elevation="10dp"
-        android:padding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
     <TextView
         android:text="Good job!"
         android:textSize="20dp"

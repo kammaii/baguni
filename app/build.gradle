@@ -9,8 +9,8 @@ android {
         applicationId "net.awesomekorean.podo"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 65
-        versionName "podo:2.2.11"
+        versionCode 66
+        versionName "podo:2.2.12"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

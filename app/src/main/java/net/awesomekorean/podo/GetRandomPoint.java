@@ -32,8 +32,6 @@ public class GetRandomPoint extends AppCompatActivity implements View.OnClickLis
 
     ConstraintLayout selectResult;
 
-    ImageView rewardRate;
-    TextView tvRewardRate;
     ImageView box1;
     ImageView box2;
     ImageView box3;
@@ -62,8 +60,6 @@ public class GetRandomPoint extends AppCompatActivity implements View.OnClickLis
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
         selectResult = findViewById(R.id.selectResult);
-        rewardRate = findViewById(R.id.rewardRate);
-        tvRewardRate = findViewById(R.id.tvRewardRate);
         box1 = findViewById(R.id.box1);
         box2 = findViewById(R.id.box2);
         box3 = findViewById(R.id.box3);
@@ -75,7 +71,6 @@ public class GetRandomPoint extends AppCompatActivity implements View.OnClickLis
         box2.setOnClickListener(this);
         box3.setOnClickListener(this);
         btnGetPoint.setOnClickListener(this);
-        rewardRate.setOnClickListener(this);
 
         box1.setClickable(true);
         box2.setClickable(true);
@@ -110,14 +105,6 @@ public class GetRandomPoint extends AppCompatActivity implements View.OnClickLis
                     userInformation.addRewardPoints(context, reward);
                 }
                 finish();
-                break;
-
-            case R.id.rewardRate :
-                if(tvRewardRate.getVisibility() == View.VISIBLE) {
-                    tvRewardRate.setVisibility(View.GONE);
-                } else {
-                    tvRewardRate.setVisibility(View.VISIBLE);
-                }
                 break;
 
             default:
