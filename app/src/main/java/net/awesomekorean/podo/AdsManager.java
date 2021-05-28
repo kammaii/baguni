@@ -128,8 +128,13 @@ public class AdsManager {
 
                 @Override
                 public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
-                    Intent intent = new Intent(activity, GetRandomPoint.class);
-                    activity.startActivity(intent);
+//                    Intent intent = new Intent(activity, GetRandomPoint.class);
+//                    activity.startActivity(intent);
+
+                    // 포인트 합산하기
+                    UserInformation userInformation = SharedPreferencesInfo.getUserInfo(activity);
+                    userInformation.addRewardPoints(activity, 5);
+
                     loadRewardAds(activity);
 
                     // analytics 로그 이벤트 얻기

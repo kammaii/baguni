@@ -356,7 +356,7 @@ Let's practice until '일시 오분' and '십살' seem strange!"</string>
     <string name="EVALUATION_APP">Evaluate this app</string>
     <string name="HISTORY">History of requests</string>
     <string name="RECOMMEND">Recommend this app</string>
-    <string name="GET_POINTS_BY_AD">Get random points by watching ad</string>
+    <string name="GET_POINTS_BY_AD">View this ad to receive 5 points</string>
     <string name="GET_POINTS_RATE">* Random point probabilities: 4(50%) / 6(30%) / 8(15%) / 10(5%)</string>
     <string name="GET_POINTS_BY_PURCHASING">Get points by purchasing</string>
     <string name="AD_LOAD_FAILED">Failed to load ads. Please try it again.</string>
