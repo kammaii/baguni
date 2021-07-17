@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -40,7 +41,7 @@ public class VideoFrame extends AppCompatActivity {
 
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-
+                Toast.makeText(getApplicationContext(), youTubeInitializationResult.toString(), Toast.LENGTH_LONG).show();
             }
         });
     }

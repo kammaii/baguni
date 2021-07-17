@@ -79,6 +79,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
     LinearLayout evaluation;
     LinearLayout recommend;
+    LinearLayout getPointByAd;
+    LinearLayout getPointByPurchasing;
     LinearLayout logout;
     LinearLayout deleteAccount;
 
@@ -139,6 +141,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
         evaluation = findViewById(R.id.evaluation);
         recommend = findViewById(R.id.recommend);
+        getPointByAd = findViewById(R.id.getPointsByAd);
+        getPointByPurchasing = findViewById(R.id.getPointsByPurchasing);
         logout = findViewById(R.id.logout);
         deleteAccount = findViewById(R.id.deleteAccount);
         reportResult = findViewById(R.id.reportResult);
@@ -154,6 +158,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         btnSend.setOnClickListener(this);
         evaluation.setOnClickListener(this);
         recommend.setOnClickListener(this);
+        getPointByAd.setOnClickListener(this);
+        getPointByPurchasing.setOnClickListener(this);
         logout.setOnClickListener(this);
         deleteAccount.setOnClickListener(this);
 
@@ -391,6 +397,15 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
                 Intent chooser = Intent.createChooser(intent, "Recommend podo to your friends");
                 startActivity(chooser);
+                break;
+
+            case R.id.getPointsByAd :
+                adsManager.playRewardAds(this);
+                break;
+
+            case R.id.getPointsByPurchasing :
+                intent = new Intent(Profile.this, TopUp.class);
+                startActivity(intent);
                 break;
 
             case R.id.logout :
