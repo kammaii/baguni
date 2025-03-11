@@ -83,23 +83,16 @@ public class LessonSpecialFrame extends AppCompatActivity implements Button.OnCl
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
-
-            case R.id.btnFinish :
-                openConfirmQuit();
-            break;
-
-            case R.id.btnNo :
-                confirmQuit.setVisibility(View.GONE);
-                break;
-
-            case R.id.btnYes :
-                // 레슨완료 정보 업데이트 하기
-                String lessonId = lessonSpecial.getLessonId();
-                UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
-                userInformation.updateCompleteList(context, lessonId, false);
-                finish();
-                break;
+        if(v.getId() == R.id.btnFinish) {
+            openConfirmQuit();
+        } else if(v.getId() == R.id.btnNo) {
+            confirmQuit.setVisibility(View.GONE);
+        } else if(v.getId() == R.id.btnYes) {
+            // 레슨완료 정보 업데이트 하기
+            String lessonId = lessonSpecial.getLessonId();
+            UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
+            userInformation.updateCompleteList(context, lessonId, false);
+            finish();
         }
     }
 

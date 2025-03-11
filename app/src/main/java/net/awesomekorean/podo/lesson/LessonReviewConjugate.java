@@ -224,66 +224,60 @@ public class LessonReviewConjugate extends Fragment implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        if(v.getId() == R.id.btnConfirm) {
+            btnConfirm.setEnabled(false);
+            if(baseFormIndex == selectedBaseFormIndex && conjugationIndex == selectedConjugationIndex) {
+                answered(0, R.drawable.bg_lavendar_10_stroke_lavendar, true);
 
-            case R.id.btnConfirm :
-                btnConfirm.setEnabled(false);
-                if(baseFormIndex == selectedBaseFormIndex && conjugationIndex == selectedConjugationIndex) {
-                    answered(0, R.drawable.bg_lavendar_10_stroke_lavendar, true);
+            } else {
+                answered(1, R.drawable.bg_pink_10_stroke_red, false);
+            }
+        } else {
+            ToggleButton selectedBtn = (ToggleButton) v;
+            if(selectedBtn.isChecked()) {
+                selectedBtn.setTextColor(Color.WHITE);
+                String selectedBtnText = selectedBtn.getText().toString();
 
-                } else {
-                    answered(1, R.drawable.bg_pink_10_stroke_red, false);
-                }
-                break;
-
-
-            default:
-                ToggleButton selectedBtn = (ToggleButton) v;
-                if(selectedBtn.isChecked()) {
-                    selectedBtn.setTextColor(Color.WHITE);
-                    String selectedBtnText = selectedBtn.getText().toString();
-
-                    // 기본형 버튼 클릭
-                    if (selectedBtn.getTag().equals(stringBaseForm)) {
-                        setBtnConfirm(false);
-                        selectedBaseFormIndex = Arrays.asList(lessonReview.getBaseForm()).indexOf(selectedBtnText);
-                        if (selectedBaseToggle != null && !selectedBtn.equals(selectedBaseToggle)) {
-                            selectedBaseToggle.setChecked(false);
-                            selectedBaseToggle.setTextColor(Color.GRAY);
-                        }
-                        selectedBaseToggle = selectedBtn;
-                        isBaseForm = false;
-                        flexConjugation.removeAllViews();
-                        conjugationSize = lessonReview.getConjugation()[selectedBaseFormIndex].length;
-                        setBtns();
-
-                    // 활용 버튼 클릭
-                    } else {
-                        setBtnConfirm(true);
-                        tvAnswer.setText(selectedBtnText);
-                        btnConfirm.setEnabled(true);
-                        selectedConjugationIndex = Arrays.asList(lessonReview.getConjugation()[selectedBaseFormIndex]).indexOf(selectedBtnText);
-                        if (selectedConjugationToggle != null && !selectedBtn.equals(selectedConjugationToggle)) {
-                            selectedConjugationToggle.setChecked(false);
-                            selectedConjugationToggle.setTextColor(Color.GRAY);
-                        }
-                        selectedConjugationToggle = selectedBtn;
-                    }
-
-                // 같은 버튼 한번 더 클릭
-                } else {
+                // 기본형 버튼 클릭
+                if (selectedBtn.getTag().equals(stringBaseForm)) {
                     setBtnConfirm(false);
-                    btnConfirm.setEnabled(false);
-                    selectedBtn.setChecked(false);
-                    selectedBtn.setTextColor(Color.GRAY);
-                    if(selectedBaseToggle != null) {
+                    selectedBaseFormIndex = Arrays.asList(lessonReview.getBaseForm()).indexOf(selectedBtnText);
+                    if (selectedBaseToggle != null && !selectedBtn.equals(selectedBaseToggle)) {
                         selectedBaseToggle.setChecked(false);
                         selectedBaseToggle.setTextColor(Color.GRAY);
                     }
+                    selectedBaseToggle = selectedBtn;
+                    isBaseForm = false;
                     flexConjugation.removeAllViews();
-                    tvAnswer.setText("");
+                    conjugationSize = lessonReview.getConjugation()[selectedBaseFormIndex].length;
+                    setBtns();
+
+                    // 활용 버튼 클릭
+                } else {
+                    setBtnConfirm(true);
+                    tvAnswer.setText(selectedBtnText);
+                    btnConfirm.setEnabled(true);
+                    selectedConjugationIndex = Arrays.asList(lessonReview.getConjugation()[selectedBaseFormIndex]).indexOf(selectedBtnText);
+                    if (selectedConjugationToggle != null && !selectedBtn.equals(selectedConjugationToggle)) {
+                        selectedConjugationToggle.setChecked(false);
+                        selectedConjugationToggle.setTextColor(Color.GRAY);
+                    }
+                    selectedConjugationToggle = selectedBtn;
                 }
-                break;
+
+                // 같은 버튼 한번 더 클릭
+            } else {
+                setBtnConfirm(false);
+                btnConfirm.setEnabled(false);
+                selectedBtn.setChecked(false);
+                selectedBtn.setTextColor(Color.GRAY);
+                if(selectedBaseToggle != null) {
+                    selectedBaseToggle.setChecked(false);
+                    selectedBaseToggle.setTextColor(Color.GRAY);
+                }
+                flexConjugation.removeAllViews();
+                tvAnswer.setText("");
+            }
         }
     }
 

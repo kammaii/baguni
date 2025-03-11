@@ -181,77 +181,70 @@ public class Teachers extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
+        if(v.getId() == R.id.btnBack) {
+            intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } else if(v.getId() == R.id.btnTopUp) {
+            intent = new Intent(this, TopUp.class);
+            startActivity(intent);
+        } else if(v.getId() == R.id.btnSubmit) {
+            btnSubmit.setEnabled(false);
 
-            case R.id.btnBack :
-                intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                break;
+            final String userEmail = SharedPreferencesInfo.getUserEmail(this);
+            final String userName = SharedPreferencesInfo.getUserName(this);
 
-            case R.id.btnTopUp :
-                intent = new Intent(this, TopUp.class);
-                startActivity(intent);
-                break;
+            final int newPoints = pointsHave - pointsNeed;
 
-            case R.id.btnSubmit :
-                btnSubmit.setEnabled(false);
+            final UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
+            userInformation.setPoints(newPoints);
 
-                final String userEmail = SharedPreferencesInfo.getUserEmail(this);
-                final String userName = SharedPreferencesInfo.getUserName(this);
+            DocumentReference informationRef = db.collection(getString(R.string.DB_USERS)).document(userEmail);
+            informationRef.update("points", newPoints).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
+                    System.out.println("포인트를 업데이트 했습니다. : " + newPoints);
+                }
+            });
 
-                final int newPoints = pointsHave - pointsNeed;
+            String token = SharedPreferencesInfo.getUserToken(getApplicationContext());
 
-                final UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
-                userInformation.setPoints(newPoints);
+            requestWriting.setUserEmail(userEmail);
+            requestWriting.setUserName(userName);
+            requestWriting.setTeacherName(teacherName);
+            requestWriting.setTeacherId(teacherId);
+            requestWriting.setDateRequest(UnixTimeStamp.getTimeNow());
+            requestWriting.setStatus(1);
+            requestWriting.setUserToken(token);
 
-                DocumentReference informationRef = db.collection(getString(R.string.DB_USERS)).document(userEmail);
-                informationRef.update("points", newPoints).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        SharedPreferencesInfo.setUserInfo(getApplicationContext(), userInformation);
-                        System.out.println("포인트를 업데이트 했습니다. : " + newPoints);
-                    }
-                });
+            WritingRepository repository = new WritingRepository(getApplicationContext());
+            repository.update(requestWriting);
 
-                String token = SharedPreferencesInfo.getUserToken(getApplicationContext());
+            // 교정요청 DB에 저장하기
+            db.collection(getString(R.string.DB_WRITINGS)).document(requestWriting.getGuid())
+                    .set(requestWriting).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            System.out.println("교정요청을 DB에 저장했습니다.");
+                            requestResult.setVisibility(View.VISIBLE);
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    requestResult.setVisibility(View.GONE);
+                                    Intent intent = new Intent(getApplication(), MainActivity.class);
+                                    startActivity(intent);
+                                }
+                            }, 3000);
+                        }
+                    });
 
-                requestWriting.setUserEmail(userEmail);
-                requestWriting.setUserName(userName);
-                requestWriting.setTeacherName(teacherName);
-                requestWriting.setTeacherId(teacherId);
-                requestWriting.setDateRequest(UnixTimeStamp.getTimeNow());
-                requestWriting.setStatus(1);
-                requestWriting.setUserToken(token);
-
-                WritingRepository repository = new WritingRepository(getApplicationContext());
-                repository.update(requestWriting);
-
-                // 교정요청 DB에 저장하기
-                db.collection(getString(R.string.DB_WRITINGS)).document(requestWriting.getGuid())
-                        .set(requestWriting).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        System.out.println("교정요청을 DB에 저장했습니다.");
-                        requestResult.setVisibility(View.VISIBLE);
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                requestResult.setVisibility(View.GONE);
-                                Intent intent = new Intent(getApplication(), MainActivity.class);
-                                startActivity(intent);
-                            }
-                        }, 3000);
-                    }
-                });
-
-                // analytics 로그 이벤트 얻기
-                FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
-                Bundle bundle = new Bundle();
-                bundle.putString("type", "correction");
-                bundle.putInt("points", pointsNeed);
-                firebaseAnalytics.logEvent("point_use", bundle);
-                break;
+            // analytics 로그 이벤트 얻기
+            FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+            Bundle bundle = new Bundle();
+            bundle.putString("type", "correction");
+            bundle.putInt("points", pointsNeed);
+            firebaseAnalytics.logEvent("point_use", bundle);
         }
     }
 }

@@ -34,7 +34,7 @@ import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.UnixTimeStamp;
 import net.awesomekorean.podo.UserInformation;
-import net.awesomekorean.podo.challenge.Challenge;
+//import net.awesomekorean.podo.challenge.Challenge;
 import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson00;
 import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson01;
 import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson02;
@@ -265,7 +265,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
             textChallenge.measure(0,0);
             Shader shader = new LinearGradient(0,0,textChallenge.getMeasuredWidth(),0, ContextCompat.getColor(context, R.color.PINK2), ContextCompat.getColor(context, R.color.PURPLE), Shader.TileMode.CLAMP);
             textChallenge.getPaint().setShader(shader);
-            checkEventTimer();
+            //checkEventTimer();
             setChallengeVisible(VISIBLE, GONE);
             Animation animation = AnimationUtils.loadAnimation(context, R.anim.blink_infinite);
             starsA.startAnimation(animation);
@@ -308,42 +308,42 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
 
     // 이벤트 타이머 확인 (비챌린저)
-    private void checkEventTimer() {
-        challengeCount.setVisibility(GONE);
-        System.out.println("이벤트 타이머를 확인합니다.");
-        SharedPreferences sp = SharedPreferencesInfo.getEventTimer(context);
-        boolean isWorking = sp.getBoolean("isWorking", false);
-        final Intent intent = new Intent(context, Challenge.class);
-
-        if(isWorking) {
-            System.out.println("이벤트 타이머가 작동중입니다.");
-            long timeNow = UnixTimeStamp.getTimeNow();
-            long startTime = sp.getLong("startTime", 0);
-            long eventTime = sp.getLong("eventTime", 0);
-            long passedTime = timeNow - startTime;
-
-            // 타이머 작동
-            if(passedTime < eventTime) {
-                challengeCount.setVisibility(VISIBLE);
-
-                final String DISCOUNT = "discount";
-                int percent = sp.getInt("percent", 0);
-
-                eventTimer = new EventTimer(context, eventTime - passedTime, challengeCount, intent);
-                intent.putExtra(DISCOUNT, percent);
-
-            } else {
-                SharedPreferencesInfo.setEventTimer(context, 0, 0);
-            }
-        }
-
-        btnChallenge.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(intent, 200);
-            }
-        });
-    }
+//    private void checkEventTimer() {
+//        challengeCount.setVisibility(GONE);
+//        System.out.println("이벤트 타이머를 확인합니다.");
+//        SharedPreferences sp = SharedPreferencesInfo.getEventTimer(context);
+//        boolean isWorking = sp.getBoolean("isWorking", false);
+//        final Intent intent = new Intent(context, Challenge.class);
+//
+//        if(isWorking) {
+//            System.out.println("이벤트 타이머가 작동중입니다.");
+//            long timeNow = UnixTimeStamp.getTimeNow();
+//            long startTime = sp.getLong("startTime", 0);
+//            long eventTime = sp.getLong("eventTime", 0);
+//            long passedTime = timeNow - startTime;
+//
+//            // 타이머 작동
+//            if(passedTime < eventTime) {
+//                challengeCount.setVisibility(VISIBLE);
+//
+//                final String DISCOUNT = "discount";
+//                int percent = sp.getInt("percent", 0);
+//
+//                eventTimer = new EventTimer(context, eventTime - passedTime, challengeCount, intent);
+//                intent.putExtra(DISCOUNT, percent);
+//
+//            } else {
+//                SharedPreferencesInfo.setEventTimer(context, 0, 0);
+//            }
+//        }
+//
+//        btnChallenge.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivityForResult(intent, 200);
+//            }
+//        });
+//    }
 
 
     // 챌린저 정보 세팅
@@ -525,28 +525,18 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnPreLevel :
-                setLessonItem(0);
-                adapter.notifyDataSetChanged();
-                break;
-
-            case R.id.btnNextLevel :
-                setLessonItem(1);
-                adapter.notifyDataSetChanged();
-                break;
-
-            case R.id.btnInfo :
-                layoutInfo.setVisibility(VISIBLE);
-                break;
-
-            case R.id.btnCloseInfo :
-                layoutInfo.setVisibility(GONE);
-                break;
-
-            case R.id.btnCloseChallengeResult :
-                challengeResult.setVisibility(GONE);
-                break;
+        if(v.getId() == R.id.btnPreLevel) {
+            setLessonItem(0);
+            adapter.notifyDataSetChanged();
+        } else if(v.getId() == R.id.btnNextLevel) {
+            setLessonItem(1);
+            adapter.notifyDataSetChanged();
+        } else if (v.getId() == R.id.btnInfo) {
+            layoutInfo.setVisibility(VISIBLE);
+        } else if (v.getId() == R.id.btnCloseInfo) {
+            layoutInfo.setVisibility(GONE);
+        } else if (v.getId() == R.id.btnCloseChallengeResult) {
+            challengeResult.setVisibility(GONE);
         }
     }
 

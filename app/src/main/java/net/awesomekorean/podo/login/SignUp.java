@@ -165,43 +165,36 @@ public class SignUp extends AppCompatActivity {
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            switch (focused) {
-
-                case R.id.email :
-                    userEmail = email.getText().toString();
-                    condition = Patterns.EMAIL_ADDRESS.matcher(userEmail).matches();
-                    userEmailOk = conditionCheck(condition, email);
-                    if(userEmailOk) {
-                        email.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.successgreen, 0);
-                    }else {
-                        email.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.successgrey, 0);
-                    }
-                    break;
-
-                case R.id.password :
+            if(focused == R.id.email) {
+                userEmail = email.getText().toString();
+                condition = Patterns.EMAIL_ADDRESS.matcher(userEmail).matches();
+                userEmailOk = conditionCheck(condition, email);
+                if(userEmailOk) {
+                    email.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.successgreen, 0);
+                }else {
+                    email.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.successgrey, 0);
+                }
+            } else if(focused == R.id.password) {
+                warningPass.setVisibility(View.VISIBLE);
+                userPass = password.getText().toString();
+                condition = userPass.length() >= 6;
+                userPassOk = conditionCheck(condition, password);
+                if(userPassOk) {
+                    warningPass.setVisibility(View.GONE);
+                    password.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.successgreen, 0);
+                } else {
                     warningPass.setVisibility(View.VISIBLE);
-                    userPass = password.getText().toString();
-                    condition = userPass.length() >= 6;
-                    userPassOk = conditionCheck(condition, password);
-                    if(userPassOk) {
-                        warningPass.setVisibility(View.GONE);
-                        password.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.successgreen, 0);
-                    } else {
-                        warningPass.setVisibility(View.VISIBLE);
-                        password.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.successgrey, 0);
-                    }
-                    break;
-
-                case R.id.passwordConfirm :
-                    userPassConfirm = passwordConfirm.getText().toString();
-                    condition = userPassConfirm.equals(userPass);
-                    userPassConfirmOk = conditionCheck(condition, passwordConfirm);
-                    if(userPassConfirmOk) {
-                        passwordConfirm.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.successgreen, 0);
-                    }else {
-                        passwordConfirm.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.successgrey, 0);
-                    }
-                    break;
+                    password.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.successgrey, 0);
+                }
+            } else if(focused == R.id.passwordConfirm) {
+                userPassConfirm = passwordConfirm.getText().toString();
+                condition = userPassConfirm.equals(userPass);
+                userPassConfirmOk = conditionCheck(condition, passwordConfirm);
+                if(userPassConfirmOk) {
+                    passwordConfirm.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.successgreen, 0);
+                }else {
+                    passwordConfirm.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.successgrey, 0);
+                }
             }
         }
 

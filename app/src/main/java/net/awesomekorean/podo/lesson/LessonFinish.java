@@ -21,14 +21,11 @@ import android.widget.TextView;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
-import com.google.android.play.core.review.model.ReviewErrorCode;
-import com.google.android.play.core.review.testing.FakeReviewManager;
 import com.google.android.play.core.tasks.OnCompleteListener;
 import com.google.android.play.core.tasks.OnFailureListener;
 import com.google.android.play.core.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
-import net.awesomekorean.podo.AdsManager;
 import net.awesomekorean.podo.PlaySoundPool;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
@@ -208,37 +205,29 @@ public class LessonFinish extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
 
-            case R.id.btnMyWords :
-                if(!btnMyWordsClicked) {
-                    Map<String, String> myWords = lessonProgress.getMyWords();
-                    setList(myWords);
-                    setBtns(true, false);
+        if(v.getId() == R.id.btnMyWords){
+            if(!btnMyWordsClicked) {
+                Map<String, String> myWords = lessonProgress.getMyWords();
+                setList(myWords);
+                setBtns(true, false);
 
-                } else {
-                    recyclerView.setVisibility(View.GONE);
-                    setBtns(false, false);
-                }
-                break;
+            } else {
+                recyclerView.setVisibility(View.GONE);
+                setBtns(false, false);
+            }
+        } else if(v.getId() == R.id.btnMySentences) {
+            if(!btnMySentencesClicked) {
+                Map<String, String> mySentences = lessonProgress.getMySentences();
+                setList(mySentences);
+                setBtns(false, true);
 
-
-            case R.id.btnMySentences :
-                if(!btnMySentencesClicked) {
-                    Map<String, String> mySentences = lessonProgress.getMySentences();
-                    setList(mySentences);
-                    setBtns(false, true);
-
-                } else {
-                    recyclerView.setVisibility(View.GONE);
-                    setBtns(false, false);
-                }
-                break;
-
-
-            case R.id.btnComplete :
-                playAds();
-                break;
+            } else {
+                recyclerView.setVisibility(View.GONE);
+                setBtns(false, false);
+            }
+        } else if (v.getId() == R.id.btnComplete) {
+            playAds();
         }
     }
 

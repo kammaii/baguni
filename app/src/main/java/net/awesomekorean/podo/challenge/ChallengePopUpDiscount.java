@@ -27,11 +27,11 @@ public class ChallengePopUpDiscount extends AppCompatActivity {
         btnGet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Challenge.class);
-                intent.putExtra(DISCOUNT, PERCENT);
-                startActivity(intent);
-                setResult(RESULT_OK);
-                finish();
+//                Intent intent = new Intent(getApplicationContext(), Challenge.class);
+//                intent.putExtra(DISCOUNT, PERCENT);
+//                startActivity(intent);
+//                setResult(RESULT_OK);
+//                finish();
             }
         });
 

@@ -245,103 +245,86 @@ public class ReadingFrame extends AppCompatActivity implements Button.OnClickLis
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
+        if(view.getId() == R.id.btnBack) {
+            openConfirmQuit();
+        } else if(view.getId() == R.id.btnCollect) {
+            String folder = "reading/" + reading.getReadingId().toLowerCase();
 
-            case R.id.btnBack :
-                openConfirmQuit();
-                break;
+            DownloadAudio downloadAudio = new DownloadAudio(context, folder, audioFileWord);
+            downloadAudio.downloadAudio();
 
-            case R.id.btnCollect:
-                String folder = "reading/" + reading.getReadingId().toLowerCase();
+            CollectionRepository repository = new CollectionRepository(this);
+            repository.insert(front, back, audioFileWord);
 
-                DownloadAudio downloadAudio = new DownloadAudio(context, folder, audioFileWord);
-                downloadAudio.downloadAudio();
+            collectResult.setVisibility(View.VISIBLE);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    collectResult.setVisibility(View.GONE);
+                }
+            }, 1000);
+        } else if(view.getId() == R.id.btnPlay) {
+            btnSetting(View.INVISIBLE, View.GONE, View.VISIBLE);
 
-                CollectionRepository repository = new CollectionRepository(this);
-                repository.insert(front, back, audioFileWord);
-
-                collectResult.setVisibility(View.VISIBLE);
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+            // 최초 플레이 or 다시 플레이 시
+            if (mediaPlayerManager == null || url == null) {
+                StorageReference storageRef = storage.getReference().child("reading/"+unitId).child(unitId+".mp3");
+                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
-                    public void run() {
-                        collectResult.setVisibility(View.GONE);
+                    public void onSuccess(Uri uri) {
+                        btnSetting(View.GONE, View.VISIBLE, View.GONE);
+                        mediaPlayerManager = MediaPlayerManager.getInstance(seekBar);
+                        url = uri.toString();
+                        mediaPlayerManager.resetPlayPosition();
+                        mediaPlayerManager.setMediaPlayer(true, url);
+                        if(slowBtnClicked) {
+                            mediaPlayerManager.setSpeed(0.8f);
+                        }
                     }
-                }, 1000);
-                break;
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        btnSetting(View.VISIBLE, View.GONE, View.GONE);
+                        Toast.makeText(getApplicationContext(), getString(R.string.FAIL_LOAD_AUDIO), Toast.LENGTH_LONG).show();
+                    }
+                });
 
-            case R.id.btnPlay:
 
+                // 뭠췄다가 플레이 시
+            } else {
                 btnSetting(View.INVISIBLE, View.GONE, View.VISIBLE);
 
-                // 최초 플레이 or 다시 플레이 시
-                if (mediaPlayerManager == null || url == null) {
-                    StorageReference storageRef = storage.getReference().child("reading/"+unitId).child(unitId+".mp3");
-                    storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            btnSetting(View.GONE, View.VISIBLE, View.GONE);
-                            mediaPlayerManager = MediaPlayerManager.getInstance(seekBar);
-                            url = uri.toString();
-                            mediaPlayerManager.resetPlayPosition();
-                            mediaPlayerManager.setMediaPlayer(true, url);
-                            if(slowBtnClicked) {
-                                mediaPlayerManager.setSpeed(0.8f);
-                            }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            btnSetting(View.VISIBLE, View.GONE, View.GONE);
-                            Toast.makeText(getApplicationContext(), getString(R.string.FAIL_LOAD_AUDIO), Toast.LENGTH_LONG).show();
-                        }
-                    });
-
-
-                    // 뭠췄다가 플레이 시
-                } else {
-                    btnSetting(View.INVISIBLE, View.GONE, View.VISIBLE);
-
-                    mediaPlayerManager.setMediaPlayer(true, url);
-                    if(slowBtnClicked) {
-                        mediaPlayerManager.setSpeed(0.8f);
-                    }
-
-                    btnSetting(View.GONE, View.VISIBLE, View.GONE);
-                }
-
-                seekBar.setEnabled(true);
-
-                break;
-
-            case R.id.btnPause :
-                mediaPlayerManager.pauseMediaPlayer();
-                btnSetting(View.VISIBLE, View.GONE, View.GONE);
-                break;
-
-            case R.id.btnNormal :
-                btnSlow.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_white_20_stroke_purple));
-                btnNormal.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_purple_20_transparent));
-                if(mediaPlayerManager != null) {
-                    mediaPlayerManager.setSpeed(1f);
-                }
-                slowBtnClicked = false;
-                break;
-
-            case R.id.btnSlow :
-                btnSlow.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_purple_20_transparent));
-                btnNormal.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_white_20_stroke_purple));
-                if(mediaPlayerManager != null) {
+                mediaPlayerManager.setMediaPlayer(true, url);
+                if(slowBtnClicked) {
                     mediaPlayerManager.setSpeed(0.8f);
                 }
-                slowBtnClicked = true;
-                break;
 
-            case R.id.btnFinish :
-                btnSetting(View.VISIBLE, View.GONE, View.GONE);
-                seekBar.setProgress(0);
-                openConfirmQuit();
-                break;
+                btnSetting(View.GONE, View.VISIBLE, View.GONE);
+            }
+
+            seekBar.setEnabled(true);
+        } else if(view.getId() == R.id.btnPause) {
+            mediaPlayerManager.pauseMediaPlayer();
+            btnSetting(View.VISIBLE, View.GONE, View.GONE);
+        } else if(view.getId() == R.id.btnNormal) {
+            btnSlow.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_white_20_stroke_purple));
+            btnNormal.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_purple_20_transparent));
+            if(mediaPlayerManager != null) {
+                mediaPlayerManager.setSpeed(1f);
+            }
+            slowBtnClicked = false;
+        } else if(view.getId() == R.id.btnSlow) {
+            btnSlow.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_purple_20_transparent));
+            btnNormal.setBackground(ContextCompat.getDrawable(this, R.drawable.bg_white_20_stroke_purple));
+            if(mediaPlayerManager != null) {
+                mediaPlayerManager.setSpeed(0.8f);
+            }
+            slowBtnClicked = true;
+        } else if(view.getId() == R.id.btnFinish) {
+            btnSetting(View.VISIBLE, View.GONE, View.GONE);
+            seekBar.setProgress(0);
+            openConfirmQuit();
         }
     }
 

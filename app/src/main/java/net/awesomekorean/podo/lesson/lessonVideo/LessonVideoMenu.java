@@ -14,13 +14,13 @@ import android.widget.TextView;
 import net.awesomekorean.podo.DialogueActivityType1;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
-import net.awesomekorean.podo.challenge.Challenge;
+//import net.awesomekorean.podo.challenge.Challenge;
 
 public class LessonVideoMenu extends AppCompatActivity implements View.OnClickListener {
 
     TextView title;
     ImageView btnBack;
-    LessonVideoAdapter adapter;
+    //LessonVideoAdapter adapter;
     String videoTitle;
     Intent intent;
 
@@ -52,31 +52,31 @@ public class LessonVideoMenu extends AppCompatActivity implements View.OnClickLi
                 break;
         }
 
-        adapter = new LessonVideoAdapter(getApplicationContext(), lessonVideo);
-        adapter.setOnItemClickListener(new LessonVideoAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int pos) {
+//        adapter = new LessonVideoAdapter(getApplicationContext(), lessonVideo);
+//        adapter.setOnItemClickListener(new LessonVideoAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View v, int pos) {
+//
+//                int isChallenger = SharedPreferencesInfo.getUserInfo(getApplicationContext()).getIsChallenger();
+//
+//                if(pos !=0 && pos !=1 && isChallenger == 0) {
+//                    // 챌린저 권유창 띄우기
+//                    intent = new Intent(getApplicationContext(), DialogueActivityType1.class);
+//                    intent.putExtra(CONTENTS, getResources().getString(R.string.CHALLENGER_ONLY));
+//                    intent.putExtra(BTN_TEXT, getResources().getString(R.string.JOIN_NOW));
+//                    startActivityForResult(intent, 200);
+//
+//                } else {
+//                    intent = new Intent(getApplicationContext(), VideoFrame.class);
+//                    intent.putExtra(VIDEO, lessonVideo.getVideoId()[pos]);
+//                    startActivity(intent);
+//                }
+//            }
+//        });
 
-                int isChallenger = SharedPreferencesInfo.getUserInfo(getApplicationContext()).getIsChallenger();
-
-                if(pos !=0 && pos !=1 && isChallenger == 0) {
-                    // 챌린저 권유창 띄우기
-                    intent = new Intent(getApplicationContext(), DialogueActivityType1.class);
-                    intent.putExtra(CONTENTS, getResources().getString(R.string.CHALLENGER_ONLY));
-                    intent.putExtra(BTN_TEXT, getResources().getString(R.string.JOIN_NOW));
-                    startActivityForResult(intent, 200);
-
-                } else {
-                    intent = new Intent(getApplicationContext(), VideoFrame.class);
-                    intent.putExtra(VIDEO, lessonVideo.getVideoId()[pos]);
-                    startActivity(intent);
-                }
-            }
-        });
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setAdapter(adapter);
+//        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//        recyclerView.setAdapter(adapter);
     }
 
 
@@ -86,7 +86,7 @@ public class LessonVideoMenu extends AppCompatActivity implements View.OnClickLi
 
         // 챌린지 페이지로 이동
         if(resultCode == RESULT_OK) {
-            intent = new Intent(getApplicationContext(), Challenge.class);
+            //intent = new Intent(getApplicationContext(), Challenge.class);
             startActivity(intent);
         }
     }
@@ -94,11 +94,11 @@ public class LessonVideoMenu extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
-
-            case R.id.btnBack :
-                finish();
-                break;
-        }
+//        switch (view.getId()) {
+//
+//            case R.id.btnBack :
+//                finish();
+//                break;
+//        }
     }
 }

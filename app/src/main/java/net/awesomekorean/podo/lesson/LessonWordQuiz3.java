@@ -236,25 +236,20 @@ public class LessonWordQuiz3 extends Fragment implements Button.OnClickListener{
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
+        if(v.getId() == R.id.btnReset) {
+            int childCount = flexboxLayout.getChildCount();
 
-            case R.id.btnReset :
-                int childCount = flexboxLayout.getChildCount();
+            for(int i=0; i<childCount; i++) {
 
-                for(int i=0; i<childCount; i++) {
+                View currentChild = flexboxLayout.getChildAt(i);
 
-                    View currentChild = flexboxLayout.getChildAt(i);
+                currentChild.setVisibility(View.VISIBLE);
+            }
 
-                    currentChild.setVisibility(View.VISIBLE);
-                }
-
-                tvAnswer.setText("");
-                btnReset.setVisibility(View.GONE);
-                break;
-
-            case R.id.btnAudio :
-                mediaPlayerManager.playMediaPlayer(false);
-                break;
+            tvAnswer.setText("");
+            btnReset.setVisibility(View.GONE);
+        } else if(v.getId() == R.id.btnAudio) {
+            mediaPlayerManager.playMediaPlayer(false);
         }
     }
 

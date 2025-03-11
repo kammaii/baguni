@@ -287,89 +287,72 @@ public class SignIn extends AppCompatActivity implements Button.OnClickListener 
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
+        if(view.getId() == R.id.btnSignIn) {
+            final String userEmail = email.getText().toString();
+            final String userPass = password.getText().toString();
 
-            case R.id.btnSignIn :
-                final String userEmail = email.getText().toString();
-                final String userPass = password.getText().toString();
+            if(userEmail.getBytes().length > 0 && userPass.getBytes().length > 0) {
 
-                if(userEmail.getBytes().length > 0 && userPass.getBytes().length > 0) {
+                firebaseAuth.signInWithEmailAndPassword(userEmail, userPass)
+                        .addOnSuccessListener(SignIn.this, new OnSuccessListener<AuthResult>() {
+                            @Override
+                            public void onSuccess(AuthResult authResult) {
+                                System.out.println("로그인에 성공했습니다");
+                                progressBarLayout.setVisibility(View.VISIBLE);
+                                getUserInfoAndGoToMain(userEmail, "Email");
+                            }
+                        })
 
-                    firebaseAuth.signInWithEmailAndPassword(userEmail, userPass)
-                            .addOnSuccessListener(SignIn.this, new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-                                    System.out.println("로그인에 성공했습니다");
-                                    progressBarLayout.setVisibility(View.VISIBLE);
-                                    getUserInfoAndGoToMain(userEmail, "Email");
-                                }
-                            })
-
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    System.out.println("로그인에 실패했습니다" + e.getMessage());
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(getApplicationContext(), e.getMessage(),
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                System.out.println("로그인에 실패했습니다" + e.getMessage());
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(getApplicationContext(), e.getMessage(),
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        } else if(view.getId() == R.id.forgotPassword) {
+            findPasswordBg.setVisibility(View.VISIBLE);
+            findPassword.setVisibility(View.VISIBLE);
+        } else if(view.getId() == R.id.findPasswordBg) {
+            findPasswordBg.setVisibility(View.GONE);
+            findPassword.setVisibility(View.GONE);
+        } else if(view.getId() == R.id.btnSend) {
+            // 서버에서 비밀번호 랜덤으로 바꾸고 이메일 보내기
+            findPasswordBg.setVisibility(View.GONE);
+            findPassword.setVisibility(View.GONE);
+            Toast.makeText(getApplicationContext(), R.string.CHECK_YOUR_EMAIL, Toast.LENGTH_LONG).show();
+        } else if (view.getId() == R.id.btnSignInGoogle) {
+            intent = googleSignInClient.getSignInIntent();
+            startActivityForResult(intent, RC_SIGN_IN);
+        } else if (view.getId() == R.id.btnSignInFacebook) {
+            LoginManager loginManager = LoginManager.getInstance();
+            loginManager.logInWithReadPermissions(SignIn.this, Arrays.asList("public_profile", "email"));
+            loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                @Override
+                public void onSuccess(LoginResult loginResult) {
+                    System.out.println("페이스북 로그인에 성공했습니다 : " + loginResult);
+                    handleFacebookAccessToken(loginResult.getAccessToken());
                 }
-                break;
 
-            case R.id.forgotPassword :
-                findPasswordBg.setVisibility(View.VISIBLE);
-                findPassword.setVisibility(View.VISIBLE);
-                break;
-
-            case R.id.findPasswordBg :
-                findPasswordBg.setVisibility(View.GONE);
-                findPassword.setVisibility(View.GONE);
-                break;
-
-            case R.id.btnSend :
-                // 서버에서 비밀번호 랜덤으로 바꾸고 이메일 보내기
-                findPasswordBg.setVisibility(View.GONE);
-                findPassword.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), R.string.CHECK_YOUR_EMAIL, Toast.LENGTH_LONG).show();
-                break;
-
-            case R.id.btnSignInGoogle :
-                intent = googleSignInClient.getSignInIntent();
-                startActivityForResult(intent, RC_SIGN_IN);
-                break;
-
-            case R.id.btnSignInFacebook :
-                LoginManager loginManager = LoginManager.getInstance();
-                loginManager.logInWithReadPermissions(SignIn.this, Arrays.asList("public_profile", "email"));
-                loginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        System.out.println("페이스북 로그인에 성공했습니다 : " + loginResult);
-                        handleFacebookAccessToken(loginResult.getAccessToken());
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        System.out.println("페이스북 로그인을 취소했습니다");
-                        progressBarLayout.setVisibility(View.GONE);
-                    }
+                @Override
+                public void onCancel() {
+                    System.out.println("페이스북 로그인을 취소했습니다");
+                    progressBarLayout.setVisibility(View.GONE);
+                }
 
 
-                    @Override
-                    public void onError(FacebookException error) {
-                        System.out.println("페이스북 로그인 중 에러가 발생했습니다");
-                    }
-                });
-                break;
-
-            case R.id.btnSignUp :
-                intent = new Intent(this, SignUp.class);
-                startActivity(intent);
-                finish();
-                break;
-
+                @Override
+                public void onError(FacebookException error) {
+                    System.out.println("페이스북 로그인 중 에러가 발생했습니다");
+                }
+            });
+        } else if (view.getId() == R.id.btnSignUp) {
+            intent = new Intent(this, SignUp.class);
+            startActivity(intent);
+            finish();
         }
-
     }
 }

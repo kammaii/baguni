@@ -218,34 +218,27 @@ public class LessonWordQuiz1 extends Fragment implements Button.OnClickListener 
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
+        if(view.getId() == R.id.btnAudio) {
+            mediaPlayerManager.playMediaPlayer(false);
+        } else {
+            int selectedBtnNo;
 
-            case R.id.btnAudio :
-                mediaPlayerManager.playMediaPlayer(false);
-                break;
+            if(view.getId() == R.id.btn1) {
+                selectedBtnNo = 0;
+            } else if(view.getId() == R.id.btn2) {
+                selectedBtnNo = 1;
+            } else if(view.getId() == R.id.btn3) {
+                selectedBtnNo = 2;
+            } else {
+                selectedBtnNo = 3;
+            }
 
-
-            default:
-
-                int selectedBtnNo;
-
-                if(view.getId() == R.id.btn1) {
-                    selectedBtnNo = 0;
-                } else if(view.getId() == R.id.btn2) {
-                    selectedBtnNo = 1;
-                } else if(view.getId() == R.id.btn3) {
-                    selectedBtnNo = 2;
-                } else {
-                    selectedBtnNo = 3;
-                }
-
-                if(lesson.getWordBack()[quizNoNow].equals(lesson.getWordBack()[answerArray[selectedBtnNo]])) {
-                    answered(view, 0, R.drawable.bg_white_10_stroke_purple, true);
-                } else {
-                    wrongQuizList.add(quizNoNow);
-                    answered(view, 1, R.drawable.bg_white_10_stroke_red, false);
-                }
-                break;
+            if(lesson.getWordBack()[quizNoNow].equals(lesson.getWordBack()[answerArray[selectedBtnNo]])) {
+                answered(view, 0, R.drawable.bg_white_10_stroke_purple, true);
+            } else {
+                wrongQuizList.add(quizNoNow);
+                answered(view, 1, R.drawable.bg_white_10_stroke_red, false);
+            }
         }
     }
 

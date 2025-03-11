@@ -218,26 +218,19 @@ public class MainWriting extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
-
-            case R.id.btnAddWriting :
-                Intent intent = new Intent(getContext(), WritingFrame.class);
-                intent.putExtra(getString(R.string.REQUEST), getString(R.string.REQUEST_ADD));
-                startActivityForResult(intent, getResources().getInteger(R.integer.REQUEST_CODE_ADD));
-                break;
-
-            case R.id.btnYes :
-                String guid = WritingAdapter.guid;
-                WritingRepository repository = new WritingRepository(getContext());
-                repository.deleteByGuid(guid);
-                repository.getAll();
-                repository.getAll().observe(this, observer);
-                msgDelete.setVisibility(View.GONE);
-                break;
-
-            case R.id.btnNo :
-                msgDelete.setVisibility(View.GONE);
-                break;
+        if(view.getId() == R.id.btnAddWriting) {
+            Intent intent = new Intent(getContext(), WritingFrame.class);
+            intent.putExtra(getString(R.string.REQUEST), getString(R.string.REQUEST_ADD));
+            startActivityForResult(intent, getResources().getInteger(R.integer.REQUEST_CODE_ADD));
+        } else if(view.getId() == R.id.btnYes) {
+            String guid = WritingAdapter.guid;
+            WritingRepository repository = new WritingRepository(getContext());
+            repository.deleteByGuid(guid);
+            repository.getAll();
+            repository.getAll().observe(this, observer);
+            msgDelete.setVisibility(View.GONE);
+        } else if(view.getId() == R.id.btnNo) {
+            msgDelete.setVisibility(View.GONE);
         }
     }
 }

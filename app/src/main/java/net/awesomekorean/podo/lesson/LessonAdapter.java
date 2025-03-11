@@ -87,110 +87,104 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             int position = getAdapterPosition();
             LessonItem item = list.get(position);
 
-            switch (v.getId()) {
+            // 레슨/리뷰/리워드 클릭 이벤트
+            if(v.getId() == R.id.layoutItem) {
+                SharedPreferencesInfo.setLastClickLevel(context, 0);
+                String lessonId = item.getLessonId();
+                String type = item.getLessonId().split("_")[0];
 
-                // 레슨/리뷰/리워드 클릭 이벤트
-                case R.id.layoutItem :
+                if(item.getIsActive() || isChallenger > 0) {
 
-                    SharedPreferencesInfo.setLastClickLevel(context, 0);
-                    String lessonId = item.getLessonId();
-                    String type = item.getLessonId().split("_")[0];
+                    if (!item.getIsLocked()) {
 
-                    if(item.getIsActive() || isChallenger > 0) {
+                        switch (lessonId) {
+                            case "H_hangul":
+                                setCompleteForHangulNumber(lessonId);
+                                intent = new Intent(context, LessonHangulMenu.class);
+                                context.startActivity(intent);
+                                break;
 
-                        if (!item.getIsLocked()) {
+                            case "N_number":
+                                setCompleteForHangulNumber(lessonId);
+                                intent = new Intent(context, LessonNumberMenu.class);
+                                context.startActivity(intent);
+                                break;
 
-                            switch (lessonId) {
-                                case "H_hangul":
-                                    setCompleteForHangulNumber(lessonId);
-                                    intent = new Intent(context, LessonHangulMenu.class);
-                                    context.startActivity(intent);
-                                    break;
+                            default:
+                                if (type.equals("LR")) {
+                                    intent = new Intent(context, LessonReviewFrame.class);
 
-                                case "N_number":
-                                    setCompleteForHangulNumber(lessonId);
-                                    intent = new Intent(context, LessonNumberMenu.class);
-                                    context.startActivity(intent);
-                                    break;
+                                } else if (type.equals("RW")) {
+                                    if(item.getIsCompleted()) {
+                                        Toast.makeText(context, context.getString(R.string.ALREADY_REWARDED), Toast.LENGTH_LONG).show();
+                                        break;
 
-                                default:
-                                    if (type.equals("LR")) {
-                                        intent = new Intent(context, LessonReviewFrame.class);
-
-                                    } else if (type.equals("RW")) {
-                                        if(item.getIsCompleted()) {
-                                            Toast.makeText(context, context.getString(R.string.ALREADY_REWARDED), Toast.LENGTH_LONG).show();
-                                            break;
-
-                                        } else {
-                                            intent = new Intent(context, GetRandomPoint.class);
-                                        }
-
-                                    } else if (type.equals("L")){
-                                        intent = new Intent(context, LessonFrame.class);
-
-                                    } else if (type.equals("IL")) {
-                                        //todo: 중급레슨 프레임
-                                        SharedPreferencesInfo.setLastClickLevel(context, 1);
-                                        intent = new Intent(context, IntermediateFrame.class);
-
-                                    } else if (type.equals("AL")) {
-                                        //todo: 고급레슨 프레임
+                                    } else {
+                                        intent = new Intent(context, GetRandomPoint.class);
                                     }
 
-                                    intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item);
-                                    context.startActivity(intent);
-                                    break;
+                                } else if (type.equals("L")){
+                                    intent = new Intent(context, LessonFrame.class);
 
-                            }
+                                } else if (type.equals("IL")) {
+                                    //todo: 중급레슨 프레임
+                                    SharedPreferencesInfo.setLastClickLevel(context, 1);
+                                    intent = new Intent(context, IntermediateFrame.class);
+
+                                } else if (type.equals("AL")) {
+                                    //todo: 고급레슨 프레임
+                                }
+
+                                intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item);
+                                context.startActivity(intent);
+                                break;
+
+                        }
 
                         // 포인트 사용 확인창 띄우기
-                        } else {
-                            intent = new Intent(context, UnlockActivity.class);
-                            intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), type);
-                            intent.putExtra(context.getResources().getString(R.string.LESSON_ID), item.getLessonId());
-                            intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item);
-                            intent.putExtra(context.getResources().getString(R.string.EXTRA_ISACTIVE), true);
-                            context.startActivity(intent);
-                        }
-                        SharedPreferencesInfo.setLastClickItem(context, true, position);
+                    } else {
+                        intent = new Intent(context, UnlockActivity.class);
+                        intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), type);
+                        intent.putExtra(context.getResources().getString(R.string.LESSON_ID), item.getLessonId());
+                        intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item);
+                        intent.putExtra(context.getResources().getString(R.string.EXTRA_ISACTIVE), true);
+                        context.startActivity(intent);
+                    }
+                    SharedPreferencesInfo.setLastClickItem(context, true, position);
 
                     // 활성화되지 않은 레슨을 클릭했을 때
-                    } else {
-                        if (!type.equals("RW") && !type.equals("LR")) {
-                            intent = new Intent(context, UnlockActivity.class);
-                            intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), type);
-                            intent.putExtra(context.getResources().getString(R.string.LESSON_ID), item.getLessonId());
-                            intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item);
-                            intent.putExtra(context.getResources().getString(R.string.EXTRA_ISACTIVE), false);
-                            context.startActivity(intent);
-
-                        } else {
-                            Toast.makeText(context, context.getString(R.string.PLEASE_COMPLETE_PREVIOUS_LESSON), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                    break;
-
-                // 스페셜레슨 클릭 이벤트
-                default:
-                    if(item.getSLesson().getIsActive()) {
-                        if (!item.getSLesson().getIsLocked()) {
-                            intent = new Intent(context, LessonSpecialFrame.class);
-
-                            // 포인트 사용 확인창 띄우기
-                        } else {
-                            intent = new Intent(context, UnlockActivity.class);
-                            intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), context.getResources().getString(R.string.SPECIAL_LESSON));
-                            intent.putExtra(context.getResources().getString(R.string.LESSON_ID), item.getSLesson().getLessonId());
-                        }
-                        intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item.getSLesson());
+                } else {
+                    if (!type.equals("RW") && !type.equals("LR")) {
+                        intent = new Intent(context, UnlockActivity.class);
+                        intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), type);
+                        intent.putExtra(context.getResources().getString(R.string.LESSON_ID), item.getLessonId());
+                        intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item);
+                        intent.putExtra(context.getResources().getString(R.string.EXTRA_ISACTIVE), false);
                         context.startActivity(intent);
 
-                        // 활성화되지 않은 스페셜레슨을 클릭했을 때
                     } else {
                         Toast.makeText(context, context.getString(R.string.PLEASE_COMPLETE_PREVIOUS_LESSON), Toast.LENGTH_LONG).show();
                     }
-                    break;
+                }
+            // 스페셜레슨 클릭 이벤트
+            } else {
+                if(item.getSLesson().getIsActive()) {
+                    if (!item.getSLesson().getIsLocked()) {
+                        intent = new Intent(context, LessonSpecialFrame.class);
+
+                        // 포인트 사용 확인창 띄우기
+                    } else {
+                        intent = new Intent(context, UnlockActivity.class);
+                        intent.putExtra(context.getResources().getString(R.string.EXTRA_ID), context.getResources().getString(R.string.SPECIAL_LESSON));
+                        intent.putExtra(context.getResources().getString(R.string.LESSON_ID), item.getSLesson().getLessonId());
+                    }
+                    intent.putExtra(context.getResources().getString(R.string.LESSON), (Serializable) item.getSLesson());
+                    context.startActivity(intent);
+
+                    // 활성화되지 않은 스페셜레슨을 클릭했을 때
+                } else {
+                    Toast.makeText(context, context.getString(R.string.PLEASE_COMPLETE_PREVIOUS_LESSON), Toast.LENGTH_LONG).show();
+                }
             }
         }
     }

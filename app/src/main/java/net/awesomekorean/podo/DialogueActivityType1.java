@@ -43,18 +43,12 @@ public class DialogueActivityType1 extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
-
-            case R.id.btnYes :
-                setResult(RESULT_OK);
-                finish();
-                break;
-
-
-            case R.id.btnClose :
-                setResult(RESULT_CANCELED);
-                finish();
-                break;
+        if(view.getId() == R.id.btnYes) {
+            setResult(RESULT_OK);
+            finish();
+        } else if (view.getId() == R.id.btnClose) {
+            setResult(RESULT_CANCELED);
+            finish();
         }
     }
 

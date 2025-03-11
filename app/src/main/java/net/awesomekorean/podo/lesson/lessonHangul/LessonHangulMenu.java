@@ -62,27 +62,16 @@ public class LessonHangulMenu extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
-
-            case R.id.btnBack :
-                finish();
-                break;
-
-            case R.id.layoutConsonant :
-                openLessonHangul(getString(R.string.CONSONANT));
-                break;
-
-            case R.id.layoutVowel :
-                openLessonHangul(getString(R.string.VOWEL));
-                break;
-
-            case R.id.layoutBatchim :
-                openLessonHangul(getString(R.string.BATCHIM));
-                break;
-
-            case R.id.layoutAssembly :
-                openLessonHangul(getString(R.string.ASSEMBLY));
-                break;
+        if(v.getId() == R.id.btnBack) {
+            finish();
+        } else if(v.getId() == R.id.layoutConsonant) {
+            openLessonHangul(getString(R.string.CONSONANT));
+        } else if(v.getId() == R.id.layoutVowel) {
+            openLessonHangul(getString(R.string.VOWEL));
+        } else if(v.getId() == R.id.layoutBatchim) {
+            openLessonHangul(getString(R.string.BATCHIM));
+        } else if(v.getId() == R.id.layoutAssembly) {
+            openLessonHangul(getString(R.string.ASSEMBLY));
         }
     }
 }

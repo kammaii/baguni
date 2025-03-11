@@ -69,36 +69,30 @@ public class IntermediateAdapter extends RecyclerView.Adapter<IntermediateAdapte
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            switch (v.getId()) {
-                case R.id.btnAudio:
-                    MediaPlayerManager.getInstance().playIntermediateAudio(audiosDialog.get(position), null, 1);
-                    break;
+            if(v.getId() == R.id.btnAudio) {
+                MediaPlayerManager.getInstance().playIntermediateAudio(audiosDialog.get(position), null, 1);
+            } else if (v.getId() == R.id.btnCollect) {
+                String front = list.get(position).getDialog();
+                String back = list.get(position).getDialogEng();
+                String folder = "intermediate/" + lessonId;
+                String audio = lessonId + "_" + position + ".mp3";
 
-                case R.id.btnCollect:
-                    String front = list.get(position).getDialog();
-                    String back = list.get(position).getDialogEng();
-                    String folder = "intermediate/" + lessonId;
-                    String audio = lessonId + "_" + position + ".mp3";
-
-                    Intent intent = new Intent(context, CollectResult.class);
-                    intent.putExtra(context.getResources().getString(R.string.COLLECT_FRONT), front);
-                    intent.putExtra(context.getResources().getString(R.string.COLLECT_BACK), back);
-                    intent.putExtra(context.getResources().getString(R.string.COLLECT_FOLDER), folder);
-                    intent.putExtra(context.getResources().getString(R.string.COLLECT_AUDIO), audio);
-                    context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                    break;
-
-                case R.id.btnTranslate :
-                    ImageView imageView = (ImageView) v;
-                    TextView textView = (TextView) ((LinearLayout) v.getParent().getParent().getParent()).getChildAt(0);
-                    if(textView.getText().equals(list.get(position).getDialog())) {
-                        textView.setText(list.get(position).getDialogEng());
-                        imageView.setImageResource(R.drawable.toggle_en);
-                    } else {
-                        textView.setText(list.get(position).getDialog());
-                        imageView.setImageResource(R.drawable.toggle_kr);
-                    }
-                    break;
+                Intent intent = new Intent(context, CollectResult.class);
+                intent.putExtra(context.getResources().getString(R.string.COLLECT_FRONT), front);
+                intent.putExtra(context.getResources().getString(R.string.COLLECT_BACK), back);
+                intent.putExtra(context.getResources().getString(R.string.COLLECT_FOLDER), folder);
+                intent.putExtra(context.getResources().getString(R.string.COLLECT_AUDIO), audio);
+                context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            } else if (v.getId() == R.id.btnTranslate) {
+                ImageView imageView = (ImageView) v;
+                TextView textView = (TextView) ((LinearLayout) v.getParent().getParent().getParent()).getChildAt(0);
+                if(textView.getText().equals(list.get(position).getDialog())) {
+                    textView.setText(list.get(position).getDialogEng());
+                    imageView.setImageResource(R.drawable.toggle_en);
+                } else {
+                    textView.setText(list.get(position).getDialog());
+                    imageView.setImageResource(R.drawable.toggle_kr);
+                }
             }
         }
     }

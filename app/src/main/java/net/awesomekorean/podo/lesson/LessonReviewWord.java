@@ -133,36 +133,31 @@ public class LessonReviewWord extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
+        if(view.getId() == R.id.btnAudio) {
+            mediaPlayerManager.playMediaPlayer(false);
+        } else {
+            setAllbtnEnable(false);
+            int selectedBtnNo;
 
-            case R.id.btnAudio :
-                mediaPlayerManager.playMediaPlayer(false);
-                break;
+            if(view.getId() == R.id.btn1) {
+                selectedBtnNo = 0;
 
-            default:
-                setAllbtnEnable(false);
-                int selectedBtnNo;
+            } else if(view.getId() == R.id.btn2) {
+                selectedBtnNo = 1;
 
-                if(view.getId() == R.id.btn1) {
-                    selectedBtnNo = 0;
+            } else if(view.getId() == R.id.btn3) {
+                selectedBtnNo = 2;
 
-                } else if(view.getId() == R.id.btn2) {
-                    selectedBtnNo = 1;
+            } else {
+                selectedBtnNo = 3;
+            }
 
-                } else if(view.getId() == R.id.btn3) {
-                    selectedBtnNo = 2;
+            if(quizIndex == answerList[selectedBtnNo]) {
+                answered(view, 0, R.drawable.bg_white_10_stroke_purple, true);
 
-                } else {
-                    selectedBtnNo = 3;
-                }
-
-                if(quizIndex == answerList[selectedBtnNo]) {
-                    answered(view, 0, R.drawable.bg_white_10_stroke_purple, true);
-
-                } else {
-                    answered(view, 1, R.drawable.bg_white_10_stroke_red, false);
-                }
-                break;
+            } else {
+                answered(view, 1, R.drawable.bg_white_10_stroke_red, false);
+            }
         }
     }
 

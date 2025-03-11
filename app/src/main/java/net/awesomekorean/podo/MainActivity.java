@@ -39,7 +39,7 @@ import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import net.awesomekorean.podo.challenge.Challenge;
+//import net.awesomekorean.podo.challenge.Challenge;
 import net.awesomekorean.podo.challenge.ChallengePopUpDiscount;
 import net.awesomekorean.podo.collection.MainCollection;
 import net.awesomekorean.podo.lesson.MainLesson;
@@ -224,35 +224,35 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
                         }
                         System.out.println("딥링크 Uri : " + deepLink);
 
-                        if(deepLink != null) {
-                            String segment = deepLink.getLastPathSegment();
-                            String discount = deepLink.getQueryParameter(DISCOUNT);
-                            String timer = deepLink.getQueryParameter(TIMER);
-
-                            Intent deepLinkIntent;
-                            if(segment.equals(SEGMENT_CHALLENGE)) {
-                                deepLinkIntent = new Intent(getApplicationContext(), Challenge.class);
-                            } else {
-                                deepLinkIntent = new Intent(getApplicationContext(), TopUp.class);
-                            }
-
-                            if(discount != null) {
-                                int percent = Integer.parseInt(discount);
-                                deepLinkIntent.putExtra(DISCOUNT, percent);
-
-                                if(timer != null) {
-                                    long eventTime = Long.parseLong(timer) * 60;
-                                    SharedPreferencesInfo.setEventTimer(getApplicationContext(), eventTime, percent);
-                                    resetFragment();
-                                }
-
-                                startActivity(deepLinkIntent);
-
-                                System.out.println("세그먼트 : " + segment);
-                                System.out.println("할인 : " + discount);
-                                System.out.println("퍼센트 : " + percent);
-                            }
-                        }
+//                        if(deepLink != null) {
+//                            String segment = deepLink.getLastPathSegment();
+//                            String discount = deepLink.getQueryParameter(DISCOUNT);
+//                            String timer = deepLink.getQueryParameter(TIMER);
+//
+//                            Intent deepLinkIntent;
+//                            if(segment.equals(SEGMENT_CHALLENGE)) {
+//                                deepLinkIntent = new Intent(getApplicationContext(), Challenge.class);
+//                            } else {
+//                                deepLinkIntent = new Intent(getApplicationContext(), TopUp.class);
+//                            }
+//
+//                            if(discount != null) {
+//                                int percent = Integer.parseInt(discount);
+//                                deepLinkIntent.putExtra(DISCOUNT, percent);
+//
+//                                if(timer != null) {
+//                                    long eventTime = Long.parseLong(timer) * 60;
+//                                    SharedPreferencesInfo.setEventTimer(getApplicationContext(), eventTime, percent);
+//                                    resetFragment();
+//                                }
+//
+//                                startActivity(deepLinkIntent);
+//
+//                                System.out.println("세그먼트 : " + segment);
+//                                System.out.println("할인 : " + discount);
+//                                System.out.println("퍼센트 : " + percent);
+//                            }
+//                        }
                     }
                 }).addOnFailureListener(this, new OnFailureListener() {
                     @Override
@@ -359,68 +359,41 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
     @Override
     public void onClick(View view) {
-
-        switch (view.getId()) {
-
-            case R.id.btnProfile:
-                intent = new Intent(this, Profile.class);
-                startActivity(intent);
-                break;
-
-            case R.id.layoutPoint :
-                layoutPointDetail.setVisibility(View.VISIBLE);
-                layoutGetPoint.setVisibility(View.VISIBLE);
-                layoutPointInfo.setVisibility(View.GONE);
-                break;
-
-            case R.id.btnWatchAds :
-                AdsManager.getInstance().playRewardAds(this);
-                break;
-
-            case R.id.btnPurchasePoints :
-                intent = new Intent(getApplicationContext(), TopUp.class);
-                startActivity(intent);
-                break;
-
-            case R.id.btnPointInfo :
-                layoutGetPoint.setVisibility(View.GONE);
-                layoutPointInfo.setVisibility(View.VISIBLE);
-                break;
-
-            case R.id.btnClosePointDetail :
-                layoutPointDetail.setVisibility(View.GONE);
-                break;
-
-            case R.id.btnClosePointInfo :
-                layoutGetPoint.setVisibility(View.VISIBLE);
-                layoutPointInfo.setVisibility(View.GONE);
-                break;
-
-
-            case R.id.layoutLesson:
-                setFrag(mainLesson);
-                setMainBtns(btnLesson, textLesson, R.drawable.lesson_active, R.string.LESSON);
-                break;
-
-            case R.id.layoutReading:
-                setFrag(mainReading);
-                setMainBtns(btnReading, textReading, R.drawable.reading_active, R.string.READING);
-                break;
-
-            case R.id.layoutWriting:
-                setFrag(mainWriting);
-                setMainBtns(btnWriting, textWriting, R.drawable.writing_active, R.string.WRITING);
-                break;
-
-            case R.id.layoutCollection:
-                setFrag(mainCollection);
-                setMainBtns(btnCollection, textCollection, R.drawable.collection_active, R.string.COLLECTION);
-                break;
-
-            case R.id.layoutQnA:
-                setFrag(mainQnA);
-                setMainBtns(btnQnA, textQnA, R.drawable.qna_active, R.string.QNA);
-                break;
+        if(view.getId() == R.id.btnProfile) {
+            intent = new Intent(this, Profile.class);
+            startActivity(intent);
+        } else if(view.getId() == R.id.layoutPoint) {
+            layoutPointDetail.setVisibility(View.VISIBLE);
+            layoutGetPoint.setVisibility(View.VISIBLE);
+            layoutPointInfo.setVisibility(View.GONE);
+        } else if (view.getId() == R.id.btnWatchAds) {
+            AdsManager.getInstance().playRewardAds(this);
+        } else if (view.getId() == R.id.btnPurchasePoints) {
+            intent = new Intent(getApplicationContext(), TopUp.class);
+            startActivity(intent);
+        } else if (view.getId() == R.id.btnPointInfo) {
+            layoutGetPoint.setVisibility(View.GONE);
+            layoutPointInfo.setVisibility(View.VISIBLE);
+        } else if (view.getId() == R.id.btnClosePointDetail) {
+            layoutPointDetail.setVisibility(View.GONE);
+        } else if (view.getId() == R.id.btnClosePointInfo) {
+            layoutGetPoint.setVisibility(View.VISIBLE);
+            layoutPointInfo.setVisibility(View.GONE);
+        } else if (view.getId() == R.id.layoutLesson) {
+            setFrag(mainLesson);
+            setMainBtns(btnLesson, textLesson, R.drawable.lesson_active, R.string.LESSON);
+        } else if (view.getId() == R.id.layoutReading) {
+            setFrag(mainReading);
+            setMainBtns(btnReading, textReading, R.drawable.reading_active, R.string.READING);
+        } else if (view.getId() == R.id.layoutWriting) {
+            setFrag(mainWriting);
+            setMainBtns(btnWriting, textWriting, R.drawable.writing_active, R.string.WRITING);
+        } else if (view.getId() == R.id.layoutCollection) {
+            setFrag(mainCollection);
+            setMainBtns(btnCollection, textCollection, R.drawable.collection_active, R.string.COLLECTION);
+        } else if (view.getId() == R.id.layoutQnA) {
+            setFrag(mainQnA);
+            setMainBtns(btnQnA, textQnA, R.drawable.qna_active, R.string.QNA);
         }
     }
 

@@ -73,11 +73,8 @@ public class WritingCorrected extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
-
-            case R.id.btnBack :
-                finish();
-                break;
+        if(v.getId() == R.id.btnBack) {
+            finish();
         }
     }
 }

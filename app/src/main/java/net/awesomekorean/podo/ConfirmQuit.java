@@ -23,7 +23,6 @@ public class ConfirmQuit extends AppCompatActivity implements View.OnClickListen
     boolean isReading = false;
     boolean isMain = false;
 
-    AdsManager adsManager;
 
 
     @Override
@@ -33,11 +32,6 @@ public class ConfirmQuit extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_confirm_quit);
 
         context = getApplicationContext();
-        adsManager = AdsManager.getInstance();
-
-        if(adsManager.interstitialAd == null || !adsManager.interstitialAd.isLoaded()) {
-            adsManager.loadFullAds(context);
-        }
 
         btnYes = findViewById(R.id.btnYes);
         btnNo = findViewById(R.id.btnNo);
@@ -67,52 +61,41 @@ public class ConfirmQuit extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
+        if(v.getId() == R.id.btnYes) {
+            String unitId;
 
-        switch (v.getId()) {
+            if(isMain) {
+                finishAffinity();
+                System.runFinalization();
+                System.exit(0);
 
-            case R.id.btnYes :
-                String unitId;
+            } else {
+                if(isFinish) {
 
-                if(isMain) {
-                    finishAffinity();
-                    System.runFinalization();
-                    System.exit(0);
-
-                } else {
-                    if(isFinish) {
-
-                        if (isReading) {
-                            unitId = intent.getStringExtra(getResources().getString(R.string.READING_ID));
-
-                        } else {
-                            unitId = intent.getStringExtra(getResources().getString(R.string.LESSON_ID));
-                        }
-
-                        if (adsManager.interstitialAd.isLoaded()) {
-                            adsManager.playFullAds(context);
-                        }
-
-                        // 완료리스트에 업데이트
-                        UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
-                        userInformation.updateCompleteList(context, unitId, isReading);
-
-                        // 애널리틱스 로그이벤트
-                        Bundle params = new Bundle();
-                        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
-                        params.putString(getResources().getString(R.string.LESSON_ID), unitId);
-                        firebaseAnalytics.logEvent("lesson_finish", params);
+                    if (isReading) {
+                        unitId = intent.getStringExtra(getResources().getString(R.string.READING_ID));
 
                     } else {
-                        System.out.println("레슨/읽기를 완료하지 않고 메인으로 나갑니다.");
+                        unitId = intent.getStringExtra(getResources().getString(R.string.LESSON_ID));
                     }
-                    sendResultOk();
+
+                    // 완료리스트에 업데이트
+                    UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
+                    userInformation.updateCompleteList(context, unitId, isReading);
+
+                    // 애널리틱스 로그이벤트
+                    Bundle params = new Bundle();
+                    FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
+                    params.putString(getResources().getString(R.string.LESSON_ID), unitId);
+                    firebaseAnalytics.logEvent("lesson_finish", params);
+
+                } else {
+                    System.out.println("레슨/읽기를 완료하지 않고 메인으로 나갑니다.");
                 }
-                break;
-
-
-            case R.id.btnNo :
-                finish();
-                break;
+                sendResultOk();
+            }
+        } else if(v.getId() == R.id.btnNo) {
+            finish();
         }
     }
 }

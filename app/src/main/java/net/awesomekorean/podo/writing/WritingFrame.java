@@ -117,43 +117,35 @@ public class WritingFrame extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
-
-            case R.id.btnSave :
-                saveWriting();
-                saveResult.setVisibility(View.VISIBLE);
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        saveResult.setVisibility(View.GONE);
-                        setResult(RESULT_OK, intent);
-                        finish();
-                    }
-                }, 1000);
-                break;
-
-            case R.id.btnCorrection :
-
-                if(letters > 19) {
-                    WritingEntity entity = saveWriting();
-                    if(entity == null) {
-                        entity = editWriting;
-                    }
-                    Toast.makeText(getApplicationContext(), getString(R.string.WRITING_SAVED), Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(this, Teachers.class);
-                    intent.putExtra(getString(R.string.EXTRA_ENTITY), entity);
-                    startActivity(intent);
+        if(view.getId() == R.id.btnSave) {
+            saveWriting();
+            saveResult.setVisibility(View.VISIBLE);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    saveResult.setVisibility(View.GONE);
+                    setResult(RESULT_OK, intent);
                     finish();
-
-                } else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.WRITING_SHORT), Toast.LENGTH_LONG).show();
                 }
-                break;
-
-            case R.id.btnBack :
+            }, 1000);
+        } else if (view.getId() == R.id.btnCorrection) {
+            if(letters > 19) {
+                WritingEntity entity = saveWriting();
+                if(entity == null) {
+                    entity = editWriting;
+                }
+                Toast.makeText(getApplicationContext(), getString(R.string.WRITING_SAVED), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, Teachers.class);
+                intent.putExtra(getString(R.string.EXTRA_ENTITY), entity);
+                startActivity(intent);
                 finish();
-                break;
+
+            } else {
+                Toast.makeText(getApplicationContext(), getString(R.string.WRITING_SHORT), Toast.LENGTH_LONG).show();
+            }
+        } else if (view.getId() == R.id.btnBack) {
+            finish();
         }
     }
 

@@ -23,12 +23,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import net.awesomekorean.podo.AdsManager;
 import net.awesomekorean.podo.MediaPlayerManager;
 import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.UserInformation;
-import net.awesomekorean.podo.lesson.lessons.LessonItem;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -219,108 +217,53 @@ public class LessonHangulAssembly extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
 
-            case R.id.btnAudio :
-                if(audioFile != null) {
-                    mediaPlayerManager.playMediaPlayer(false);
-                }
-                break;
-
-            case R.id.cvH :
-
-                vowel = new String[] {"ㅏ", "ㅑ", "ㅓ", "ㅕ", "ㅣ", "ㅐ", "ㅒ"};
-
-                initialization();
-
-                setAssemblyBtns(cvH, R.drawable.assembly1_active);
-
-                btnBatchim.setVisibility(GONE);
-
-                makeHangulBox(consonant, vowel, batchim);
-
-                break;
-
-            case R.id.cvV :
-
-                vowel = new String[] {"ㅗ", "ㅛ", "ㅜ", "ㅠ", "ㅡ", "ㅘ", "ㅙ", "ㅚ", "ㅝ", "ㅞ", "ㅟ", "ㅢ"};
-
-                initialization();
-
-                setAssemblyBtns(cvV, R.drawable.assembly2_active);
-
-                btnBatchim.setVisibility(GONE);
-
-                makeHangulBox(consonant, vowel, batchim);
-
-                break;
-
-            case R.id.cvcH :
-
-                vowel = new String[] {"ㅏ", "ㅑ", "ㅓ", "ㅕ", "ㅣ", "ㅐ", "ㅒ"};
-
-                initialization();
-
-                setAssemblyBtns(cvcH, R.drawable.assembly3_active);
-
-                btnBatchim.setVisibility(VISIBLE);
-
-                makeHangulBox(consonant, vowel, batchim);
-
-                break;
-
-            case R.id.cvcV :
-
-                vowel = new String[] {"ㅗ", "ㅛ", "ㅜ", "ㅠ", "ㅡ", "ㅘ", "ㅙ", "ㅚ", "ㅝ", "ㅞ", "ㅟ", "ㅢ"};
-
-                initialization();
-
-                setAssemblyBtns(cvcV, R.drawable.assembly4_active);
-
-                btnBatchim.setVisibility(VISIBLE);
-
-                makeHangulBox(consonant, vowel, batchim);
-
-                break;
-
-            case R.id.btnConsonant :
-
-                conVowBtnClicked(true, false, false);
-
-                hangulBoxVisible(VISIBLE, GONE, GONE);
-
-                break;
-
-            case R.id.btnVowel :
-
-                conVowBtnClicked(false, true, false);
-
-                hangulBoxVisible(GONE, VISIBLE, GONE);
-
-                break;
-
-            case R.id.btnBatchim :
-
-                conVowBtnClicked(false, false, true);
-
-                hangulBoxVisible(GONE, GONE, VISIBLE);
-
-                break;
-
-            case R.id.btnIntro :
-                textViewIntro = findViewById(R.id.textViewIntro);
-                textViewIntro.setText(assemblyIntro);
-                textViewIntro.setMovementMethod(new ScrollingMovementMethod());
-                layoutIntro.setVisibility(VISIBLE);
-                break;
-
-            case R.id.btnClose :
-                layoutIntro.setVisibility(GONE);
-                break;
-
-            case R.id.btnBack :
-                setLessonComplete();
-                break;
+        if(v.getId() == R.id.btnAudio) {
+            if(audioFile != null) {
+                mediaPlayerManager.playMediaPlayer(false);
+            }
+        } else if (v.getId() == R.id.cvH) {
+            vowel = new String[] {"ㅏ", "ㅑ", "ㅓ", "ㅕ", "ㅣ", "ㅐ", "ㅒ"};
+            initialization();
+            setAssemblyBtns(cvH, R.drawable.assembly1_active);
+            btnBatchim.setVisibility(GONE);
+            makeHangulBox(consonant, vowel, batchim);
+        } else if (v.getId() == R.id.cvV) {
+            vowel = new String[] {"ㅗ", "ㅛ", "ㅜ", "ㅠ", "ㅡ", "ㅘ", "ㅙ", "ㅚ", "ㅝ", "ㅞ", "ㅟ", "ㅢ"};
+            initialization();
+            setAssemblyBtns(cvV, R.drawable.assembly2_active);
+            btnBatchim.setVisibility(GONE);
+            makeHangulBox(consonant, vowel, batchim);
+        } else if (v.getId() == R.id.cvcH) {
+            vowel = new String[] {"ㅏ", "ㅑ", "ㅓ", "ㅕ", "ㅣ", "ㅐ", "ㅒ"};
+            initialization();
+            setAssemblyBtns(cvcH, R.drawable.assembly3_active);
+            btnBatchim.setVisibility(VISIBLE);
+            makeHangulBox(consonant, vowel, batchim);
+        } else if (v.getId() == R.id.cvcV) {
+            vowel = new String[] {"ㅗ", "ㅛ", "ㅜ", "ㅠ", "ㅡ", "ㅘ", "ㅙ", "ㅚ", "ㅝ", "ㅞ", "ㅟ", "ㅢ"};
+            initialization();
+            setAssemblyBtns(cvcV, R.drawable.assembly4_active);
+            btnBatchim.setVisibility(VISIBLE);
+            makeHangulBox(consonant, vowel, batchim);
+        } else if (v.getId() == R.id.btnConsonant) {
+            conVowBtnClicked(true, false, false);
+            hangulBoxVisible(VISIBLE, GONE, GONE);
+        } else if (v.getId() == R.id.btnVowel) {
+            conVowBtnClicked(false, true, false);
+            hangulBoxVisible(GONE, VISIBLE, GONE);
+        } else if (v.getId() == R.id.btnBatchim) {
+            conVowBtnClicked(false, false, true);
+            hangulBoxVisible(GONE, GONE, VISIBLE);
+        } else if (v.getId() == R.id.btnIntro) {
+            textViewIntro = findViewById(R.id.textViewIntro);
+            textViewIntro.setText(assemblyIntro);
+            textViewIntro.setMovementMethod(new ScrollingMovementMethod());
+            layoutIntro.setVisibility(VISIBLE);
+        } else if(v.getId() == R.id.btnClose) {
+            layoutIntro.setVisibility(GONE);
+        } else if(v.getId() == R.id.btnBack) {
+            setLessonComplete();
         }
     }
 

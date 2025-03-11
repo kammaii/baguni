@@ -156,96 +156,86 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
+        if(v.getId() == R.id.btnYes) {
+            if(userPoint >= unlockPrice) {
+                unlockFirst.setVisibility(View.GONE);
 
-            case R.id.btnYes :
+                // 포인트 차감하고 DB에 레슨아이디 추가, 해당 레슨에 unlock = true 세팅
+                int newPoint = userPoint - unlockPrice;
+                userInformation.setPoints(newPoint);
 
-                if(userPoint >= unlockPrice) {
-                    unlockFirst.setVisibility(View.GONE);
-
-                    // 포인트 차감하고 DB에 레슨아이디 추가, 해당 레슨에 unlock = true 세팅
-                    int newPoint = userPoint - unlockPrice;
-                    userInformation.setPoints(newPoint);
-
-                    // 스페셜레슨 구매
-                    if(extra.equals(getResources().getString(R.string.SPECIAL_LESSON))) {
-                        String lessonId = getIntent().getStringExtra(getResources().getString(R.string.LESSON_ID));
-                        LessonSpecial lesson = (LessonSpecial) getIntent().getSerializableExtra(getResources().getString(R.string.LESSON));
-                        intent = new Intent(context, LessonSpecialFrame.class);
-                        intent.putExtra(getResources().getString(R.string.LESSON), (Serializable) lesson);
-                        userInformation.addSpecialLessonUnlock(lessonId);
-                        startActivity(intent);
+                // 스페셜레슨 구매
+                if(extra.equals(getResources().getString(R.string.SPECIAL_LESSON))) {
+                    String lessonId = getIntent().getStringExtra(getResources().getString(R.string.LESSON_ID));
+                    LessonSpecial lesson = (LessonSpecial) getIntent().getSerializableExtra(getResources().getString(R.string.LESSON));
+                    intent = new Intent(context, LessonSpecialFrame.class);
+                    intent.putExtra(getResources().getString(R.string.LESSON), (Serializable) lesson);
+                    userInformation.addSpecialLessonUnlock(lessonId);
+                    startActivity(intent);
 
 
                     // 레슨 구매
-                    } else if(extra.equals("L")) {
-                        Lesson lesson = (Lesson) getIntent().getSerializableExtra(getResources().getString(R.string.LESSON));
-                        userInformation.addLessonUnlock(lesson.getLessonId());
-                        intent = new Intent(context, LessonFrame.class);
-                        intent.putExtra(getResources().getString(R.string.LESSON), (Serializable) lesson);
-                        startActivity(intent);
+                } else if(extra.equals("L")) {
+                    Lesson lesson = (Lesson) getIntent().getSerializableExtra(getResources().getString(R.string.LESSON));
+                    userInformation.addLessonUnlock(lesson.getLessonId());
+                    intent = new Intent(context, LessonFrame.class);
+                    intent.putExtra(getResources().getString(R.string.LESSON), (Serializable) lesson);
+                    startActivity(intent);
 
-                    } else if(extra.equals("IL")) {
-                        I_Lesson lesson = (I_Lesson) getIntent().getSerializableExtra(getResources().getString(R.string.LESSON));
-                        userInformation.addLessonUnlock(lesson.getLessonId());
-                        intent = new Intent(context, IntermediateFrame.class);
-                        intent.putExtra(getResources().getString(R.string.LESSON), (Serializable) lesson);
-                        startActivity(intent);
+                } else if(extra.equals("IL")) {
+                    I_Lesson lesson = (I_Lesson) getIntent().getSerializableExtra(getResources().getString(R.string.LESSON));
+                    userInformation.addLessonUnlock(lesson.getLessonId());
+                    intent = new Intent(context, IntermediateFrame.class);
+                    intent.putExtra(getResources().getString(R.string.LESSON), (Serializable) lesson);
+                    startActivity(intent);
 
 
                     // 읽기 구매
-                    } else {
-                        Reading reading = (Reading) getIntent().getSerializableExtra(getResources().getString(R.string.READING));
-                        userInformation.addReadingUnlock(reading.getReadingId());
-                        intent = new Intent(context, ReadingFrame.class);
-                        intent.putExtra(getResources().getString(R.string.READING), (Serializable) reading);
-                        startActivity(intent);
-                    }
-
-                    SharedPreferencesInfo.setUserInfo(context, userInformation);
-
-                    DocumentReference informationRef = db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail);
-                    informationRef.set(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            System.out.println("레슨/읽기를 포인트로 구매했습니다.");
-                            Toast.makeText(context, getString(R.string.UNLOCK_SUCCEEDED), Toast.LENGTH_LONG).show();
-
-                            // analytics 로그 이벤트 얻기
-                            FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
-                            Bundle bundle = new Bundle();
-                            bundle.putString("type", extra);
-                            bundle.putInt("points", unlockPrice);
-                            firebaseAnalytics.logEvent("point_use", bundle);
-                            finish();
-
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(context, getString(R.string.UNLOCK_FAILED), Toast.LENGTH_LONG).show();
-                        }
-                    });
                 } else {
-                    unlockFirst.setVisibility(View.GONE);
-                    unlockSecond.setVisibility(View.VISIBLE);
-                    pointHave.setText(String.valueOf(userPoint));
+                    Reading reading = (Reading) getIntent().getSerializableExtra(getResources().getString(R.string.READING));
+                    userInformation.addReadingUnlock(reading.getReadingId());
+                    intent = new Intent(context, ReadingFrame.class);
+                    intent.putExtra(getResources().getString(R.string.READING), (Serializable) reading);
+                    startActivity(intent);
                 }
-                break;
 
-            case R.id.btnPurchasePoints :
-                intent = new Intent(context, TopUp.class);
-                startActivity(intent);
-                break;
+                SharedPreferencesInfo.setUserInfo(context, userInformation);
 
+                DocumentReference informationRef = db.collection(getString(R.string.DB_USERS)).document(MainActivity.userEmail);
+                informationRef.set(userInformation).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        System.out.println("레슨/읽기를 포인트로 구매했습니다.");
+                        Toast.makeText(context, getString(R.string.UNLOCK_SUCCEEDED), Toast.LENGTH_LONG).show();
 
-            case R.id.btnWatchAds :
-                adsManager.playRewardAds(this);
-                break;
+                        // analytics 로그 이벤트 얻기
+                        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("type", extra);
+                        bundle.putInt("points", unlockPrice);
+                        firebaseAnalytics.logEvent("point_use", bundle);
+                        finish();
 
-            default: // btnNo, btnClose
-                finish();
-                break;
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, getString(R.string.UNLOCK_FAILED), Toast.LENGTH_LONG).show();
+                    }
+                });
+            } else {
+                unlockFirst.setVisibility(View.GONE);
+                unlockSecond.setVisibility(View.VISIBLE);
+                pointHave.setText(String.valueOf(userPoint));
+            }
+        } else if(v.getId() == R.id.btnPurchasePoints) {
+            intent = new Intent(context, TopUp.class);
+            startActivity(intent);
+        } else if(v.getId() == R.id.btnWatchAds) {
+            adsManager.playRewardAds(this);
+        // btnNo, btnClose
+        } else {
+            finish();
         }
     }
 }

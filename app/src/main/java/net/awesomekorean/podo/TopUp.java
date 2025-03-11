@@ -286,30 +286,19 @@ public class TopUp extends AppCompatActivity implements View.OnClickListener, Pu
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
-
-            case R.id.btnClose :
-                finish();
-                firebaseAnalytics.logEvent("topUp_close", params);
-                break;
-
-            case R.id.pointA :
-                setPurchase(pointA, checkPointA, getString(R.string.SKU_100));
-                break;
-
-            case R.id.pointB :
-                setPurchase(pointB, checkPointB, getString(R.string.SKU_1000));
-                break;
-
-            case R.id.pointC :
-                setPurchase(pointC, checkPointC, getString(R.string.SKU_500));
-                break;
-
-            case R.id.btnPurchasePoint :
-                btnPurchasePoint.setEnabled(false);
-                BillingFlowParams flowParams = BillingFlowParams.newBuilder().setSkuDetails(skuDetails).build();
-                billingClient.launchBillingFlow(this, flowParams);
-                break;
+        if(v.getId() == R.id.btnClose) {
+            finish();
+            firebaseAnalytics.logEvent("topUp_close", params);
+        } else if(v.getId() == R.id.pointA) {
+            setPurchase(pointA, checkPointA, getString(R.string.SKU_100));
+        } else if(v.getId() == R.id.pointB) {
+            setPurchase(pointB, checkPointB, getString(R.string.SKU_1000));
+        } else if(v.getId() == R.id.pointC) {
+            setPurchase(pointC, checkPointC, getString(R.string.SKU_500));
+        } else if(v.getId() == R.id.btnPurchasePoint) {
+            btnPurchasePoint.setEnabled(false);
+            BillingFlowParams flowParams = BillingFlowParams.newBuilder().setSkuDetails(skuDetails).build();
+            billingClient.launchBillingFlow(this, flowParams);
         }
     }
 

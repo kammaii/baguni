@@ -92,53 +92,47 @@ public class GetRandomPoint extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
+        if(v.getId() == R.id.btnGetPoint) {
+            // 포인트 합산하기
+            UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
+            if(lessonItem != null) {
+                userInformation.addRewardPointsWithoutDB(reward);
+                userInformation.updateCompleteList(context, lessonItem.getLessonId(), false);
+            } else {
+                userInformation.addRewardPoints(context, reward);
+            }
+            finish();
+        } else {
+            box1.setClickable(false);
+            box2.setClickable(false);
+            box3.setClickable(false);
+            v.startAnimation(animation);
+            // 포인트 랜덤으로 가져오기
+            reward = RandomRewards.randomRewards();
+            tvPoint.setText("+ " + String.valueOf(reward));
+            selectResult.setVisibility(View.VISIBLE);
+            playSoundPool.playSoundLesson(2);
 
-            case R.id.btnGetPoint :
+            Animation aniSelectResult = AnimationUtils.loadAnimation(context, R.anim.move_up);
+            selectResult.startAnimation(aniSelectResult);
+            aniSelectResult.setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
 
-                // 포인트 합산하기
-                UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
-                if(lessonItem != null) {
-                    userInformation.addRewardPointsWithoutDB(reward);
-                    userInformation.updateCompleteList(context, lessonItem.getLessonId(), false);
-                } else {
-                    userInformation.addRewardPoints(context, reward);
                 }
-                finish();
-                break;
 
-            default:
-                box1.setClickable(false);
-                box2.setClickable(false);
-                box3.setClickable(false);
-                v.startAnimation(animation);
-                // 포인트 랜덤으로 가져오기
-                reward = RandomRewards.randomRewards();
-                tvPoint.setText("+ " + String.valueOf(reward));
-                selectResult.setVisibility(View.VISIBLE);
-                playSoundPool.playSoundLesson(2);
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    Animation aniPoint = AnimationUtils.loadAnimation(context, R.anim.move_up_small);
+                    tvPoint.startAnimation(aniPoint);
+                    imageCoin.startAnimation(aniPoint);
+                }
 
-                Animation aniSelectResult = AnimationUtils.loadAnimation(context, R.anim.move_up);
-                selectResult.startAnimation(aniSelectResult);
-                aniSelectResult.setAnimationListener(new Animation.AnimationListener() {
-                    @Override
-                    public void onAnimationStart(Animation animation) {
+                @Override
+                public void onAnimationRepeat(Animation animation) {
 
-                    }
-
-                    @Override
-                    public void onAnimationEnd(Animation animation) {
-                        Animation aniPoint = AnimationUtils.loadAnimation(context, R.anim.move_up_small);
-                        tvPoint.startAnimation(aniPoint);
-                        imageCoin.startAnimation(aniPoint);
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animation animation) {
-
-                    }
-                });
-                break;
+                }
+            });
         }
     }
 }

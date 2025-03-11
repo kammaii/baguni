@@ -26,7 +26,6 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import net.awesomekorean.podo.AdsManager;
 import net.awesomekorean.podo.ConfirmQuit;
 import net.awesomekorean.podo.LoadingPage;
 import net.awesomekorean.podo.MediaPlayerManager;
@@ -296,32 +295,20 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
-
-            case R.id.btnClose :
-                openConfirmQuit();
-                break;
-
-
-            case R.id.btnComplete :
-                adsManager.playFullAds(getApplicationContext());
-                UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
-                userInformation.updateCompleteList(getApplicationContext(), lessonReview.getLessonId(), false);
-                finish();
-                break;
-
-
-            case R.id.btnYes :
-                reviewInit();
-                setLayout(View.GONE, View.GONE);
-                replaceFragment(LessonReviewWord.newInstance());
-                break;
-
-
-            case R.id.btnNo :
-                adsManager.playFullAds(getApplicationContext());
-                finish();
-                break;
+        if(v.getId() == R.id.btnClose) {
+            openConfirmQuit();
+        } else if (v.getId() == R.id.btnComplete) {
+            adsManager.playFullAds(getApplicationContext());
+            UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
+            userInformation.updateCompleteList(getApplicationContext(), lessonReview.getLessonId(), false);
+            finish();
+        } else if(v.getId() == R.id.btnYes) {
+            reviewInit();
+            setLayout(View.GONE, View.GONE);
+            replaceFragment(LessonReviewWord.newInstance());
+        } else if(v.getId() == R.id.btnNo) {
+            adsManager.playFullAds(getApplicationContext());
+            finish();
         }
     }
 

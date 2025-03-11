@@ -3,7 +3,6 @@ package net.awesomekorean.podo.profile;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,7 +33,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import net.awesomekorean.podo.AdsManager;
 import net.awesomekorean.podo.MainActivity;
 import net.awesomekorean.podo.PlaySoundPool;
 import net.awesomekorean.podo.R;
@@ -282,199 +280,174 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
+        if(v.getId() == R.id.btnBack) {
+            finish();
+        } else if(v.getId() == R.id.btnGetPoint) {
+            PlaySoundPool playSoundPool = new PlaySoundPool(context);
+            playSoundPool.playSoundLesson(2);
 
-            case R.id.btnBack :
-                finish();
-                break;
+            // 오늘 출석만 남기고 다 초기화
+            UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
+            Calendar cal = Calendar.getInstance();
+            int today = cal.get(Calendar.DAY_OF_WEEK) - 1; // 1:일요일 ~ 7:토요일
+            userInformation.resetDays(today);
+            setAttendance(userInformation.getAttendance());
+            System.out.println("출석부를 초기화 했습니다");
 
-            case R.id.btnGetPoint :
-                PlaySoundPool playSoundPool = new PlaySoundPool(context);
-                playSoundPool.playSoundLesson(2);
+            userInformation.addRewardPoints(context, 20);
+            userPoint.setText(String.valueOf(userInformation.getPoints()));
+        } else if(v.getId() == R.id.layoutEditName) {
+            setExtendableButton(arrowEditProfile, layoutEditNameOpen);
+        } else if(v.getId() == R.id.btnSave) {
+            final String newName = editName.getText().toString();
 
-                // 오늘 출석만 남기고 다 초기화
-                UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
-                Calendar cal = Calendar.getInstance();
-                int today = cal.get(Calendar.DAY_OF_WEEK) - 1; // 1:일요일 ~ 7:토요일
-                userInformation.resetDays(today);
-                setAttendance(userInformation.getAttendance());
-                System.out.println("출석부를 초기화 했습니다");
+            if(newName.getBytes().length > 0) {
+                final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                        .setDisplayName(newName)
+                        .build();
 
-                userInformation.addRewardPoints(context, 20);
-                userPoint.setText(String.valueOf(userInformation.getPoints()));
-                break;
-
-            case R.id.layoutEditName :
-                setExtendableButton(arrowEditProfile, layoutEditNameOpen);
-                break;
-
-            case R.id.btnSave :
-                final String newName = editName.getText().toString();
-
-                if(newName.getBytes().length > 0) {
-                    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                            .setDisplayName(newName)
-                            .build();
-
-                    if(user != null) {
-                        user.updateProfile(profileUpdates)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if(task.isSuccessful()) {
-                                            System.out.println("userName을 업데이트 했습니다");
-                                            Toast.makeText(context, getString(R.string.UPDATED_USERNAME), Toast.LENGTH_SHORT).show();
-                                            MainActivity.userName = user.getDisplayName();
-                                            userName.setText(newName);
-                                            SharedPreferencesInfo.setUserName(context, newName);
-                                        }
+                if(user != null) {
+                    user.updateProfile(profileUpdates)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()) {
+                                        System.out.println("userName을 업데이트 했습니다");
+                                        Toast.makeText(context, getString(R.string.UPDATED_USERNAME), Toast.LENGTH_SHORT).show();
+                                        MainActivity.userName = user.getDisplayName();
+                                        userName.setText(newName);
+                                        SharedPreferencesInfo.setUserName(context, newName);
                                     }
-                                }).addOnFailureListener(new OnFailureListener() {
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    System.out.println("userName을 업데이트를 실패 했습니다" + e);
+                                    Toast.makeText(context, getString(R.string.UPDATED_USERNAME_FAILED), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+            }
+
+            setExtendableButton(arrowEditProfile, layoutEditNameOpen);
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(editName.getWindowToken(), 0);
+        } else if(v.getId() == R.id.reportBug) {
+            setExtendableButton(arrowReportBug, reportBugOpen);
+        } else if (v.getId() == R.id.btnSend) {
+            String token = SharedPreferencesInfo.getUserToken(context);
+            String comments = reportBugText.getText().toString();
+            if (comments.getBytes().length > 0) {
+                Map<String, Object> report = new HashMap<>();
+                report.put("date", UnixTimeStamp.getTimeNow());
+                report.put("userEmail", SharedPreferencesInfo.getUserEmail(context));
+                report.put("userName", SharedPreferencesInfo.getUserName(context));
+                report.put("comments", comments);
+                report.put("userToken", token);
+                report.put("status", 0);  // 0:신규, 1:읽음, 2:답변함
+                report.put("answer", "");
+
+                db.collection(getString(R.string.DB_REPORTS)).document(UUID.randomUUID().toString())
+                        .set(report).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onFailure(@NonNull Exception e) {
-                                System.out.println("userName을 업데이트를 실패 했습니다" + e);
-                                Toast.makeText(context, getString(R.string.UPDATED_USERNAME_FAILED), Toast.LENGTH_SHORT).show();
+                            public void onSuccess(Void aVoid) {
+                                reportResult.setVisibility(View.VISIBLE);
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        reportResult.setVisibility(View.GONE);
+                                    }
+                                }, 3000);
                             }
                         });
-                    }
-                }
+            }
 
-                setExtendableButton(arrowEditProfile, layoutEditNameOpen);
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(editName.getWindowToken(), 0);
-                break;
+            setExtendableButton(arrowReportBug, reportBugOpen);
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(reportBugText.getWindowToken(), 0);
+        } else if(v.getId() == R.id.evaluation) {
+            Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=net.awesomekorean.podo");
+            intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        } else if(v.getId() == R.id.recommend) {
+            intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            String title = "https://awesomekorean.page.link/Sohr";
+            intent.putExtra(Intent.EXTRA_TEXT, title);
 
-            case R.id.reportBug :
-                setExtendableButton(arrowReportBug, reportBugOpen);
-                break;
-
-            case R.id.btnSend :
-                String token = SharedPreferencesInfo.getUserToken(context);
-                String comments = reportBugText.getText().toString();
-                if (comments.getBytes().length > 0) {
-                    Map<String, Object> report = new HashMap<>();
-                    report.put("date", UnixTimeStamp.getTimeNow());
-                    report.put("userEmail", SharedPreferencesInfo.getUserEmail(context));
-                    report.put("userName", SharedPreferencesInfo.getUserName(context));
-                    report.put("comments", comments);
-                    report.put("userToken", token);
-                    report.put("status", 0);  // 0:신규, 1:읽음, 2:답변함
-                    report.put("answer", "");
-
-                    db.collection(getString(R.string.DB_REPORTS)).document(UUID.randomUUID().toString())
-                            .set(report).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            reportResult.setVisibility(View.VISIBLE);
-                            Handler handler = new Handler();
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    reportResult.setVisibility(View.GONE);
-                                }
-                            }, 3000);
+            Intent chooser = Intent.createChooser(intent, "Recommend podo to your friends");
+            startActivity(chooser);
+        } else if(v.getId() == R.id.getPointsByAd) {
+            adsManager.playRewardAds(this);
+        } else if(v.getId() == R.id.getPointsByPurchasing) {
+            intent = new Intent(Profile.this, TopUp.class);
+            startActivity(intent);
+        } else if(v.getId() == R.id.logout) {
+            new AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.SIGN_OUT)).setMessage(getString(R.string.SIGN_OUT_MESSAGE))
+                    .setPositiveButton(getString(R.string.SIGN_OUT), new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            intent = new Intent(context, SignIn.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            startActivity(intent);
+                            FirebaseAuth.getInstance().signOut();
+                            finishAffinity();
                         }
-                    });
-                }
+                    })
+                    .setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
 
-                setExtendableButton(arrowReportBug, reportBugOpen);
-                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(reportBugText.getWindowToken(), 0);
-                break;
-
-            case R.id.evaluation :
-                Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=net.awesomekorean.podo");
-                intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-                break;
-
-            case R.id.recommend :
-                intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                String title = "https://awesomekorean.page.link/Sohr";
-                intent.putExtra(Intent.EXTRA_TEXT, title);
-
-                Intent chooser = Intent.createChooser(intent, "Recommend podo to your friends");
-                startActivity(chooser);
-                break;
-
-            case R.id.getPointsByAd :
-                adsManager.playRewardAds(this);
-                break;
-
-            case R.id.getPointsByPurchasing :
-                intent = new Intent(Profile.this, TopUp.class);
-                startActivity(intent);
-                break;
-
-            case R.id.logout :
-                new AlertDialog.Builder(this)
-                        .setTitle(getString(R.string.SIGN_OUT)).setMessage(getString(R.string.SIGN_OUT_MESSAGE))
-                        .setPositiveButton(getString(R.string.SIGN_OUT), new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                intent = new Intent(context, SignIn.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                                startActivity(intent);
-                                FirebaseAuth.getInstance().signOut();
-                                finishAffinity();
-                            }
-                        })
-                        .setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-
-                            }
-                        })
-                        .show();
-                break;
-
-            case R.id.deleteAccount :
-                new AlertDialog.Builder(this)
-                        .setTitle(getString(R.string.DELETE_ACCOUNT)).setMessage(getString(R.string.DELETE_ACCOUNT_MESSAGE))
-                        .setPositiveButton(getString(R.string.DELETE_ACCOUNT), new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                // 계정삭제
-                                String userEmail = SharedPreferencesInfo.getUserEmail(context);
-                                if(userEmail != null) {
-                                    db.collection(context.getString(R.string.DB_USERS)).document(userEmail).delete()
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                                    user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<Void> task) {
-                                                            if(task.isSuccessful()) {
-                                                                Toast.makeText(getApplicationContext(), "Successfully deleted your account.", Toast.LENGTH_LONG).show();
-                                                                intent = new Intent(context, SignIn.class);
-                                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                                                                startActivity(intent);
-                                                                finish();
-                                                            }
+                        }
+                    })
+                    .show();
+        } else if(v.getId() == R.id.deleteAccount) {
+            new AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.DELETE_ACCOUNT)).setMessage(getString(R.string.DELETE_ACCOUNT_MESSAGE))
+                    .setPositiveButton(getString(R.string.DELETE_ACCOUNT), new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            // 계정삭제
+                            String userEmail = SharedPreferencesInfo.getUserEmail(context);
+                            if(userEmail != null) {
+                                db.collection(context.getString(R.string.DB_USERS)).document(userEmail).delete()
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                                user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if(task.isSuccessful()) {
+                                                            Toast.makeText(getApplicationContext(), "Successfully deleted your account.", Toast.LENGTH_LONG).show();
+                                                            intent = new Intent(context, SignIn.class);
+                                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                                            startActivity(intent);
+                                                            finish();
                                                         }
+                                                    }
 
-                                                    }).addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            Toast.makeText(getApplicationContext(), "Failed to remove your account. : " + e, Toast.LENGTH_LONG).show();
-                                                        }
-                                                    });
-                                                }
-                                            }).addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Toast.makeText(getApplicationContext(), "Failed to remove database : " + e, Toast.LENGTH_LONG).show();
-                                        }
-                                    });
-
-                                }
-                            }
-                        }).setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
+                                                }).addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(getApplicationContext(), "Failed to remove your account. : " + e, Toast.LENGTH_LONG).show();
+                                                    }
+                                                });
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(getApplicationContext(), "Failed to remove database : " + e, Toast.LENGTH_LONG).show();
+                                            }
+                                        });
 
                             }
-                        }).show();
-                break;
+                        }
+                    }).setNegativeButton(getString(R.string.CANCEL), new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+
+                        }
+                    }).show();
         }
     }
 

@@ -205,23 +205,16 @@ public class LessonDialog extends Fragment implements Button.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
-
-            case R.id.btnPlay :
-                setToggleBtnUnChecked();
-                setPlayBtn(View.GONE, View.VISIBLE);
-                mediaPlayerManager.setAndPlayAllDialog(this, audiosDialog);
-                break;
-
-            case R.id.btnPause :
-                setPlayBtn(View.VISIBLE, View.GONE);
-                break;
-
-            case R.id.btnFinish :
-                Intent intent = new Intent(activity, LessonFinish.class);
-                startActivity(intent);
-                activity.finish();
-                break;
+        if(view.getId() == R.id.btnPlay) {
+            setToggleBtnUnChecked();
+            setPlayBtn(View.GONE, View.VISIBLE);
+            mediaPlayerManager.setAndPlayAllDialog(this, audiosDialog);
+        } else if (view.getId() == R.id.btnPause) {
+            setPlayBtn(View.VISIBLE, View.GONE);
+        } else if (view.getId() == R.id.btnFinish) {
+            Intent intent = new Intent(activity, LessonFinish.class);
+            startActivity(intent);
+            activity.finish();
         }
     }
 

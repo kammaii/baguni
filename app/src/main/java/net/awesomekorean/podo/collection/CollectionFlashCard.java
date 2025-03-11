@@ -76,48 +76,41 @@ public class CollectionFlashCard extends AppCompatActivity implements Button.OnC
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
+        if(view.getId() == R.id.btnSave) {
+            String front = editFront.getText().toString();
+            String back = editBack.getText().toString();
 
-            case R.id.btnBack :
-                // ADD 일 때는 result 값을 주고, EDIT 일 때는 그냥 activity 만 종료함.
-                if(code.equals(getString(R.string.REQUEST_ADD))) {
-                    Intent intent = new Intent();
-                    setResult(RESULT_OK, intent);
-                }
-                finish();
-                break;
+            CollectionRepository repository = new CollectionRepository(this);
 
-            case R.id.btnSave :
-
-                String front = editFront.getText().toString();
-                String back = editBack.getText().toString();
-
-                CollectionRepository repository = new CollectionRepository(this);
-
-                // ADD 일 때, save 를 눌러도 collection 으로 전환되지 않고 계속 단어를 추가 할 수 있다
-                if(code.equals(getString(R.string.REQUEST_ADD))) {
-                    repository.insert(front, back, null);
+            // ADD 일 때, save 를 눌러도 collection 으로 전환되지 않고 계속 단어를 추가 할 수 있다
+            if(code.equals(getString(R.string.REQUEST_ADD))) {
+                repository.insert(front, back, null);
 
                 // EDIT 일 때
-                } else {
-                    repository.editByGuid(guid, front, back);
-                }
-                saveResult.setVisibility(View.VISIBLE);
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        saveResult.setVisibility(View.GONE);
-                        Intent intent = new Intent();
-                        setResult(RESULT_OK, intent);
-                        editFront.setText("");
-                        editBack.setText("");
-                        if(code.equals(getString(R.string.REQUEST_EDIT))) {
-                            finish();
-                        }
+            } else {
+                repository.editByGuid(guid, front, back);
+            }
+            saveResult.setVisibility(View.VISIBLE);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    saveResult.setVisibility(View.GONE);
+                    Intent intent = new Intent();
+                    setResult(RESULT_OK, intent);
+                    editFront.setText("");
+                    editBack.setText("");
+                    if(code.equals(getString(R.string.REQUEST_EDIT))) {
+                        finish();
                     }
-                }, 1000);
-                break;
+                }
+            }, 1000);
+        } else if(view.getId() == R.id.btnBack) {
+            if(code.equals(getString(R.string.REQUEST_ADD))) {
+                Intent intent = new Intent();
+                setResult(RESULT_OK, intent);
+            }
+            finish();
         }
     }
 }

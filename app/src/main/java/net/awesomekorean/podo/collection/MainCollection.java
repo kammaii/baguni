@@ -379,178 +379,71 @@ public class MainCollection extends Fragment implements Button.OnClickListener {
     // 버튼들 클릭 이벤트
     @Override
     public void onClick(View view) {
+        if(view.getId() == R.id.checkBoxSelectAll) {
+            if (selectAll.isChecked()) {
+                adapter.checkAll(true);
+                isChecked = list.size();
+                btnEnabled(true);
+            } else {
+                adapter.checkAll(false);
+                isChecked = 0;
+                btnEnabled(false);
+            }
 
-        switch (view.getId()) {
+            adapter.notifyDataSetChanged();
+        } else if (view.getId() == R.id.btnDelete) {
+            msgDelete.setVisibility(View.VISIBLE);
+        } else if (view.getId() == R.id.btnStudy) {
+            if(listAllData != null && !listAllData.isEmpty()) {
+                intent = new Intent(getContext(), CollectionStudy.class);
+                startActivity(intent);
+            }
+        } else if (view.getId() == R.id.btnYes) {
+            checkedList = new ArrayList<>();
 
-            case R.id.checkBoxSelectAll:
-                if (selectAll.isChecked()) {
-                    adapter.checkAll(true);
-                    isChecked = list.size();
-                    btnEnabled(true);
-                } else {
-                    adapter.checkAll(false);
-                    isChecked = 0;
-                    btnEnabled(false);
+            for (CollectionEntity entity : listAllData) {
+                if (entity.getIsChecked()) {
+                    checkedList.add(entity);
                 }
+            }
+            if (checkedList != null) {
 
-                adapter.notifyDataSetChanged();
-                break;
+                for (CollectionEntity item : checkedList) {
+                    String guid = item.getGuid();
+                    repository.setDeletedByGuid(guid);
 
-            case R.id.btnStudy:
-                if(listAllData != null && !listAllData.isEmpty()) {
-                    intent = new Intent(getContext(), CollectionStudy.class);
-                    startActivity(intent);
-                }
-                break;
-
-            case R.id.btnDelete:
-                msgDelete.setVisibility(View.VISIBLE);
-                break;
-
-            case R.id.btnYes:
-                checkedList = new ArrayList<>();
-
-                for (CollectionEntity entity : listAllData) {
-                    if (entity.getIsChecked()) {
-                        checkedList.add(entity);
+                    // 파일 삭제
+                    File file = new File(getContext().getFilesDir() + "/" + item.getAudio());
+                    if(file.exists()) {
+                        file.delete();
                     }
                 }
-                if (checkedList != null) {
+            }
+            ItemLongClicked(false, View.INVISIBLE, View.VISIBLE, View.GONE);
+            msgDelete.setVisibility(View.GONE);
+        } else if (view.getId() == R.id.btnNo) {
+            msgDelete.setVisibility(View.GONE);
+        } else if (view.getId() == R.id.btnRecord) {
+            checkedList = new ArrayList<>();
 
-                    for (CollectionEntity item : checkedList) {
-                        String guid = item.getGuid();
-                        repository.setDeletedByGuid(guid);
-
-                        // 파일 삭제
-                        File file = new File(getContext().getFilesDir() + "/" + item.getAudio());
-                        if(file.exists()) {
-                            file.delete();
-                        }
-                    }
+            for (CollectionEntity entity : listAllData) {
+                if (entity.getIsChecked()) {
+                    checkedList.add(entity);
                 }
-                ItemLongClicked(false, View.INVISIBLE, View.VISIBLE, View.GONE);
-                msgDelete.setVisibility(View.GONE);
-                break;
+            }
+            if (checkedList != null) {
 
-            case R.id.btnNo:
-                msgDelete.setVisibility(View.GONE);
-                break;
-
-            case R.id.btnRecord:
-                checkedList = new ArrayList<>();
-
-                for (CollectionEntity entity : listAllData) {
-                    if (entity.getIsChecked()) {
-                        checkedList.add(entity);
-                    }
-                }
-                if (checkedList != null) {
-
-                    Intent intent = new Intent(getContext(), Teachers.class);
-                    intent.putExtra("code", "record");
-                    intent.putExtra("checkedList", checkedList);
-                    startActivity(intent);
-                }
-                break;
-
-            case R.id.btnAddCollection:
-                intent = new Intent(getContext(), CollectionFlashCard.class);
-                intent.putExtra(getString(R.string.REQUEST), getString(R.string.REQUEST_ADD));
-                startActivityForResult(intent, getResources().getInteger(R.integer.REQUEST_CODE_ADD));
-                break;
-
-            case R.id.searchCancel:
-                searchEdit.setText("");
-                break;
-/*
-            case R.id.btnSync:
-
-                // Room 에서 dateEdit 가 dateLastSync 보다 뒤에 있는 아이템들 가져오기
-                final List<CollectionEntity> itemsToUpload = new ArrayList<>();
-                final List<CollectionEntity> itemsToDelete = new ArrayList<>();
-                long dateLastSync = SharedPreferencesInfo.getDateLastSync(getContext());
-
-                for (final CollectionEntity entity : copyListAllData) {
-                    if (entity.getDateEdit() > dateLastSync) {
-
-                        // 삭제된 아이템이 있는지 확인
-                        if(entity.getDeleted() == 1) {
-                            System.out.println("삭제 할 아이템을 찾았습니다: " + entity.getFront());
-                            itemsToDelete.add(entity);
-
-                        } else {
-                            itemsToUpload.add(entity);
-                            System.out.println("업로드 할 아이템을 찾았습니다: " + entity.getFront());
-                        }
-                    }
-                }
-                if (itemsToUpload.isEmpty()) {
-                    System.out.println("업로드 할 아이템이 없습니다");
-                }
-
-                // delete = 1 인 아이템 DB 이랑 Room 에서 지우기
-                for(final CollectionEntity itemToDelete : itemsToDelete) {
-                    final DocumentReference docRef = db.collection(getString(R.string.DB_USERS)).document(userEmail).collection(getString(R.string.DB_COLLECTIONS)).document(itemToDelete.getGuid());
-                    db.runTransaction(new Transaction.Function<Void>() {
-                        @Nullable
-                        @Override
-                        public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
-                            DocumentSnapshot snapshot = transaction.get(docRef);
-                            System.out.println("삭제할 아이템이 DB에 있나요?");
-                            if (snapshot.exists()) {
-                                System.out.println("네!");
-                                transaction.delete(docRef);
-                                System.out.println("삭제된 아이템을 DB 에서 지웠습니다");
-                            } else {
-                                System.out.println("아니요!");
-                            }
-                            return null;
-                        }
-                    }).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            repository.delete(itemToDelete);
-                            System.out.println("삭제된 아이템을 Room 에서 지웠습니다");
-                        }
-                    });
-                }
-
-
-                // DB 에서 dateEdit 가 dateLastSync 보다 뒤에 있는 아이템들 다운로드
-                db.collection(getString(R.string.DB_USERS)).document(userEmail).collection(getString(R.string.DB_COLLECTIONS))
-                        .whereGreaterThan("dateEdit", dateLastSync)
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    if (!task.getResult().isEmpty()) {
-                                        System.out.println("다운로드 할 아이템을 찾았습니다");
-                                        for (QueryDocumentSnapshot snapshot : task.getResult()) {
-                                            CollectionEntity download = snapshot.toObject(CollectionEntity.class);
-                                            repository.insertDownloadItem(getContext(), download);
-                                            System.out.println("아이템을 다운로드 했습니다 : " + download.getFront());
-                                        }
-                                    } else {
-                                        System.out.println("다운로드 할 아이템이 없습니다.");
-                                    }
-
-                                    // 업로드
-                                    for (CollectionEntity upload : itemsToUpload) {
-                                        db.collection(getString(R.string.DB_USERS)).document(userEmail).collection(getString(R.string.DB_COLLECTIONS)).document(upload.getGuid()).set(upload);
-                                        System.out.println("아이템을 업로드 했습니다: " + upload.getFront());
-                                    }
-                                }
-                            }
-                        });
-
-                // 동기화 날짜 업데이트
-                Long timeNow = UnixTimeStamp.getTimeNow();
-                SharedPreferencesInfo.setDateLastSync(getContext(), timeNow);
-                Toast.makeText(getContext(), getString(R.string.COLLECTION_SYNCHRONISED), Toast.LENGTH_LONG).show();
-                break;
-
- */
+                Intent intent = new Intent(getContext(), Teachers.class);
+                intent.putExtra("code", "record");
+                intent.putExtra("checkedList", checkedList);
+                startActivity(intent);
+            }
+        } else if (view.getId() == R.id.btnAddCollection) {
+            intent = new Intent(getContext(), CollectionFlashCard.class);
+            intent.putExtra(getString(R.string.REQUEST), getString(R.string.REQUEST_ADD));
+            startActivityForResult(intent, getResources().getInteger(R.integer.REQUEST_CODE_ADD));
+        } else if (view.getId() == R.id.searchCancel) {
+            searchEdit.setText("");
         }
     }
 

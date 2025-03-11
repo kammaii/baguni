@@ -153,36 +153,29 @@ public class LessonWord extends Fragment implements Button.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        if(v.getId() == R.id.btnAudio) {
+            if(mediaPlayerManager != null) {
+                mediaPlayerManager.playMediaPlayer(false);
+            }
+        } else if(v.getId() == R.id.btnCollect) {
+            String front = lesson.getWordFront()[lessonCount];
+            String back = lesson.getWordBack()[lessonCount];
+            String audio = activity.wordAudioString[lessonCount];
 
-        switch (v.getId()) {
+            DownloadAudio downloadAudio = new DownloadAudio(activity, folder, audio);
+            downloadAudio.downloadAudio();
 
-            case R.id.btnAudio :
-                if(mediaPlayerManager != null) {
-                    mediaPlayerManager.playMediaPlayer(false);
+            CollectionRepository repository = new CollectionRepository(activity);
+            repository.insert(front, back, audio);
+
+            collectResult.setVisibility(View.VISIBLE);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    collectResult.setVisibility(View.GONE);
                 }
-                break;
-
-            case R.id.btnCollect :
-                String front = lesson.getWordFront()[lessonCount];
-                String back = lesson.getWordBack()[lessonCount];
-                String audio = activity.wordAudioString[lessonCount];
-
-                DownloadAudio downloadAudio = new DownloadAudio(activity, folder, audio);
-                downloadAudio.downloadAudio();
-
-                CollectionRepository repository = new CollectionRepository(activity);
-                repository.insert(front, back, audio);
-
-                collectResult.setVisibility(View.VISIBLE);
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        collectResult.setVisibility(View.GONE);
-                    }
-                }, 1000);
-
-                break;
+            }, 1000);
         }
     }
 

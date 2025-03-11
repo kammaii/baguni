@@ -204,25 +204,19 @@ public class MainQnA extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
 
-            case R.id.btnNo :
-                layoutDelete.setVisibility(View.GONE);
-                break;
-
-            case R.id.btnYes :
-                String guid = QnAAdapter.guid;
-                QnARepository repository = new QnARepository(getContext());
-                repository.deleteByGuid(guid);
-                repository.getAll();
-                repository.getAll().observe(this, observer);
-                layoutDelete.setVisibility(View.GONE);
-                break;
-
-            case R.id.btnAskQuestion :
-                Intent intent = new Intent(getContext(), QnAFrame.class);
-                startActivity(intent);
-                break;
+        if(v.getId() == R.id.btnNo) {
+            layoutDelete.setVisibility(View.GONE);
+        } else if(v.getId() == R.id.btnYes) {
+            String guid = QnAAdapter.guid;
+            QnARepository repository = new QnARepository(getContext());
+            repository.deleteByGuid(guid);
+            repository.getAll();
+            repository.getAll().observe(this, observer);
+            layoutDelete.setVisibility(View.GONE);
+        } else if(v.getId() == R.id.btnAskQuestion) {
+            Intent intent = new Intent(getContext(), QnAFrame.class);
+            startActivity(intent);
         }
     }
 

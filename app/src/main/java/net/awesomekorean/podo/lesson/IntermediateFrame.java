@@ -23,11 +23,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.flexbox.FlexboxLayout;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import net.awesomekorean.podo.AdsManager;
 import net.awesomekorean.podo.ConfirmQuit;
 import net.awesomekorean.podo.LoadingPage;
 import net.awesomekorean.podo.MediaPlayerManager;
@@ -36,12 +34,8 @@ import net.awesomekorean.podo.R;
 import net.awesomekorean.podo.SharedPreferencesInfo;
 import net.awesomekorean.podo.UserInformation;
 import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson;
-import net.awesomekorean.podo.lesson.intermediateLessons.I_Lesson00;
-import net.awesomekorean.podo.lesson.lessons.LessonSpecial;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -124,7 +118,7 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
         btnNext = findViewById(R.id.btnNext);
         btnPlayAgain = findViewById(R.id.btnPlayAgain);
         btnFinish = findViewById(R.id.btnFinish);
-        collectResult = findViewById(R.id.collectResult);
+        //collectResult = findViewById(R.id.collectResult);
         btnClose.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
         btnPrevious.setOnClickListener(this);
@@ -332,116 +326,95 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
 
-            case R.id.btnClose :
-                openConfirmQuit();
-            break;
-
-            case R.id.btnCancel :
-                for(int i=0; i<clickedBtns.size(); i++) {
-                    clickedBtns.get(i).setVisibility(View.VISIBLE);
-                }
-                initAnswer();
-                break;
-
-            case R.id.btnPrevious :
-                if(btnPlay.getVisibility()==View.GONE) {
-                    if (dialogCount > 0) {
-                        dialogCount--;
-                        playAudio(2);
-
-                    } else {
-                        stopAudio();
-                    }
-                }
-                break;
-
-            case R.id.btnPlay :
-                setAudioButtons(View.GONE, View.VISIBLE);
-                dialogCount = 0;
-                playAudio(2);
-                break;
-
-            case R.id.btnPause :
-                stopAudio();
-                break;
-
-            case R.id.btnNext :
-                if(btnPlay.getVisibility()==View.GONE) {
-                    if (dialogCount < audiosDialog.size() - 1) {
-                        dialogCount++;
-                        playAudio(2);
-
-                    } else {
-                        stopAudio();
-                    }
-                }
-                break;
-
-            case R.id.btnFinish :
-                UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
-                userInformation.updateCompleteList(getApplicationContext(), lesson.getLessonId(), false);
-                playAds();
-            break;
-
-            case R.id.btnPlayAgain :
-                list.clear();
-                adapter.isFinish = false;
-                adapter.notifyDataSetChanged();
-                dialogCount = 0;
-                layoutCompleted.setVisibility(View.GONE);
-                set.clone(layout);
-                set.connect(recyclerView.getId(), ConstraintSet.BOTTOM, layoutAnswer.getId(), ConstraintSet.TOP, 20);
-                set.applyTo(layout);
-                addDialog();
-                break;
-
-
-            // 정답입력 버튼
-            default:
-                btnCancel.setEnabled(true);
-
-                Button selectedBtn = (Button) v;
-                if(clickedBtns.size() == 0) {
-                    tvAnswer.setText("");
+        if(v.getId() == R.id.btnClose) {
+            openConfirmQuit();
+        } else if (v.getId() == R.id.btnCancel) {
+            for(int i=0; i<clickedBtns.size(); i++) {
+                clickedBtns.get(i).setVisibility(View.VISIBLE);
+            }
+            initAnswer();
+        } else if (v.getId() == R.id.btnPlay) {
+            setAudioButtons(View.GONE, View.VISIBLE);
+            dialogCount = 0;
+            playAudio(2);
+        } else if (v.getId() == R.id.btnPause) {
+            stopAudio();
+        } else if (v.getId() == R.id.btnFinish) {
+            UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
+            userInformation.updateCompleteList(getApplicationContext(), lesson.getLessonId(), false);
+            playAds();
+        } else if (v.getId() == R.id.btnPlayAgain) {
+            list.clear();
+            adapter.isFinish = false;
+            adapter.notifyDataSetChanged();
+            dialogCount = 0;
+            layoutCompleted.setVisibility(View.GONE);
+            set.clone(layout);
+            set.connect(recyclerView.getId(), ConstraintSet.BOTTOM, layoutAnswer.getId(), ConstraintSet.TOP, 20);
+            set.applyTo(layout);
+            addDialog();
+        } else if (v.getId() == R.id.btnPrevious) {
+            if(btnPlay.getVisibility()==View.GONE) {
+                if (dialogCount > 0) {
+                    dialogCount--;
+                    playAudio(2);
                 } else {
-                    tvAnswer.append(" ");
+                    stopAudio();
                 }
-                clickedBtns.add(selectedBtn);
-                selectedBtn.setVisibility(View.INVISIBLE);
-                String selectedBtnText = selectedBtn.getText().toString();
-                tvAnswer.append(selectedBtnText);
+            }
+        } else if (v.getId() == R.id.btnNext) {
+            if(btnPlay.getVisibility()==View.GONE) {
+                if (dialogCount < audiosDialog.size() - 1) {
+                    dialogCount++;
+                    playAudio(2);
+                } else {
+                    stopAudio();
+                }
+            }
+            // 정답입력 버튼
+        } else {
+            btnCancel.setEnabled(true);
 
-                if(clickedBtns.size() == sentenceSplit.length) {
-                    btnCancel.setEnabled(false);
+            Button selectedBtn = (Button) v;
+            if(clickedBtns.size() == 0) {
+                tvAnswer.setText("");
+            } else {
+                tvAnswer.append(" ");
+            }
+            clickedBtns.add(selectedBtn);
+            selectedBtn.setVisibility(View.INVISIBLE);
+            String selectedBtnText = selectedBtn.getText().toString();
+            tvAnswer.append(selectedBtnText);
 
-                    if(tvAnswer.getText().toString().equals(correctAnswer)) { // 정답
-                        answered(0, R.drawable.bg_mint_10_stroke_mint, ContextCompat.getColor(getApplicationContext(), R.color.MINT));
-                        progress.setProgress(dialogCount + 1);
+            if(clickedBtns.size() == sentenceSplit.length) {
+                btnCancel.setEnabled(false);
 
-                    } else {  // 오답
-                        answered(1, R.drawable.bg_red_10_stroke_red, ContextCompat.getColor(getApplicationContext(), R.color.RED));
-                    }
+                if(tvAnswer.getText().toString().equals(correctAnswer)) { // 정답
+                    answered(0, R.drawable.bg_mint_10_stroke_mint, ContextCompat.getColor(getApplicationContext(), R.color.MINT));
+                    progress.setProgress(dialogCount + 1);
 
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            if(tvAnswer.getText().toString().equals(correctAnswer)) { // 정답
-                                playAudio(0);
+                } else {  // 오답
+                    answered(1, R.drawable.bg_red_10_stroke_red, ContextCompat.getColor(getApplicationContext(), R.color.RED));
+                }
 
-                            } else {
-                                for(int i=0; i<clickedBtns.size(); i++) {
-                                    clickedBtns.get(i).setVisibility(View.VISIBLE);
-                                }
-                                initAnswer();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(tvAnswer.getText().toString().equals(correctAnswer)) { // 정답
+                            playAudio(0);
+
+                        } else {
+                            for(int i=0; i<clickedBtns.size(); i++) {
+                                clickedBtns.get(i).setVisibility(View.VISIBLE);
                             }
-
+                            initAnswer();
                         }
-                    }, 1500);
-                }
-            break;
+
+                    }
+                }, 1500);
+            }
         }
     }
 

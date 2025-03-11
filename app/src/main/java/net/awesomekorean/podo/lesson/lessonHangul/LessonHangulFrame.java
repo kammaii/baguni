@@ -340,58 +340,43 @@ public class LessonHangulFrame extends AppCompatActivity implements Button.OnCli
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
+        if(view.getId() == R.id.btnAudio) {
+            if(mediaPlayerManager != null) {
+                mediaPlayerManager.playMediaPlayer(false);
+            }
+        } else if (view.getId() == R.id.btnWriting) {
+            iconWriting.startAnimation(btnAnimation);
 
-            case R.id.btnAudio :
-                if(mediaPlayerManager != null) {
-                    mediaPlayerManager.playMediaPlayer(false);
-                }
-                break;
+            if(writingBtnClicked == 0) {
+                imageViewHangul.setImageResource(resIDWriting);
+                visible(GONE, VISIBLE);
+                writingBtnClicked = 1;
+                hintBtnClicked = 0;
 
-            case R.id.btnWriting :
-                iconWriting.startAnimation(btnAnimation);
+            } else {
+                visible(VISIBLE, GONE);
+                writingBtnClicked = 0;
+            }
+        } else if (view.getId() == R.id.btnHint) {
+            iconHint.startAnimation(btnAnimation);
 
-                if(writingBtnClicked == 0) {
-                    imageViewHangul.setImageResource(resIDWriting);
-                    visible(GONE, VISIBLE);
-                    writingBtnClicked = 1;
-                    hintBtnClicked = 0;
+            if(hintBtnClicked == 0) {
+                imageViewHangul.setImageResource(resIDHint);
 
-                } else {
-                    visible(VISIBLE, GONE);
-                    writingBtnClicked = 0;
-                }
-                break;
+                visible(GONE, VISIBLE);
+                hintBtnClicked = 1;
+                writingBtnClicked = 0;
 
-            case R.id.btnHint :
-
-                iconHint.startAnimation(btnAnimation);
-
-                if(hintBtnClicked == 0) {
-                    imageViewHangul.setImageResource(resIDHint);
-
-                    visible(GONE, VISIBLE);
-                    hintBtnClicked = 1;
-                    writingBtnClicked = 0;
-
-                } else {
-                    visible(VISIBLE, GONE);
-                    hintBtnClicked = 0;
-                }
-                break;
-
-            case R.id.btnIntro :
-                layoutIntro.setVisibility(VISIBLE);
-                break;
-
-            case R.id.btnCloseIntro :
-                layoutIntro.setVisibility(GONE);
-                break;
-
-
-            case R.id.btnClose :
-                openConfirmQuit();
-                break;
+            } else {
+                visible(VISIBLE, GONE);
+                hintBtnClicked = 0;
+            }
+        } else if(view.getId() == R.id.btnIntro) {
+            layoutIntro.setVisibility(VISIBLE);
+        } else if(view.getId() == R.id.btnCloseIntro) {
+            layoutIntro.setVisibility(GONE);
+        } else if (view.getId() == R.id.btnClose) {
+            openConfirmQuit();
         }
     }
 

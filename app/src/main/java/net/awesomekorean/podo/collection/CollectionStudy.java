@@ -92,54 +92,42 @@ public class CollectionStudy extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
+        if(view.getId() == R.id.btnBack) {
+            finish();
+        } else if(view.getId() == R.id.btnRandom) {
+            btnRandom.setTextColor(ContextCompat.getColor(this, R.color.WHITE));
+            btnRecentWord.setTextColor(ContextCompat.getColor(this, R.color.GREY_TEXT));
+            btnRandom.setBackgroundResource(R.drawable.bg_purple_20_left);
+            btnRecentWord.setBackgroundResource(R.drawable.bg_white_20_right_stroke_purple);
+            randomBtnClicked = true;
+            randomStudy();
+        } else if(view.getId() == R.id.btnRecentWord) {
+            btnRecentWord.setTextColor(ContextCompat.getColor(this, R.color.WHITE));
+            btnRandom.setTextColor(ContextCompat.getColor(this, R.color.GREY_TEXT));
+            btnRandom.setBackgroundResource(R.drawable.bg_white_20_left_stroke_purple);
+            btnRecentWord.setBackgroundResource(R.drawable.bg_purple_20_right);
+            index = 0;
+            randomBtnClicked = false;
+            newCollectionFirstStudy();
+        } else if(view.getId() == R.id.btnAudio) {
+            if(studyAudio != null) {
+                MediaPlayerManager mediaPlayerManager = MediaPlayerManager.getInstance();
+                mediaPlayerManager.setMediaPlayer(false, context.getFilesDir() + "/" + studyAudio);
+            }
+        } else if(view.getId() == R.id.btnNext) {
+            if(studyBack.getVisibility()==View.INVISIBLE) {
+                studyBack.setVisibility(View.VISIBLE);
+                btnNext.setText(getString(R.string.NEXT));
+            } else {
+                studyBack.setVisibility(View.INVISIBLE);
+                btnNext.setText(getString(R.string.ANSWER));
 
-            case R.id.btnBack :
-                finish();
-                break;
-
-            case R.id.btnRandom :
-                btnRandom.setTextColor(ContextCompat.getColor(this, R.color.WHITE));
-                btnRecentWord.setTextColor(ContextCompat.getColor(this, R.color.GREY_TEXT));
-                btnRandom.setBackgroundResource(R.drawable.bg_purple_20_left);
-                btnRecentWord.setBackgroundResource(R.drawable.bg_white_20_right_stroke_purple);
-                randomBtnClicked = true;
-                randomStudy();
-                break;
-
-            case R.id.btnRecentWord :
-                btnRecentWord.setTextColor(ContextCompat.getColor(this, R.color.WHITE));
-                btnRandom.setTextColor(ContextCompat.getColor(this, R.color.GREY_TEXT));
-                btnRandom.setBackgroundResource(R.drawable.bg_white_20_left_stroke_purple);
-                btnRecentWord.setBackgroundResource(R.drawable.bg_purple_20_right);
-                index = 0;
-                randomBtnClicked = false;
-                newCollectionFirstStudy();
-                break;
-
-            case R.id.btnAudio :
-                if(studyAudio != null) {
-                    MediaPlayerManager mediaPlayerManager = MediaPlayerManager.getInstance();
-                    mediaPlayerManager.setMediaPlayer(false, context.getFilesDir() + "/" + studyAudio);
-                }
-                break;
-
-            case R.id.btnNext :
-                if(studyBack.getVisibility()==View.INVISIBLE) {
-                    studyBack.setVisibility(View.VISIBLE);
-                    btnNext.setText(getString(R.string.NEXT));
+                if(randomBtnClicked) {
+                    randomStudy();
                 } else {
-                    studyBack.setVisibility(View.INVISIBLE);
-                    btnNext.setText(getString(R.string.ANSWER));
-
-                    if(randomBtnClicked) {
-                        randomStudy();
-                    } else {
-                        newCollectionFirstStudy();
-                    }
+                    newCollectionFirstStudy();
                 }
-                break;
-
+            }
         }
     }
 }

@@ -180,35 +180,30 @@ public class LessonSentence extends Fragment implements Button.OnClickListener, 
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
+        if(view.getId() == R.id.btnAudio) {
+            if(mediaPlayerManager != null) {
+                mediaPlayerManager.playMediaPlayer(false);
+            }
+        } else if (view.getId() == R.id.btnCollect) {
+            String front = sentenceFront[lessonCount];
+            String back = sentenceBack[lessonCount];
+            String audio = sentenceAudio[lessonCount];
+            String folder = "lesson/" + lesson.getLessonId().toLowerCase();;
 
-            case R.id.btnAudio :
-                if(mediaPlayerManager != null) {
-                    mediaPlayerManager.playMediaPlayer(false);
+            DownloadAudio downloadAudio = new DownloadAudio(activity, folder, audio);
+            downloadAudio.downloadAudio();
+
+            CollectionRepository repository = new CollectionRepository(activity);
+            repository.insert(front, back, audio);
+
+            collectResult.setVisibility(View.VISIBLE);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    collectResult.setVisibility(View.GONE);
                 }
-                break;
-
-            case R.id.btnCollect :
-                String front = sentenceFront[lessonCount];
-                String back = sentenceBack[lessonCount];
-                String audio = sentenceAudio[lessonCount];
-                String folder = "lesson/" + lesson.getLessonId().toLowerCase();;
-
-                DownloadAudio downloadAudio = new DownloadAudio(activity, folder, audio);
-                downloadAudio.downloadAudio();
-
-                CollectionRepository repository = new CollectionRepository(activity);
-                repository.insert(front, back, audio);
-
-                collectResult.setVisibility(View.VISIBLE);
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        collectResult.setVisibility(View.GONE);
-                    }
-                }, 1000);
-                break;
+            }, 1000);
         }
     }
 

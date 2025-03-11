@@ -225,80 +225,65 @@ public class LessonNumberFrame extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
 
-            case R.id.btnBack :
-                openConfirmQuit();
-                break;
+        if(view.getId() == R.id.btnBack) {
+            openConfirmQuit();
+        } else if(view.getId() == R.id.btnIntro) {
+            textViewIntro = findViewById(R.id.textViewIntro);
+            textViewIntro.setMovementMethod(new ScrollingMovementMethod());
+            layoutIntro.setVisibility(VISIBLE);
+        } else if(view.getId() == R.id.btnClose) {
+            layoutIntro.setVisibility(GONE);
+        } else if(view.getId() == R.id.btnRandom) {
+            btnRandom.setTextColor(ContextCompat.getColor(this, R.color.WHITE));
+            btnInOrder.setTextColor(ContextCompat.getColor(this, R.color.GREY_TEXT));
+            btnRandom.setBackgroundResource(R.drawable.bg_purple_20_right);
+            btnInOrder.setBackgroundResource(R.drawable.bg_white_20_left_stroke_purple);
+            randomBtnClicked = true;
+            numberStudyRandom();
+        } else if(view.getId() == R.id.btnInOrder) {
+            btnInOrder.setTextColor(ContextCompat.getColor(this, R.color.WHITE));
+            btnRandom.setTextColor(ContextCompat.getColor(this, R.color.GREY_TEXT));
+            btnRandom.setBackgroundResource(R.drawable.bg_white_20_right_stroke_purple);
+            btnInOrder.setBackgroundResource(R.drawable.bg_purple_20_left);
+            index = 0;
+            randomBtnClicked = false;
+            displayNumber();
+        } else if(view.getId() == R.id.btnAudio) {
+            if(audiosNumber.get(index) != null && audiosNumber.get(index).length > 0) {
+                mediaPlayerManager.playMediaPlayer(false);
+            }
+        } else if (view.getId() == R.id.btnNext) {
+            if(numberBack.getVisibility()==View.INVISIBLE) {
 
-            case R.id.btnIntro :
-                textViewIntro = findViewById(R.id.textViewIntro);
-                textViewIntro.setMovementMethod(new ScrollingMovementMethod());
-                layoutIntro.setVisibility(VISIBLE);
-                break;
-
-            case R.id.btnClose :
-                layoutIntro.setVisibility(GONE);
-                break;
-
-            case R.id.btnRandom :
-                btnRandom.setTextColor(ContextCompat.getColor(this, R.color.WHITE));
-                btnInOrder.setTextColor(ContextCompat.getColor(this, R.color.GREY_TEXT));
-                btnRandom.setBackgroundResource(R.drawable.bg_purple_20_right);
-                btnInOrder.setBackgroundResource(R.drawable.bg_white_20_left_stroke_purple);
-                randomBtnClicked = true;
-                numberStudyRandom();
-                break;
-
-            case R.id.btnInOrder :
-                btnInOrder.setTextColor(ContextCompat.getColor(this, R.color.WHITE));
-                btnRandom.setTextColor(ContextCompat.getColor(this, R.color.GREY_TEXT));
-                btnRandom.setBackgroundResource(R.drawable.bg_white_20_right_stroke_purple);
-                btnInOrder.setBackgroundResource(R.drawable.bg_purple_20_left);
-                index = 0;
-                randomBtnClicked = false;
-                displayNumber();
-                break;
-
-            case R.id.btnAudio :
-                if(audiosNumber.get(index) != null && audiosNumber.get(index).length > 0) {
-                    mediaPlayerManager.playMediaPlayer(false);
-                }
-                break;
-
-            case R.id.btnNext :
-                if(numberBack.getVisibility()==View.INVISIBLE) {
-
-                    if(mediaPlayerManager != null && audiosNumber.get(index) != null && audiosNumber.get(index).length > 0) {
-                        mediaPlayerManager.setMediaPlayerByte(false, audiosNumber.get(index));
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), getString(R.string.AUDIO_LOADING), Toast.LENGTH_LONG).show();
-                    }
-
-                    btnAudio.setVisibility(View.VISIBLE);
-                    numberBack.setVisibility(View.VISIBLE);
-                    btnNext.setText(getString(R.string.NEXT));
+                if(mediaPlayerManager != null && audiosNumber.get(index) != null && audiosNumber.get(index).length > 0) {
+                    mediaPlayerManager.setMediaPlayerByte(false, audiosNumber.get(index));
 
                 } else {
-                    numberBack.setVisibility(View.INVISIBLE);
-                    btnAudio.setVisibility(View.GONE);
-                    btnNext.setText(getString(R.string.ANSWER));
-
-                    if(randomBtnClicked) {
-                        numberStudyRandom();
-
-                    } else {
-                        if(index < number.getFront().length-1) {
-                            index++;
-                        } else {
-                            index = 0;
-                        }
-                        displayNumber();
-                    }
+                    Toast.makeText(getApplicationContext(), getString(R.string.AUDIO_LOADING), Toast.LENGTH_LONG).show();
                 }
-                break;
 
+                btnAudio.setVisibility(View.VISIBLE);
+                numberBack.setVisibility(View.VISIBLE);
+                btnNext.setText(getString(R.string.NEXT));
+
+            } else {
+                numberBack.setVisibility(View.INVISIBLE);
+                btnAudio.setVisibility(View.GONE);
+                btnNext.setText(getString(R.string.ANSWER));
+
+                if(randomBtnClicked) {
+                    numberStudyRandom();
+
+                } else {
+                    if(index < number.getFront().length-1) {
+                        index++;
+                    } else {
+                        index = 0;
+                    }
+                    displayNumber();
+                }
+            }
         }
     }
 

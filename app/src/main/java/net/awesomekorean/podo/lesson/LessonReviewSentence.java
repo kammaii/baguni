@@ -178,28 +178,22 @@ public class LessonReviewSentence extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
+        if(v.getId() == R.id.btnReset) {
+            if(clickedBtns.size() > 0) {
+                Button button = clickedBtns.get(clickedBtns.size() - 1);
+                button.setVisibility(View.VISIBLE);
+                clickedBtns.remove(clickedBtns.size() - 1);
 
-            case R.id.btnReset :
-                if(clickedBtns.size() > 0) {
-                    Button button = clickedBtns.get(clickedBtns.size() - 1);
-                    button.setVisibility(View.VISIBLE);
-                    clickedBtns.remove(clickedBtns.size() - 1);
+                String text = tvAnswer.getText().toString();
+                String newText = text.substring(0, text.length() - 1);
+                tvAnswer.setText(newText);
 
-                    String text = tvAnswer.getText().toString();
-                    String newText = text.substring(0, text.length() - 1);
-                    tvAnswer.setText(newText);
-
-                    if(clickedBtns.size() == 0) {
-                        btnReset.setVisibility(View.GONE);
-                    }
+                if(clickedBtns.size() == 0) {
+                    btnReset.setVisibility(View.GONE);
                 }
-                break;
-
-
-            case R.id.btnAudio :
-                mediaPlayerManager.playMediaPlayer(false);
-                break;
+            }
+        } else if(v.getId() == R.id.btnAudio) {
+            mediaPlayerManager.playMediaPlayer(false);
         }
     }
 

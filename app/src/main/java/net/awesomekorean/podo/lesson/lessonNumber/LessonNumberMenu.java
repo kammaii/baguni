@@ -65,35 +65,20 @@ public class LessonNumberMenu extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
-
-            case R.id.btnBack :
-                finish();
-                break;
-
-            case R.id.layoutSino :
-                openLessonNumber(getString(R.string.SINO));
-                break;
-
-            case R.id.layoutNative :
-                openLessonNumber(getString(R.string.NATIVE));
-                break;
-
-            case R.id.layoutDate :
-                openLessonNumber(getString(R.string.DATE));
-                break;
-
-            case R.id.layoutAge :
-                openLessonNumber(getString(R.string.AGE));
-                break;
-
-            case R.id.layoutMoney :
-                openLessonNumber(getString(R.string.MONEY));
-                break;
-
-            case R.id.layoutTime :
-                openLessonNumber(getString(R.string.TIME));
-                break;
+        if(v.getId() == R.id.btnBack) {
+            finish();
+        } else if(v.getId() == R.id.layoutSino) {
+            openLessonNumber(getString(R.string.SINO));
+        } else if(v.getId() == R.id.layoutNative) {
+            openLessonNumber(getString(R.string.NATIVE));
+        } else if(v.getId() == R.id.layoutDate) {
+            openLessonNumber(getString(R.string.DATE));
+        } else if(v.getId() == R.id.layoutAge) {
+            openLessonNumber(getString(R.string.AGE));
+        } else if(v.getId() == R.id.layoutMoney) {
+            openLessonNumber(getString(R.string.MONEY));
+        } else if(v.getId() == R.id.layoutTime) {
+            openLessonNumber(getString(R.string.TIME));
         }
     }
 }
