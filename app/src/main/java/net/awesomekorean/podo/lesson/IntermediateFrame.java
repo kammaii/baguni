@@ -81,7 +81,6 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
     Button btnFinish;
 
     public LinearLayout collectResult;
-    AdsManager adsManager;
 
     int loadingProgress = 0;
 
@@ -94,12 +93,6 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_intermediate_frame);
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
-
-        adsManager = AdsManager.getInstance();
-
-        if(adsManager.interstitialAd == null || !adsManager.interstitialAd.isLoaded()) {
-            adsManager.loadFullAds(getApplicationContext());
-        }
 
         layout = findViewById(R.id.layout);
         btnClose = findViewById(R.id.btnClose);
@@ -304,15 +297,6 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
     }
 
 
-    // 애드몹 광고 보여주고 종료
-    private void playAds() {
-        if(adsManager.interstitialAd.isLoaded()) {
-            adsManager.playFullAds(this);
-        }
-        finish();
-    }
-
-
     public void openConfirmQuit() {
         MediaPlayerManager mediaPlayerManager = MediaPlayerManager.getInstance();
         mediaPlayerManager.stopMediaPlayer();
@@ -343,7 +327,7 @@ public class IntermediateFrame extends AppCompatActivity implements View.OnClick
         } else if (v.getId() == R.id.btnFinish) {
             UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
             userInformation.updateCompleteList(getApplicationContext(), lesson.getLessonId(), false);
-            playAds();
+            finish();
         } else if (v.getId() == R.id.btnPlayAgain) {
             list.clear();
             adapter.isFinish = false;

@@ -59,7 +59,6 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
     String extra;
     Intent intent;
     Context context;
-    AdsManager adsManager;
     boolean isActive;
     TextView unlockMessage;
 
@@ -71,11 +70,6 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_unlock);
 
         context = getApplicationContext();
-        adsManager = AdsManager.getInstance();
-        if(adsManager.rewardedAd == null || !adsManager.rewardedAd.isLoaded()) {
-            adsManager.loadRewardAds(context);
-        }
-
         unlockFirst = findViewById(R.id.unlockFirst);
         unlockSecond = findViewById(R.id.unlockSecond);
         pointHave = findViewById(R.id.pointHave);
@@ -231,9 +225,6 @@ public class UnlockActivity extends AppCompatActivity implements View.OnClickLis
         } else if(v.getId() == R.id.btnPurchasePoints) {
             intent = new Intent(context, TopUp.class);
             startActivity(intent);
-        } else if(v.getId() == R.id.btnWatchAds) {
-            adsManager.playRewardAds(this);
-        // btnNo, btnClose
         } else {
             finish();
         }

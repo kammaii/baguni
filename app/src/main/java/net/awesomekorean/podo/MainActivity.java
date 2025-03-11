@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
     TextView tvTitle;
 
     ImageView btnProfile;
-    TextView userPoint;
+    //TextView userPoint;
     LinearLayout layoutPoint;
 
     ConstraintLayout layoutPointDetail;
@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
     Fragment thisFragment;
 
-    ImageView stars;
+    //ImageView stars;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -128,8 +128,8 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
         tvTitle = findViewById(R.id.tvTitle);
         btnProfile = findViewById(R.id.btnProfile);
-        userPoint = findViewById(R.id.userPoint);
-        layoutPoint = findViewById(R.id.layoutPoint);
+        //userPoint = findViewById(R.id.userPoint);
+        //layoutPoint = findViewById(R.id.layoutPoint);
         layoutPointDetail = findViewById(R.id.layoutPointDetail);
         layoutGetPoint = findViewById(R.id.layoutGetPoint);
         layoutPointInfo = findViewById(R.id.layoutPointInfo);
@@ -152,11 +152,11 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         textReading = findViewById(R.id.textReading);
         textWriting = findViewById(R.id.textWriting);
         textCollection = findViewById(R.id.textCollection);
-        stars = findViewById(R.id.stars);
+        //stars = findViewById(R.id.stars);
 
         textQnA = findViewById(R.id.textQnA);
         btnProfile.setOnClickListener(this);
-        layoutPoint.setOnClickListener(this);
+        //layoutPoint.setOnClickListener(this);
         btnPointInfo.setOnClickListener(this);
         btnClosePointDetail.setOnClickListener(this);
         btnWatchAds.setOnClickListener(this);
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
         animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scale_200);
 
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.blink_infinite);
-        stars.startAnimation(animation);
+        //stars.startAnimation(animation);
 
 
         // 유저정보 가져오기 (Email, Name, Image)
@@ -366,8 +366,6 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
             layoutPointDetail.setVisibility(View.VISIBLE);
             layoutGetPoint.setVisibility(View.VISIBLE);
             layoutPointInfo.setVisibility(View.GONE);
-        } else if (view.getId() == R.id.btnWatchAds) {
-            AdsManager.getInstance().playRewardAds(this);
         } else if (view.getId() == R.id.btnPurchasePoints) {
             intent = new Intent(getApplicationContext(), TopUp.class);
             startActivity(intent);
@@ -451,7 +449,7 @@ public class MainActivity extends AppCompatActivity implements Button.OnClickLis
 
         if(userInformation != null) {
             userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
-            userPoint.setText(String.valueOf(userInformation.getPoints()));
+            //userPoint.setText(String.valueOf(userInformation.getPoints()));
 
             // 애널리틱스 로그이벤트 (챌린저 진행 중인 유저가 아니면서 포인트가 5 이하일 때)
             if(userInformation.getPoints() < 5 && userInformation.getIsChallenger() != 1) {

@@ -100,7 +100,6 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
     RecyclerView recyclerView;
 
-    AdsManager adsManager;
 
     Context context;
 
@@ -112,13 +111,6 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         context = getApplicationContext();
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
-
-        adsManager = AdsManager.getInstance();
-
-        if(adsManager.rewardedAd == null || !adsManager.rewardedAd.isLoaded()) {
-
-            adsManager.loadRewardAds(context);
-        }
 
         btnBack = findViewById(R.id.btnBack);
         userImage = findViewById(R.id.userImage);
@@ -283,19 +275,19 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         if(v.getId() == R.id.btnBack) {
             finish();
         } else if(v.getId() == R.id.btnGetPoint) {
-            PlaySoundPool playSoundPool = new PlaySoundPool(context);
-            playSoundPool.playSoundLesson(2);
-
-            // 오늘 출석만 남기고 다 초기화
-            UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
-            Calendar cal = Calendar.getInstance();
-            int today = cal.get(Calendar.DAY_OF_WEEK) - 1; // 1:일요일 ~ 7:토요일
-            userInformation.resetDays(today);
-            setAttendance(userInformation.getAttendance());
-            System.out.println("출석부를 초기화 했습니다");
-
-            userInformation.addRewardPoints(context, 20);
-            userPoint.setText(String.valueOf(userInformation.getPoints()));
+//            PlaySoundPool playSoundPool = new PlaySoundPool(context);
+//            playSoundPool.playSoundLesson(2);
+//
+//            // 오늘 출석만 남기고 다 초기화
+//            UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
+//            Calendar cal = Calendar.getInstance();
+//            int today = cal.get(Calendar.DAY_OF_WEEK) - 1; // 1:일요일 ~ 7:토요일
+//            userInformation.resetDays(today);
+//            setAttendance(userInformation.getAttendance());
+//            System.out.println("출석부를 초기화 했습니다");
+//
+//            userInformation.addRewardPoints(context, 20);
+//            userPoint.setText(String.valueOf(userInformation.getPoints()));
         } else if(v.getId() == R.id.layoutEditName) {
             setExtendableButton(arrowEditProfile, layoutEditNameOpen);
         } else if(v.getId() == R.id.btnSave) {
@@ -379,11 +371,9 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
             Intent chooser = Intent.createChooser(intent, "Recommend podo to your friends");
             startActivity(chooser);
-        } else if(v.getId() == R.id.getPointsByAd) {
-            adsManager.playRewardAds(this);
         } else if(v.getId() == R.id.getPointsByPurchasing) {
-            intent = new Intent(Profile.this, TopUp.class);
-            startActivity(intent);
+//            intent = new Intent(Profile.this, TopUp.class);
+//            startActivity(intent);
         } else if(v.getId() == R.id.logout) {
             new AlertDialog.Builder(this)
                     .setTitle(getString(R.string.SIGN_OUT)).setMessage(getString(R.string.SIGN_OUT_MESSAGE))

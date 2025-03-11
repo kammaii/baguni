@@ -44,7 +44,6 @@ import java.util.Map;
 public class LessonReviewFrame extends AppCompatActivity implements View.OnClickListener {
 
     FirebaseStorage storage = FirebaseStorage.getInstance();
-    AdsManager adsManager;
 
     FragmentManager fm;
     FragmentTransaction ft;
@@ -122,14 +121,8 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
         startActivity(intent);
         frameLayout.setEnabled(false);
 
-        adsManager = AdsManager.getInstance();
-
         setLayout(View.GONE, View.GONE);
 
-        // 전면광고 로드 체크
-        if(adsManager.interstitialAd == null || !adsManager.interstitialAd.isLoaded()) {
-            adsManager.loadFullAds(getApplicationContext());
-        }
 
         // analytics 로그 이벤트 얻기
         FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(getApplicationContext());
@@ -298,7 +291,6 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
         if(v.getId() == R.id.btnClose) {
             openConfirmQuit();
         } else if (v.getId() == R.id.btnComplete) {
-            adsManager.playFullAds(getApplicationContext());
             UserInformation userInformation = SharedPreferencesInfo.getUserInfo(getApplicationContext());
             userInformation.updateCompleteList(getApplicationContext(), lessonReview.getLessonId(), false);
             finish();
@@ -307,7 +299,6 @@ public class LessonReviewFrame extends AppCompatActivity implements View.OnClick
             setLayout(View.GONE, View.GONE);
             replaceFragment(LessonReviewWord.newInstance());
         } else if(v.getId() == R.id.btnNo) {
-            adsManager.playFullAds(getApplicationContext());
             finish();
         }
     }

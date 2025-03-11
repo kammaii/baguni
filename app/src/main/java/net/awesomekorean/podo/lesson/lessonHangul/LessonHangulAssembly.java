@@ -99,7 +99,6 @@ public class LessonHangulAssembly extends AppCompatActivity implements View.OnCl
 
     String audioFile;
 
-    AdsManager adsManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,11 +144,6 @@ public class LessonHangulAssembly extends AppCompatActivity implements View.OnCl
         btnIntro.setOnClickListener(this);
         btnClose.setOnClickListener(this);
         btnBack.setOnClickListener(this);
-
-        adsManager = AdsManager.getInstance();
-        if(adsManager.interstitialAd == null || !adsManager.interstitialAd.isLoaded()) {
-            adsManager.loadFullAds(context);
-        }
 
         hangulBoxBtnSelected = new View.OnClickListener() {
 
@@ -270,9 +264,6 @@ public class LessonHangulAssembly extends AppCompatActivity implements View.OnCl
 
     private void setLessonComplete() {
         // 레슨완료리스트에 업데이트
-        if (adsManager.interstitialAd.isLoaded()) {
-            adsManager.playFullAds(context);
-        }
         UserInformation userInformation = SharedPreferencesInfo.getUserInfo(context);
         userInformation.updateCompleteList(context, "H_assembly", false);
         finish();

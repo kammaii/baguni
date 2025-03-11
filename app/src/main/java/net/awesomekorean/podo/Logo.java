@@ -13,9 +13,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -43,7 +40,6 @@ public class Logo extends AppCompatActivity {
 
     private FirebaseAnalytics firebaseAnalytics;
     private FirebaseCrashlytics crashlytics;
-    private AdsManager adsManager;
     private Intent intent;
     private LinearLayout layoutUpdatingDB;
     private String userEmail;
@@ -65,20 +61,6 @@ public class Logo extends AppCompatActivity {
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
         firebaseAnalytics.setAnalyticsCollectionEnabled(BuildConfig.ANALYTICS);
         System.out.println("애널리틱스 : " + BuildConfig.ANALYTICS);
-
-
-        // 애드몹 초기화
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-                System.out.println("애드몹을 초기화했습니다");
-                // 광고 미리 로드하기
-                adsManager = AdsManager.getInstance();
-                adsManager.loadFullAds(getApplicationContext());
-                adsManager.loadRewardAds(getApplicationContext());
-            }
-        });
-
 
         userEmail = SharedPreferencesInfo.getUserEmail(getApplicationContext());
 

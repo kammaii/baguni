@@ -50,7 +50,6 @@ public class LessonFinish extends AppCompatActivity implements View.OnClickListe
     Button btnComplete;
     PlaySoundPool playSoundPool;
     Context context;
-    AdsManager adsManager;
 
     Lesson lesson;
 
@@ -70,13 +69,8 @@ public class LessonFinish extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_lesson_finish);
 
         context = getApplicationContext();
-        adsManager = AdsManager.getInstance();
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
-
-        if(adsManager.interstitialAd == null || !adsManager.interstitialAd.isLoaded()) {
-            adsManager.loadFullAds(context);
-        }
 
         tvWord = findViewById(R.id.tvWord);
         tvSentence = findViewById(R.id.tvSentence);
@@ -194,15 +188,6 @@ public class LessonFinish extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    // 애드몹 광고 보여주고 종료
-    private void playAds() {
-        if(adsManager.interstitialAd.isLoaded()) {
-            adsManager.playFullAds(this);
-        }
-        finish();
-    }
-
-
     @Override
     public void onClick(View v) {
 
@@ -227,7 +212,7 @@ public class LessonFinish extends AppCompatActivity implements View.OnClickListe
                 setBtns(false, false);
             }
         } else if (v.getId() == R.id.btnComplete) {
-            playAds();
+            finish();
         }
     }
 
@@ -270,6 +255,6 @@ public class LessonFinish extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onBackPressed() {
-        playAds();
+        finish();
     }
 }

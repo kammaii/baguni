@@ -28,37 +28,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:id="@+id/layoutPoint"
-        android:padding="10dp"
-        android:layout_marginRight="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvTitle"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTitle"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:src="@drawable/point_small"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
-        <TextView
-            android:id="@+id/userPoint"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:text="300"
-            android:textColor="#4A4A4A"
-            android:textSize="18dp" />
-    </LinearLayout>
+<!--    <LinearLayout-->
+<!--        android:id="@+id/layoutPoint"-->
+<!--        android:padding="10dp"-->
+<!--        android:layout_marginRight="15dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@id/tvTitle"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/tvTitle"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content">-->
 
-    <ImageView
-        android:id="@+id/stars"
-        android:src="@drawable/stars_purple_a"
-        app:layout_constraintTop_toTopOf="@id/layoutPoint"
-        app:layout_constraintStart_toStartOf="@id/layoutPoint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/point_small" />-->
+<!--        <TextView-->
+<!--            android:id="@+id/userPoint"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginLeft="5dp"-->
+<!--            android:text="300"-->
+<!--            android:textColor="#4A4A4A"-->
+<!--            android:textSize="18dp" />-->
+<!--    </LinearLayout>-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/stars"-->
+<!--        android:src="@drawable/stars_purple_a"-->
+<!--        app:layout_constraintTop_toTopOf="@id/layoutPoint"-->
+<!--        app:layout_constraintStart_toStartOf="@id/layoutPoint"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"/>-->
 
 
     <FrameLayout

@@ -194,7 +194,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         btnChallenge = view.findViewById(R.id.btnChallenge);
         textChallenge = view.findViewById(R.id.textChallenge);
         layoutChallengeProgress = view.findViewById(R.id.layoutChallengeProgress);
-        challengeCount = view.findViewById(R.id.challengeCount);
+        //challengeCount = view.findViewById(R.id.challengeCount);
         countDayChallenge = view.findViewById(R.id.countDayChallenge);
         textProgressChallenge = view.findViewById(R.id.textProgressChallenge);
         progressChallenge = view.findViewById(R.id.progressChallenge);
@@ -219,58 +219,59 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        int isChallenger = userInformation.getIsChallenger();
+        //int isChallenger = userInformation.getIsChallenger();
+        setChallengeVisible(GONE, GONE);
 
         // 챌린저 진행중
-        if(isChallenger == 1) {
-            setChallengeVisible(GONE, VISIBLE);
-            setChallengeInfo();
-
-
-        // 챌린지 종료
-        } else if(isChallenger == 2) {
-            setChallengeVisible(GONE, GONE);
-
-            // 챌린지 보상여부 체크
-            if(userInformation.getIsChallengeRewarded() == 0) {
-                int completeLessonSize = checkCompleteLessonNo();
-                int totalLessonSize = beginner.length + intermediate.length;
-                int rewardPoint;
-                System.out.println("완료레슨 : " + completeLessonSize);
-                System.out.println("토탈레슨 : " + totalLessonSize);
-                if(completeLessonSize >= totalLessonSize ) {
-                    System.out.println("챌린지 성공!");
-                    PlaySoundPool playSoundPool = new PlaySoundPool(context);
-                    playSoundPool.playSoundYay();
-                    userInformation.setIsChallengeRewarded(1);
-                    titleChallengeResult.setText(getString(R.string.CONGRATULATION));
-                    rewardPoint = 1000;
-                    challengeRewardPoints.setText(String.valueOf(rewardPoint));
-                    challengeResultMessage.setText(getString(R.string.CHALLENGE_SUCCEED_MESSAGE));
-
-                } else {
-                    System.out.println("챌린지 실패!");
-                    userInformation.setIsChallengeRewarded(2);
-                    titleChallengeResult.setText(getString(R.string.CHALLENGE_FAILED));
-                    rewardPoint = 100;
-                    challengeRewardPoints.setText(String.valueOf(rewardPoint));
-                    challengeResultMessage.setText(getString(R.string.CHALLENGE_FAILED_MESSAGE));
-                }
-                challengeResult.setVisibility(VISIBLE);
-                userInformation.addRewardPoints(context, rewardPoint);
-            }
-
-        // 챌린저 아님
-        } else {
-            textChallenge.measure(0,0);
-            Shader shader = new LinearGradient(0,0,textChallenge.getMeasuredWidth(),0, ContextCompat.getColor(context, R.color.PINK2), ContextCompat.getColor(context, R.color.PURPLE), Shader.TileMode.CLAMP);
-            textChallenge.getPaint().setShader(shader);
-            //checkEventTimer();
-            setChallengeVisible(VISIBLE, GONE);
-            Animation animation = AnimationUtils.loadAnimation(context, R.anim.blink_infinite);
-            starsA.startAnimation(animation);
-            starsB.startAnimation(animation);
-        }
+//        if(isChallenger == 1) {
+//            setChallengeVisible(GONE, VISIBLE);
+//            //setChallengeInfo();
+//
+//
+//        // 챌린지 종료
+//        } else if(isChallenger == 2) {
+//            setChallengeVisible(GONE, GONE);
+//
+//            // 챌린지 보상여부 체크
+//            if(userInformation.getIsChallengeRewarded() == 0) {
+//                int completeLessonSize = checkCompleteLessonNo();
+//                int totalLessonSize = beginner.length + intermediate.length;
+//                int rewardPoint;
+//                System.out.println("완료레슨 : " + completeLessonSize);
+//                System.out.println("토탈레슨 : " + totalLessonSize);
+//                if(completeLessonSize >= totalLessonSize ) {
+//                    System.out.println("챌린지 성공!");
+//                    PlaySoundPool playSoundPool = new PlaySoundPool(context);
+//                    playSoundPool.playSoundYay();
+//                    userInformation.setIsChallengeRewarded(1);
+//                    titleChallengeResult.setText(getString(R.string.CONGRATULATION));
+//                    rewardPoint = 1000;
+//                    challengeRewardPoints.setText(String.valueOf(rewardPoint));
+//                    challengeResultMessage.setText(getString(R.string.CHALLENGE_SUCCEED_MESSAGE));
+//
+//                } else {
+//                    System.out.println("챌린지 실패!");
+//                    userInformation.setIsChallengeRewarded(2);
+//                    titleChallengeResult.setText(getString(R.string.CHALLENGE_FAILED));
+//                    rewardPoint = 100;
+//                    challengeRewardPoints.setText(String.valueOf(rewardPoint));
+//                    challengeResultMessage.setText(getString(R.string.CHALLENGE_FAILED_MESSAGE));
+//                }
+//                challengeResult.setVisibility(VISIBLE);
+//                userInformation.addRewardPoints(context, rewardPoint);
+//            }
+//
+//        // 챌린저 아님
+//        } else {
+//            textChallenge.measure(0,0);
+//            Shader shader = new LinearGradient(0,0,textChallenge.getMeasuredWidth(),0, ContextCompat.getColor(context, R.color.PINK2), ContextCompat.getColor(context, R.color.PURPLE), Shader.TileMode.CLAMP);
+//            textChallenge.getPaint().setShader(shader);
+//            //checkEventTimer();
+//            setChallengeVisible(VISIBLE, GONE);
+//            Animation animation = AnimationUtils.loadAnimation(context, R.anim.blink_infinite);
+//            starsA.startAnimation(animation);
+//            starsB.startAnimation(animation);
+//        }
 
 
 
@@ -347,17 +348,17 @@ public class MainLesson extends Fragment implements View.OnClickListener {
 
 
     // 챌린저 정보 세팅
-    private void setChallengeInfo() {
-        Long timeStart = userInformation.getDateChallengeStart();
-        Long timeNow = UnixTimeStamp.getTimeNow();
-        int dayCount = (int) Math.floor((timeNow-timeStart)/86400 + 1);
-        countDayChallenge.setText(Integer.toString(dayCount));
-        int totalLessonNo = beginner.length + intermediate.length;
-        int completeLessonNo = checkCompleteLessonNo();
-        int percent = completeLessonNo *100  / totalLessonNo;
-        textProgressChallenge.setText(completeLessonNo + " / " + (totalLessonNo));
-        progressChallenge.setProgress(percent);
-    }
+//    private void setChallengeInfo() {
+//        Long timeStart = userInformation.getDateChallengeStart();
+//        Long timeNow = UnixTimeStamp.getTimeNow();
+//        int dayCount = (int) Math.floor((timeNow-timeStart)/86400 + 1);
+//        countDayChallenge.setText(Integer.toString(dayCount));
+//        int totalLessonNo = beginner.length + intermediate.length;
+//        int completeLessonNo = checkCompleteLessonNo();
+//        int percent = completeLessonNo *100  / totalLessonNo;
+//        textProgressChallenge.setText(completeLessonNo + " / " + (totalLessonNo));
+//        progressChallenge.setProgress(percent);
+//    }
 
 
     // 완료레슨 개수 확인하기 (챌린저)
@@ -548,7 +549,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         if(resultCode == RESULT_OK) {
             userInformation = SharedPreferencesInfo.getUserInfo(context);
             if(userInformation.getIsChallenger() == 1) {
-                setChallengeInfo();
+                //setChallengeInfo();
                 setChallengeVisible(GONE, VISIBLE);
                 SharedPreferencesInfo.setEventTimer(context, 0, 0);
                 if(eventTimer != null) {
@@ -572,7 +573,7 @@ public class MainLesson extends Fragment implements View.OnClickListener {
         }
 
         if(userInformation.getIsChallenger() == 1) {
-            setChallengeInfo();
+            //setChallengeInfo();
             setChallengeVisible(GONE, VISIBLE);
         }
     }
